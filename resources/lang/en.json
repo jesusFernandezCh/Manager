@@ -1,0 +1,19 @@
+{
+    "Dashboard": "Dashboard",
+    "Accounts": "Accounts",
+    "Operations": "Operations",
+    "Workflow Rules": "Workflow Rules",
+    "Documents": "Documents",
+    "Reports": "Reports",
+    "CONFIGURATION": "CONFIGURATION",
+    "Users": "Users",
+    "Datatables": "Datatables",
+    "Payments": "Payments",
+    "Alerts": "Alerts",
+    "Currency": "Currency",
+    "Notifications": "Notifications",
+    "Languages": "Languages",
+    "auth.failed": "no te puedes logear",
+    "validation.required": "holasad :attribute"
+
+}

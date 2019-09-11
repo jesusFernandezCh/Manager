@@ -1,0 +1,18 @@
+{
+    "Dashboard": "Tablero",
+    "Accounts": "Cuentas",
+    "Operations": "Operaciones",
+    "Workflow Rules": "Reglas de trabajo",
+    "Documents": "Ficheros",
+    "Reports": "Reportes",
+    "CONFIGURATION": "CONFIGRACIÓN",
+    "Users": "Usuarios",
+    "Datatables": "Tabla de datos",
+    "Payments": "Pagos",
+    "Alerts": "Alertas",
+    "Currency": "Moneda",
+    "Notifications": "Notificaciones",
+    "Languages": "Idiomas",
+    "auth.failed": "no te puedes logear",
+    "validation.required": "El :attribute campo es required."
+}
