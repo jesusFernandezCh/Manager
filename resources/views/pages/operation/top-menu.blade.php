@@ -6,7 +6,7 @@
                 <li>
                     <a class="nav-link" id="resumen" href="{{ route('operations.edit',$operation) }}" role="tab"
                     aria-controls="v-pills-buyers">
-                        <i class=""></i> {{__('Resumen')}}
+                        <i class=""></i> {{__('Orders')}}
                     </a>
                 </li>
                 <li>

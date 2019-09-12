@@ -6,16 +6,22 @@ use App\Operation;
 use App\Account;
 use App\Document;
 use App\User;
+use App\Incoterm;
+use App\Currency;
+use App\Port;
+use App\Country;
 use App\OperationStatus as Status;
 use Illuminate\Http\Request;
 use App\Http\Requests\Operation\operationRequest;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
 use Session;
 
 class OperationController extends Controller
 {
     private $operation;
+    private $account;
     private $accounts;
     private $operators;
     private $document;
@@ -92,7 +98,12 @@ class OperationController extends Controller
         $status     = $this->status;
         $operators  = $this->operators;
         $accounts   = $this->accounts;
-        return view('pages.operation.edit',compact('operation','accounts','operators','status'));
+                
+        $incoterms  = Incoterm::get()->pluck('name','id');
+        $currencys  = Currency::get()->pluck('code','id');
+        $ports      = Port::get()->pluck('name','id');
+        $countries  = Country::get()->pluck('name','id');
+        return view('pages.operation.edit',compact('operation','accounts','operators','status','principal', 'incoterms', 'currencys', 'ports','countries'));
     }
 
     /**

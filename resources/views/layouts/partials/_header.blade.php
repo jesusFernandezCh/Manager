@@ -117,6 +117,11 @@
         <span>{{ __('Currency') }}</span>
     </a>
 </li>
+<li>
+    <a class="nav-link" href="{{ route('status.index') }}" role="tab" id="status">
+        <i class="icon icon-package blue-text s-18"></i> <span>{{__('Status')}}</span>
+    </a>
+</li>
 <li class="treeview ">
     <a href="{{ route('accountContact.index') }}">
         <i class="icon icon-contacts pink-text s-18 "></i> <span>{{ __('Contacts') }}</span>
