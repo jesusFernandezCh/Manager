@@ -55,7 +55,7 @@
 								<div class="" id="principal_id">
 									<i class=""></i>
 									{!! Form::label('principal_id', 'Principal *', ['class'=>'col-form-label s-12']) !!}
-									{!! Form::select('principal_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'principal_id']) !!}
+									{!! Form::select('principal_id', $principal, null, ['class'=>'form-control r-0 light s-12', 'id'=>'principal_id']) !!}
 									<span class="principal_id_span"></span>
 								</div>
 							</div>
@@ -65,7 +65,7 @@
 								<div class="" id="suplier_id_group">
 									<i class=""></i>
 									{!! Form::label('supplier_id', 'Supplier *', ['class'=>'col-form-label s-12']) !!}
-									{!! Form::select('supplier_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'supplier_id']) !!}
+									{!! Form::select('supplier_id', $supplier, null, ['class'=>'form-control r-0 light s-12', 'id'=>'supplier_id']) !!}
 									<span class="supplier_id_span"></span>
 								</div>
 							</div>

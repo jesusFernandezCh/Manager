@@ -14,7 +14,6 @@ use App\OperationStatus as Status;
 use Illuminate\Http\Request;
 use App\Http\Requests\Operation\operationRequest;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
 use Session;
 
@@ -91,19 +90,20 @@ class OperationController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Operation  $operation
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response                                                                   
      */
     public function edit(Operation $operation)
     {
         $status     = $this->status;
         $operators  = $this->operators;
         $accounts   = $this->accounts;
-                
+        $principal  = $this->operation->CustomPluck('Partner');
+        $supplier  = $this->operation->CustomPluck('Supplier');
         $incoterms  = Incoterm::get()->pluck('name','id');
         $currencys  = Currency::get()->pluck('code','id');
         $ports      = Port::get()->pluck('name','id');
         $countries  = Country::get()->pluck('name','id');
-        return view('pages.operation.edit',compact('operation','accounts','operators','status','principal', 'incoterms', 'currencys', 'ports','countries'));
+        return view('pages.operation.edit',compact('operation','accounts','operators','status','principal', 'incoterms', 'currencys', 'ports','countries','supplier'));
     }
 
     /**
