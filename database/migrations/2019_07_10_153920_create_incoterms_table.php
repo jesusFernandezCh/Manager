@@ -14,7 +14,7 @@ class CreateIncotermsTable extends Migration
     public function up()
     {
         Schema::create('incoterms', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->unsigned();
             $table->string('name');
             $table->string('description');
             $table->tinyInteger('status');

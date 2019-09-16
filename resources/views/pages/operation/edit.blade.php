@@ -9,13 +9,10 @@
 </div>
 
 @endsection
-{{-- @section('top-menu') --}}
-    {{-- @include('pages.operation.top-menu') --}}
-{{-- @endsection --}}
 @section('maincontent')
 <div class="page height-full">
 	<div class="form-group" style="margin-top: 76px">
-		@include('pages.operation.top-menu')
+		@include($topMenu)
 	</div>
 	 <div class="container-fluid animatedParent animateOnce my-3">
         <div class="animated fadeInUpShort">
@@ -29,26 +26,34 @@
 	                <div class="card-body">
 						{!! Form::model($operation,['route'=>["operations.update",$operation->id],'method'=>'PUT','class'=>'formlDinamic form','id'=>'DataUpdate']) !!}
 						<div class="form-row">
-							<div class="col-md-3">
+							<div class="col-md-2">
 								<div class="form-group" id="proforma_group">
 									{!! Form::label('code', 'Order Name *', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
 									{!! Form::text('code', $operation->code, ['class'=>'form-control r-0 light s-12', 'id'=>'code']) !!}
 									<span class="code_span"></span>
 								</div>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-2">
 								<div class="" id="date_group">
 									{!! Form::label('date', 'Order date *', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
 									{!! Form::text('date', $operation->created_at->format('d-m-Y'), ['class'=>'form-control r-0 light s-12', 'id'=>'date']) !!}
 									<span class="date_span"></span>
 								</div>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-2">
 								<div class="" id="operations_status_id_group">
 									<i class=""></i>
 									{!! Form::label('operations_status_id', 'Status *', ['class'=>'col-form-label s-12']) !!}
 									{!! Form::select('operations_status_id', $status, null, ['class'=>'form-control r-0 light s-12', 'id'=>'operations_status_id']) !!}
 									<span class="operations_status_id_span"></span>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="" id="principal_id">
+									<i class=""></i>
+									{!! Form::label('business_line_id', 'Business Line *', ['class'=>'col-form-label s-12']) !!}
+									{!! Form::select('business_line_id', [], null, ['class'=>'form-control r-0 light s-12', 'id'=>'business_line_id_id']) !!}
+									<span class="business_line_id_span"></span>
 								</div>
 							</div>
 							<div class="col-md-3">
@@ -72,7 +77,7 @@
 							<div class="col-md-6">
 								<div class="" id="customer_id_group">
 									<i class=""></i>
-									{!! Form::label('customer_id', 'Constummer', ['class'=>'col-form-label s-12']) !!}
+									{!! Form::label('customer_id', 'Customer', ['class'=>'col-form-label s-12']) !!}
 									{!! Form::select('customer_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'customer_id']) !!}
 									<span class="customer_id_span"></span>
 								</div>
@@ -87,7 +92,7 @@
 							</div>
 							<div class="col-md-3">
 								<div class="" id="proforma_group">
-									{!! Form::label('proforma', 'proforma', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
+									{!! Form::label('proforma', 'Proforma', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
 									{!! Form::text('proforma', null, ['class'=>'form-control r-0 light s-12', 'id'=>'proforma']) !!}
 									<span class="proforma_span"></span>
 								</div>
@@ -95,23 +100,23 @@
 							<div class="col-md-3">
 								<div class="" id="custom_commercial_id_group">
 									<i class=""></i>
-									{!! Form::label('custom_commercial_id', 'Custom Commercial', ['class'=>'col-form-label s-12']) !!}
-									{!! Form::select('custom_commercil_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'custom_commercial_id']) !!}
-									<span class="custom_commercial_id_span"></span>
+									{!! Form::label('custom_commercial_id', 'Customer  Commercial', ['class'=>'col-form-label s-12']) !!}
+									{!! Form::select('cus_commercial_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'cus_commercial_id_id']) !!}
+									<span class="cus_commercial_id_span"></span>
 								</div>
 							</div>
 							<div class="col-md-3">
-								<div class="" id="custom_ref_group">
+								<div class="" id="cus_ref_group">
 									{!! Form::label('custom_ref', 'Custom Ref', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
-									{!! Form::text('custom_ref', null, ['class'=>'form-control r-0 light s-12', 'id'=>'custom_ref']) !!}
-									<span class="custom_ref_span"></span>
+									{!! Form::text('cus_ref', null, ['class'=>'form-control r-0 light s-12', 'id'=>'cus_ref_id']) !!}
+									<span class="cus_ref_span"></span>
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="" id="purchase_by_group">
 									<i class=""></i>
 									{!! Form::label('purchase_by', 'Purchase By', ['class'=>'col-form-label s-12']) !!}
-									{!! Form::select('purchase_by', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_purchase_by']) !!}
+									{!! Form::select('purchase_by', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_purchase_by_id']) !!}
 									<span class="purchase_by_span"></span>
 								</div>
 							</div>
@@ -128,7 +133,7 @@
 								<div class="" id="sale_by_group">
 									<i class=""></i>
 									{!! Form::label('sale_by', 'Sale By', ['class'=>'col-form-label s-12']) !!}
-									{!! Form::select('sale_by', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_sale_by']) !!}
+									{!! Form::select('sale_by', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_sale_by_id']) !!}
 									<span class="sale_by_span"></span>
 								</div>
 							</div>
@@ -145,14 +150,14 @@
 								<div class="" id="purchase_broker_id_group">
 									<i class=""></i>
 									{!! Form::label('purchase_broker_id', 'Purchase Broker *', ['class'=>'col-form-label s-12']) !!}
-									{!! Form::select('purchase_broker_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_purchase_broker_id']) !!}
+									{!! Form::select('purchase_broker_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_purchase_broker_id_id']) !!}
 									<span class="purchase_broker_id_span"></span>
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="" id="pb_roker_com_mt_group">
 									{!! Form::label('pb_roker_com_mt', 'PBrokerComMT', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
-									{!! Form::text('pb_roker_com_mt', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_pb_roker_com_mt']) !!}
+									{!! Form::text('pb_roker_com_mt', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_pb_roker_com_mt_id']) !!}
 									<span class="pb_roker_com_mt_span"></span>
 								</div>
 							</div>
@@ -160,8 +165,8 @@
 								<div class="" id="sale_broker">
 									<i class=""></i>
 									{!! Form::label('sale_broker', 'Sale Broker', ['class'=>'col-form-label s-12']) !!}
-									{!! Form::select('sale_broker', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_sale_broker']) !!}
-									<span class="purchase_by_span"></span>
+									{!! Form::select('sale_broker', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_sale_broker_id']) !!}
+									<span class="sale_by_span"></span>
 								</div>
 							</div>
 							<div class="col-md-3">
@@ -382,7 +387,7 @@
 									<span class="add_instructions_span"></span>
 								</div>
 							</div>
-							<div class="col-md-10">
+							<div class="col-md-12">
 								<div class="" id="comments_group">
 									<i class=""></i>
 									{!! Form::label('comments', 'Comments', ['class'=>'col-form-label s-12']) !!}
@@ -390,17 +395,6 @@
 									<span class="acomments_span"></span>
 								</div>
 							</div>
-							<div class="col-md-2 text-center">
-								<div class="" id="cancelled_group">
-									<i class=""></i>
-									<br>
-									{!! Form::label('cancelled', 'Cancelled', ['class'=>'col-form-label s-12']) !!}
-									<input type="checkbox" name="cancelled" value="1" class="" />
-									<span class="cancelled_span"></span>
-								</div>
-							</div>
-
-
 							{!! Form::hidden('route', route('operations.index'), ['id'=>'route']) !!}
 						</div>
 						<br>

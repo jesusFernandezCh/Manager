@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('title')
-<h1 class="nav-title text-white"><i class="icon icon-package s-18"></i>{{ __('Operations') }} </h1>
+<h1 class="nav-title text-white">
+    <i class="icon icon-business_center s-18"></i>
+    {{__('Business Lines')}}
+</h1>
 @endsection
 @section('top-menu')
     {{-- header --}}
@@ -9,8 +12,7 @@
 @endsection
 @section('maincontent')
 {{-- modal create --}}
-@include('pages.operation.create')
-{{-- modal edit --}}
+@include('pages.operation.businessLine.create')
 
 <div class="page  height-full">
     <div>
@@ -21,7 +23,7 @@
             <div class="card">
                 <div class="form-group">
                     <div class="card-header white">
-                        <h6>{{ __('LIST OPERATIONS') }}</h6>
+                        <h6> {{__('BUSINESS LINES')}} </h6>
                     </div>
                 </div>
                 <div class="card-body p-0">
@@ -32,47 +34,28 @@
                                 <thead>
                                     <tr>
                                         <th><b>ID</b></th>
-                                        <th><b>{{__('CODE')}} / {{__('DESCRIPTION')}}</b></th>
-                                        <th><b>{{__('OPERATOR')}} / {{__('ACCOUNT')}}</b></th>
-                                        <th><b>{{__('CREATE DATE')}}</b></th>
-                                        <th><b>{{__('AMOUNT')}}</b></th>
-                                        <th><b>{{__('STATUS')}}</b></th>
-                                        <th><b>{{__('OPTIONS')}}</b></th>
+                                        <th><b>NAME</b></th>
+                                        <th><b>RISK COEFFICIENT</b></th>
+                                        <th><b>OPTIONS</b></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($operations as $operation)
+                                    @foreach ($businesses as $business)
                                     <tr>
-                                        <td> {{$operation->id}} </td>
                                         <td>
-                                            <div>
-                                                {{$operation->code}}
-                                                <div>
-                                                    <small class="text-info">{{$operation->description}}</small>
-                                                </div>
-                                            </div>
+                                            {{$business->id}} 
                                         </td>
                                         <td>
-                                            <div>
-                                                {{$operation->operator->fullname}}
-                                                <div>
-                                                    <small class="text-info">{{$operation->account->name}}</small>
-                                                </div>
-                                            </div>
+                                            {{$business->name}}
                                         </td>
-                                        <td>{{$operation->created_at}}</td>
-                                        <td>{{$operation->total_amount}}</td>
                                         <td>
-
-                                            <span class="badge badge-primary rounded-circle r-5">
-                                                {{$operation->operationStatus->name}}
-                                            </span>
+                                            {{$business->risk_coefficient}}
                                         </td>
                                         <td class="text-center">
-                                            {!! Form::open(['route'=>['operations.destroy',$operation],'method'=>'DELETE', 'class'=>'formlDinamic','id'=>'eliminarRegistro']) !!}
-                                            <a href="{{ route('operations.edit',$operation) }}" class="btn btn-default btn-sm" title="Editar">
-                                                <i class="icon-eye text-info"></i>
-                                            </a>
+                                            {!! Form::open(['route'=>['business.destroy',$business],'method'=>'DELETE', 'class'=>'formlDinamic','id'=>'eliminarRegistro']) !!}
+                                            <a href="{{ route('business.edit',[$business,$business]) }}" class="btn btn-default btn-sm" title="Editar document">
+                                                <i class="icon-pencil text-info"></i>
+                                            </a> 
                                             <button class="btn btn-default btn-sm" onclick="confirm('¿Realmente deseas borrar el registro?')">
                                                 <i class="icon-trash-can3 text-danger"></i>
                                             </button>
@@ -97,9 +80,9 @@
 @section('js')
 <script>
     $(document).ready(function() {
-        $('#operations').addClass('active');
+        $('#business').addClass('active');
     });
-    var title = 'Operations';
+    var title = 'Business Line';
     var colunms = [0,1,2];
     dataTableExport(title,colunms);
 </script>

@@ -14,7 +14,7 @@ class CreateUserHasOfficesTable extends Migration
     public function up()
     {
         Schema::create('user_has_offices', function (Blueprint $table) {
-        $table->bigIncrements('id');
+        $table->bigIncrements('id')->unsigned();
         $table->unsignedBigInteger('user_id')->index();
         $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         // $table->unsignedBigInteger('user_office_id')->index();

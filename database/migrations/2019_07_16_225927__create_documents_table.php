@@ -14,7 +14,7 @@ class CreateDocumentsTable extends Migration
     public function up()
     {
         Schema::create('documents', function (Blueprint $table) {
-        $table->bigIncrements('id');
+        $table->bigIncrements('id')->unsigned();
         $table->unsignedBigInteger('document_type_id')->index();
         $table->foreign('document_type_id')->references('id')->on('document_types')->onDelete('cascade');
         $table->unsignedBigInteger('account_id')->index();

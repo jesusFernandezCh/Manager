@@ -42,8 +42,8 @@
             <i class="icon icon icon-package blue-text s-18"></i>
             <span>{{ __('Accounts') }}</span></a>
         </li>
-        <li class="treeview no-b"><a href="{{ route('operations.index') }}">
-            <i class="icon icon-package light-green-text s-18"></i>
+        <li class="treeview no-b"><a href="{{ route('operationIndexAsoc') }}">
+            <i class="icon icon-group_work light-green-text s-18"></i>
             <span>{{ __('Operations') }}</span></a>
         </li>
         <li class="treeview"><a href="#">
@@ -88,9 +88,14 @@
                 <i class="icon icon-widgets amber-text s-14"></i> <span>{{ __('Documents Type') }}</span>
             </a>
         </li>
+         <li>
+            <a href="{!! route('operations.index') !!}">
+                <i class="icon icon-group_work amber-text s-14"></i> <span>{{ __('Operations')}}</span>
+            </a>
+        </li>
         <li>
             <a href="{!! route('incoterm.index') !!}">
-                <i class="icon icon-text-width amber-text s-14"></i> <span>Incoterm</span>
+                <i class="icon icon-text-width amber-text s-14"></i> <span>{{ __('Incoterm')}}</span>
             </a>
         </li>
         <li>

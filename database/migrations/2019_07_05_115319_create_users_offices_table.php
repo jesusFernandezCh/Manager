@@ -14,7 +14,7 @@ class CreateUsersOfficesTable extends Migration
     public function up()
     {
         Schema::create('users_offices', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->unsigned();
             $table->string('name');
             $table->string('code');
             $table->boolean('active');

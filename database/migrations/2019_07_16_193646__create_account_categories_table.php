@@ -14,7 +14,7 @@ class CreateAccountCategoriesTable extends Migration
     public function up()
     {
         Schema::create('account_categories', function (Blueprint $table) {
-        $table->bigIncrements('id');
+        $table->bigIncrements('id')->unsigned();
         $table->string('name');
         $table->string('description');
         $table->tinyInteger('active');

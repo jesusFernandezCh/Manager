@@ -14,7 +14,7 @@ class CreateAccountMetaTypesTable extends Migration
     public function up()
     {
         Schema::create('account_meta_types', function (Blueprint $table) {
-        $table->bigIncrements('id');
+        $table->bigIncrements('id')->unsigned();
         $table->string('metatype');
         $table->tinyInteger('required');
         $table->string('description');

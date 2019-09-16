@@ -14,7 +14,7 @@ class CreateAccountMetasTable extends Migration
     public function up()
     {
         Schema::create('account_metas', function (Blueprint $table) {
-        $table->bigIncrements('id');
+        $table->bigIncrements('id')->unsigned();
         $table->unsignedBigInteger('account_id')->index();
         $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
         $table->unsignedBigInteger('account_type_id')->index();

@@ -14,7 +14,7 @@ class CreateLogunitsTable extends Migration
     public function up()
     {
         Schema::create('logunits', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->unsigned();
             $table->string('name');
             $table->string('description');  
             $table->boolean('active');

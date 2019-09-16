@@ -14,7 +14,7 @@ class CreateOperationsTable extends Migration
     public function up()
     {
         Schema::create('operations', function (Blueprint $table) {
-        $table->bigIncrements('id');
+        $table->bigIncrements('id')->unsigned();
         $table->string('code');
         $table->decimal('total_amount');
         $table->string('description');

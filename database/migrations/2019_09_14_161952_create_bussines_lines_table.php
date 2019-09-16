@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePortsTable extends Migration
+class CreateBussinesLinesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreatePortsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ports', function (Blueprint $table) {
+        Schema::create('bussines_lines', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
-            $table->string('name');
-            $table->integer('country_id');
-            $table->string('status');
+            $table->string('name',250);
+            $table->integer('risk_coefficient')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreatePortsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ports');
+        Schema::dropIfExists('bussines_lines');
     }
 }

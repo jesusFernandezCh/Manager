@@ -49,14 +49,18 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('accountMeta','AccountMetaController');
 	Route::resource('accountContact','AccountContactController');
 	Route::resource('accountOperator','AccountOperatorController');
+	Route::resource('operations','OperationController');
+	Route::resource('status','OperationStatusController');
+	Route::resource('business','BusinesslineController');
+	Route::resource('cargoUnit','CargoUnitController');
+	
 	Route::get("metaEdit/{meta?}/{account?}", "AccountMetaController@metaEdit")->name("metaEdit");
 	Route::get("contactAsoc/{id?}", "AccountContactController@contactAsoc")->name("contactsAsoc");
 	Route::get('contactEdit/{countact?}/{account?}','AccountContactController@contactAsocEdit')->name("contactEdit");
-	Route::resource('operations','OperationController');
-	Route::resource('status','OperationStatusController');
 	Route::get('operation/documents/{operation?}', 'DocumentController@documentsOperation')->name("documentsAsoc");
 	Route::get('operation/documents/edit/{docuemnt?}/{operation?}','DocumentController@documentOperationEdit')->name("documentOperationEdit");
-	
+	Route::get('operationIndexAsoc','OperationController@indexAsoc')->name('operationIndexAsoc');
+
 	/* Currency route */
 	Route::resource('currency', 'CurrencyController');
 	Route::resource('document', 'DocumentController');

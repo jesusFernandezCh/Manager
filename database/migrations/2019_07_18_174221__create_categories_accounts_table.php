@@ -14,7 +14,7 @@ class CreateCategoriesAccountsTable extends Migration
     public function up()
     {
          Schema::create('categories_accounts', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->unsigned();
             $table->unsignedBigInteger('category_id')->index();
             $table->foreign('category_id')->references('id')->on('account_categories')->onDelete('cascade');
             $table->unsignedBigInteger('account_id')->index();

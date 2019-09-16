@@ -13,6 +13,7 @@ use App\Country;
 use App\OperationStatus as Status;
 use Illuminate\Http\Request;
 use App\Http\Requests\Operation\operationRequest;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Arr;
 use Session;
@@ -48,11 +49,41 @@ class OperationController extends Controller
      */
     public function index()
     {
-        $accounts = $this->accounts;
+        $admin      = true;
+        $status     = $this->status;
+        $operators  = $this->operators;
+        $accounts   = $this->accounts;
+        $principal  = $this->operation->CustomPluck('Partner');
+        $supplier   = $this->operation->CustomPluck('Supplier');
+        $incoterms  = Incoterm::get()->pluck('name','id');
+        $currencys  = Currency::get()->pluck('code','id');
+        $ports      = Port::get()->pluck('name','id');
+        $countries  = Country::get()->pluck('name','id');
+        $topMenu    = 'pages.operation.topMenu';
         $operations = $this->operation->all();
-        return view('pages.operation.index',compact('operations','accounts'));
+        return view('pages.operation.index',compact('operations','accounts','operators','status','principal', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','admin'));
     }
 
+    /**
+     * [indexAsoc description]
+     * @param  [type] $id [User]
+     * @return [type]     [list opetarion aosc to user]
+     */
+    public function indexAsoc()
+    {
+        $status     = $this->status;
+        $operators  = $this->operators;
+        $accounts   = $this->accounts;
+        $principal  = $this->operation->CustomPluck('Partner');
+        $supplier   = $this->operation->CustomPluck('Supplier');
+        $incoterms  = Incoterm::get()->pluck('name','id');
+        $currencys  = Currency::get()->pluck('code','id');
+        $ports      = Port::get()->pluck('name','id');
+        $countries  = Country::get()->pluck('name','id');
+        $topMenu    = 'pages.operation.topMenu';
+        $operations = $this->operation->all()->where('purchase_by', Auth::user()->id);
+        return view('pages.operation.index',compact('operations','accounts','operators','status','principal', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu'));
+    }
     
     /**
      * Store a newly created resource in storage.
@@ -75,16 +106,6 @@ class OperationController extends Controller
         Session::flash('message-success',' Operation '. $request['code'].' creado correctamente.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Operation  $operation
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Operation $operation)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -103,7 +124,8 @@ class OperationController extends Controller
         $currencys  = Currency::get()->pluck('code','id');
         $ports      = Port::get()->pluck('name','id');
         $countries  = Country::get()->pluck('name','id');
-        return view('pages.operation.edit',compact('operation','accounts','operators','status','principal', 'incoterms', 'currencys', 'ports','countries','supplier'));
+        $topMenu    = 'pages.operation.topMenu';
+        return view('pages.operation.edit',compact('operation','accounts','operators','status','principal', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu'));
     }
 
     /**

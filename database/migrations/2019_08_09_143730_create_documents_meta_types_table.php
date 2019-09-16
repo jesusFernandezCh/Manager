@@ -14,7 +14,7 @@ class CreateDocumentsMetaTypesTable extends Migration
     public function up()
     {
         Schema::create('documents_meta_types', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->unsigned();
             $table->unsignedBigInteger('document_id');
             $table->foreign('document_id')->references('id')->on('documents');
             $table->unsignedBigInteger('document_type_id');

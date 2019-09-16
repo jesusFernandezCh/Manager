@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePortsTable extends Migration
+class CreateOrderPmtTermsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreatePortsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ports', function (Blueprint $table) {
+        Schema::create('order_pmt_terms', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
-            $table->string('name');
-            $table->integer('country_id');
-            $table->string('status');
+            $table->string('payment_terms');
+            $table->decimal('capital_alt_risk');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreatePortsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ports');
+        Schema::dropIfExists('order_pmt_terms');
     }
 }
