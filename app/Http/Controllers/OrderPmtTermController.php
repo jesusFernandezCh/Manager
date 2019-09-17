@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\order_pmt_term;
+use App\OrderPmtTerm;
 use Illuminate\Http\Request;
+use Session;
 
 class OrderPmtTermController extends Controller
 {
+    private $OrderPmtTerm;
+
+    public function __construct(OrderPmtTerm $stmt)
+    {
+        $this->orderPmtTerm = $stmt;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,17 +22,10 @@ class OrderPmtTermController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $admin      = true; 
+        $orders     = $this->orderPmtTerm->all();
+        $topMenu    = 'pages.operation.topMenu';
+        return view('pages.operation.orderPmtTerm.index',compact('orders','topMenu','admin'));
     }
 
     /**
@@ -35,18 +36,8 @@ class OrderPmtTermController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\order_pmt_term  $order_pmt_term
-     * @return \Illuminate\Http\Response
-     */
-    public function show(order_pmt_term $order_pmt_term)
-    {
-        //
+        $this->orderPmtTerm->create($request->all());
+        Session::flash('message-success',' OrderPmtTerm '. $request['name'].' creado correctamente.');
     }
 
     /**
@@ -55,9 +46,9 @@ class OrderPmtTermController extends Controller
      * @param  \App\order_pmt_term  $order_pmt_term
      * @return \Illuminate\Http\Response
      */
-    public function edit(order_pmt_term $order_pmt_term)
+    public function edit(OrderPmtTerm $orderPmtTerm)
     {
-        //
+        return view('pages.operation.orderPmtTerm.edit',compact('orderPmtTerm'));
     }
 
     /**
@@ -67,9 +58,12 @@ class OrderPmtTermController extends Controller
      * @param  \App\order_pmt_term  $order_pmt_term
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, order_pmt_term $order_pmt_term)
+    public function update(Request $request, OrderPmtTerm $orderPmtTerm)
     {
-        //
+        $request->all();
+        $orderPmtTerm->update($request->all());
+        // $orderPmtTerm->save();
+        Session::flash('message-success',' OrderPmtTerm '. $request['name'].' actualizado correctamente.');   
     }
 
     /**
@@ -78,8 +72,9 @@ class OrderPmtTermController extends Controller
      * @param  \App\order_pmt_term  $order_pmt_term
      * @return \Illuminate\Http\Response
      */
-    public function destroy(order_pmt_term $order_pmt_term)
+    public function destroy(OrderPmtTerm $orderPmtTerm)
     {
-        //
+        $orderPmtTerm->delete();
+        Session::flash('message-success',' OrderPmtTerm '. $orderPmtTerm->name .' eliminado correctamente.');
     }
 }

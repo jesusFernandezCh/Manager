@@ -53,6 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('status','OperationStatusController');
 	Route::resource('business','BusinesslineController');
 	Route::resource('cargoUnit','CargoUnitController');
+	Route::resource('orderPmtTerm','OrderPmtTermController');
 	
 	Route::get("metaEdit/{meta?}/{account?}", "AccountMetaController@metaEdit")->name("metaEdit");
 	Route::get("contactAsoc/{id?}", "AccountContactController@contactAsoc")->name("contactsAsoc");

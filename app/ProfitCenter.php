@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProfitCenter extends Model
 {
-	public $timestamps = false;
+	// public $timestamps = false;
 	
     /**
      * The attributes that are mass assignable.
@@ -13,15 +13,8 @@ class ProfitCenter extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'code', 'status',
+        'name',
     ];
 
-    /**
-     * Get the user that owns the ProfitCenter.
-     */
-    public function user()
-    {
-        return $this->hasMany('App\User');
-    }
 }
 

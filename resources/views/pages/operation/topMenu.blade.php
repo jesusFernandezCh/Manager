@@ -2,6 +2,12 @@
     <div class="container-fluid text-white">
         <div class="row justify-content-between">
             <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                <li>
+                    <a class="nav-link" id="operations" href="{{ route('operations.index') }}" role="tab"
+                    aria-controls="v-pills-buyers">
+                        <i class="icon icon-group_work"></i> {{__('Operations')}}
+                    </a>
+                </li>
                 @if (isset($operation->id))
                 <li>
                     <a class="nav-link" id="resumen" href="{{ route('operations.edit',$operation) }}" role="tab"
@@ -39,14 +45,13 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" id="resumen" href="{{ route('cargoUnit.index') }}" role="tab"
+                    <a class="nav-link" id="cargoUnit" href="{{ route('cargoUnit.index') }}" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class="icon icon-balance-scale"></i> {{__('Cargo units')}}
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" id="resumen" href="#" role="tab"
-                    aria-controls="v-pills-buyers">
+                    <a class="nav-link" id="orderPmtTerm" href="{{ route('orderPmtTerm.index') }}" role="tab" aria-controls="v-pills-buyers">
                         <i class="icon icon-money"></i> {{__('Order Pmt Terms')}}
                     </a>
                 </li>
