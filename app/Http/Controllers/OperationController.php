@@ -11,6 +11,11 @@ use App\Currency;
 use App\Port;
 use App\Country;
 use App\OperationStatus as Status;
+use App\AccountContact;
+use App\OrderPmtTerm;
+use App\CargoUnit;
+use App\Logunit;
+use App\BusinessLine;
 use Illuminate\Http\Request;
 use App\Http\Requests\Operation\operationRequest;
 use Illuminate\Support\Facades\Auth;
@@ -25,14 +30,16 @@ class OperationController extends Controller
     private $accounts;
     private $operators;
     private $document;
+    private $contact;
     private $status;
+    private $orderPmtTerm;
 
     /**
      * [__contruct description]
      * @param  Operation $stmt [description]
      * @return [type]          [description]
      */
-    public function __construct(Operation $stmt, Account $account, User $operator, Document $document, Status $status)
+    public function __construct(Operation $stmt, Account $account, User $operator, Document $document, Status $status, AccountContact $contact, OrderPmtTerm $orderPmtTerm)
     {
         $this->operation    = $stmt;    
         $this->account      = $account;
@@ -40,6 +47,8 @@ class OperationController extends Controller
         $this->operators    = $operator->get()->pluck('fullname','id');
         $this->document     = $document;
         $this->status       = $status->get()->pluck('name', 'id');
+        $this->contact      = $contact;
+        $this->orderPmtTerm = $orderPmtTerm;
     }
 
     /**
@@ -53,15 +62,19 @@ class OperationController extends Controller
         $status     = $this->status;
         $operators  = $this->operators;
         $accounts   = $this->accounts;
-        $principal  = $this->operation->CustomPluck('Partner');
+        $parther    = $this->operation->CustomPluck('Partner');
         $supplier   = $this->operation->CustomPluck('Supplier');
         $incoterms  = Incoterm::get()->pluck('name','id');
+        $business   = BusinessLine::get()->pluck('name','id');
         $currencys  = Currency::get()->pluck('code','id');
         $ports      = Port::get()->pluck('name','id');
         $countries  = Country::get()->pluck('name','id');
+        $payment_terms = $this->orderPmtTerm->get()->pluck('payment_terms','id');
+        $cargoUnits = CargoUnit::get()->pluck('name','id');
+        $logunits   = Logunit::get()->pluck('name','id');
         $topMenu    = 'pages.operation.topMenu';
         $operations = $this->operation->all();
-        return view('pages.operation.index',compact('operations','accounts','operators','status','principal', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','admin'));
+        return view('pages.operation.index',compact('operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin'));
     }
 
     /**
@@ -74,15 +87,19 @@ class OperationController extends Controller
         $status     = $this->status;
         $operators  = $this->operators;
         $accounts   = $this->accounts;
-        $principal  = $this->operation->CustomPluck('Partner');
+        $parther    = $this->operation->CustomPluck('Partner');
         $supplier   = $this->operation->CustomPluck('Supplier');
         $incoterms  = Incoterm::get()->pluck('name','id');
+        $business   = BusinessLine::get()->pluck('name','id');
         $currencys  = Currency::get()->pluck('code','id');
         $ports      = Port::get()->pluck('name','id');
         $countries  = Country::get()->pluck('name','id');
+        $payment_terms = $this->orderPmtTerm->get()->pluck('payment_terms','id');
+        $cargoUnits = CargoUnit::get()->pluck('name','id');
+        $logunits   = Logunit::get()->pluck('name','id');
         $topMenu    = 'pages.operation.topMenu';
         $operations = $this->operation->all()->where('purchase_by', Auth::user()->id);
-        return view('pages.operation.index',compact('operations','accounts','operators','status','principal', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu'));
+        return view('pages.operation.index',compact('operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits'));
     }
     
     /**
@@ -93,15 +110,18 @@ class OperationController extends Controller
      */
     public function store(operationRequest $request)
     {
-        // dd($request->all());
         $date = Carbon::now();
-        //last id operation
+        //last operation
         $last = $this->operation->get()->last();
-        //code (date format(Ymd) - 000 lastId + 1) ejem: 20190903-0001
-        $code = $date->format("Ymd") . '-' . str_pad(++$last->id, 4, "0", STR_PAD_LEFT);
+        if (isset($last)) {
+            //code (date format(Ymd) - 000 lastId + 1) ejem: 20190903-0001
+            $code = $date->format("Ymd") . '-' . str_pad(++$last->id, 4, "0", STR_PAD_LEFT);
+        }else{
+            $code = $date->format("Ymd") . '-' . str_pad(1, 4, "0", STR_PAD_LEFT);
+        }
         //add code to array request
         $request = Arr::add($request->all(),'code',$code);
-        // dd($request);
+        dd('pase');die;
         $this->operation->create($request);
         Session::flash('message-success',' Operation '. $request['code'].' creado correctamente.');
     }
@@ -119,7 +139,7 @@ class OperationController extends Controller
         $operators  = $this->operators;
         $accounts   = $this->accounts;
         $principal  = $this->operation->CustomPluck('Partner');
-        $supplier  = $this->operation->CustomPluck('Supplier');
+        $supplier   = $this->operation->CustomPluck('Supplier');
         $incoterms  = Incoterm::get()->pluck('name','id');
         $currencys  = Currency::get()->pluck('code','id');
         $ports      = Port::get()->pluck('name','id');

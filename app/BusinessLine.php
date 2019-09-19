@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BussinesLine extends Model
+class BusinessLine extends Model
 {
      /**
      * The attributes that are mass assignable.

@@ -24,9 +24,11 @@ class operationRequest extends FormRequest
     public function rules()
     {
         return [
-            'description'   => 'required',
-            'total_amount'  => 'required',
-            'account_id'    => 'required', 
+            'date_order'            => 'required',
+            'operations_status_id'  => 'required',
+            'business_line_id'      => 'required', 
+            'principal_id'          => 'required',
+            'supplier_id'           => 'required'
         ];
     }
 }

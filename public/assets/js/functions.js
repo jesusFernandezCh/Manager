@@ -87,8 +87,9 @@ function saveData(url, forml, method)
         
             $.each(errors.errors, function(key, value) 
             {
-                $("#" + key + "_group").addClass("has-error");
-                $("." + key + "_span").addClass("help-block text-danger").html(value);
+                $("#" + key).addClass("is-invalid");
+                $("#_" + key).addClass("is-invalid");
+                $("." + key + "_span").addClass("invalid-feedback").html(value);
                 toastr.error(value,"Error");
             });
         },
@@ -246,7 +247,7 @@ function modal(url)
 function inputClear(id)
 {
     $('.'+id+'_span').empty();
-    $('#'+id+'_group').removeClass("has-error");
+    $('#'+id).removeClass("is-invalid");
 }
 
 

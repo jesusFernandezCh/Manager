@@ -2,32 +2,32 @@
 	<div class="col-md-2">
 		@if (isset($operation))
 		<div class="" id="proforma_group">
-			{!! Form::label('code', 'Order Name *', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
+			{!! Form::label('code', 'Order Name *', ['class'=>'col-form-label s-12']) !!}
 			{!! Form::text('code', $operation->code, ['class'=>'form-control r-0 light s-12', 'id'=>'code']) !!}
 			<span class="code_span"></span>
 		</div>
 		@endif
 	</div>
 	<div class="col-md-2">
-		<div class="form-group" id="date_group">
-			{!! Form::label('date', 'Order date *', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
-			{!! Form::text('date', null, ['class'=>'form-control r-0 light s-12', 'id'=>'date']) !!}
-			<span class="date_span"></span>
+		<div class="form-group" id="date_order_group">
+			{!! Form::label('date', 'Order date *', ['class'=>'col-form-label s-12', ]) !!}
+			{!! Form::text('date_order', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_date_order', 'onclick'=>'inputClear(this.id)']) !!}
+			<span class="date_order_span"></span>
 		</div>
 	</div>
 	<div class="col-md-2">
 		<div class="" id="operations_status_id_group">
 			<i class=""></i>
-			{!! Form::label('operations_status_id', 'Status *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('operations_status_id', $status, null, ['class'=>'form-control r-0 light s-12', 'id'=>'operations_status_id']) !!}
-			<span class="operations_status_id_span"></span>
+			{!! Form::label('status_id', 'Status *', ['class'=>'col-form-label s-12']) !!}
+			{!! Form::select('status_id', $status, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_status_id']) !!}
+			<span class="_status_id_span"></span>
 		</div>
 	</div>
 	<div class="col-md-3">
 		<div class="" id="principal_id">
 			<i class=""></i>
 			{!! Form::label('business_line_id', 'Business Line *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('business_line_id', [], null, ['class'=>'form-control r-0 light s-12', 'id'=>'business_line_id_id']) !!}
+			{!! Form::select('business_line_id', $business, null, ['class'=>'form-control r-0 light s-12', 'id'=>'business_line_id_id']) !!}
 			<span class="business_line_id_span"></span>
 		</div>
 	</div>
@@ -35,7 +35,7 @@
 		<div class="form-group" id="principal_id">
 			<i class=""></i>
 			{!! Form::label('principal_id', 'Principal *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('principal_id', $principal, null, ['class'=>'form-control r-0 light s-12', 'id'=>'principal_id']) !!}
+			{!! Form::select('principal_id', $parther, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_principal_id']) !!}
 			<span class="principal_id_span"></span>
 		</div>
 	</div>
@@ -45,7 +45,7 @@
 		<div class="" id="suplier_id_group">
 			<i class=""></i>
 			{!! Form::label('supplier_id', 'Supplier *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('supplier_id', $supplier, null, ['class'=>'form-control r-0 light s-12', 'id'=>'supplier_id']) !!}
+			{!! Form::select('supplier_id', $supplier, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_id']) !!}
 			<span class="supplier_id_span"></span>
 		</div>
 	</div>
@@ -110,7 +110,7 @@
 		<div class="" id="sale_by_group">
 			<i class=""></i>
 			{!! Form::label('sale_by', 'Sale By', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('sale_by', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_sale_by_id']) !!}
+			{!! Form::select('sale_by', $operators, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_sale_by_id']) !!}
 			<span class="sale_by_span"></span>
 		</div>
 	</div>
@@ -127,7 +127,7 @@
 		<div class="" id="purchase_broker_id_group">
 			<i class=""></i>
 			{!! Form::label('purchase_broker_id', 'Purchase Broker *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('purchase_broker_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_purchase_broker_id_id']) !!}
+			{!! Form::select('purchase_broker_id', $parther, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_purchase_broker_id_id']) !!}
 			<span class="purchase_broker_id_span"></span>
 		</div>
 	</div>
@@ -142,7 +142,7 @@
 		<div class="" id="sale_broker">
 			<i class=""></i>
 			{!! Form::label('sale_broker', 'Sale Broker', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('sale_broker', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_sale_broker_id']) !!}
+			{!! Form::select('sale_broker', $parther, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_sale_broker_id']) !!}
 			<span class="sale_by_span"></span>
 		</div>
 	</div>
@@ -173,7 +173,7 @@
 		<div class="" id="p_modality_id">
 			<i class=""></i>
 			{!! Form::label('p_modality_id', 'PModality', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('p_modality_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_p_modality_id']) !!}
+			{!! Form::select('p_modality_id', $payment_terms, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_p_modality_id']) !!}
 			<span class="p_modality_id_span"></span>
 		</div>
 	</div>
@@ -195,7 +195,7 @@
 		<div class="" id="payment_id">
 			<i class=""></i>
 			{!! Form::label('payment_id', 'Payment', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('payment_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_payment_id']) !!}
+			{!! Form::select('payment_id', $payment_terms, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_payment_id']) !!}
 			<span class="payment_id_span"></span>
 		</div>
 	</div>
@@ -279,7 +279,7 @@
 		<div class="" id="s_curr_group">
 			<i class=""></i>
 			{!! Form::label('cargo_unit', 'Cargo Unit', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('cargo_unit', [1 => 'Kg', 2 => 'Mg'], null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cargo_unit']) !!}
+			{!! Form::select('cargo_unit', $cargoUnits, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cargo_unit']) !!}
 			<span class="cargo_unit_span"></span>
 		</div>
 	</div>
@@ -287,7 +287,7 @@
 		<div class="" id="log_unit_group">
 			<i class=""></i>
 			{!! Form::label('log_unit', 'Logunit', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('log_unit', [1 => '40re', 2 => '50re'], null, ['class'=>'form-control r-0 light s-12', 'id'=>'_log_unit']) !!}
+			{!! Form::select('log_unit', $logunits, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_log_unit']) !!}
 			<span class="log_unit_span"></span>
 		</div>
 	</div>

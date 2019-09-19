@@ -11,7 +11,7 @@
 @endsection
 @section('maincontent')
 <div class="page height-full">
-	<div class="form-group" style="margin-top: 76px">
+	<div class="form-group" style="margin-top: 75px">
 		@include($topMenu)
 	</div>
 	 <div class="container-fluid animatedParent animateOnce my-3">

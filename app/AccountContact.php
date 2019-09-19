@@ -30,4 +30,12 @@ class AccountContact extends Model
     {
         return $this->belongsTo('App\Country', 'country_id');
     }
+
+    /**
+     * Get the user that owns the operation.
+     */
+    public function operation()
+    {
+        return $this->hasMany('App\Operation');
+    }
 }

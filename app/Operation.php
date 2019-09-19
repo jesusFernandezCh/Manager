@@ -14,7 +14,7 @@ class Operation extends Model
     * @var array
     */
    protected $fillable = [
-       'code','total_amount','description','account_id','operator_id','operations_status_id'
+       'id','code','date_order','status_id','business_line_id','principal_id','supplier_id','supplier_commercial','proforma','cus_commercial_id','cus_ref','purchase_by','purchase_by','su_po_signed','sale_by','cu_po_signed','purchase_broker_id','p_broker_com_mt','sale_broker_id','s_broker_com_mt','supplier_bank_id','customer_bank_id','p_modality','p_advanced','p_days','payment','s_advanced','s_days','purchase_incoterm','purchase_curr','p_incoterm_place','sale_incoterm','sale_curr','s_incoterm_place','ship_from','dead_line_ship','cargo_unit','log_unit','nb_log_units','pol_id','origin','pod_id','final_destination','est_freight_u','est_inland_u','est_legal_u','add_instructions','comments'
    ];
 
     /**
@@ -60,9 +60,14 @@ class Operation extends Model
             ->pluck('name', 'id');
     }
 
-    public function FunctionName($value='')
+    public function FunctionName($value)
     {
-        # code...
+         return DB::table('account_contacts')
+            ->join('accounts', 'accounts.id', '=', 'account_id')
+            ->join('account_categories', 'account_categories.id', '=', 'categories_accounts.category_id')
+            ->select('accounts.id','accounts.name')
+            ->where('account_categories.name',$var)
+            ->pluck('fullname', 'id');
     }
 
 }

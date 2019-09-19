@@ -39,7 +39,7 @@
             </a>
         </li>
         <li class="treeview"><a href="{{ route('accountOperator.index') }}">
-            <i class="icon icon icon-package blue-text s-18"></i>
+            <i class="icon icon-package blue-text s-18"></i>
             <span>{{ __('Accounts') }}</span></a>
         </li>
         <li class="treeview no-b"><a href="{{ route('operationIndexAsoc') }}">

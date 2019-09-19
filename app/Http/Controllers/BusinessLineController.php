@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\BussinesLine as Bussines;
+use App\BusinessLine as Bussines;
 use Illuminate\Http\Request;
 use Session;
 

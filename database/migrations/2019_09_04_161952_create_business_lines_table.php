@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBussinesLinesTable extends Migration
+class CreateBusinessLinesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBussinesLinesTable extends Migration
      */
     public function up()
     {
-        Schema::create('bussines_lines', function (Blueprint $table) {
+        Schema::create('business_lines', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->string('name',250);
             $table->integer('risk_coefficient')->nullable();
@@ -28,6 +28,6 @@ class CreateBussinesLinesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bussines_lines');
+        Schema::dropIfExists('business_lines');
     }
 }
