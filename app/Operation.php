@@ -14,19 +14,23 @@ class Operation extends Model
     * @var array
     */
    protected $fillable = [
-       'id','code','date_order','status_id','business_line_id','principal_id','supplier_id','supplier_commercial','proforma','cus_commercial_id','cus_ref','purchase_by','purchase_by','su_po_signed','sale_by','cu_po_signed','purchase_broker_id','p_broker_com_mt','sale_broker_id','s_broker_com_mt','supplier_bank_id','customer_bank_id','p_modality','p_advanced','p_days','payment','s_advanced','s_days','purchase_incoterm','purchase_curr','p_incoterm_place','sale_incoterm','sale_curr','s_incoterm_place','ship_from','dead_line_ship','cargo_unit','log_unit','nb_log_units','pol_id','origin','pod_id','final_destination','est_freight_u','est_inland_u','est_legal_u','add_instructions','comments'
+       'id','code','date_order','status_id','business_line_id','principal_id','supplier_id','supplier_commercial','proforma','cus_commercial_id','cus_ref','purchase_by','su_po_signed','sale_by','cu_po_signed','purchase_broker_id','p_broker_com_mt','sale_broker_id','s_broker_com_mt','supplier_bank_id','customer_bank_id','p_modality','p_advanced','p_days','payment','s_advanced','s_days','purchase_incoterm','purchase_curr','p_incoterm_place','sale_incoterm','sale_curr','s_incoterm_place','ship_from','dead_line_ship','cargo_unit','log_unit','nb_log_units','pol_id','origin','pod_id','final_destination','est_freight_u','est_inland_u','est_legal_u','add_instructions','comments'
    ];
 
     /**
     * Get the user that owns the Account.
     */
-   
+   public function businessLines()
+   {
+       return $this->belongsTo('App\BusinessLine', 'business_line_id');
+   }
+
    /**
      * Get the account for the blog account.
      */
     public function account()
     {
-        return $this->belongsTo('App\Account', 'account_id');
+        return $this->belongsTo('App\Account', 'principal_id');
     }
 
     /**
@@ -34,15 +38,15 @@ class Operation extends Model
      */
     public function operator()
     {
-        return $this->belongsTo('App\User', 'operator_id');
+        return $this->belongsTo('App\User', 'purchase_by');
     }
 
     /**
      * Get the account for the blog status.
      */
-    public function operationStatus()
+    public function status()
     {
-        return $this->belongsTo('App\OperationStatus', 'operations_status_id');
+        return $this->belongsTo('App\OperationStatus', 'status_id');
     }
 
     /**

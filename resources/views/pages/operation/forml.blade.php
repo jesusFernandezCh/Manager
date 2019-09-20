@@ -10,13 +10,13 @@
 	</div>
 	<div class="col-md-2">
 		<div class="form-group" id="date_order_group">
-			{!! Form::label('date', 'Order date *', ['class'=>'col-form-label s-12', ]) !!}
-			{!! Form::text('date_order', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_date_order', 'onclick'=>'inputClear(this.id)']) !!}
+			{!! Form::label('date', 'Order date *', ['class'=>'col-form-label s-12']) !!}
+			{!! Form::text('date_order', null, ['class'=>'form-control r-0 light s-12 datepicker', 'id'=>'_date_order', 'onclick'=>'inputClear(this.id)']) !!}
 			<span class="date_order_span"></span>
 		</div>
 	</div>
 	<div class="col-md-2">
-		<div class="" id="operations_status_id_group">
+		<div class="" id="status_id_group">
 			<i class=""></i>
 			{!! Form::label('status_id', 'Status *', ['class'=>'col-form-label s-12']) !!}
 			{!! Form::select('status_id', $status, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_status_id']) !!}
@@ -97,12 +97,13 @@
 		</div>
 		@endif
 	</div>
-	<div class="col-md-3 text-center">
+	<div class="col-md-3">
 		<div class="" id="po_signed_group">
-			<i class=""></i>
-			<br>
 			{!! Form::label('po_signed', 'PO Signed', ['class'=>'col-form-label s-12']) !!}
-			<input type="checkbox" name="po_signed" value="1" class="" />
+			<div class="material-switch ">
+                <input id="_po_signed" name="po_signed" type="checkbox" value="1"/>
+                <label for="_po_signed" class="bg-secondary"></label>
+            </div>
 			<span class="po_signed_span"></span>
 		</div>
 	</div>
@@ -114,12 +115,14 @@
 			<span class="sale_by_span"></span>
 		</div>
 	</div>
-	<div class="col-md-3 text-center">
+	<div class="col-md-3">
 		<div class="" id="so_signed_group">
-			<i class=""></i>
-			<br>
 			{!! Form::label('so_signed', 'SO Signed', ['class'=>'col-form-label s-12']) !!}
-			<input type="checkbox" name="_so_signed" value="1" class="" />
+			<div class="material-switch">
+                <input id="_so_signed" name="so_signed" type="checkbox" value="1" class="someSwitchOptionPrimary" />
+                <label for="_so_signed" class="bg-secondary"></label>
+            </div>
+			{{-- <input type="checkbox" name="_so_signed" value="1" class="" /> --}}
 			<span class="so_signed_span"></span>
 		</div>
 	</div>
@@ -264,14 +267,14 @@
 	<div class="col-md-3">
 		<div class="" id="ship_from_group">
 			{!! Form::label('ship_from', 'Ship From', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
-			{!! Form::text('ship_from', null, ['class'=>'form-control r-0 light s-12', 'id'=>'ship_from']) !!}
+			{!! Form::text('ship_from', null, ['class'=>'form-control r-0 light s-12 datepicker', 'id'=>'ship_from']) !!}
 			<span class="ship_from_span"></span>
 		</div>
 	</div>
 	<div class="col-md-3">
 		<div class="" id="dead_line_ship_group">
 			{!! Form::label('dead_line_ship', 'Dead Line Ship', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
-			{!! Form::text('dead_line_ship', null, ['class'=>'form-control r-0 light s-12', 'id'=>'dead_line_ship']) !!}
+			{!! Form::text('dead_line_ship', null, ['class'=>'form-control r-0 light s-12 datepicker', 'id'=>'dead_line_ship']) !!}
 			<span class="dead_line_ship_span"></span>
 		</div>
 	</div>

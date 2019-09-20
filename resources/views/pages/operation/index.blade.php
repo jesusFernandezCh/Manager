@@ -32,8 +32,8 @@
                                 <thead>
                                     <tr>
                                         <th><b>ID</b></th>
-                                        <th><b>{{__('CODE')}} / {{__('DESCRIPTION')}}</b></th>
-                                        <th><b>{{__('OPERATOR')}} / {{__('ACCOUNT')}}</b></th>
+                                        <th><b>{{__('CODE')}} / {{__('BUSINESS LINE')}}</b></th>
+                                        <th><b>{{__('PRINCIPAL')}} / {{__('PURCHASE BY')}}</b></th>
                                         <th><b>{{__('CREATE DATE')}}</b></th>
                                         <th><b>{{__('AMOUNT')}}</b></th>
                                         <th><b>{{__('STATUS')}}</b></th>
@@ -48,24 +48,25 @@
                                             <div>
                                                 {{$operation->code}}
                                                 <div>
-                                                    <small class="text-info">{{$operation->description}}</small>
+                                                    <small class="text-info">{{$operation->businessLines->name}}</small>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
                                             <div>
-                                                {{$operation->operator->fullname}}
+                                                {{$operation->account()->where('id',$operation->principal_id)->first()->name}}
                                                 <div>
-                                                    <small class="text-info">{{$operation->account->name}}</small>
+                                                    <small class="text-info">{{$operation->operator->fullname}}</small>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>{{$operation->created_at}}</td>
+                                        <td>
+                                            {{$operation->date_order}}
+                                        </td>
                                         <td>{{$operation->total_amount}}</td>
                                         <td>
-
                                             <span class="badge badge-primary rounded-circle r-5">
-                                                {{$operation->operationStatus->name}}
+                                                {{$operation->status->name}}
                                             </span>
                                         </td>
                                         <td class="text-center">
@@ -102,5 +103,24 @@
     var title = 'Operations';
     var colunms = [0,1,2];
     dataTableExport(title,colunms);
+
+  
+    $('.datepicker').datetimepicker({
+    i18n:{
+    de:{
+       months:[
+        'Januar','Februar','März','April',
+        'Mai','Juni','Juli','August',
+        'September','Oktober','November','Dezember',
+       ],
+       dayOfWeek:[
+        "So.", "Mo", "Di", "Mi", 
+        "Do", "Fr", "Sa.",
+       ]
+      }
+     },
+     timepicker:false,
+     format:'d/m/Y'
+    });
 </script>
 @endsection

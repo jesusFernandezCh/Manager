@@ -121,8 +121,10 @@ class OperationController extends Controller
         }
         //add code to array request
         $request = Arr::add($request->all(),'code',$code);
-        dd('pase');die;
-        $this->operation->create($request);
+        //add purchase_by to request
+        $request = Arr::add($request,'purchase_by',Auth::user()->id);
+        // dd($request);
+        $stmt = $this->operation->create($request);
         Session::flash('message-success',' Operation '. $request['code'].' creado correctamente.');
     }
 

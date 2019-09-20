@@ -15,4 +15,12 @@ class BusinessLine extends Model
     	'id', 'name', 'risk_coefficient'
     ];
 
+
+	/**
+     * Get the user that owns the Operations.
+     */
+    public function operation()
+    {
+        return $this->hasMany('App\Operation');
+    }
 }
