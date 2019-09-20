@@ -8,9 +8,6 @@
     {{-- end header --}}
 @endsection
 @section('maincontent')
-{{-- modal create --}}
-@include('pages.operation.create')
-{{-- modal edit --}}
 
 <div class="page  height-full">
     <div>
@@ -90,7 +87,7 @@
         </div>
     </div>
     <!--Add New Message Fab Button-->
-    <a href="#" class="btn-fab btn-fab-md fab-right fab-right-bottom-fixed shadow btn-primary" data-toggle="modal" data-target="#create" title="Add Rol">
+    <a href="{{ route('operations.create') }}" class="btn-fab btn-fab-md fab-right fab-right-bottom-fixed shadow btn-primary" title="Add Operation">
         <i class="icon-add"></i>
     </a>
 </div>
@@ -104,23 +101,5 @@
     var colunms = [0,1,2];
     dataTableExport(title,colunms);
 
-  
-    $('.datepicker').datetimepicker({
-    i18n:{
-    de:{
-       months:[
-        'Januar','Februar','März','April',
-        'Mai','Juni','Juli','August',
-        'September','Oktober','November','Dezember',
-       ],
-       dayOfWeek:[
-        "So.", "Mo", "Di", "Mi", 
-        "Do", "Fr", "Sa.",
-       ]
-      }
-     },
-     timepicker:false,
-     format:'d/m/Y'
-    });
 </script>
 @endsection

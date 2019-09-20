@@ -59,19 +59,6 @@ class OperationController extends Controller
     public function index()
     {
         $admin      = true;
-        $status     = $this->status;
-        $operators  = $this->operators;
-        $accounts   = $this->accounts;
-        $parther    = $this->operation->CustomPluck('Partner');
-        $supplier   = $this->operation->CustomPluck('Supplier');
-        $incoterms  = Incoterm::get()->pluck('name','id');
-        $business   = BusinessLine::get()->pluck('name','id');
-        $currencys  = Currency::get()->pluck('code','id');
-        $ports      = Port::get()->pluck('name','id');
-        $countries  = Country::get()->pluck('name','id');
-        $payment_terms = $this->orderPmtTerm->get()->pluck('payment_terms','id');
-        $cargoUnits = CargoUnit::get()->pluck('name','id');
-        $logunits   = Logunit::get()->pluck('name','id');
         $topMenu    = 'pages.operation.topMenu';
         $operations = $this->operation->all();
         return view('pages.operation.index',compact('operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin'));
@@ -84,6 +71,7 @@ class OperationController extends Controller
      */
     public function indexAsoc()
     {
+        $admin      = false;
         $status     = $this->status;
         $operators  = $this->operators;
         $accounts   = $this->accounts;
@@ -99,9 +87,33 @@ class OperationController extends Controller
         $logunits   = Logunit::get()->pluck('name','id');
         $topMenu    = 'pages.operation.topMenu';
         $operations = $this->operation->all()->where('purchase_by', Auth::user()->id);
-        return view('pages.operation.index',compact('operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits'));
+        return view('pages.operation.index',compact('operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin'));
     }
     
+    /**
+     * [create description]
+     * @return [type] [description]
+     */
+    public function create()
+    {
+        $admin      = false;
+        $create     = true;
+        $status     = $this->status;
+        $operators  = $this->operators;
+        $accounts   = $this->accounts;
+        $parther    = $this->operation->CustomPluck('Partner');
+        $supplier   = $this->operation->CustomPluck('Supplier');
+        $incoterms  = Incoterm::get()->pluck('name','id');
+        $business   = BusinessLine::get()->pluck('name','id');
+        $currencys  = Currency::get()->pluck('code','id');
+        $ports      = Port::get()->pluck('name','id');
+        $countries  = Country::get()->pluck('name','id');
+        $payment_terms = $this->orderPmtTerm->get()->pluck('payment_terms','id');
+        $cargoUnits = CargoUnit::get()->pluck('name','id');
+        $logunits   = Logunit::get()->pluck('name','id');
+        $topMenu    = 'pages.operation.topMenu';
+        return view('pages.operation.create',compact('accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create'));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -137,17 +149,23 @@ class OperationController extends Controller
      */
     public function edit(Operation $operation)
     {
+        $admin      = false;
         $status     = $this->status;
         $operators  = $this->operators;
         $accounts   = $this->accounts;
-        $principal  = $this->operation->CustomPluck('Partner');
+        $parther    = $this->operation->CustomPluck('Partner');
         $supplier   = $this->operation->CustomPluck('Supplier');
         $incoterms  = Incoterm::get()->pluck('name','id');
+        $business   = BusinessLine::get()->pluck('name','id');
         $currencys  = Currency::get()->pluck('code','id');
         $ports      = Port::get()->pluck('name','id');
         $countries  = Country::get()->pluck('name','id');
+        $payment_terms = $this->orderPmtTerm->get()->pluck('payment_terms','id');
+        $cargoUnits = CargoUnit::get()->pluck('name','id');
+        $logunits   = Logunit::get()->pluck('name','id');
         $topMenu    = 'pages.operation.topMenu';
-        return view('pages.operation.edit',compact('operation','accounts','operators','status','principal', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu'));
+        $operations = $this->operation->all();
+        return view('pages.operation.edit',compact('operation','operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin'));
     }
 
     /**

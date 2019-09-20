@@ -151,11 +151,12 @@ class DocumentController extends Controller
      */
     public function documentsOperation($id)
     {
-        $operation = Operation::find($id);
-        $documents = $this->document->all()->where('operation_id',$id);
-        $documentType = $this->documentType;
-        $account = $this->account;
-        return view('pages.operation.documents.index',compact('documents','operation','documentType', 'account'));
+        $admin          = false;
+        $operation      = Operation::find($id);
+        $documents      = $this->document->all()->where('operation_id',$id);
+        $documentType   = $this->documentType;
+        $account        = $this->account;
+        return view('pages.operation.documents.index',compact('documents','operation','documentType', 'account', 'admin'));
     }
     /**
      * [edit document asoc to operation]

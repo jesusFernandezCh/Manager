@@ -5,9 +5,66 @@
                 <li>
                     <a class="nav-link" id="operations" href="{{ route('operations.index') }}" role="tab"
                     aria-controls="v-pills-buyers">
-                        <i class="icon icon-group_work"></i> {{__('Operations')}}
+                        <i class="icon icon-group_work"></i> {{__('Order Terms')}}
                     </a>
                 </li>
+                @if (isset($create))
+                <li>
+                    <a class="nav-link" id="operations" href="#" role="tab"
+                    aria-controls="v-pills-buyers">
+                        <i class=""></i> {{__('Order Details')}}
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" id="operations" href="#" role="tab"
+                    aria-controls="v-pills-buyers">
+                        <i class=""></i> {{__('Order Details')}}
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" id="operations" href="#" role="tab"
+                    aria-controls="v-pills-buyers">
+                        <i class=""></i> {{__('Products')}}
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" id="operations" href="#" role="tab"
+                    aria-controls="v-pills-buyers">
+                        <i class=""></i> {{__('Finance')}}
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" id="operations" href="#" role="tab"
+                    aria-controls="v-pills-buyers">
+                        <i class=""></i> {{__('Contacts')}}
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" id="operations" href="#" role="tab"
+                    aria-controls="v-pills-buyers">
+                        <i class=""></i> {{__('Leads')}}
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" id="operations" href="#" role="tab"
+                    aria-controls="v-pills-buyers">
+                        <i class=""></i> {{__('Freight rates')}}
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" id="operations" href="#" role="tab"
+                    aria-controls="v-pills-buyers">
+                        <i class=""></i> {{__('Documents')}}
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" id="operations" href="#" role="tab"
+                    aria-controls="v-pills-buyers">
+                        <i class=""></i> {{__('Budget NTP')}}
+                    </a>
+                </li>
+                @endif
+
                 @if (isset($operation->id))
                 <li>
                     <a class="nav-link" id="resumen" href="{{ route('operations.edit',$operation) }}" role="tab"
@@ -37,7 +94,7 @@
                 </li>
                 @endif
                 
-                @if (isset($admin))
+                @if ($admin == true)
                 <li>
                     <a class="nav-link" id="business" href="{{ route('business.index') }}" role="tab"
                     aria-controls="v-pills-buyers">

@@ -3,7 +3,7 @@
 		@if (isset($operation))
 		<div class="" id="proforma_group">
 			{!! Form::label('code', 'Order Name *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::text('code', $operation->code, ['class'=>'form-control r-0 light s-12', 'id'=>'code']) !!}
+			{!! Form::text('code', $operation->code, ['class'=>'form-control r-0 light s-12', 'id'=>'_code']) !!}
 			<span class="code_span"></span>
 		</div>
 		@endif
@@ -27,7 +27,7 @@
 		<div class="" id="principal_id">
 			<i class=""></i>
 			{!! Form::label('business_line_id', 'Business Line *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('business_line_id', $business, null, ['class'=>'form-control r-0 light s-12', 'id'=>'business_line_id_id']) !!}
+			{!! Form::select('business_line_id', $business, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_business_line_id_id']) !!}
 			<span class="business_line_id_span"></span>
 		</div>
 	</div>
@@ -53,7 +53,7 @@
 		<div class="" id="customer_id_group">
 			<i class=""></i>
 			{!! Form::label('customer_id', 'Customer', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('customer_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'customer_id']) !!}
+			{!! Form::select('customer_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_customer_id']) !!}
 			<span class="customer_id_span"></span>
 		</div>
 	</div>
@@ -61,14 +61,14 @@
 		<div class="" id="suplier_commercial_id_group">
 			<i class=""></i>
 			{!! Form::label('suplier_commercial_id', 'Supplier Commercial', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('supplier_commercil_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'supplier_commercial_id']) !!}
+			{!! Form::select('supplier_commercil_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_commercial_id']) !!}
 			<span class="supplier_commercial_id_span"></span>
 		</div>
 	</div>
 	<div class="col-md-3">
 		<div class="" id="proforma_group">
 			{!! Form::label('proforma', 'Proforma', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
-			{!! Form::text('proforma', null, ['class'=>'form-control r-0 light s-12', 'id'=>'proforma']) !!}
+			{!! Form::text('proforma', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_proforma']) !!}
 			<span class="proforma_span"></span>
 		</div>
 	</div>
@@ -76,14 +76,14 @@
 		<div class="" id="custom_commercial_id_group">
 			<i class=""></i>
 			{!! Form::label('custom_commercial_id', 'Customer  Commercial', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('cus_commercial_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'cus_commercial_id_id']) !!}
+			{!! Form::select('cus_commercial_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cus_commercial_id_id']) !!}
 			<span class="cus_commercial_id_span"></span>
 		</div>
 	</div>
 	<div class="col-md-3">
 		<div class="" id="cus_ref_group">
 			{!! Form::label('custom_ref', 'Custom Ref', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
-			{!! Form::text('cus_ref', null, ['class'=>'form-control r-0 light s-12', 'id'=>'cus_ref_id']) !!}
+			{!! Form::text('cus_ref', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cus_ref_id']) !!}
 			<span class="cus_ref_span"></span>
 		</div>
 	</div>
@@ -91,8 +91,8 @@
 		@if (isset($operation))
 		<div class="" id="purchase_by_group">
 			<i class=""></i>
-			{!! Form::label('purchase_by', 'Purchase By', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('purchase_by', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_purchase_by_id']) !!}
+			{!! Form::label('purchase_by', 'Purchase By ', ['class'=>'col-form-label s-12']) !!}
+			{!! Form::select('purchase_by', $operators, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_purchase_by_id']) !!}
 			<span class="purchase_by_span"></span>
 		</div>
 		@endif
@@ -122,7 +122,6 @@
                 <input id="_so_signed" name="so_signed" type="checkbox" value="1" class="someSwitchOptionPrimary" />
                 <label for="_so_signed" class="bg-secondary"></label>
             </div>
-			{{-- <input type="checkbox" name="_so_signed" value="1" class="" /> --}}
 			<span class="so_signed_span"></span>
 		</div>
 	</div>
@@ -135,10 +134,10 @@
 		</div>
 	</div>
 	<div class="col-md-3">
-		<div class="" id="pb_roker_com_mt_group">
-			{!! Form::label('pb_roker_com_mt', 'PBrokerComMT', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
-			{!! Form::text('pb_roker_com_mt', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_pb_roker_com_mt_id']) !!}
-			<span class="pb_roker_com_mt_span"></span>
+		<div class="" id="p_broker_com_mt_group">
+			{!! Form::label('p_broker_com_mt', 'PBrokerComMT', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
+			{!! Form::text('p_broker_com_mt', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_p_broker_com_mt_id']) !!}
+			<span class="p_broker_com_mt_span"></span>
 		</div>
 	</div>
 	<div class="col-md-3">
@@ -220,7 +219,7 @@
 		<div class="" id="p_incoterm">
 			<i class=""></i>
 			{!! Form::label('p_incoterm', 'P IcoTerm', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('p_incoterm', $incoterms, null, ['class'=>'form-control r-0 light s-12', 'id'=>'p_incoterm']) !!}
+			{!! Form::select('p_incoterm', $incoterms, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_p_incoterm']) !!}
 			<span class="p_incoterm_span"></span>
 		</div>
 	</div>
@@ -243,7 +242,7 @@
 		<div class="" id="p_incoterm">
 			<i class=""></i>
 			{!! Form::label('s_incoterm', 'S IcoTerm', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('s_incoterm', $incoterms, null, ['class'=>'form-control r-0 light s-12', 'id'=>'s_incoterm']) !!}
+			{!! Form::select('s_incoterm', $incoterms, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_s_incoterm']) !!}
 			<span class="s_incoterm_span"></span>
 		</div>
 	</div>
@@ -267,14 +266,14 @@
 	<div class="col-md-3">
 		<div class="" id="ship_from_group">
 			{!! Form::label('ship_from', 'Ship From', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
-			{!! Form::text('ship_from', null, ['class'=>'form-control r-0 light s-12 datepicker', 'id'=>'ship_from']) !!}
+			{!! Form::text('ship_from', null, ['class'=>'form-control r-0 light s-12 datepicker', 'id'=>'_ship_from']) !!}
 			<span class="ship_from_span"></span>
 		</div>
 	</div>
 	<div class="col-md-3">
 		<div class="" id="dead_line_ship_group">
 			{!! Form::label('dead_line_ship', 'Dead Line Ship', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
-			{!! Form::text('dead_line_ship', null, ['class'=>'form-control r-0 light s-12 datepicker', 'id'=>'dead_line_ship']) !!}
+			{!! Form::text('dead_line_ship', null, ['class'=>'form-control r-0 light s-12 datepicker', 'id'=>'_dead_line_ship']) !!}
 			<span class="dead_line_ship_span"></span>
 		</div>
 	</div>
