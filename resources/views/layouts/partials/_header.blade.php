@@ -39,11 +39,11 @@
             </a>
         </li>
         <li class="treeview"><a href="{{ route('accountOperator.index') }}">
-            <i class="icon icon icon-package blue-text s-18"></i>
+            <i class="icon icon-package blue-text s-18"></i>
             <span>{{ __('Accounts') }}</span></a>
         </li>
-        <li class="treeview no-b"><a href="#">
-            <i class="icon icon-package light-green-text s-18"></i>
+        <li class="treeview no-b"><a href="{{ route('operationIndexAsoc') }}">
+            <i class="icon icon-repeat2 light-green-text s-18"></i>
             <span>{{ __('Operations') }}</span></a>
         </li>
         <li class="treeview no-b"><a href="{{ route('payments.index') }}">
@@ -55,12 +55,11 @@
                 <i class="icon icon-bank s-14"></i> <span>{{ __('Bank Transaction') }}</span>
             </a>
         </li>
-        
         <li class="treeview"><a href="#">
             <i class="icon icon icon-package blue-text s-18"></i>
             <span>{{ __('Workflow Rules') }}</span></a>
         </li>
-        <li class="treeview"><a href="{{ route('document.index') }}">
+        <li><a href="{{ route('document.index') }}">
             <i class="icon icon-documents3 text-blue s-18"></i>
             <span>{{ __('Documents') }}</span></a>
         </li>
@@ -86,7 +85,25 @@
         <li>
             <a href="{{ route('account.index') }}">
                 <i class="icon icon-widgets amber-text s-14"></i> <span>{{ __('Accounts') }}</span>
+                <i class="icon icon-angle-left s-18 pull-right"></i>
             </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="{!! route('accountCategory.index') !!}">
+                        <i class="icon icon-format_list_bulleted amber-text s-14"></i> <span>{{__('Accounts Categories') }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('accountMeta.index') }}">
+                        <i class="icon icon-plus-circle amber-text s-14"></i> <span>{{__('Account meta')}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('accountMetaType.index') }}">
+                        <i class="icon icon icon-playlist_add amber-text s-14"></i> <span>{{__('Account meta type')}}</span>
+                    </a>
+                </li>
+            </ul>
         </li>
         <li>
             <a href="{!! route('logunit.index') !!}">
@@ -98,13 +115,39 @@
                 <i class="icon icon-bank amber-text s-14"></i> <span>{{ __('Banks') }}</span>
             </a>
         </li>
-        
         <li>
-            <a href="{!! route('incoterm.index') !!}">
-                <i class="icon icon-text-width amber-text s-14"></i> <span>{{__('Incoterm') }}</span>
+            <a href="{{ route('documentsType.index') }}">
+                <i class="icon icon-widgets amber-text s-14"></i> <span>{{ __('Documents Type') }}</span>
             </a>
         </li>
-        
+        <li>
+            <a href="{{ route('operations.index') }}">
+                <i class="icon icon-repeat2 amber-text s-14"></i> <span>{{ __('Operations') }}</span>
+                <i class="icon icon-angle-left s-18 pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="{!! route('business.index') !!}">
+                        <i class="icon icon-next_week amber-text s-14"></i> <span>{{__('Line Business') }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('cargoUnit.index') }}">
+                        <i class="icon icon-barometer amber-text s-14"></i> <span>{{__('Cargo units')}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('orderPmtTerm.index') }}">
+                        <i class="icon icon-cash-register amber-text s-14"></i> <span>{{__('Order Pmt Terms')}}</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="{!! route('incoterm.index') !!}">
+                <i class="icon icon-text-width amber-text s-14"></i> <span>{{ __('Incoterm')}}</span>
+            </a>
+        </li>
         <li>
             <a href="{{ route('document.index') }}">
                 <i class="icon icon-document amber-text s-14"></i> <span>{{ __('Documents') }}</span>
@@ -123,7 +166,6 @@
                 </li>
             </ul>
         </li>
-
         <li>
             <a href="{{ route('payments.index') }}">
                 <i class="icon icon-payment amber-text s-14"></i> <span>{{ __('Payments') }}</span>
@@ -156,11 +198,6 @@
             </ul>
         </li>
         <li>
-            <a href="{!! route('currier.index') !!}">
-                <i class="icon icon-text-width amber-text s-14"></i> <span>Currier</span>
-            </a>
-        </li>
-        <li>
             <a href="panel-element-alerts.html">
                 <i class="icon icon-exclamation-circle amber-text s-14"></i> <span>{{ __('Alerts') }}</span>
             </a>
@@ -177,6 +214,11 @@
     <a href="{{ route('currency.index') }}">
         <i class="icon icon-wpforms light-green-text s-18 "></i>
         <span>{{ __('Currency') }}</span>
+    </a>
+</li>
+<li>
+    <a class="nav-link" href="{{ route('status.index') }}" role="tab" id="status">
+        <i class="icon icon-package blue-text s-18"></i> <span>{{__('Status')}}</span>
     </a>
 </li>
 <li class="treeview ">
