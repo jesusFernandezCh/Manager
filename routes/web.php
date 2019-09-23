@@ -51,7 +51,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('accountOperator','AccountOperatorController');
 	Route::resource('operations','OperationController');
 	Route::resource('status','OperationStatusController');
-	Route::resource('business','BusinesslineController');
+	Route::resource('business','BusinessLineController');
 	Route::resource('cargoUnit','CargoUnitController');
 	Route::resource('orderPmtTerm','OrderPmtTermController');
 	
