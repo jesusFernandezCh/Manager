@@ -198,6 +198,11 @@
             </ul>
         </li>
         <li>
+            <a href="{!! route('currier.index') !!}">
+                <i class="icon icon-text-width amber-text s-14"></i> <span>Currier</span>
+            </a>
+        </li>
+        <li>
             <a href="panel-element-alerts.html">
                 <i class="icon icon-exclamation-circle amber-text s-14"></i> <span>{{ __('Alerts') }}</span>
             </a>

@@ -81,4 +81,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post("language", "LangController@update")->name("language.update");
 	// export excel
 	Route::get('downloadExcel/{type}', 'excelController@downloadExcel');
+
+	Route::post('verifyBalance', 'PaymentsController@verifyBalance');
 });

@@ -160,7 +160,19 @@ function obtenerDatosGet(url, url2)
     {
         $.each(data, function(key, value) 
         {
-            console.log(data);
+            if (key=='curren_account' && value == 1) {
+                $('#'+'_'+key).prop('checked', true);
+            }
+            else{
+                $('#'+'_'+key).prop('checked', false);
+            }
+            if (key=='curren_account' && value == 1) {
+                $('#'+'-'+key).prop('checked', true);
+            }
+            else{
+                $('#'+'-'+key).prop('checked', false);
+            }
+
             $('#'+'_'+key).val(value);
         });
         var image = data.image;
@@ -229,6 +241,46 @@ function showData(url)
     });
 }
 /**
+ * Shows the data.
+ *
+ * @param      {<type>}  url     The url
+ */
+function showDataPayment(url)
+{
+    $.get(url, function(data)
+    {
+        // console.log(data)
+        $.each(data[0], function(key, value) 
+        {
+            console.log(key);
+            $('#'+'-'+key).val(value);
+        });
+
+        var response = ""
+        
+        $.each(data[1], function(key, value) 
+        {
+         var type = ""   
+         if (value.type == 1) {
+            type = "ABONO"
+         }else{
+            type = "PAGO TOTAL"
+         }
+            response += "<tr>"
+            response += "<td>"+value.id+"</td>"
+            response += "<td>"+value.amount+"$</td>"
+            response += "<td>"+type+"</td>"
+            response += "<td>"+value.created_at+"</td>"
+            response += "</tr>"
+        });
+
+      
+        $('#pay').html(response)
+       
+      
+    });
+}
+/**
  * { function_description }
  * @param     {string}  url The url
  */
@@ -260,7 +312,7 @@ function dataTableExport(title, columns) {
             {
                 extend: 'excel',
                 title: title,
-                text: '<img src="http://localhost/Gaeti/public/img/excel-ico.png" alt="" heigth /> Export',
+                text: 'Export Excell',
                 titleAttr: 'Excel',
                 exportOptions: {
                     columns: columns
@@ -270,3 +322,22 @@ function dataTableExport(title, columns) {
         ],
     } );
 }
+//Funcion que solo permite introducir n煤meros//
+ //===========================================//
+ function soloNum(e) {
+     key = e.keyCode || e.which;
+     tecla = String.fromCharCode(key).toLowerCase();
+     letras = " 0123456789";
+     especiales = "8-37-39-46";
+
+     tecla_especial = false
+     for (var i in especiales) {
+         if (key == especiales[i]) {
+             tecla_especial = true;
+             break;
+         }
+     }
+     if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+         return false;
+     }
+ }
