@@ -65,6 +65,15 @@ Route::group(['middleware' => 'auth'], function () {
 	/* Currency route */
 	Route::resource('currency', 'CurrencyController');
 	Route::resource('document', 'DocumentController');
+	Route::resource('payments', 'PaymentsController');
+	Route::resource('bank', 'BanksController');
+	Route::resource('partner_bank', 'PartnerBankController');
+	Route::resource('bank_transaction', 'BanksTransactionController');
+	Route::resource('bank_account_type', 'BankAccountTypeController');
+	Route::resource('product_line', 'ProductLineController');
+	Route::resource('product_gen', 'ProductGenController');
+	Route::resource('doc_status', 'DocStatusController');
+	Route::resource('currier', 'CurrierController');
 	Route::get('/document/download/{id}', 'DocumentController@download')->middleware('auth');
 	Route::resource('documentsType', 'DocumentsTypeController');
 	/* Laguage */
