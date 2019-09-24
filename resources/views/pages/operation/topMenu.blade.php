@@ -65,7 +65,7 @@
                 </li>
                 @endif
 
-                @if (isset($operation->id))
+                {{--  @if (isset($operation->id))
                 <li>
                     <a class="nav-link" id="resumen" href="{{ route('operations.edit',$operation) }}" role="tab"
                     aria-controls="v-pills-buyers">
@@ -92,7 +92,7 @@
                         <i class="icon icon-contacts"></i> {{__('Contacts')}}
                     </a>
                 </li>
-                @endif
+                @endif  --}}
                 
                 @if ($admin == true)
                 <li>

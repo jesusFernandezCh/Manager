@@ -101,8 +101,8 @@
 		<div class="" id="po_signed_group">
 			{!! Form::label('po_signed', 'PO Signed', ['class'=>'col-form-label s-12']) !!}
 			<div class="material-switch ">
-                <input id="_po_signed" name="po_signed" type="checkbox" value="1"/>
-                <label for="_po_signed" class="bg-secondary"></label>
+                <input id="_su_po_signed" name="su_po_signed" type="checkbox" value="1" @if(isset($operation))&& @if($operation->su_po_signed == 1){{'checked'}}@endif @endif/>
+                <label for="_su_po_signed" class="bg-secondary"></label>
             </div>
 			<span class="po_signed_span"></span>
 		</div>
@@ -119,8 +119,8 @@
 		<div class="" id="so_signed_group">
 			{!! Form::label('so_signed', 'SO Signed', ['class'=>'col-form-label s-12']) !!}
 			<div class="material-switch">
-                <input id="_so_signed" name="so_signed" type="checkbox" value="1" class="someSwitchOptionPrimary" />
-                <label for="_so_signed" class="bg-secondary"></label>
+                <input id="_cu_po_signed" name="cu_po_signed" type="checkbox" value="1" @if(isset($operation))&& @if($operation->cu_po_signed == 1){{'checked'}}@endif @endif/>
+                <label for="_cu_po_signed" class="bg-secondary"></label>
             </div>
 			<span class="so_signed_span"></span>
 		</div>
