@@ -61,7 +61,7 @@ class OperationController extends Controller
         $admin      = true;
         $topMenu    = 'pages.operation.topMenu';
         $operations = $this->operation->all();
-        return view('pages.operation.index',compact('operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin'));
+        return view('pages.operation.index',compact('operations','topMenu','admin'));
     }
 
     /**
