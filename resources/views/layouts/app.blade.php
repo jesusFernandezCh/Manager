@@ -71,10 +71,10 @@
     --- Footer Part - Use Jquery anywhere at page.
     --- http://writing.colin-gourlay.com/safely-using-ready-before-including-jquery/
     -->
+    <script src={{asset('assets/js/app.js')}}></script>
     <script>
         (function($,d){$.each(readyQ,function(i,f){$(f)});$.each(bindReadyQ,function(i,f){$(d).bind("ready",f)})})(jQuery,document)
     </script>
-    <script src={{asset('assets/js/app.js')}}></script>
     <script src={{asset('assets/js/functions.js')}}></script>
     <script src={{asset('assets/plugins/toastr/toastr.js')}}></script>
     <script src={{asset('assets/plugins/bootstrap-fileinput/js/fileinput.js')}}></script>
