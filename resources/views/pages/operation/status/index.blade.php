@@ -4,14 +4,13 @@
 @endsection
 @section('top-menu')
     {{-- header --}}
-    @include('pages.operation.top-menu')
+    @include('pages.operation.topMenu')
     {{-- end header --}}
 @endsection
 @section('maincontent')
 {{-- modal create --}}
 @include('pages.operation.status.create')
 {{-- modal edit --}}
-{{-- @include('pages.rol.edit') --}}
 
 <div class="page  height-full">
     <div>

@@ -2,12 +2,12 @@
     <div class="container-fluid text-white">
         <div class="row justify-content-between">
             <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
-                <li>
+                {{--  <li>
                     <a class="nav-link" id="operations" href="{{ route('operations.index') }}" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class="icon icon-group_work"></i> {{__('Order Terms')}}
                     </a>
-                </li>
+                </li>  --}}
                 @if (isset($create))
                 <li>
                     <a class="nav-link" id="operations" href="#" role="tab"
@@ -65,11 +65,11 @@
                 </li>
                 @endif
 
-                @if (isset($operation->id))
+                {{--  @if (isset($operation->id))
                 <li>
                     <a class="nav-link" id="resumen" href="{{ route('operations.edit',$operation) }}" role="tab"
                     aria-controls="v-pills-buyers">
-                        <i class=""></i> {{__('Orders')}}
+                        <i class=""></i> {{__('Orders Terms')}}
                     </a>
                 </li>
                 <li>
@@ -92,24 +92,24 @@
                         <i class="icon icon-contacts"></i> {{__('Contacts')}}
                     </a>
                 </li>
-                @endif
+                @endif  --}}
                 
                 @if ($admin == true)
                 <li>
                     <a class="nav-link" id="business" href="{{ route('business.index') }}" role="tab"
                     aria-controls="v-pills-buyers">
-                        <i class="icon icon-business_center"></i> {{__('Line Business')}}
+                        <i class="icon icon-next_week"></i> {{__('Line Business')}}
                     </a>
                 </li>
                 <li>
                     <a class="nav-link" id="cargoUnit" href="{{ route('cargoUnit.index') }}" role="tab"
                     aria-controls="v-pills-buyers">
-                        <i class="icon icon-balance-scale"></i> {{__('Cargo units')}}
+                        <i class="icon icon-barometer"></i> {{__('Cargo units')}}
                     </a>
                 </li>
                 <li>
                     <a class="nav-link" id="orderPmtTerm" href="{{ route('orderPmtTerm.index') }}" role="tab" aria-controls="v-pills-buyers">
-                        <i class="icon icon-money"></i> {{__('Order Pmt Terms')}}
+                        <i class="icon icon-cash-register"></i> {{__('Order Pmt Terms')}}
                     </a>
                 </li>
                 @endif

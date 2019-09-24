@@ -27,8 +27,9 @@ class OperationStatusController extends Controller
      */
     public function index()
     {
+        $admin = 'false'; 
         $status = $this->status->all();
-        return view('pages.operation.status.index',compact('status'));
+        return view('pages.operation.status.index',compact('status','admin'));
     }
 
     /**

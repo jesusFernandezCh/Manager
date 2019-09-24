@@ -87,8 +87,7 @@ class OperationController extends Controller
         $logunits   = Logunit::get()->pluck('name','id');
         $topMenu    = 'pages.operation.topMenu';
         $operations = $this->operation->all()->where('purchase_by', Auth::user()->id);
-        return view('pages.operation.index',compact('operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin'));
-    }
+        return view('pages.operation.index',compact('operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin'));    }
     
     /**
      * [create description]
@@ -150,6 +149,7 @@ class OperationController extends Controller
     public function edit(Operation $operation)
     {
         $admin      = false;
+        $create     = true;
         $status     = $this->status;
         $operators  = $this->operators;
         $accounts   = $this->accounts;
@@ -165,7 +165,7 @@ class OperationController extends Controller
         $logunits   = Logunit::get()->pluck('name','id');
         $topMenu    = 'pages.operation.topMenu';
         $operations = $this->operation->all();
-        return view('pages.operation.edit',compact('operation','operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin'));
+        return view('pages.operation.edit',compact('operation','operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create'));
     }
 
     /**
@@ -177,7 +177,15 @@ class OperationController extends Controller
      */
     public function update(operationRequest $request, Operation $operation)
     {
-        $operation->update($request->all());
+        $data = $request->all();
+        if(null == $request->input('po_signed')){
+            $data = Arr::add($data,'su_po_signed', null);
+        }
+        if(null == $request->input('so_signed')){
+           $data = Arr::add($data,'cu_po_signed', null);
+        }
+        // dd($data);
+        $operation->update($data);
         $operation->save();
         Session::flash('message-success',' Operation '. $request->name.' editado correctamente.');
     }
