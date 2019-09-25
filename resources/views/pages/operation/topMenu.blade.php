@@ -10,33 +10,33 @@
                 </li>  --}}
                 @if (isset($create))
                 <li>
-                    <a class="nav-link" id="operations" href="#" role="tab"
+                    <a class="nav-link" id="order_terms" href="#" role="tab"
+                    aria-controls="v-pills-buyers">
+                        <i class=""></i> {{__('Order Terms')}}
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" id="order_details" href="#" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Order Details')}}
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" id="operations" href="#" role="tab"
+                    <a class="nav-link" id="Inst-ship_plain" href="#" role="tab"
                     aria-controls="v-pills-buyers">
-                        <i class=""></i> {{__('Order Details')}}
+                        <i class=""></i> {{__('Inst-ship Plain')}}
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" id="operations" href="#" role="tab"
+                    <a class="nav-link" id="ship_details" href="#" role="tab"
                     aria-controls="v-pills-buyers">
-                        <i class=""></i> {{__('Products')}}
+                        <i class=""></i> {{__('Ship Details')}}
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" id="operations" href="#" role="tab"
+                    <a class="nav-link" id="documents" href="#" role="tab"
                     aria-controls="v-pills-buyers">
-                        <i class=""></i> {{__('Finance')}}
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link" id="operations" href="#" role="tab"
-                    aria-controls="v-pills-buyers">
-                        <i class=""></i> {{__('Contacts')}}
+                        <i class=""></i> {{__('Documents')}}
                     </a>
                 </li>
                 <li>
@@ -46,21 +46,21 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" id="operations" href="#" role="tab"
+                    <a class="nav-link" id="payments" href="#" role="tab"
                     aria-controls="v-pills-buyers">
-                        <i class=""></i> {{__('Freight rates')}}
+                        <i class=""></i> {{__('Payments')}}
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" id="operations" href="#" role="tab"
+                    <a class="nav-link" id="pmt_details" href="#" role="tab"
+                    aria-controls="v-pills-buyers">
+                        <i class=""></i> {{__('Pmt Details')}}
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" id="documents_2" href="#" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Documents')}}
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link" id="operations" href="#" role="tab"
-                    aria-controls="v-pills-buyers">
-                        <i class=""></i> {{__('Budget NTP')}}
                     </a>
                 </li>
                 @endif
