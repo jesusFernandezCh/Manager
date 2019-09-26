@@ -95,7 +95,7 @@
 @section('js')
 <script>
     $(document).ready(function() {
-        $('#operations').addClass('active');
+        $('#order_terms').addClass('active');
     });
     var title = 'Operations';
     var colunms = [0,1,2];

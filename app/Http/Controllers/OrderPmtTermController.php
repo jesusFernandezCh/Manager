@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\OrderPmtTerm;
 use Illuminate\Http\Request;
+use App\Http\Requests\OrderPmtTerm\orderPmtTermRequest;
 use Session;
 
 class OrderPmtTermController extends Controller
@@ -34,7 +35,7 @@ class OrderPmtTermController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(orderPmtTermRequest $request)
     {
         $this->orderPmtTerm->create($request->all());
         Session::flash('message-success',' OrderPmtTerm '. $request['name'].' creado correctamente.');
@@ -58,7 +59,7 @@ class OrderPmtTermController extends Controller
      * @param  \App\order_pmt_term  $order_pmt_term
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OrderPmtTerm $orderPmtTerm)
+    public function update(orderPmtTermRequest $request, OrderPmtTerm $orderPmtTerm)
     {
         $request->all();
         $orderPmtTerm->update($request->all());

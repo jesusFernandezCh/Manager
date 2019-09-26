@@ -42,7 +42,7 @@
 @section('js')
 <script>
     $(document).ready(function() {
-        $('#resumen').addClass('active');
+        $('#order_terms').addClass('active');
     });
 
     $('.datepicker').datetimepicker({
