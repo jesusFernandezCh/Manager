@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CargoUnit;
 use Illuminate\Http\Request;
+use App\Http\Requests\CargoUnits\cargoUnitsRequest;
 use Session;
 
 class CargoUnitController extends Controller
@@ -38,7 +39,7 @@ class CargoUnitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(cargoUnitsRequest $request)
     {
         $this->cargoUnit->create($request->all());
         Session::flash('message-success',' Cargo Unit '. $request['name'].' creado correctamente.');
@@ -62,7 +63,7 @@ class CargoUnitController extends Controller
      * @param  \App\cargo_unit  $cargo_unit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CargoUnit $cargoUnit)
+    public function update(cargoUnitsRequest $request, CargoUnit $cargoUnit)
     {
         $cargoUnit->update($request->all());
         $cargoUnit->save();

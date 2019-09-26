@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\BusinessLine as Bussines;
 use Illuminate\Http\Request;
+use App\Http\Requests\BusinessLine\businessLineRequest;
 use Session;
 
 class BusinessLineController extends Controller
@@ -39,7 +40,7 @@ class BusinessLineController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(businessLineRequest $request)
     {
         $this->business->create($request->all());
         Session::flash('message-success',' Business Line '. $request['name'].' creado correctamente.');
@@ -64,7 +65,7 @@ class BusinessLineController extends Controller
      * @param  \App\bussines_line  $bussines_line
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bussines $business)
+    public function update(businessLineRequest $request, Bussines $business)
     {
         $business->update($request->all());
         $business->save();
