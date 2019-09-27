@@ -63,13 +63,16 @@ class Operation extends Model
             ->where('account_categories.name',$var)
             ->pluck('name', 'id');
     }
-
-    public function FunctionName($value)
+    /**
+     * [FunctionName description]
+     * @param [type] $value [description]
+     */
+    public function scopeSupplier($query, $value)
     {
          return DB::table('account_contacts')
             ->join('accounts', 'accounts.id', '=', 'account_id')
             ->join('account_categories', 'account_categories.id', '=', 'categories_accounts.category_id')
-            ->select('accounts.id','accounts.name')
+            ->select('account_contacts.id','account_contacts.fullname')
             ->where('account_categories.name',$var)
             ->pluck('fullname', 'id');
     }

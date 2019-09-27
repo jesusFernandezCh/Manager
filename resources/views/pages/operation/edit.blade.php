@@ -7,13 +7,12 @@
 <div class="col-12">
 	<div class="text-white">Status: {{$operation->status->name}}</div>
 </div>
-
+@endsection
+@section('top-menu')
+	@include($topMenu)
 @endsection
 @section('maincontent')
-<div class="page height-full">
-	<div class="form-group" style="margin-top: 75px">
-		@include($topMenu)
-	</div>
+<div class="page height-full" style="margin-top: 130px">
 	 <div class="container-fluid animatedParent animateOnce my-3">
         <div class="animated fadeInUpShort">
         	<div class="col-md-12">

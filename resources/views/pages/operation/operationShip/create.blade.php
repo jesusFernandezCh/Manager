@@ -9,6 +9,7 @@
 	@include($topMenu)
 @endsection
 @section('maincontent')
+@include('pages.operation.operationShip.modal')
 <div class="page height-full" style="margin-top: 130px">
 	 <div class="container-fluid animatedParent animateOnce my-3">
         <div class="animated fadeInUpShort">
@@ -16,12 +17,12 @@
 	            <div class="card" style="margin-top:0px">
 	                <div class="form-group">
 	                    <div class="card-header white">
-	                        <h6><i class=""></i> {{__('Add New Operation')}} </h6>
+	                        <h6><i class=""></i> {{__('Inst-Ship Plain')}} </h6>
 	                    </div>
 	                </div>
 	                <div class="card-body">
 						{!! Form::open(['route'=>'operations.store','method'=>'POST', 'class'=>'formlDinamic', 'id'=>'guardarRegistro']) !!}
-						@include('pages.operation.forml')
+						@include('pages.operation.operationShip.forml')
 						<br>
 						<div class="col-md-12 text-right">
 							<a href="{{ route('operations.index') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
@@ -38,7 +39,7 @@
 @section('js')
 <script>
     $(document).ready(function() {
-        $('#order_terms').addClass('active');
+        $('#InstShipPlain').addClass('active');
     });
 
     $('.datepicker').datetimepicker({

@@ -4,7 +4,7 @@
             <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
                 @if (isset($create))
                 <li>
-                    <a class="nav-link" id="order_terms" href="#" role="tab"
+                    <a class="nav-link" id="order_terms" href="{{ route('operations.create') }}" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Order Terms')}}
                     </a>
@@ -16,9 +16,9 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" id="Inst-ship_plain" href="#" role="tab"
+                    <a class="nav-link" id="InstShipPlain" href="{{ route('operationShip.create') }}" role="tab"
                     aria-controls="v-pills-buyers">
-                        <i class=""></i> {{__('Inst-ship Plain')}}
+                        <i class=""></i> {{__('Inst-Ship Plain')}}
                     </a>
                 </li>
                 <li>
