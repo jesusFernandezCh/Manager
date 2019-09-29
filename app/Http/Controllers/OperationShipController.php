@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\OperationShip;
+use App\Operation;
+use App\AccountContact;
 use Illuminate\Http\Request;
 
 class OperationShipController extends Controller
 {
     private $operationShip;
+    private $operation;
     
-    public function __construct(OperationShip $stmt)
+    public function __construct(OperationShip $stmt, Operation $operation)
     {
         $this->operationShip = $stmt;
+        $this->operation     = $operation;
     }
 
     /**
@@ -55,9 +59,14 @@ class OperationShipController extends Controller
      * @param  \App\operationShip  $operationShip
      * @return \Illuminate\Http\Response
      */
-    public function show(operationShip $operationShip)
+    public function show($operation_id)
     {
-        //
+        $operation      = $this->operation->find($operation_id);
+        $supplier       = $this->operationShip->Supplier($operation->supplier_id);
+        $admin          = false;
+        $create         = true; 
+        $topMenu        = "pages.operation.topMenu";
+        return view('pages.operation.operationShip.create',compact("topMenu","admin","create",'operation','supplier'));
     }
 
     /**

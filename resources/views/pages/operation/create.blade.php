@@ -20,7 +20,7 @@
 	                    </div>
 	                </div>
 	                <div class="card-body">
-						{!! Form::open(['route'=>'operations.store','method'=>'POST', 'class'=>'formlDinamic', 'id'=>'guardarRegistro']) !!}
+						{!! Form::open(['route'=>'operations.store','method'=>'POST', 'class'=>'', 'id'=>'guardarRegistro']) !!}
 						@include('pages.operation.forml')
 						<br>
 						<div class="col-md-12 text-right">
@@ -39,6 +39,7 @@
 <script>
     $(document).ready(function() {
         $('#order_terms').addClass('active');
+        $('.d').addClass('disabled');
     });
 
     $('.datepicker').datetimepicker({

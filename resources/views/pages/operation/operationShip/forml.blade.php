@@ -2,11 +2,12 @@
     <div class="col-12 alert-info text-center" style="border-radius: 50px">
     	<b>AVAILABILITY INSTURCTION</b>
     </div>
+    {!! Form::hidden('operation', $operation->id, ['class'=>'form-control']) !!}
     <div class="col-md-3">
 		<div class="" id="supplier_Admin_group">
 			<i class=""></i>
 			{!! Form::label('supplier_Admin', 'SupplierAdmin *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('supplier_Admin', [], null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_Admin']) !!}
+			{!! Form::select('supplier_Admin', $supplier, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_Admin']) !!}
 			<span class="supplier_Admin_span"></span>
 		</div>
 	</div>
@@ -14,7 +15,7 @@
 		<div class="" id="supplier_ops_group">
 			<i class=""></i>
 			{!! Form::label('supplier_ops', 'SuplierOps', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('supplier_ops', [], null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_ops']) !!}
+			{!! Form::select('supplier_ops', $supplier, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_ops']) !!}
 			<span class="supplier_ops_span"></span>
 		</div>
 	</div>

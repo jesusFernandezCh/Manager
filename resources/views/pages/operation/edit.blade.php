@@ -13,6 +13,9 @@
 @endsection
 @section('maincontent')
 <div class="page height-full" style="margin-top: 130px">
+	<div>
+        @include('alerts.toastr')
+    </div>
 	 <div class="container-fluid animatedParent animateOnce my-3">
         <div class="animated fadeInUpShort">
         	<div class="col-md-12">

@@ -39,13 +39,12 @@ class OperationShip extends Model
      * [FunctionName description]
      * @param [type] $value [description]
      */
-    public function scopeSupplier($query, $value)
+    public function scopeSupplier($query, $var)
     {
          return DB::table('account_contacts')
-            ->join('accounts', 'accounts.id', '=', 'account_id')
-            ->join('account_categories', 'account_categories.id', '=', 'categories_accounts.category_id')
+            ->join('accounts', 'accounts.id', '=', 'account_contacts.account_id')
             ->select('account_contacts.id','account_contacts.fullname')
-            ->where('account_categories.name',$var)
+            ->where('accounts.id', $var)
             ->pluck('fullname', 'id');
     }
 }
