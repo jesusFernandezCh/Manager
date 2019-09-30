@@ -4,13 +4,12 @@
 	<i class="icon-person"></i>
 	<a href="{{ route('operations.index') }}">{{__('Operation')}}</a>
 </div>
-
+@endsection
+@section('top-menu')
+	@include($topMenu)
 @endsection
 @section('maincontent')
-<div class="page height-full">
-	<div class="form-group" style="margin-top: 75px">
-		@include($topMenu)
-	</div>
+<div class="page height-full" style="margin-top: 130px">
 	 <div class="container-fluid animatedParent animateOnce my-3">
         <div class="animated fadeInUpShort">
         	<div class="col-md-12">
@@ -21,7 +20,7 @@
 	                    </div>
 	                </div>
 	                <div class="card-body">
-						{!! Form::open(['route'=>'operations.store','method'=>'POST', 'class'=>'formlDinamic', 'id'=>'guardarRegistro']) !!}
+						{!! Form::open(['route'=>'operations.store','method'=>'POST', 'class'=>'', 'id'=>'guardarRegistro']) !!}
 						@include('pages.operation.forml')
 						<br>
 						<div class="col-md-12 text-right">
@@ -40,6 +39,7 @@
 <script>
     $(document).ready(function() {
         $('#order_terms').addClass('active');
+        $('.d').addClass('disabled');
     });
 
     $('.datepicker').datetimepicker({

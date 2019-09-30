@@ -135,8 +135,9 @@ class OperationController extends Controller
         //add purchase_by to request
         $request = Arr::add($request,'purchase_by',Auth::user()->id);
         // dd($request);
-        $stmt = $this->operation->create($request);
+        $operation = $this->operation->create($request);
         Session::flash('message-success',' Operation '. $request['code'].' creado correctamente.');
+        return $this->edit($operation);
     }
 
 
@@ -165,6 +166,7 @@ class OperationController extends Controller
         $logunits   = Logunit::get()->pluck('name','id');
         $topMenu    = 'pages.operation.topMenu';
         $operations = $this->operation->all();
+
         return view('pages.operation.edit',compact('operation','operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create'));
     }
 
