@@ -7,10 +7,10 @@
 @endsection
 @section('maincontent')
 <div class="page height-full">
-	<div class="form-group" style="margin-top: 75px">
-		@include($topMenu)
+	<div class="form-group" style="margin-top: 105px">
+		
 	</div>
-	 <div class="container-fluid animatedParent animateOnce my-3">
+	 <div class="container-fluid animatedParent animateOnce my-3 mt-5">
         <div class="animated fadeInUpShort">
         	<div class="col-md-12">
 	            <div class="card" style="margin-top:0px">
