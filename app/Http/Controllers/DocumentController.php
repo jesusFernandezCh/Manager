@@ -149,16 +149,17 @@ class DocumentController extends Controller
      * @param  [int] $id [id operation]
      * @return [array]     [documents]
      */
-    public function documentsOperation($id)
+    public function documentsOperation($id_operation)
     {
         $admin          = false;
         $create         = true;
-        $operation      = Operation::find($id);
-        $documents      = $this->document->all()->where('operation_id',$id);
+        $operation      = Operation::find($id_operation);
+        $documents      = $this->document->all()->where('operation_id',$id_operation);
         $documentType   = $this->documentType;
         $account        = $this->account;
-        return view('pages.operation.documents.index',compact('documents','operation','documentType', 'account', 'admin', 'true'));
+        return view('pages.operation.documents.create',compact('documents','operation','documentType', 'account', 'admin', 'create'));
     }
+
     /**
      * [edit document asoc to operation]
      * @param  [type] $id        [id document]
