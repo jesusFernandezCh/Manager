@@ -141,6 +141,11 @@
                         <i class="icon icon-cash-register amber-text s-14"></i> <span>{{__('Order Pmt Terms')}}</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('order_details.index') }}">
+                        <i class="icon icon-cash-register amber-text s-14"></i> <span>{{__('Order Details')}}</span>
+                    </a>
+                </li>
             </ul>
         </li>
         <li>
@@ -200,6 +205,11 @@
         <li>
             <a href="{!! route('currier.index') !!}">
                 <i class="icon icon-text-width amber-text s-14"></i> <span>Currier</span>
+            </a>
+        </li>
+        <li>
+            <a href="{!! route('shelf_life.index') !!}">
+                <i class="icon icon-text-width amber-text s-14"></i> <span>Shelf Life</span>
             </a>
         </li>
         <li>

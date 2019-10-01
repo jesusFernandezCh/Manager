@@ -54,6 +54,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('business','BusinessLineController');
 	Route::resource('cargoUnit','CargoUnitController');
 	Route::resource('orderPmtTerm','OrderPmtTermController');
+	Route::resource('operationShip','OperationShipController');
 	
 	Route::get("metaEdit/{meta?}/{account?}", "AccountMetaController@metaEdit")->name("metaEdit");
 	Route::get("contactAsoc/{id?}", "AccountContactController@contactAsoc")->name("contactsAsoc");
@@ -73,6 +74,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('product_line', 'ProductLineController');
 	Route::resource('product_gen', 'ProductGenController');
 	Route::resource('doc_status', 'DocStatusController');
+	Route::resource('shelf_life', 'ShelfLifeController');
+	Route::resource('order_details', 'OrderDetailController');
 	Route::resource('currier', 'CurrierController');
 	Route::get('/document/download/{id}', 'DocumentController@download')->middleware('auth');
 	Route::resource('documentsType', 'DocumentsTypeController');
