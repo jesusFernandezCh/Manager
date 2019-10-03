@@ -12,7 +12,6 @@
 	@include($topMenu)
 @endsection
 @section('maincontent')
-@include('pages.operation.operationShip.modal')
 <div class="page height-full" style="margin-top: 130px">
 	 <div class="container-fluid animatedParent animateOnce my-3">
         <div class="animated fadeInUpShort">
