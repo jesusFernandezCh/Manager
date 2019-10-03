@@ -157,7 +157,7 @@ class DocumentController extends Controller
         $documents      = $this->document->all()->where('operation_id',$id_operation);
         $documentType   = $this->documentType;
         $account        = $this->account;
-        return view('pages.operation.documents.create',compact('documents','operation','documentType', 'account', 'admin', 'create'));
+        return view('pages.operation.documents.index',compact('documents','operation','documentType', 'account', 'admin', 'create'));
     }
 
     /**
