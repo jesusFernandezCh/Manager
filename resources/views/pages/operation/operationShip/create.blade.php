@@ -2,7 +2,10 @@
 @section('title')
 <div class="nav-title text-white col-12"> 
 	<i class="icon-person"></i>
-	<a href="{{ route('operations.index') }}">{{__('Operation')}}</a>
+	<a href="{{ route('operations.index') }}">{{__('Operation')}}</a> > {{$operation->account->name}} > {{$operation->code}}
+</div>
+<div class="col-12">
+	<div class="text-white">Status: {{$operation->status->name}}</div>
 </div>
 @endsection
 @section('top-menu')
@@ -25,7 +28,7 @@
 						@include('pages.operation.operationShip.forml')
 						<br>
 						<div class="col-md-12 text-right">
-							<a href="{{ route('operations.index') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
+							<a href="{{ route('operationIndexAsoc') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
 							<button type="submit" class="btn btn-primary"><i class="icon-save mr-2"></i>{{_('Save data')}}</button>
 						</div>
 						{!! Form::close() !!}

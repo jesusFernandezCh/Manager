@@ -1,11 +1,12 @@
 @extends('layouts.app')
 @section('title')
-<h1 class="nav-title text-white">
+<div class="nav-title text-white">
     <i class="icon-document-text s-18"></i>
-    {{__('Documents')}} >
-    {{$operation->account->name}} >
-    {{$operation->code}}
-</h1>
+    {{__('Documents')}} >{{$operation->account->name}} >{{$operation->code}}
+</div>
+<div class="col-12">
+    <div class="text-white">Status: {{$operation->status->name}}</div>
+</div>
 @endsection
 @section('top-menu')
     {{-- header --}}
@@ -15,10 +16,6 @@
 @section('maincontent')
 {{-- modal create --}}
 @include('pages.operation.documents.create')
-{{-- modal show --}}
-{{-- @include('pages.operation.documents.show') --}}
-{{-- modal edit --}}
-{{-- @include('pages.operation.documents.edit') --}}
 
 <div class="page  height-full">
     <div>

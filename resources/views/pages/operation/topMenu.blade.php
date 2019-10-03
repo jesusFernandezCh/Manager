@@ -30,11 +30,12 @@
                 </li>
                 <li>
                     <a class="nav-link d" id="documents" 
-                    href="@if (isset($operation))
+                    href="
+                    @if (isset($operation))
                         {{ route('documentsAsoc',$operation) }}
-                        @else # 
-                                    @endif"
-                         role="tab"
+                    @else # 
+                    @endif"
+                    role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Documents')}}
                     </a>
