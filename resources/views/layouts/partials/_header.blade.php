@@ -103,6 +103,11 @@
                         <i class="icon icon icon-playlist_add amber-text s-14"></i> <span>{{__('Account meta type')}}</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('docsInstruction.index') }}">
+                        <i class="icon icon-document amber-text s-14"></i> <span>{{__('DocsInstruction')}}</span>
+                    </a>
+                </li>
             </ul>
         </li>
         <li>

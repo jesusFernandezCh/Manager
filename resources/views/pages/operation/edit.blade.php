@@ -28,6 +28,7 @@
 	                <div class="card-body">
 						{!! Form::model($operation,['route'=>["operations.update",$operation->id],'method'=>'PUT','class'=>'formlDinamic form','id'=>'DataUpdate']) !!}
 						@include('pages.operation.forml')
+						{{--  {!! Form::hidden('route', route('operationIndexAsoc'), ['id'=>'route']) !!}  --}}
 						<br>
 						<div class="col-md-12 text-right">
 							<a href="{{ route('operationIndexAsoc') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>

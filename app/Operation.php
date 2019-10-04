@@ -43,6 +43,7 @@ class Operation extends Model
        'purchase_incoterm',
        'purchase_curr',
        'p_incoterm_place',
+       'customer_id',
        'sale_incoterm',
        'sale_curr',
        's_incoterm_place',

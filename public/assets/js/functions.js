@@ -312,7 +312,7 @@ function dataTableExport(title, columns) {
             {
                 extend: 'excel',
                 title: title,
-                text: 'Export Excell',
+                text: '<img src="http://localhost/Manager/public/img/excel-ico.png" alt="" heigth= ""/> Export Excell',
                 titleAttr: 'Excel',
                 exportOptions: {
                     columns: columns

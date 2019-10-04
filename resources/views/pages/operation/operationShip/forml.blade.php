@@ -22,8 +22,8 @@
 	<div class="col-md-3">
 		<div class="" id="cust_Admin_group">
 			<i class=""></i>
-			{!! Form::label('cust_Admin', 'CustAdmin *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('cust_Admin', [], null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cust_Admin']) !!}
+			{!! Form::label('cust_admin', 'CustAdmin *', ['class'=>'col-form-label s-12']) !!}
+			{!! Form::select('cust_admin', $supplier, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cust_admin']) !!}
 			<span class="cust_Admin_span"></span>
 		</div>
 	</div>
@@ -31,7 +31,7 @@
 		<div class="" id="cust_ops_group">
 			<i class=""></i>
 			{!! Form::label('cust_ops', 'CustOps', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('cust_ops', [], null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cust_ops']) !!}
+			{!! Form::select('cust_ops', $supplier, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cust_ops']) !!}
 			<span class="cust_ops_span"></span>
 		</div>
 	</div>
@@ -44,18 +44,18 @@
 		</div>
 	</div>
 	<div class="col-3"></div>
-	<div class="col-md-1">
+	{{--  <div class="col-md-1">
 		<div class="forml-group">
 			{!! Form::label('&nbsp;', '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', ['class'=>'col-form-label s-12']) !!}
 			<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#doc" title="Add doc">Doc</button>
 			
 		</div>
-	</div>
-	<div class="col-5">
+	</div>  --}}
+	<div class="col-6">
 		<div class="" id="cust_ops_group">
 			<i class=""></i>
-			{!! Form::label('&nbsp;', '&nbsp;', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('cust_ops', [], null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cust_ops']) !!}
+			{!! Form::label('cnee', 'Cnee', ['class'=>'col-form-label s-12']) !!}
+			{!! Form::select('cust_ops', $cnees, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cust_ops']) !!}
 			<span class="cust_ops_span"></span>
 		</div>
 	</div>
@@ -132,7 +132,7 @@
 		<div class="" id="freight_rate_group">
 			<i class=""></i>
 			{!! Form::label('freight_rate', 'Freight Rate', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('freight_rate', [], null, ['class'=>'form-control r-0 light s-12', 'id'=>'_freight_rate']) !!}
+			{!! Form::text('freight_rate', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_freight_rate']) !!}
 			<span class="freight_rate_span"></span>
 		</div>
 	</div>

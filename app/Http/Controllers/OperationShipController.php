@@ -6,6 +6,8 @@ use App\OperationShip;
 use App\Operation;
 use App\AccountContact;
 use Illuminate\Http\Request;
+use App\Http\Requests\OperationShip\OperationShipRequest;
+use Session;
 
 class OperationShipController extends Controller
 {
@@ -35,7 +37,7 @@ class OperationShipController extends Controller
      */
     public function create()
     {
-        // dd($this->operationShip->supplier());
+        
         $admin      = false;
         $create     = true; 
         $topMenu    = "pages.operation.topMenu";
@@ -48,9 +50,10 @@ class OperationShipController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OperationShipRequest $request)
     {
-        //
+        $this->operationShip->create($request->all());
+        Session::flash('message-success',' Inst-Ship Plain registrado correctamente.');
     }
 
     /**
@@ -62,11 +65,12 @@ class OperationShipController extends Controller
     public function show($operation_id)
     {
         $operation      = $this->operation->find($operation_id);
+        $cnees          = $this->operationShip->Cnee($operation->customer_id);
         $supplier       = $this->operationShip->Supplier($operation->supplier_id);
         $admin          = false;
         $create         = true; 
         $topMenu        = "pages.operation.topMenu";
-        return view('pages.operation.operationShip.create',compact("topMenu","admin","create",'operation','supplier'));
+        return view('pages.operation.operationShip.create',compact("topMenu","admin","create",'operation','supplier','cnees'));
     }
 
     /**
@@ -77,7 +81,12 @@ class OperationShipController extends Controller
      */
     public function edit(operationShip $operationShip)
     {
-        //
+        $data = $request->all();
+        if(null == $request->input('labels_received')) $data = Arr::add($data,'labels_received', 0);
+        if(null == $request->input('labels_oK')) $data = Arr::add($data,'labels_oK', 0);
+        if(null == $request->input('licence_ok')) $data = Arr::add($data,'licence_ok', 0);
+        $operationShip->update($data);
+        Session::flash('message-success',' Inst-Ship Plain actualizado correctamente.');
     }
 
     /**

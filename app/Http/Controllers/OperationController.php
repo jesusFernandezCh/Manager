@@ -61,7 +61,7 @@ class OperationController extends Controller
         $admin      = true;
         $topMenu    = 'pages.operation.topMenu';
         $operations = $this->operation->all();
-        return view('pages.operation.index',compact('operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin'));
+        return view('pages.operation.index',compact('operations','topMenu','admin'));
     }
 
     /**
@@ -95,6 +95,7 @@ class OperationController extends Controller
      */
     public function create()
     {
+        $date = Carbon::now()->format("Y/m/d");
         $admin      = false;
         $create     = true;
         $status     = $this->status;
@@ -111,7 +112,7 @@ class OperationController extends Controller
         $cargoUnits = CargoUnit::get()->pluck('name','id');
         $logunits   = Logunit::get()->pluck('name','id');
         $topMenu    = 'pages.operation.topMenu';
-        return view('pages.operation.create',compact('accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create'));
+        return view('pages.operation.create',compact('accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create','date'));
     }
     /**
      * Store a newly created resource in storage.
@@ -189,7 +190,7 @@ class OperationController extends Controller
         // dd($data);
         $operation->update($data);
         $operation->save();
-        Session::flash('message-success',' Operation '. $request->name.' editado correctamente.');
+        Session::flash('message-success',' Operation '. $request->name.' actualizado correctamente.');
     }
 
     

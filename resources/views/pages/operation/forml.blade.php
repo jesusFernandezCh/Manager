@@ -11,7 +11,7 @@
 	<div class="col-md-2">
 		<div class="form-group" id="date_order_group">
 			{!! Form::label('date', 'Order date *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::text('date_order', null, ['class'=>'form-control r-0 light s-12 datepicker', 'id'=>'_date_order', 'onclick'=>'inputClear(this.id)']) !!}
+			{!! Form::text('date_order', isset($date) ? $date : null, ['class'=>'form-control r-0 light s-12 datepicker', 'id'=>'_date_order', 'onclick'=>'inputClear(this.id)']) !!}
 			<span class="date_order_span"></span>
 		</div>
 	</div>
@@ -373,5 +373,4 @@
 			<span class="acomments_span"></span>
 		</div>
 	</div>
-	{!! Form::hidden('route', route('operations.index'), ['id'=>'route']) !!}
 </div>
