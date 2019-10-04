@@ -24,7 +24,7 @@ class DocsInstructionRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_account'   => 'required'
+            'account_id'   => 'required'
         ];
     }
 }
