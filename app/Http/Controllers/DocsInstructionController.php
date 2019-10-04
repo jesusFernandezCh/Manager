@@ -3,20 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\DocsInstruction;
+use App\Account;
+use Session;
 use Illuminate\Http\Request;
+use App\Http\Requests\DocsInstruction\DocsInstructionRequest;
+use Illuminate\Support\Arr;
 
 class DocsInstructionController extends Controller
 {
     private $docsInstruction;
+    private $accounts;
 
     /**
      * Undocumented function
      *
      * @param DocsInstruction $stmt
      */
-    public function __construct(DocsInstruction $stmt)
+    public function __construct(DocsInstruction $stmt, Account $account)
     {
         $this->docsInstruction = $stmt;
+        $this->accounts = $account->all()->pluck('name','id');
     }
 
     /**
@@ -26,8 +32,9 @@ class DocsInstructionController extends Controller
      */
     public function index()
     {
+        $accounts = $this->accounts;
         $docsInstructions = $this->docsInstruction->all();
-        return view('pages.account.docsInstruction.index', compact('docsInstructions'));
+        return view('pages.account.docsInstruction.index', compact('docsInstructions','accounts'));
     }
 
     /**
@@ -46,9 +53,10 @@ class DocsInstructionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DocsInstructionRequest $request)
     {
-        //
+        $this->docsInstruction->create($request->all());
+        Session::flash('message-success',' DocsInstruction '. $request['cnee'].' creado correctamente.');
     }
 
     /**
@@ -70,7 +78,8 @@ class DocsInstructionController extends Controller
      */
     public function edit(DocsInstruction $docsInstruction)
     {
-        //
+        $accounts = $this->accounts;
+        return view('pages.account.docsInstruction.edit',compact('docsInstruction','accounts'));
     }
 
     /**
@@ -82,7 +91,24 @@ class DocsInstructionController extends Controller
      */
     public function update(Request $request, DocsInstruction $docsInstruction)
     {
-        //
+        
+        $data = $request->all();
+        if(null == $request->input('preshipmentinspection')) $data = Arr::add($data,'preshipmentinspection', 0);
+        if(null == $request->input('invoice')) $data = Arr::add($data,'invoice', 0);
+        if(null == $request->input('co_forma')) $data = Arr::add($data,'co_forma', 0);
+        if(null == $request->input('packing_list')) $data = Arr::add($data,'packing_list', 0);
+        if(null == $request->input('hc')) $data = Arr::add($data,'hc', 0);
+        if(null == $request->input('halai')) $data = Arr::add($data,'halai', 0);
+        if(null == $request->input('haccp')) $data = Arr::add($data,'haccp', 0);
+        if(null == $request->input('legalization')) $data = Arr::add($data,'legalization', 0);
+        if(null == $request->input('quality_certificate')) $data = Arr::add($data,'quality_certificate', 0);
+        if(null == $request->input('exports_declaration')) $data = Arr::add($data,'exports_declaration', 0);
+        if(null == $request->input('waver_besc')) $data = Arr::add($data,'waver_besc', 0);
+        if(null == $request->input('no_dioxyn')) $data = Arr::add($data,'no_dioxyn', 0);
+        if(null == $request->input('lab_analysis')) $data = Arr::add($data,'lab_analysis', 0);
+        if(null == $request->input('no_radiation')) $data = Arr::add($data,'no_radiation', 0);
+        $docsInstruction->update($data);
+        Session::flash('message-success',' DocsInstruction '. $request['cnee'].' actualizado correctamente.');
     }
 
     /**
@@ -93,6 +119,7 @@ class DocsInstructionController extends Controller
      */
     public function destroy(DocsInstruction $docsInstruction)
     {
-        //
+        $docsInstruction->delete();
+        Session::flash('message-success',' DocsInstruction '. $docsInstruction->cnee.' actualizado correctamente.');
     }
 }

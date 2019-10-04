@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-<h1 class="nav-title text-white"><i class="icon icon-repeat2 s-18"></i>{{ __('docsInstruction') }} </h1>
+<h1 class="nav-title text-white"><i class="icon icon-documents3 s-18"></i>{{ __('docsInstruction') }} </h1>
 @endsection
 @section('top-menu')
     {{-- header --}}
@@ -31,7 +31,8 @@
                                     <tr>
                                         <th><b>ID</b></th>
                                         <th><b>{{__('ACCOUNT')}}</b></th>
-                                        <th><b>{{__('CNNE')}} / {{__('AGENCY')}}</b></th>
+                                        <th><b>{{__('CNEE')}}</b></th>
+                                        <th><b>{{__('AGENCY')}}</b></th>
                                         <th><b>{{__('SHIPPER')}}</b></th>
                                         <th><b>{{__('OPTIONS')}}</b></th>
                                     </tr>
@@ -39,13 +40,14 @@
                                 <tbody>
                                     @foreach ($docsInstructions as $docsInstruction)
                                     <tr>
-                                        <td> {{$docsInstructions->id}} </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td> {{$docsInstruction->id}} </td>
+                                        <td>{{$docsInstruction->account->name}}</td>
+                                        <td>{{$docsInstruction->cnee}}</td>
+                                        <td>{{$docsInstruction->agency}}</td>
+                                        <td>{{$docsInstruction->shipper}}</td>
                                         <td class="text-center">
-                                            {!! Form::open(['route'=>['operations.destroy',$docsInstructions],'method'=>'DELETE', 'class'=>'formlDinamic','id'=>'eliminarRegistro']) !!}
-                                            <a href="{{ route('operations.edit',$docsInstructions) }}" class="btn btn-default btn-sm" title="Editar">
+                                            {!! Form::open(['route'=>['docsInstruction.destroy',$docsInstruction],'method'=>'DELETE', 'class'=>'formlDinamic','id'=>'eliminarRegistro']) !!}
+                                            <a href="{{ route('docsInstruction.edit',$docsInstruction) }}" class="btn btn-default btn-sm" title="Editar">
                                                 <i class="icon-pencil text-info"></i>
                                             </a>
                                             <button class="btn btn-default btn-sm" onclick="confirm('¿Realmente deseas borrar el registro?')">

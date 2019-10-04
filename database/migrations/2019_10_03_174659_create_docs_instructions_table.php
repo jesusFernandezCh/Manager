@@ -14,7 +14,7 @@ class CreateDocsInstructionsTable extends Migration
     public function up()
     {
         Schema::create('docs_instructions', function (Blueprint $table) {
-            $table->unsignedBigInteger('id');
+            $table->bigIncrements('id')->unsigned();
             $table->unsignedBigInteger('account_id')->index();
             $table->foreign('account_id')->references('id')->on('accounts');
             $table->string('cnee')->nullable();
@@ -25,8 +25,8 @@ class CreateDocsInstructionsTable extends Migration
             $table->string('bl_cnee')->nullable();
             $table->string('certs_cnee')->nullable();
             $table->tinyInteger('invoice')->nullable();
-            $table->tinyInteger('co_Forma')->nullable();
-            $table->tinyInteger('PackingList')->nullable();
+            $table->tinyInteger('co_forma')->nullable();
+            $table->tinyInteger('packing_list')->nullable();
             $table->tinyInteger('hc')->nullable();
             $table->tinyInteger('halai')->nullable();
             $table->tinyInteger('haccp')->nullable();
