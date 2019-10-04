@@ -190,7 +190,7 @@ class OperationController extends Controller
         // dd($data);
         $operation->update($data);
         $operation->save();
-        Session::flash('message-success',' Operation '. $request->name.' editado correctamente.');
+        Session::flash('message-success',' Operation '. $request->name.' actualizado correctamente.');
     }
 
     
