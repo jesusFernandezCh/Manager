@@ -76,6 +76,28 @@ $(document).ready(function() {
         t.row('.selected').remove().draw( false );
         calcular('order_quantity', 'order_quantity_budget');
     } );
+
+    $('#order_sale_currency_id').change( function () {
+        var id = $("#order_sale_currency_id").val();
+        var value = $("#"+id+"").val();
+        $("#order_sale_currency_change").val(value)
+
+         var sumaSale = $("#order_sale").val();
+         var sumChanSale = $("#order_sale_currency_change").val();
+
+        $("#order_sale_usd").val(sumaSale * sumChanSale)
+    } );
+    $('#order_purchase_currency_id').change( function () {
+        var id = $("#order_purchase_currency_id").val();
+        var value = $("#"+id+"").val();
+        $("#order_purchase_change").val(value)
+
+        var sumaPurchase = $("#order_purchase").val();
+        var sumChanPur = $("#order_purchase_change").val();
+
+        $("#order_purchase_usd").val(sumaPurchase * sumChanPur)
+
+    } );
 } );
 
 function calcular(type, input){
@@ -89,8 +111,7 @@ function calcular(type, input){
     });
 
     $("#"+input+"").val(total);
-
-
 }
+    
 
 </script>

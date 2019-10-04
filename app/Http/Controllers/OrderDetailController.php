@@ -25,6 +25,7 @@ class OrderDetailController extends Controller
         $this->operation    = $stmt;    
         $this->shelflife    = $shelflife;    
         $this->currency    = Currency::get()->pluck('code', 'id');
+        $this->value    = Currency::get();
            
     }
 
@@ -54,8 +55,11 @@ class OrderDetailController extends Controller
         $operation      = Operation::get()->pluck('code','id');
         $shelflife      = ShelfLife::get()->pluck('name','id');
         $currency = $this->currency->all();
+        $value = $this->value->all();
 
-        return view('pages.operation.orderDetail.create',compact('topMenu','admin','create','operation','shelflife','currency'));
+        $var = __('Selected..');
+        $currency = array('' => $var) + $currency;
+        return view('pages.operation.orderDetail.create',compact('topMenu','admin','create','operation','shelflife','currency', 'value'));
     }
 
     /**
