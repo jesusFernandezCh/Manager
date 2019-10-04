@@ -49,6 +49,7 @@ class CreateOperationsTable extends Migration
         $table->integer('purchase_incoterm')->nullable();
         $table->integer('purchase_curr')->nullable();
         $table->integer('p_incoterm_place')->nullable();
+        $table->integer('customer_id')->nullable();
         $table->integer('sale_incoterm')->nullable();
         $table->integer('sale_curr')->nullable();
         $table->integer('s_incoterm_place')->nullable();
