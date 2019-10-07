@@ -1,3 +1,8 @@
+<style>
+    .selected {
+        outline: thin solid;
+        }
+</style>
 <div class="form-row">
 	<table id="example" class="display" style="width:100%">
         <thead>
@@ -33,7 +38,7 @@
     </table>
     <div class="col-md-12">
     	<a id="addRow" class="btn-fab fab-right  shadow btn-primary" title="Add Product"><i class="icon-add"></i></a>
-    	<a id="button" class="btn-fab fab-right  shadow btn-primary" title="Add Product"><i class="icon-delete"></i></a>
+        <a id="buttonRM" class="btn-fab fab-right  shadow btn-primary" title="Add Product"><i class="icon-delete"></i></a>
     </div>
 	</div>
 <script>
@@ -43,16 +48,16 @@ $(document).ready(function() {
  
     $('#addRow').on( 'click', function () {
         t.row.add( [
-            counter +'{!! Form::text('order_quantity', null, [ 'class'=>'form-control r-0 light s-12', 'id'=>'order_quantity']) !!}',
+            counter +'{!! Form::number('order_quantity', null, [ 'class'=>'form-control order r-0 light s-12', 'id'=>'order_quantity', 'onChange'=> 'calcular("order_quantity", "order_quantity_budget")']) !!}',
             counter +'{!! Form::select('product', $operation, null, ['class'=>'form-control r-0 light s-12', 'id'=>'product', 'onclick'=>'inputClear(this.id)']) !!}',
             counter +'{!! Form::text('specifications', null, [ 'class'=>'form-control r-0 light s-12', 'id'=>'specifications']) !!}',
             counter +'{!! Form::text('packaging', null, ['class'=>'form-control r-0 light s-12', 'id'=>'packaging', 'onclick'=>'inputClear(this.id)']) !!}',
             counter +'{!! Form::text('brand', null, ['class'=>'form-control r-0 light s-12', 'id'=>'brand', 'onclick'=>'inputClear(this.id)']) !!}',
             counter +'{!! Form::text('plant', null, ['class'=>'form-control r-0 light s-12', 'id'=>'plant', 'onclick'=>'inputClear(this.id)']) !!}',
             counter +'{!! Form::select('shelf_life', $shelflife, null, ['class'=>'form-control r-0 light s-12', 'id'=>'shelf_life', 'onclick'=>'inputClear(this.id)']) !!}',
-            counter +'{!! Form::text('purchase_price', null, ['class'=>'form-control r-0 light s-12', 'id'=>'purchase_price', 'onclick'=>'inputClear(this.id)']) !!}',
+            counter +'{!! Form::text('purchase_price', null, ['class'=>'form-control r-0 light s-12', 'id'=>'purchase_price', 'onChange'=>'calcular("purchase_price", "order_purchase")']) !!}',
             counter +'{!! Form::text('est_purchase_sale', null, ['class'=>'form-control r-0 light s-12', 'id'=>'est_purchase_sale', 'onclick'=>'inputClear(this.id)']) !!}',
-            counter +'{!! Form::text('sale_price', null, ['class'=>'form-control r-0 light s-12', 'id'=>'sale_price', 'onclick'=>'inputClear(this.id)']) !!}',
+            counter +'{!! Form::text('sale_price', null, ['class'=>'form-control r-0 light s-12', 'id'=>'sale_price', 'onChange'=>'calcular("sale_price", "order_sale")']) !!}',
             counter +'{!! Form::text('est_sale', null, ['class'=>'form-control r-0 light s-12', 'id'=>'est_sale', 'onclick'=>'inputClear(this.id)']) !!}',
         ] ).draw( false );
     } );
@@ -60,15 +65,53 @@ $(document).ready(function() {
     $('#addRow').click();
     $('#example tbody').on( 'click', 'tr', function () {
         if ( $(this).hasClass('selected') ) {
-            $(this).removeClass('selected');
+
         }
         else {
             t.$('tr.selected').removeClass('selected');
             $(this).addClass('selected');
         }
     } );
-    $('#button').click( function () {
+    $('#buttonRM').click( function (event) {
         t.row('.selected').remove().draw( false );
+        calcular('order_quantity', 'order_quantity_budget');
+    } );
+
+    $('#order_sale_currency_id').change( function () {
+        var id = $("#order_sale_currency_id").val();
+        var value = $("#"+id+"").val();
+        $("#order_sale_currency_change").val(value)
+
+         var sumaSale = $("#order_sale").val();
+         var sumChanSale = $("#order_sale_currency_change").val();
+
+        $("#order_sale_usd").val(sumaSale * sumChanSale)
+    } );
+    $('#order_purchase_currency_id').change( function () {
+        var id = $("#order_purchase_currency_id").val();
+        var value = $("#"+id+"").val();
+        $("#order_purchase_change").val(value)
+
+        var sumaPurchase = $("#order_purchase").val();
+        var sumChanPur = $("#order_purchase_change").val();
+
+        $("#order_purchase_usd").val(sumaPurchase * sumChanPur)
+
     } );
 } );
+
+function calcular(type, input){
+    var total = 0
+    $("#"+input+"").val(0);
+    $( "input[name="+type+"]" ).each(function( value ) {
+        var sum = parseInt($( this ).val());
+        if (sum > 0) {     
+            total = total + sum;
+        }
+    });
+
+    $("#"+input+"").val(total);
+}
+    
+
 </script>

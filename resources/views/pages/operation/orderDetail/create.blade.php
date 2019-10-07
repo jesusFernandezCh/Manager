@@ -60,6 +60,8 @@
      timepicker:false,
      format:'Y-m-d'
     });
+
+    
 </script>
 @endsection
 

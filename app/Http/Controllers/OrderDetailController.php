@@ -6,22 +6,27 @@ use Illuminate\Http\Request;
 use App\OrderDetail;
 use App\Operation;
 use App\ShelfLife;
+use App\Currency;
 
 class OrderDetailController extends Controller
 {
     private $order_details;
     private $operation;
+    private $currency;
 
     /**
      * { function_description }
      *
      * @param      \App\Document  $document  The document
      */
-    public function __construct(ShelfLife $shelflife, Operation $stmt, OrderDetail $order_details)
+    public function __construct(Currency $currency, ShelfLife $shelflife, Operation $stmt, OrderDetail $order_details)
     {
         $this->order_details = OrderDetail::all();
         $this->operation    = $stmt;    
         $this->shelflife    = $shelflife;    
+        $this->currency    = Currency::get()->pluck('code', 'id');
+        $this->value    = Currency::get();
+           
     }
 
     /**
@@ -32,6 +37,8 @@ class OrderDetailController extends Controller
     public function index()
     {
         $order_details = OrderDetail::all();
+        
+
         return view('pages.operation.orderDetail.index', compact('order_details'));
     }
 
@@ -47,8 +54,12 @@ class OrderDetailController extends Controller
         $topMenu    = 'pages.operation.topMenu';
         $operation      = Operation::get()->pluck('code','id');
         $shelflife      = ShelfLife::get()->pluck('name','id');
+        $currency = $this->currency->all();
+        $value = $this->value->all();
 
-        return view('pages.operation.orderDetail.create',compact('topMenu','admin','create','operation','shelflife'));
+        $var = __('Selected..');
+        $currency = array('' => $var) + $currency;
+        return view('pages.operation.orderDetail.create',compact('topMenu','admin','create','operation','shelflife','currency', 'value'));
     }
 
     /**
