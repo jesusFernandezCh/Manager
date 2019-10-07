@@ -108,6 +108,11 @@
                         <i class="icon icon-document amber-text s-14"></i> <span>{{__('DocsInstruction')}}</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('accountCourrier.index') }}">
+                        <i class="icon icon-truck amber-text s-14"></i> <span>{{__('Account Courrier')}}</span>
+                    </a>
+                </li>
             </ul>
         </li>
         <li>

@@ -50,4 +50,12 @@ class Account extends Model
     {
         return $this->hasMany('App\DocsInstruction');
     }
+    /**
+    * Get the account for the blog accountCourriers.
+    */
+    public function accountCourriers()
+    {
+        return $this->hasMany('App\AccountCourrier');
+    }
+
 }
