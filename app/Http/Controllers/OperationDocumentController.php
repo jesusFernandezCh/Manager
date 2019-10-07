@@ -2,11 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Currier;
+use App\DocStatus;
+use App\Operation;
 use App\OperationDocument;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class OperationDocumentController extends Controller
 {
+    private $stmt;
+    private $route;
+    private $status;
+    private $courriers;
+    
+    /**
+     * Undocumented function
+     *
+     * @param OperationDocument $operationDocument
+     */
+    public function __construct(OperationDocument $operationDocument, DocStatus $status, Currier $currier)
+    {
+        $this->stmt     = $operationDocument;
+        $this->route    = 'pages.operation.topMenu';
+        $this->status   = $status->all()->pluck('name', 'id');
+        // $this->courriers = $currier->all()->pluck('name', 'id');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +36,7 @@ class OperationDocumentController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +57,8 @@ class OperationDocumentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->stmt->create($request->all());
+        Session::flash('message-success',' Document  registrado correctamente.');
     }
 
     /**
@@ -44,9 +67,18 @@ class OperationDocumentController extends Controller
      * @param  \App\OperationDocument  $operationDocument
      * @return \Illuminate\Http\Response
      */
-    public function show(OperationDocument $operationDocument)
+    public function show($operation)
     {
-        //
+        $create = true;
+        $admin  = false;
+        $route  = $this->route;
+        $status = $this->status;
+        $courriers = $this->courriers;
+        $operation = Operation::find($operation);
+        $custMailings = $this->stmt->CustomerMailingAddres($operation->customer_id);
+
+        return view('pages.operation.operationDocument.create',compact('operation','route','admin','create', 'status', 'courriers'));
+        
     }
 
     /**
@@ -57,7 +89,13 @@ class OperationDocumentController extends Controller
      */
     public function edit(OperationDocument $operationDocument)
     {
-        //
+        $create = true;
+        $admin  = false;
+        $route  = $this->route;
+        $status = $this->status;
+        $courriers = $this->courriers;
+        $operation = Operation::find($operationDocument->id_operation);
+        return view('pages.operation.operationDocument.edit',compact('operation','route','admin','create', 'status', 'courriers'));
     }
 
     /**
@@ -69,7 +107,8 @@ class OperationDocumentController extends Controller
      */
     public function update(Request $request, OperationDocument $operationDocument)
     {
-        //
+        $operationDocument->update($request->all());
+        Session::flash('message-success',' Document  actualizado correctamente.');   
     }
 
     /**
@@ -80,6 +119,7 @@ class OperationDocumentController extends Controller
      */
     public function destroy(OperationDocument $operationDocument)
     {
-        //
+        $operationDocument->delete();
+        Session::flash('message-success',' Document  elminado correctamente.');   
     }
 }

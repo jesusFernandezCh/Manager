@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class OperationDocument extends Model
 {
@@ -19,14 +20,14 @@ class OperationDocument extends Model
         'doc_status_id',
         'date_docs_ok',
         'date_insured',
-        'daate_legalized',
+        'date_legalized',
         'docs_modification',
         'date_telex',
-        'courier_to_principal',
+        'courrier_to_principal',
         'cp_ref',
         'cp_sent_on',
         'customer_mailing_a',
-        'courier_to_customer',
+        'courrier_to_customer',
         'cc_ref',
         'cc_sent_on',
         'cc_received_or',
@@ -47,6 +48,20 @@ class OperationDocument extends Model
     public function docStatus()
     {
        return $this->belongsTo('App\DocStatus', 'docStatus_id');
+    }
+
+     /**
+     * [scopePrincipals description]
+     * @param  [type] $query [description]
+     * @return [type]        [description]
+     */
+    public function scopeCustomerMailingAddres($query, $var)
+    {
+        return DB::table('account_courriers')
+            ->join('accounts', 'accounts.id', '=', 'account_id')
+            ->select('account_courriers.id','account_courriers.address')
+            ->where('account_courriers.account_id',$var)
+            ->pluck('address', 'id');
     }
 
 }
