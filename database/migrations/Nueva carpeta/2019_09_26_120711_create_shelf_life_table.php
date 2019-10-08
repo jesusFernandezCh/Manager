@@ -13,7 +13,7 @@ class CreateShelfLifeTable extends Migration
      */
     public function up()
     {
-        Schema::create('shelf_lives', function (Blueprint $table) {
+        Schema::create('shelf_lifes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateShelfLifeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shelf_life');
+        Schema::dropIfExists('shelf_lifes');
     }
 }

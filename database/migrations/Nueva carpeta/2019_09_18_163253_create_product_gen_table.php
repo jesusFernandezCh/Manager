@@ -31,6 +31,6 @@ class CreateProductGenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_gen');
+        Schema::dropIfExists('product_gens');
     }
 }
