@@ -4,7 +4,7 @@
 @endsection
 @section('top-menu')
     {{-- header --}}
-    {{--  @include($topMenu)  --}}
+     @include('pages.accountOperator.headbar')
     {{-- end header --}}
 @endsection
 
