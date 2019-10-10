@@ -48,11 +48,11 @@
                             <i class="icon icon-contacts"></i> Account Contacts
                         </a>
                     </li>
-                    {{-- <li>
-                        <a class="nav-link" id="metaType" href="{!! route('accountMetaType.index') !!}" role="tab" >
-                            <i class=""></i> Account meta type
+                    <li>
+                        <a class="nav-link" id="metaType" href="{!! route('docsInstruction.show', $account) !!}" role="tab" >
+                            <i class="icon icon icon-playlist_add"></i> {{__('DocsInstruction')}}
                         </a>
-                    </li> --}}
+                    </li>
                 @endif
             </ul>
         </div>

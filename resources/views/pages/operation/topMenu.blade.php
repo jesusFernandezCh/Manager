@@ -53,7 +53,8 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link d" id="operationDocument" href="{{route('operationDocument.show',$operation)}}" role="tab"
+                    <a class="nav-link d" id="operationDocument" href="
+                    @if(isset($operation)){{route('operationDocument.show',$operation)}}@else # @endif" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Documents')}}
                     </a>

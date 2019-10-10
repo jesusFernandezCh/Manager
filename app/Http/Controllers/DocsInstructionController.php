@@ -65,9 +65,12 @@ class DocsInstructionController extends Controller
      * @param  \App\DocsInstruction  $docsInstruction
      * @return \Illuminate\Http\Response
      */
-    public function show(DocsInstruction $docsInstruction)
+    public function show($account_id)
     {
-        //
+        $account = Account::find($account_id);
+        $accounts = $this->accounts;
+        $docsInstructions = $this->docsInstruction->all();
+        return view('pages.account.docsInstruction.index', compact('docsInstructions','accounts','account'));
     }
 
     /**
