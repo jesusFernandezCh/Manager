@@ -132,7 +132,7 @@ class AccountContactController extends Controller
         $contacts   = $this->contact->all()->where('account_id',$id);
         $countries  = $this->countries;
         $account    = $this->account->find($id);
-        return view('pages.accountOperator.accountContact.index',compact('contacts','account','countries','contact'));
+        return view('pages.accountOperator.accountContact.index',compact('contacts','account','countries','contacts'));
     }
 
     /**

@@ -22,8 +22,8 @@
         </thead>
         <tbody>
             <tr>
-                <td></td>
-                <td></td>
+                <td width="110"></td>
+                <td width="280"></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -49,7 +49,7 @@ $(document).ready(function() {
     $('#addRow').on( 'click', function () {
         t.row.add( [
             counter +'{!! Form::number('order_quantity', null, [ 'class'=>'form-control order r-0 light s-12', 'id'=>'order_quantity', 'onChange'=> 'calcular("order_quantity", "order_quantity_budget")']) !!}',
-            counter +'{!! Form::select('product', $operation, null, ['class'=>'form-control r-0 light s-12', 'id'=>'product', 'onclick'=>'inputClear(this.id)']) !!}',
+            counter +'{!! Form::select('product', $product, null, ['class'=>'form-control r-0 light s-12', 'id'=>'product', 'onclick'=>'inputClear(this.id)']) !!}',
             counter +'{!! Form::text('specifications', null, [ 'class'=>'form-control r-0 light s-12', 'id'=>'specifications']) !!}',
             counter +'{!! Form::text('packaging', null, ['class'=>'form-control r-0 light s-12', 'id'=>'packaging', 'onclick'=>'inputClear(this.id)']) !!}',
             counter +'{!! Form::text('brand', null, ['class'=>'form-control r-0 light s-12', 'id'=>'brand', 'onclick'=>'inputClear(this.id)']) !!}',
@@ -75,32 +75,17 @@ $(document).ready(function() {
     $('#buttonRM').click( function (event) {
         t.row('.selected').remove().draw( false );
         calcular('order_quantity', 'order_quantity_budget');
-    } );
-
-    $('#order_sale_currency_id').change( function () {
-        var id = $("#order_sale_currency_id").val();
-        var value = $("#"+id+"").val();
-        $("#order_sale_currency_change").val(value)
-
-         var sumaSale = $("#order_sale").val();
-         var sumChanSale = $("#order_sale_currency_change").val();
-
-        $("#order_sale_usd").val(sumaSale * sumChanSale)
-    } );
-    $('#order_purchase_currency_id').change( function () {
-        var id = $("#order_purchase_currency_id").val();
-        var value = $("#"+id+"").val();
-        $("#order_purchase_change").val(value)
-
-        var sumaPurchase = $("#order_purchase").val();
-        var sumChanPur = $("#order_purchase_change").val();
-
-        $("#order_purchase_usd").val(sumaPurchase * sumChanPur)
+        calcular('purchase_price', 'order_purchase');
+        calcular('sale_price', 'order_sale');
+        ChangePrice("order_sale_currency_id", "order_sale", "order_sale_currency_change", "order_sale_usd");
+        ChangePrice("order_purchase_currency_id", "order_purchase", "order_purchase_change", "order_purchase_usd")
 
     } );
 } );
 
 function calcular(type, input){
+
+
     var total = 0
     $("#"+input+"").val(0);
     $( "input[name="+type+"]" ).each(function( value ) {
@@ -109,9 +94,40 @@ function calcular(type, input){
             total = total + sum;
         }
     });
-
     $("#"+input+"").val(total);
+
+    ChangePrice("order_sale_currency_id", "order_sale", "order_sale_currency_change", "order_sale_usd");
+    ChangePrice("order_purchase_currency_id", "order_purchase", "order_purchase_change", "order_purchase_usd")
 }
     
+function ChangePrice(order, purchase, change, usd){
+
+    var variable = $("#"+order).val();
+    if (variable > 0) {
+        var value = $("#"+variable).val();
+        $("#"+change).val(value);
+
+        var sumaPurchase = $("#"+purchase).val();
+        var sumChanPur = $("#"+change).val();
+
+        $("#"+usd).val(sumaPurchase * sumChanPur);
+    }
+    TotalPrice()
+}
+
+function TotalPrice(){
+    var total = 0;
+
+    $(".total_usd").each(function()
+    {
+        var sum = parseInt($( this ).val());
+        if (sum > 0) {     
+            total = total + sum;
+        }
+    });
+
+    $("#usd_budget").val(total);
+
+}
 
 </script>

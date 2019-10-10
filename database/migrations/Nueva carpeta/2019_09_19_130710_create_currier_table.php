@@ -28,6 +28,6 @@ class CreateCurrierTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('currier');
+        Schema::dropIfExists('curriers');
     }
 }

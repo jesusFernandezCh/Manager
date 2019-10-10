@@ -25,9 +25,10 @@
 	                <div class="card-body">
 						{!! Form::model($docsInstruction,['route'=>["docsInstruction.update",$docsInstruction->id],'method'=>'PUT','class'=>'formlDinamic form','id'=>'DataUpdate']) !!}
 						    @include('pages.account.docsInstruction.forml')
+							{!! Form::hidden('route', route('docsInstruction.show',$docsInstruction->account_id), ['id'=>'route']) !!}
 						<br>
 						<div class="col-md-12 text-right">
-							<a href="{{ route('docsInstruction.index') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
+							<a href="{{ route('docsInstruction.show',$docsInstruction->account_id) }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
 							<button type="submit" class="btn btn-primary"><i class="icon-save mr-2"></i>{{_('Save data')}}</button>
 						</div>
 						{!! Form::close() !!}

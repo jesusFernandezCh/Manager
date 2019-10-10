@@ -10,7 +10,7 @@
 		<div class="forml-gruoup" id="ccapital_at_risk_group">
 			{!! Form::label('capital_at_risk', 'CapitalAtRisk', ['class'=>'control-label']) !!}
 			{!! Form::text('capital_at_risk', null, ['class'=>'form-control','id'=>'_capital_at_risk','onclick'=>'inputClear(this.id)']) !!}
-			<span class=capital_at_risk_span"></span>
+			<span class="capital_at_risk_span"></span>
 		</div>
 	</div>
 </div>

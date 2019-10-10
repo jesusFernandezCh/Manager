@@ -27,6 +27,6 @@ class CreateDocStatusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('doc_status');
+        Schema::dropIfExists('doc_statuses');
     }
 }

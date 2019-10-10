@@ -198,5 +198,4 @@
 			<span class="cnee_span"></span>
 		</div>
 	</div>
-	{!! Form::hidden('route', route('docsInstruction.index'), ['id'=>'route']) !!}
 </div>
