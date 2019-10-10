@@ -67,7 +67,8 @@
                 @endif
                 @if ($admin == true)
                 <li>
-                    <a class="nav-link" id="business" href="{{ route('business.index') }}" role="tab"
+                    <a class="nav-link" id="business" href="@if (isset($operation)){{ route('business.index') }}@else # 
+                    @endif" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class="icon icon-next_week"></i> {{__('Line Business')}}
                     </a>
