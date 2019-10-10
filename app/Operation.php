@@ -123,4 +123,11 @@ class Operation extends Model
             ->pluck('fullname', 'id');
     }
 
+    public function Supplier()
+    {
+        return $this->belongsTo('App\Account', 'supplier_id');
+    }
+
+
+
 }

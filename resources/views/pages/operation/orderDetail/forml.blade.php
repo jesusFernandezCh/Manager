@@ -22,8 +22,8 @@
         </thead>
         <tbody>
             <tr>
-                <td></td>
-                <td></td>
+                <td width="110"></td>
+                <td width="280"></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -49,7 +49,7 @@ $(document).ready(function() {
     $('#addRow').on( 'click', function () {
         t.row.add( [
             counter +'{!! Form::number('order_quantity', null, [ 'class'=>'form-control order r-0 light s-12', 'id'=>'order_quantity', 'onChange'=> 'calcular("order_quantity", "order_quantity_budget")']) !!}',
-            counter +'{!! Form::select('product', $operation, null, ['class'=>'form-control r-0 light s-12', 'id'=>'product', 'onclick'=>'inputClear(this.id)']) !!}',
+            counter +'{!! Form::select('product', $product, null, ['class'=>'form-control r-0 light s-12', 'id'=>'product', 'onclick'=>'inputClear(this.id)']) !!}',
             counter +'{!! Form::text('specifications', null, [ 'class'=>'form-control r-0 light s-12', 'id'=>'specifications']) !!}',
             counter +'{!! Form::text('packaging', null, ['class'=>'form-control r-0 light s-12', 'id'=>'packaging', 'onclick'=>'inputClear(this.id)']) !!}',
             counter +'{!! Form::text('brand', null, ['class'=>'form-control r-0 light s-12', 'id'=>'brand', 'onclick'=>'inputClear(this.id)']) !!}',

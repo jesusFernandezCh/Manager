@@ -44,11 +44,11 @@
                                     @foreach ($payment as $pay)
                                     <tr>
                                         <td> {{$pay->id}} </td>
-                                        <td> {{$pay->operation_id}} </td>
+                                        <td> {{$pay->operation->code}} - {{ $pay->operation->supplier->name }} - {{ $pay->operation->s_incoterm_place }}$</td>
                                         <td> {{$pay->Transaction->reference}}
                                         </td>
                                         <td> {{ date('Y/m/d', strtotime($pay->Transaction->date)) }} </td>
-                                        <td> {{$pay->amount}} </td>
+                                        <td> {{$pay->amount}}$ </td>
                                         <td> @if ($pay->type == 1) 
                                                 PAGO TOTAL
                                              @else

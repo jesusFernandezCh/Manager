@@ -8,6 +8,7 @@ use App\Http\Requests\Payment\updateRequest;
 use App\Bank_transaction;
 use App\Bank;
 use App\Payment;
+use App\Operation;
 use Session;
 
 class PaymentsController extends Controller
@@ -15,7 +16,7 @@ class PaymentsController extends Controller
     private $bank_transaction;
     private $payment;
 
-    public function __construct(Bank_transaction $bank_transaction, Payment $payment)
+    public function __construct(Operation $operation, Bank_transaction $bank_transaction, Payment $payment)
     {
         $this->payment = $payment;
         $this->bank_transaction = $bank_transaction;
@@ -30,15 +31,12 @@ class PaymentsController extends Controller
      */
     public function index()
     {
+        
         $payment = Payment::all();
-        $operation = [
-            '20190903-001 - UNICASA - 20.000$'    => '20190903-001 - UNICASA - 20.000$',
-            '20190809-002 - UNICASA - 50.000$'    => '20190809-002 - UNICASA - 50.000$',
-            '20190806-003 - UNICASA - 30.000$'    => '20190806-003 - UNICASA - 30.000$',
-            '20190704-004 - CM - 100.000$'    => '20190704-004 - CM - 100.000$',
-            '20190609-005 - UNICASA - 20.000$'    => '20190609-005 - UNICASA - 20.000$',
-            '20190525-006 - UNICASA - 40.000$'    => '20190525-006 - UNICASA - 40.000$',
-        ];
+        $queryOperation = Operation::all();
+        foreach ($queryOperation as $key => $value) {
+            $operation[$value->id]= $value->code.' - '.$value->Supplier->name. ' - '.$value->s_incoterm_place.'$';
+        }
         
         $type = [
             '1' => 'ABONO',
@@ -74,7 +72,7 @@ class PaymentsController extends Controller
             $cod[0] = "Debe agregar una transacción bancaria"; 
         }else {
             foreach ($bank_transaction as $key => $value) {
-                $cod[$value->id]= $value->reference.' - '.date('Y/m/d', strtotime($value->date)) .' - '.$value->amount; 
+                $cod[$value->id]= $value->reference.' - '.date('Y/m/d', strtotime($value->date)) .' - '.$value->amount.'$'; 
             }
         }
         $var = __('Selected..');
