@@ -17,8 +17,6 @@ class CreateAccountsTable extends Migration
         $table->bigIncrements('id')->unsigned();
         $table->string('name');
         $table->string('identification');
-        // $table->integer('account_category_id');
-        // $table->foreign('account_category_id')->references('id')->on('account_category');
         $table->string('address');
         $table->unsignedBigInteger('country_id')->index();
         $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');

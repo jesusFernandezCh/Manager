@@ -373,5 +373,4 @@
 			<span class="acomments_span"></span>
 		</div>
 	</div>
-	{!! Form::hidden('route', route('operations.index'), ['id'=>'route']) !!}
 </div>

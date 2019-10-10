@@ -47,4 +47,17 @@ class OperationShip extends Model
             ->where('accounts.id', $var)
             ->pluck('fullname', 'id');
     }
+    /**
+     * [FunctionName description]
+     * @param [type] $value [description]
+     */
+    public function scopeCnee($query, $var)
+    {
+         return DB::table('docs_instructions')
+            ->join('accounts', 'accounts.id', '=', 'docs_instructions.account_id')
+            ->join('operations','operations.customer_id', '=' ,'accounts.id')
+            ->select('docs_instructions.id','docs_instructions.cnee')
+            ->where('docs_instructions.account_id', $var)
+            ->pluck('cnee', 'id');
+    }
 }

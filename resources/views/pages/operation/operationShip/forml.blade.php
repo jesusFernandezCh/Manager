@@ -22,8 +22,8 @@
 	<div class="col-md-3">
 		<div class="" id="cust_Admin_group">
 			<i class=""></i>
-			{!! Form::label('cust_Admin', 'CustAdmin *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('cust_Admin', $supplier, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cust_Admin']) !!}
+			{!! Form::label('cust_admin', 'CustAdmin *', ['class'=>'col-form-label s-12']) !!}
+			{!! Form::select('cust_admin', $supplier, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cust_admin']) !!}
 			<span class="cust_Admin_span"></span>
 		</div>
 	</div>
@@ -55,7 +55,7 @@
 		<div class="" id="cust_ops_group">
 			<i class=""></i>
 			{!! Form::label('cnee', 'Cnee', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('cust_ops', [], null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cust_ops']) !!}
+			{!! Form::select('cust_ops', $cnees, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cust_ops']) !!}
 			<span class="cust_ops_span"></span>
 		</div>
 	</div>

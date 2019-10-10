@@ -2,33 +2,26 @@
 @section('title')
 <div class="nav-title text-white col-12"> 
 	<i class="icon-person"></i>
-	<a href="{{ route('operations.index') }}">{{__('Operation')}}</a> > {{$operation->account->name}} > {{$operation->code}}
-</div>
-<div class="col-12">
-	<div class="text-white">Status: {{$operation->status->name}}</div>
+	<a href="{{ route('operations.index') }}">{{__('OperationDocument')}}</a>
 </div>
 @endsection
 @section('top-menu')
-	@include($topMenu)
+	@include($route)
 @endsection
 @section('maincontent')
 <div class="page height-full" style="margin-top: 130px">
-	<div>
-        @include('alerts.toastr')
-    </div>
 	 <div class="container-fluid animatedParent animateOnce my-3">
         <div class="animated fadeInUpShort">
         	<div class="col-md-12">
 	            <div class="card" style="margin-top:0px">
 	                <div class="form-group">
 	                    <div class="card-header white">
-	                        <h6><i class=""></i> {{__('ORDER TERMS')}} </h6>
+	                        <h6><i class=""></i> {{__('Add New Documuent')}} </h6>
 	                    </div>
 	                </div>
 	                <div class="card-body">
-						{!! Form::model($operation,['route'=>["operations.update",$operation->id],'method'=>'PUT','class'=>'formlDinamic form','id'=>'DataUpdate']) !!}
-						@include('pages.operation.forml')
-						{{--  {!! Form::hidden('route', route('operationIndexAsoc'), ['id'=>'route']) !!}  --}}
+						{!! Form::open(['route'=>'operationDocument.store','method'=>'POST', 'class'=>'', 'id'=>'guardarRegistro']) !!}
+						@include('pages.operation.operationDocument.forml')
 						<br>
 						<div class="col-md-12 text-right">
 							<a href="{{ route('operationIndexAsoc') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
@@ -45,7 +38,7 @@
 @section('js')
 <script>
     $(document).ready(function() {
-        $('#order_terms').addClass('active');
+        $('#operationDocument').addClass('active');
     });
 
     $('.datepicker').datetimepicker({

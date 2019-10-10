@@ -1,15 +1,12 @@
 @extends('layouts.app')
 @section('title')
 <div class="nav-title text-white col-12"> 
-	<i class="icon-person"></i>
-	<a href="{{ route('operations.index') }}">{{__('Operation')}}</a> > {{$operation->account->name}} > {{$operation->code}}
-</div>
-<div class="col-12">
-	<div class="text-white">Status: {{$operation->status->name}}</div>
+	<i class="icon icon-documents3"></i>
+	<a href="{{ route('docsInstruction.index') }}">{{__('DocsInstruction')}}</a>
 </div>
 @endsection
 @section('top-menu')
-	@include($topMenu)
+	{{--  @include($topMenu)  --}}
 @endsection
 @section('maincontent')
 <div class="page height-full" style="margin-top: 130px">
@@ -22,16 +19,15 @@
 	            <div class="card" style="margin-top:0px">
 	                <div class="form-group">
 	                    <div class="card-header white">
-	                        <h6><i class=""></i> {{__('ORDER TERMS')}} </h6>
+	                        <h6><i class="icon icon-pencil"></i> {{__(' EDIT DOCS INSTRUCTION')}} </h6>
 	                    </div>
 	                </div>
 	                <div class="card-body">
-						{!! Form::model($operation,['route'=>["operations.update",$operation->id],'method'=>'PUT','class'=>'formlDinamic form','id'=>'DataUpdate']) !!}
-						@include('pages.operation.forml')
-						{{--  {!! Form::hidden('route', route('operationIndexAsoc'), ['id'=>'route']) !!}  --}}
+						{!! Form::model($docsInstruction,['route'=>["docsInstruction.update",$docsInstruction->id],'method'=>'PUT','class'=>'formlDinamic form','id'=>'DataUpdate']) !!}
+						    @include('pages.account.docsInstruction.forml')
 						<br>
 						<div class="col-md-12 text-right">
-							<a href="{{ route('operationIndexAsoc') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
+							<a href="{{ route('docsInstruction.index') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
 							<button type="submit" class="btn btn-primary"><i class="icon-save mr-2"></i>{{_('Save data')}}</button>
 						</div>
 						{!! Form::close() !!}
@@ -45,7 +41,7 @@
 @section('js')
 <script>
     $(document).ready(function() {
-        $('#order_terms').addClass('active');
+        $('#docsInstruction').addClass('active');
     });
 
     $('.datepicker').datetimepicker({

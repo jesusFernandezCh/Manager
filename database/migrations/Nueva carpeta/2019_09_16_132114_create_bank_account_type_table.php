@@ -27,6 +27,6 @@ class CreateBankAccountTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bank_account_type');
+        Schema::dropIfExists('bank_account_types');
     }
 }

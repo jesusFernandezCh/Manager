@@ -43,4 +43,19 @@ class Account extends Model
     {
         return $this->hasMany('App\Operation');
     }
+    /**
+    * Get the user that owns the DocsInstruction.
+    */
+    public function docsInstrucctions()
+    {
+        return $this->hasMany('App\DocsInstruction');
+    }
+    /**
+    * Get the account for the blog accountCourriers.
+    */
+    public function accountCourriers()
+    {
+        return $this->hasMany('App\AccountCourrier');
+    }
+
 }

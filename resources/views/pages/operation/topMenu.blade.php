@@ -53,7 +53,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link d" id="documents_2" href="#" role="tab"
+                    <a class="nav-link d" id="operationDocument" href="{{route('operationDocument.show',$operation)}}" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Documents')}}
                     </a>
