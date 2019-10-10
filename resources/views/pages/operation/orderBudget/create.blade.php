@@ -55,7 +55,7 @@
 					</tr>
 					<tr>
 						<td colspan="5">{!! Form::label('usd_budget',__('USD_Budget'), ['class'=>'col-form-label s-12']) !!}</td>
-						<td>{!! Form::text('usd_budget', null, [ 'class'=>'form-control r-0 light s-12', 'id'=>'usd_budget', 'onChange'=>'TotalPrice()']) !!}</td>
+						<td>{!! Form::text('usd_budget', null, [ 'class'=>'form-control r-0 light s-12', 'id'=>'usd_budget', 'onChange'=>'TotalPrice()', 'disabled'=>'true']) !!}</td>
 					</tr>
 				</tbody>
 			</table>
