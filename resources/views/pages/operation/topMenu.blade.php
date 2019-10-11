@@ -20,7 +20,9 @@
                 </li>
                 <li>
                     <a class="nav-link d" id="InstShipPlain" 
-                    href="@if(isset($operation)){{ route('operationShip.show',$operation) }}@else # @endif" role="tab"
+                    href="
+                    @if(isset($operation) && !isset($operationShip)){{ route('operationShip.show',$operation) }}@else # @endif"
+                     role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Inst-Ship Plain')}}
                     </a>
