@@ -44,7 +44,7 @@
                                     @foreach ($payment as $pay)
                                     <tr>
                                         <td> {{$pay->id}} </td>
-                                        <td> {{$pay->operation->code}} - {{ $pay->operation->supplier->name }} - {{ $pay->operation->s_incoterm_place }}$</td>
+                                        <td> {{$pay->operation->code}} - {{ $pay->operation->Supplier->name }} - {{ $pay->operation->s_incoterm_place }}$</td>
                                         <td> {{$pay->Transaction->reference}}
                                         </td>
                                         <td> {{ date('Y/m/d', strtotime($pay->Transaction->date)) }} </td>

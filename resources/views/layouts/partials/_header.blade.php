@@ -151,11 +151,6 @@
                         <i class="icon icon-cash-register amber-text s-14"></i> <span>{{__('Order Pmt Terms')}}</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('order_details.index') }}">
-                        <i class="icon icon-cash-register amber-text s-14"></i> <span>{{__('Order Details')}}</span>
-                    </a>
-                </li>
             </ul>
         </li>
         <li>

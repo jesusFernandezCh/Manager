@@ -2,14 +2,20 @@
 @section('title')
 <div class="nav-title text-white col-12"> 
 	<i class="icon-person"></i>
-	<a href="{{ route('order_details.index') }}">{{__('Order Detail')}}</a>
+	<a href="{{ route('operations.index') }}">{{__('Operation')}}</a> > {{$operation->account->name}} > {{$operation->code}}
+</div>
+<div class="col-12">
+	<div class="text-white">Status: {{$operation->status->name}}</div>  
 </div>
 @endsection
+@section('top-menu')
+	@include($route)
+@endsection
 @section('maincontent')
-<div class="page height-full">
-	<div class="form-group" style="margin-top: 105px">
-		
-	</div>
+<div class="page height-full" style="margin-top: 130px">
+	<div>
+        @include('alerts.toastr')
+    </div>
 	 <div class="container-fluid animatedParent animateOnce my-3 mt-5">
         <div class="animated fadeInUpShort">
         	<div class="col-md-12">
@@ -20,9 +26,8 @@
 	                    </div>
 	                </div>
 	                <div class="card-body">
-						{!! Form::open(['route'=>'order_details.store','method'=>'POST', 'class'=>'formlDinamic', 'id'=>'guardarRegistro']) !!}
+						{!! Form::open(['route'=>'order_details.store','method'=>'POST', 'class'=>'', 'id'=>'guardarRegistro']) !!}
 						@include('pages.operation.orderDetail.forml')
-						
 						<br>
 						@include('pages.operation.orderBudget.create')
 						<div class="col-md-12 text-right">
@@ -40,7 +45,7 @@
 @section('js')
 <script>
     $(document).ready(function() {
-        $('#order_terms').addClass('active');
+        $('#order_details').addClass('active');
     });
 
     $('.datepicker').datetimepicker({
