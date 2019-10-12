@@ -17,7 +17,9 @@
                 </li>
                 <li>
                     <a class="nav-link d" id="InstShipPlain" 
-                    href="@if(isset($operation)){{ route('operationShip.show',$operation) }}@else # @endif" role="tab"
+                    href="
+                    @if(isset($operation) && !isset($operationShip)){{ route('operationShip.show',$operation) }}@else # @endif"
+                     role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Inst-Ship Plain')}}
                     </a>
@@ -53,7 +55,8 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link d" id="operationDocument" href="{{route('operationDocument.show',$operation)}}" role="tab"
+                    <a class="nav-link d" id="operationDocument" href="
+                    @if(isset($operation)){{route('operationDocument.show',$operation)}}@else # @endif" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Documents')}}
                     </a>
@@ -67,7 +70,8 @@
                 @endif
                 @if ($admin == true)
                 <li>
-                    <a class="nav-link" id="business" href="{{ route('business.index') }}" role="tab"
+                    <a class="nav-link" id="business" href="@if (isset($operation)){{ route('business.index') }}@else # 
+                    @endif" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class="icon icon-next_week"></i> {{__('Line Business')}}
                     </a>

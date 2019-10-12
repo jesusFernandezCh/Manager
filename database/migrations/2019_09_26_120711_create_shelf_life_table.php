@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductLineTable extends Migration
+class CreateShelfLifeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateProductLineTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_lines', function (Blueprint $table) {
+        Schema::create('shelf_lifes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('line');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateProductLineTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_line');
+        Schema::dropIfExists('shelf_lifes');
     }
 }

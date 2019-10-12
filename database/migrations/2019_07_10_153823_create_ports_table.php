@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDocStatusTable extends Migration
+class CreatePortsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateDocStatusTable extends Migration
      */
     public function up()
     {
-        Schema::create('doc_statuses', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('ports', function (Blueprint $table) {
+            $table->bigIncrements('id')->unsigned();
             $table->string('name');
+            $table->unsignedBigInteger('country_id')->index();
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateDocStatusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('doc_status');
+        Schema::dropIfExists('ports');
     }
 }

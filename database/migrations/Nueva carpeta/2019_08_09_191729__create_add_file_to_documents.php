@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateShelfLifeTable extends Migration
+class CreateAddFileToDocuments extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateShelfLifeTable extends Migration
      */
     public function up()
     {
-        Schema::create('shelf_lives', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->timestamps();
+        Schema::table('documents', function (Blueprint $table) {
+            //$table->dropColumn('document_type_id');
+            $table->string('file', 150);
         });
     }
 
@@ -27,6 +26,8 @@ class CreateShelfLifeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shelf_life');
+        Schema::table('documents', function (Blueprint $table) {
+            //
+        });
     }
 }

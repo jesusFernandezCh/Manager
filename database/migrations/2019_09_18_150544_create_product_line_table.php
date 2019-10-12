@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCurrierTable extends Migration
+class CreateProductLineTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateCurrierTable extends Migration
      */
     public function up()
     {
-        Schema::create('curriers', function (Blueprint $table) {
+        Schema::create('product_lines', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('currier_name');
-            $table->string('description')->nullable();
+            $table->string('line');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateCurrierTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('currier');
+        Schema::dropIfExists('product_lines');
     }
 }

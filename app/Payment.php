@@ -18,6 +18,15 @@ class Payment extends Model
     {
        return $this->belongsTo('App\Bank_transaction', 'transaction');
     }
+    public function operation()
+    {
+       return $this->belongsTo('App\Operation', 'operation_id');
+    }
+    public function supplier()
+    {
+        return $this->belongsTo('App\Account', 'supplier_id');
+    }
+
     
 
 }

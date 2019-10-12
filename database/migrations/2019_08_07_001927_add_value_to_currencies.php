@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePortsTable extends Migration
+class AddValueToCurrencies extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreatePortsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ports', function (Blueprint $table) {
-            $table->bigIncrements('id')->unsigned();
-            $table->string('name');
-            $table->integer('country_id');
-            $table->string('status');
-            $table->timestamps();
+        Schema::table('currencies', function (Blueprint $table) {
+            $table->float('value', 8, 8);
         });
     }
 
@@ -29,6 +25,6 @@ class CreatePortsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ports');
+        Schema::drop('currencies');
     }
 }

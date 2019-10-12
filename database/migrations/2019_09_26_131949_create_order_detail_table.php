@@ -13,7 +13,7 @@ class CreateOrderDetailTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_detail', function (Blueprint $table) {
+        Schema::create('order_details', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('operetion_id')->index()->nullable();
             $table->foreign('operetion_id')->references('id')->on('operations')->onDelete('cascade');
@@ -24,7 +24,7 @@ class CreateOrderDetailTable extends Migration
             $table->string('brand')->nullable();
             $table->string('plant')->nullable();
             $table->unsignedBigInteger('shelflife_id')->index()->nullable();
-            $table->foreign('shelflife_id')->references('id')->on('shelf_lives')->onDelete('cascade');
+            $table->foreign('shelflife_id')->references('id')->on('shelf_lifes')->onDelete('cascade');
             $table->decimal('purchase_price')->nullable();
             $table->decimal('est_purchase_sale')->nullable();
             $table->decimal('sale_price')->nullable();
@@ -40,6 +40,6 @@ class CreateOrderDetailTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_detail');
+        Schema::dropIfExists('order_details');
     }
 }

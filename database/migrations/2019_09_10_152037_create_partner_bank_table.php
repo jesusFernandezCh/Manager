@@ -38,6 +38,6 @@ class CreatePartnerBankTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('partner_bank');
+        Schema::dropIfExists('partner_banks');
     }
 }

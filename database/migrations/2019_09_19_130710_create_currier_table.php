@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBankAccountTypeTable extends Migration
+class CreateCurrierTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateBankAccountTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('bank_account_types', function (Blueprint $table) {
+        Schema::create('curriers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('currier_name');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateBankAccountTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bank_account_type');
+        Schema::dropIfExists('curriers');
     }
 }

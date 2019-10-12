@@ -6,22 +6,29 @@ use Illuminate\Http\Request;
 use App\OrderDetail;
 use App\Operation;
 use App\ShelfLife;
+use App\Currency;
+use App\ProductGen;
 
 class OrderDetailController extends Controller
 {
     private $order_details;
     private $operation;
+    private $currency;
 
     /**
      * { function_description }
      *
      * @param      \App\Document  $document  The document
      */
-    public function __construct(ShelfLife $shelflife, Operation $stmt, OrderDetail $order_details)
+    public function __construct(ProductGen $product_gen,Currency $currency, ShelfLife $shelflife, Operation $stmt, OrderDetail $order_details)
     {
         $this->order_details = OrderDetail::all();
         $this->operation    = $stmt;    
         $this->shelflife    = $shelflife;    
+        $this->currency    = Currency::get()->pluck('code', 'id');
+        $this->value    = Currency::get();
+        $this->product_gen    = ProductGen::get();
+           
     }
 
     /**
@@ -32,7 +39,10 @@ class OrderDetailController extends Controller
     public function index()
     {
         $order_details = OrderDetail::all();
-        return view('pages.operation.orderDetail.index', compact('order_details'));
+        $topMenu    = 'pages.operation.topMenu';
+        
+
+        return view('pages.operation.orderDetail.index', compact('order_details','topMenu'));
     }
 
     /**
@@ -42,13 +52,24 @@ class OrderDetailController extends Controller
      */
     public function create()
     {
+        
+
         $admin      = false;
         $create     = true;
         $topMenu    = 'pages.operation.topMenu';
         $operation      = Operation::get()->pluck('code','id');
         $shelflife      = ShelfLife::get()->pluck('name','id');
+        $currency = $this->currency->all();
+        $value = $this->value->all();
+        $product_gen = $this->product_gen->all();
 
-        return view('pages.operation.orderDetail.create',compact('topMenu','admin','create','operation','shelflife'));
+        foreach ($product_gen as $key => $product_gen) {
+            $product[$product_gen->id]= $product_gen->Products->line.' - ' .$product_gen->gen.' - '.$product_gen->basic_spec.' - '.$product_gen->cold_chain;
+        }
+
+        $var = __('Selected..');
+        $currency = array('' => $var) + $currency;
+        return view('pages.operation.orderDetail.create',compact('topMenu','admin','create','operation','shelflife','currency', 'value','product'));
     }
 
     /**

@@ -52,8 +52,9 @@ class OperationShipController extends Controller
      */
     public function store(OperationShipRequest $request)
     {
-        $this->operationShip->create($request->all());
+        $operationShip = $this->operationShip->create($request->all());
         Session::flash('message-success',' Inst-Ship Plain registrado correctamente.');
+        return $this->edit($operationShip);
     }
 
     /**
@@ -64,13 +65,21 @@ class OperationShipController extends Controller
      */
     public function show($operation_id)
     {
-        $operation      = $this->operation->find($operation_id);
-        $cnees          = $this->operationShip->Cnee($operation->customer_id);
-        $supplier       = $this->operationShip->Supplier($operation->supplier_id);
-        $admin          = false;
-        $create         = true; 
-        $topMenu        = "pages.operation.topMenu";
-        return view('pages.operation.operationShip.create',compact("topMenu","admin","create",'operation','supplier','cnees'));
+        //consulta si existe registro asociados a la operación 
+        $operationShip = $this->operationShip->where('operation',$operation_id)->first();
+        if (isset($operationShip->id)) {
+            //si existe llama a la funcion edit
+            return $this->edit($operationShip);
+            //caso contrario muestra el formulario para crearlo
+        }else{
+            $operation      = $this->operation->find($operation_id);
+            $cnees          = $this->operationShip->Cnee($operation->customer_id);
+            $supplier       = $this->operationShip->Supplier($operation->supplier_id);
+            $admin          = false;
+            $create         = true; 
+            $topMenu        = "pages.operation.topMenu";
+            return view('pages.operation.operationShip.create',compact("topMenu","admin","create",'operation','supplier','cnees'));
+        }
     }
 
     /**
@@ -81,14 +90,15 @@ class OperationShipController extends Controller
      */
     public function edit(operationShip $operationShip)
     {
-        $data = $request->all();
-        if(null == $request->input('labels_received')) $data = Arr::add($data,'labels_received', 0);
-        if(null == $request->input('labels_oK')) $data = Arr::add($data,'labels_oK', 0);
-        if(null == $request->input('licence_ok')) $data = Arr::add($data,'licence_ok', 0);
-        $operationShip->update($data);
-        Session::flash('message-success',' Inst-Ship Plain actualizado correctamente.');
+        $operation      = $this->operation->find($operationShip->operation);
+        $cnees          = $this->operationShip->Cnee($operation->customer_id);
+        $supplier       = $this->operationShip->Supplier($operation->supplier_id);
+        $admin          = false;
+        $create         = true; 
+        $topMenu        = "pages.operation.topMenu";
+        return view('pages.operation.operationShip.edit',compact('operationShip','topMenu','admin','create','operation','supplier','cnees'));
     }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -98,7 +108,12 @@ class OperationShipController extends Controller
      */
     public function update(Request $request, operationShip $operationShip)
     {
-        //
+        $data = $request->all();
+        if(null == $request->input('labels_received')) $data = Arr::add($data,'labels_received', 0);
+        if(null == $request->input('labels_oK')) $data = Arr::add($data,'labels_oK', 0);
+        if(null == $request->input('licence_ok')) $data = Arr::add($data,'licence_ok', 0);
+        $operationShip->update($data);
+        Session::flash('message-success',' Inst-Ship Plain actualizado correctamente.');
     }
 
     /**

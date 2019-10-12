@@ -13,11 +13,11 @@ class CreateOperationBudgetTable extends Migration
      */
     public function up()
     {
-        Schema::create('operation_budget', function (Blueprint $table) {
+        Schema::create('operation_budgets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('operetion_id')->index();
             $table->foreign('operetion_id')->references('id')->on('operations')->onDelete('cascade');
-            $table->decimal('order_quantity')->nullable();
+            $table->decimal('order_quantity_budget')->nullable();
             $table->decimal('order_sale')->nullable();
             $table->unsignedBigInteger('order_sale_currency_id')->index()->nullable();
             $table->foreign('order_sale_currency_id')->references('id')->on('currencies')->onDelete('cascade');
@@ -44,6 +44,6 @@ class CreateOperationBudgetTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('operation_budget');
+        Schema::dropIfExists('operation_budgets');
     }
 }
