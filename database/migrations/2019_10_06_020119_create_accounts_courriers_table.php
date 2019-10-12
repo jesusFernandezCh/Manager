@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAccountCourriersTable extends Migration
+class CreateAccountsCourriersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAccountCourriersTable extends Migration
      */
     public function up()
     {
-        Schema::create('account_courriers', function (Blueprint $table) {
+        Schema::create('accounts_courriers', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->unsignedBigInteger('account_id')->index();
             $table->foreign('account_id')->references('id')->on('accounts');
@@ -21,6 +21,7 @@ class CreateAccountCourriersTable extends Migration
             $table->text('address')->nullable();
             $table->string('contact')->nullable();
             $table->string('telf')->nullable();
+           
         });
     }
 
@@ -31,6 +32,6 @@ class CreateAccountCourriersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('account_courriers');
+        Schema::dropIfExists('accounts_courriers');
     }
 }
