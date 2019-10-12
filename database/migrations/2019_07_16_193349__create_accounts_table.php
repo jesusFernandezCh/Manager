@@ -16,12 +16,14 @@ class CreateAccountsTable extends Migration
         Schema::create('accounts', function (Blueprint $table) {
         $table->bigIncrements('id')->unsigned();
         $table->string('name');
-        $table->string('identification');
-        $table->string('address');
+        $table->string('identification')->nullable();
+        $table->string('website')->nullable();
+        $table->string('address')->nullable();
+        $table->string('zipcode')->nullable();
         $table->unsignedBigInteger('country_id')->index();
         $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
-        $table->string('phone');
-        $table->string('email');
+        $table->string('phone')->nullable();
+        $table->string('email')->nullable();
         $table->timestamps();
         });
     }

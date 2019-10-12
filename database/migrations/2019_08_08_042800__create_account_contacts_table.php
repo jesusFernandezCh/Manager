@@ -13,17 +13,17 @@ class CreateAccountContactsTable extends Migration
      */
     public function up()
     {
-        Schema::create('account_contact', function (Blueprint $table) {
+        Schema::create('account_contacts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('fullname');
             $table->unsignedBigInteger('account_id')->index();
-            $table->foreign('account_id')->references('id')->on('account')->onDelete('cascade');
+            $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
             $table->string('phone_company');
             $table->string('phone_mobile');
             $table->string('email');
             $table->string('departament');
             $table->unsignedBigInteger('country_id')->index();
-            $table->foreign('country_id')->references('id')->on('country')->onDelete('cascade');
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->string('address');
             $table->string('comments');
         });
@@ -36,6 +36,6 @@ class CreateAccountContactsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('account_contact');
+        Schema::drop('account_contacts');
     }
 }

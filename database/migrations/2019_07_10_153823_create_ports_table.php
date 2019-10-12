@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOperationStatusTable extends Migration
+class CreatePortsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateOperationStatusTable extends Migration
      */
     public function up()
     {
-        Schema::create('operation_status', function (Blueprint $table) {
+        Schema::create('ports', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
+            $table->string('name');
+            $table->unsignedBigInteger('country_id')->index();
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateOperationStatusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('operation_states');
+        Schema::dropIfExists('ports');
     }
 }
