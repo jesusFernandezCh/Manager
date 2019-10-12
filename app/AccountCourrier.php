@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AccountCourrier extends Model
 {
-    protected $table    = 'accounts_courriers';
-    public $timestamps  = false;
+    public $timestamps = false;
     
      /**
      * The attributes that are mass assignable.
