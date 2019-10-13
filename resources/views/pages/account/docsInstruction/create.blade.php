@@ -9,7 +9,7 @@
 			</div>
 			<div class="modal-body">
 				@include('pages.account.docsInstruction.forml')
-				{!! Form::hidden('route', route('docsInstruction.show',$account), ['id'=>'route']) !!}
+				{!! Form::hidden('route', route('docsInstruction.index'), ['id'=>'route']) !!}
 			</div>
 			<br>
 			<div class="modal-footer">
