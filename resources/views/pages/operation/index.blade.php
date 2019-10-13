@@ -45,7 +45,9 @@
                                             <div>
                                                 {{$operation->code}}
                                                 <div>
-                                                    <small class="text-info">{{$operation->businessLines->name}}</small>
+                                                    @if (isset($operation->businessLines))
+                                                        <small class="text-info">{{$operation->businessLines->name}}</small>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </td>
@@ -53,7 +55,9 @@
                                             <div>
                                                 {{$operation->account()->where('id',$operation->principal_id)->first()->name}}
                                                 <div>
-                                                    <small class="text-info">{{$operation->operator->fullname}}</small>
+                                                    @if (isset($operatio->operator))
+                                                        <small class="text-info">{{$operation->operator->fullname}}</small>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </td>
@@ -63,7 +67,9 @@
                                         <td>{{$operation->total_amount}}</td>
                                         <td>
                                             <span class="badge badge-primary rounded-circle r-5">
-                                                {{$operation->status->name}}
+                                                @if (isset($operation->status))
+                                                    {{$operation->status->name}}
+                                                @endif
                                             </span>
                                         </td>
                                         <td class="text-center">
