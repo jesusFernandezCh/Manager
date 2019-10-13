@@ -82,7 +82,7 @@
         <div class="" id="customer_mailing_a_group">
             <i class=""></i>
             {!! Form::label('customer_mailing_a', 'CustomerMailingAddress', ['class'=>'col-form-label s-12']) !!}
-            {!! Form::select('customer_mailing_a', [1 => 'CustomerMailingAddress'], null, ['class'=>'form-control r-0 light s-12', 'id'=>'_customer_mailing_a']) !!}
+            {!! Form::select('customer_mailing_a', $custMailings, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_customer_mailing_a']) !!}
             <span class="customer_mailing_a_span"></span>
         </div>
     </div>

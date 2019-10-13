@@ -9,7 +9,7 @@
 </div>
 @endsection
 @section('top-menu')
-	@include($route)
+	@include($topMenu)
 @endsection
 @section('maincontent')
 <div class="page height-full" style="margin-top: 130px">
