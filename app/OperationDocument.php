@@ -57,10 +57,10 @@ class OperationDocument extends Model
      */
     public function scopeCustomerMailingAddres($query, $var)
     {
-        return DB::table('account_courriers')
+        return DB::table('accounts_courriers')
             ->join('accounts', 'accounts.id', '=', 'account_id')
-            ->select('account_courriers.id','account_courriers.address')
-            ->where('account_courriers.account_id',$var)
+            ->select('accounts_courriers.id','accounts_courriers.address')
+            ->where('accounts_courriers.account_id',$var)
             ->pluck('address', 'id');
     }
 
