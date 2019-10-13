@@ -194,11 +194,11 @@
 		</div>
 	</div>
 	<div class="col-md-3">
-		<div class="" id="payment_id">
+		<div class="" id="s_modality">
 			<i class=""></i>
-			{!! Form::label('payment_id', 'Payment', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('payment_id', $payment_terms, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_payment_id']) !!}
-			<span class="payment_id_span"></span>
+			{!! Form::label('s_modality', 'SModality', ['class'=>'col-form-label s-12']) !!}	
+			{!! Form::select('s_modality', $payment_terms, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_s_modality']) !!}
+			<span class="s_modality_span"></span>
 		</div>
 	</div>
 	<div class="col-md-1">

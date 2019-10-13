@@ -28,8 +28,8 @@ class CreateOperationDocumentsTable extends Migration
             $table->foreign('courrier_to_principal')->references('id')->on('curriers');
             $table->string('cp_ref')->nullable();
             $table->date('cp_sent_on')->nullable();
-            $table->unsignedBigInteger('customer_mailing_a')->nullable();
-            $table->foreign('customer_mailing_a')->references('id')->on('accounts_courriers');
+            $table->unsignedBigInteger('customer_mailing_a')->index()->nullable();
+            $table->foreign('customer_mailing_a')->references('id')->on('account_courriers');
             $table->integer('courrier_to_customer')->nullable();
             $table->string('cc_ref')->nullable();
             $table->date('cc_sent_on')->nullable();
