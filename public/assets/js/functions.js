@@ -341,3 +341,25 @@ function dataTableExport(title, columns) {
          return false;
      }
  }
+/**
+ * Funcion combo box: agrega data a combos dependientes
+ * @param {valor a comparar} val 
+ * @param {route del controlador y funcion} route 
+ * @param {slelect resecptor de data} select
+ */
+ function comboBoxCustomer(route, select) {
+    $.get(route, function (data) {
+        var n = data.length;
+        if(n > 0){
+            $.each(data, function(key, value){
+                $('#_supplier_bank_id').empty().append("<option value =" + value.id + ">" + value.bank_name + "</option>");
+                $('#_customer_bank_id').empty().append("<option value =" + value.id + ">" + value.bank_name + "</option>");
+            });
+        }
+        else{
+            $('#_supplier_bank_id').empty().append("<option value =''>Sin Resultados</option>");
+            $('#_customer_bank_id').empty().append("<option value =''>Sin Resultados</option>");
+        }
+    });
+ }
+ 

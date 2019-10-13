@@ -53,7 +53,7 @@
 		<div class="" id="customer_id_group">
 			<i class=""></i>
 			{!! Form::label('customer_id', 'Customer', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('customer_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_customer_id']) !!}
+			{!! Form::select('customer_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_customer_id', 'onchange'=>'comboBoxCustomer( "http://localhost/Manager/public/comboCustomerBank/"+this.value , "[_supplier_bank_id]")']) !!}
 			<span class="customer_id_span"></span>
 		</div>
 	</div>
@@ -159,7 +159,7 @@
 		<div class="" id="supplier_bank_id">
 			<i class=""></i>
 			{!! Form::label('supplier_bank_id', 'Supplier Bank', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('supplier_bank_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_bank_id']) !!}
+			{!! Form::select('supplier_bank_id', [""=>"Seleccione"], null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_bank_id']) !!}
 			<span class="supplier_bank_id_span"></span>
 		</div>
 	</div>
@@ -167,7 +167,7 @@
 		<div class="" id="customer_bank_id">
 			<i class=""></i>
 			{!! Form::label('customer_bank_id', 'Customer Bank', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('customer_bank_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_bank_id']) !!}
+			{!! Form::select('customer_bank_id', [""=>"Seleccione"], null, ['class'=>'form-control r-0 light s-12', 'id'=>'_customer_bank_id']) !!}
 			<span class="customer_bank_id_span"></span>
 		</div>
 	</div>

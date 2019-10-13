@@ -16,6 +16,7 @@ use App\OrderPmtTerm;
 use App\CargoUnit;
 use App\Logunit;
 use App\BusinessLine;
+use App\Partner_bank;
 use Illuminate\Http\Request;
 use App\Http\Requests\Operation\operationRequest;
 use Illuminate\Support\Facades\Auth;
@@ -204,5 +205,12 @@ class OperationController extends Controller
     {
         $operation->delete();
         Session::flash('message-success',' Operation '. $operation->name.' eliminado correctamente.');
+    }
+
+    public function customer_bank($customer_id)
+    {
+        $banks = Partner_bank::get()->where('company_id',$customer_id);
+        return response()->json($banks);
+        
     }
 }
