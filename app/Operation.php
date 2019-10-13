@@ -16,7 +16,7 @@ class Operation extends Model
    protected $fillable = [
        'code',
        'date_order',
-       'status_id',
+       'operation_status_id',
        'business_line_id',
        'principal_id',
        'supplier_id',
@@ -37,7 +37,7 @@ class Operation extends Model
        'p_modality',
        'p_advanced',
        'p_days',
-       'payment',
+       's_modality',
        's_advanced',
        's_days',
        'purchase_incoterm',
@@ -92,7 +92,7 @@ class Operation extends Model
      */
     public function status()
     {
-        return $this->belongsTo('App\OperationStatus', 'status_id');
+        return $this->belongsTo('App\OperationStatus', 'operation_status_id');
     }
 
     /**
