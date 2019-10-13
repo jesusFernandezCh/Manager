@@ -3,6 +3,7 @@
         outline: thin solid;
         }
 </style>
+{!! Form::hidden('operation_id', $operation->id, ['class'=>'form-control']) !!}
 <div class="form-row">
 	<table id="example" class="display" style="width:100%">
         <thead>
@@ -48,17 +49,17 @@ $(document).ready(function() {
  
     $('#addRow').on( 'click', function () {
         t.row.add( [
-            counter +'{!! Form::number('order_quantity', null, [ 'class'=>'form-control order r-0 light s-12', 'id'=>'order_quantity', 'onChange'=> 'calcular("order_quantity", "order_quantity_budget")']) !!}',
-            counter +'{!! Form::select('product', $product, null, ['class'=>'form-control r-0 light s-12', 'id'=>'product', 'onclick'=>'inputClear(this.id)']) !!}',
-            counter +'{!! Form::text('specifications', null, [ 'class'=>'form-control r-0 light s-12', 'id'=>'specifications']) !!}',
-            counter +'{!! Form::text('packaging', null, ['class'=>'form-control r-0 light s-12', 'id'=>'packaging', 'onclick'=>'inputClear(this.id)']) !!}',
-            counter +'{!! Form::text('brand', null, ['class'=>'form-control r-0 light s-12', 'id'=>'brand', 'onclick'=>'inputClear(this.id)']) !!}',
-            counter +'{!! Form::text('plant', null, ['class'=>'form-control r-0 light s-12', 'id'=>'plant', 'onclick'=>'inputClear(this.id)']) !!}',
-            counter +'{!! Form::select('shelf_life', $shelflife, null, ['class'=>'form-control r-0 light s-12', 'id'=>'shelf_life', 'onclick'=>'inputClear(this.id)']) !!}',
-            counter +'{!! Form::text('purchase_price', null, ['class'=>'form-control r-0 light s-12', 'id'=>'purchase_price', 'onChange'=>'calcular("purchase_price", "order_purchase")']) !!}',
-            counter +'{!! Form::text('est_purchase_sale', null, ['class'=>'form-control r-0 light s-12', 'id'=>'est_purchase_sale', 'onclick'=>'inputClear(this.id)']) !!}',
-            counter +'{!! Form::text('sale_price', null, ['class'=>'form-control r-0 light s-12', 'id'=>'sale_price', 'onChange'=>'calcular("sale_price", "order_sale")']) !!}',
-            counter +'{!! Form::text('est_sale', null, ['class'=>'form-control r-0 light s-12', 'id'=>'est_sale', 'onclick'=>'inputClear(this.id)']) !!}',
+            counter +'{!! Form::number('order_quantity[]', null, [ 'class'=>'form-control order_quantity r-0 light s-12', 'id'=>'order_quantity', 'onChange'=> 'calcular("order_quantity", "order_quantity_budget")']) !!}',
+            counter +'{!! Form::select('product[]', $product, null, ['class'=>'form-control r-0 light s-12', 'id'=>'product', 'onclick'=>'inputClear(this.id)']) !!}',
+            counter +'{!! Form::text('specifications[]', null, [ 'class'=>'form-control r-0 light s-12', 'id'=>'specifications']) !!}',
+            counter +'{!! Form::text('packaging[]', null, ['class'=>'form-control r-0 light s-12', 'id'=>'packaging', 'onclick'=>'inputClear(this.id)']) !!}',
+            counter +'{!! Form::text('brand[]', null, ['class'=>'form-control r-0 light s-12', 'id'=>'brand', 'onclick'=>'inputClear(this.id)']) !!}',
+            counter +'{!! Form::text('plant[]', null, ['class'=>'form-control r-0 light s-12', 'id'=>'plant', 'onclick'=>'inputClear(this.id)']) !!}',
+            counter +'{!! Form::select('shelf_life[]', $shelflife, null, ['class'=>'form-control r-0 light s-12', 'id'=>'shelf_life', 'onclick'=>'inputClear(this.id)']) !!}',
+            counter +'{!! Form::text('purchase_price[]', null, ['class'=>'form-control r-0 light s-12', 'id'=>'purchase_price', 'onChange'=>'calcular("purchase_price", "order_purchase")']) !!}',
+            counter +'{!! Form::text('est_purchase_sale[]', null, ['class'=>'form-control r-0 light s-12', 'id'=>'est_purchase_sale', 'onclick'=>'inputClear(this.id)']) !!}',
+            counter +'{!! Form::text('sale_price[]', null, ['class'=>'form-control r-0 light s-12', 'id'=>'sale_price', 'onChange'=>'calcular("sale_price", "order_sale")']) !!}',
+            counter +'{!! Form::text('est_sale[]', null, ['class'=>'form-control r-0 light s-12', 'id'=>'est_sale', 'onclick'=>'inputClear(this.id)']) !!}',
         ] ).draw( false );
     } );
     // Automatically add a first row of data
@@ -88,13 +89,15 @@ function calcular(type, input){
 
     var total = 0
     $("#"+input+"").val(0);
-    $( "input[name="+type+"]" ).each(function( value ) {
+    $( "input[id="+type+"]" ).each(function( value ) {
         var sum = parseInt($( this ).val());
+        
         if (sum > 0) {     
             total = total + sum;
         }
     });
     $("#"+input+"").val(total);
+    $("#"+input+"_val").val(total);
 
     ChangePrice("order_sale_currency_id", "order_sale", "order_sale_currency_change", "order_sale_usd");
     ChangePrice("order_purchase_currency_id", "order_purchase", "order_purchase_change", "order_purchase_usd")
