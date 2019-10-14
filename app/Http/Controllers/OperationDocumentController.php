@@ -57,8 +57,9 @@ class OperationDocumentController extends Controller
      */
     public function store(Request $request)
     {
-        $this->stmt->create($request->all());
+        $operationDocument = $this->stmt->create($request->all());
         Session::flash('message-success',' Document  registrado correctamente.');
+        return $this->edit($operationDocument);
     }
 
     /**
@@ -67,18 +68,25 @@ class OperationDocumentController extends Controller
      * @param  \App\OperationDocument  $operationDocument
      * @return \Illuminate\Http\Response
      */
-    public function show($operation)
+    public function show($operation_id)
     {
+        //consulta si existe registro asociados a la operación 
+        $operationDocument = $this->stmt->where('operation_id',$operation_id)->first();
+        if (isset($operationDocument->id)) {
+            //si existe llama a la funcion edit
+            return $this->edit($operationDocument);
+            //caso contrario muestra el formulario para crearlo
+        }else{
         $create = true;
         $admin  = false;
         $route  = $this->route;
         $status = $this->status;
         $courriers = $this->courriers;
-        $operation = Operation::find($operation);
+        $operation = Operation::find($operation_id);
         $custMailings = $this->stmt->CustomerMailingAddres($operation->customer_id);
 
         return view('pages.operation.operationDocument.create',compact('operation','route','admin','create', 'status', 'courriers','custMailings'));
-        
+        }
     }
 
     /**
@@ -91,12 +99,12 @@ class OperationDocumentController extends Controller
     {
         $create = true;
         $admin  = false;
-        $route  = $this->route;
+        $topMenu  = $this->route;
         $status = $this->status;
         $courriers = $this->courriers;
-        $operation = Operation::find($operationDocument->id_operation);
+        $operation = Operation::find($operationDocument->operation_id);
         $custMailings = $this->stmt->CustomerMailingAddres($operation->customer_id);
-        return view('pages.operation.operationDocument.edit',compact('operation','route','admin','create', 'status', 'courriers','custMailings'));
+        return view('pages.operation.operationDocument.edit',compact('operationDocument','operation','topMenu','admin','create', 'status', 'courriers','custMailings'));
     }
 
     /**
