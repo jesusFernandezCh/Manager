@@ -46,7 +46,7 @@
 @section('js')
 <script>
     $(document).ready(function() {
-        $('#InstShipPlain').addClass('active');
+        $('#operationDocument').addClass('active');
     });
 
     $('.datepicker').datetimepicker({
