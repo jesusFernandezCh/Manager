@@ -26,7 +26,7 @@ class OperationDocumentController extends Controller
         $this->stmt     = $operationDocument;
         $this->route    = 'pages.operation.topMenu';
         $this->status   = $status->all()->pluck('name', 'id');
-        // $this->courriers = $currier->all()->pluck('name', 'id');
+        $this->courriers = $currier->all()->pluck('currier_name', 'id');
     }
     
     /**
@@ -77,7 +77,7 @@ class OperationDocumentController extends Controller
         $operation = Operation::find($operation);
         $custMailings = $this->stmt->CustomerMailingAddres($operation->customer_id);
 
-        return view('pages.operation.operationDocument.create',compact('operation','route','admin','create', 'status', 'courriers'));
+        return view('pages.operation.operationDocument.create',compact('operation','route','admin','create', 'status', 'courriers','custMailings'));
         
     }
 
@@ -95,7 +95,8 @@ class OperationDocumentController extends Controller
         $status = $this->status;
         $courriers = $this->courriers;
         $operation = Operation::find($operationDocument->id_operation);
-        return view('pages.operation.operationDocument.edit',compact('operation','route','admin','create', 'status', 'courriers'));
+        $custMailings = $this->stmt->CustomerMailingAddres($operation->customer_id);
+        return view('pages.operation.operationDocument.edit',compact('operation','route','admin','create', 'status', 'courriers','custMailings'));
     }
 
     /**
