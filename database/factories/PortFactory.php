@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 use App\Port;
-use Illuminate\Support\Str;
+use App\Country;
 use Faker\Generator as Faker;
 
 /*
@@ -19,6 +19,7 @@ use Faker\Generator as Faker;
 $factory->define(Port::class, function (Faker $faker) {
     return [
         'name'          => $faker->name,
-        'description' 	=> $faker->text($maxNbChars = 100),
+        'country_id' 	=> Country::all()->random()->id,
+        'status'        => $faker->randomElement($array = array ('active','inactive','suspended')),
     ];
 });

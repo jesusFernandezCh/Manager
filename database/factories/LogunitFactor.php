@@ -18,8 +18,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Logunit::class, function (Faker $faker) {
     return [
-        'name' 			  => $faker->company,
-        'description' => $faker->text($maxNbChars = 120),
-        'active' 		  => $faker->randomElement($array = [ 0 , 1 ]),
+        'name' 			    => $faker->company,
+        'description'       => $faker->text($maxNbChars = 120),
+        'active' 		    => $faker->randomElement($array = [ 0 , 1 ]),
     ];
 });

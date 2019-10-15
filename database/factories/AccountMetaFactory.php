@@ -3,7 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 use App\AccountMeta;
 use App\Account;
-use App\AccountMetaType as MetaType;
+use App\AccountMetaType;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -21,7 +21,7 @@ use Faker\Generator as Faker;
 $factory->define(AccountMeta::class, function (Faker $faker) {
     return [
         'account_id' 			=> Account::all()->random()->id,
-        'account_meta_type_id' 	=> MetaType::all()->random()->id,
+        'account_type_id' 	    => AccountMetaType::all()->random()->id,
         'value'    				=> $faker->randomElement($array = array ('active','inactive','suspended')),
     ];
 });
