@@ -89,7 +89,7 @@ class OrderDetailController extends Controller
             $order_product->est_sale = $request->est_sale[$i];
 
             $order_product->save();
-
+        }
             $order_details = new OrderDetail;
             $order_details->operation_id = $request->operation_id;
 
@@ -116,9 +116,6 @@ class OrderDetailController extends Controller
 
             Session::flash('message-success',' Order Details creado correctamente.');   
             return back();
-
-        }
-
 
     }
 
@@ -180,9 +177,6 @@ class OrderDetailController extends Controller
             $value = $this->value->all();
             $currency = $this->currency->all();
             $order_budget = OperationBudget::where('operation_id', $operation->id)->get();
-
-            
-
             foreach ($product_gen as $key => $product_gen) {
             $product[$product_gen->id]= $product_gen->Products->line.' - ' .$product_gen->gen.' - '.$product_gen->basic_spec.' - '.$product_gen->cold_chain;
             }
@@ -199,7 +193,7 @@ class OrderDetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        echo 'hola';
     }
 
     /**
