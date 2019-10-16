@@ -206,11 +206,28 @@ class OperationController extends Controller
         $operation->delete();
         Session::flash('message-success',' Operation '. $operation->name.' eliminado correctamente.');
     }
-
+    /**
+     * Undocumented function
+     *
+     * @param [type] $customer_id
+     * @return void
+     */
     public function customer_bank($customer_id)
     {
         $banks = Partner_bank::get()->where('company_id',$customer_id);
         return response()->json($banks);
+        
+    }
+    /**
+     * Undocumented function
+     *
+     * @param [type] $supplier_id
+     * @return void
+     */
+    public function supplierComercial($supplier_id)
+    {
+        $supplierCommercials = AccountContact::get()->where('account_id',$supplier_id);
+        return response()->json($supplierCommercials);
         
     }
 }
