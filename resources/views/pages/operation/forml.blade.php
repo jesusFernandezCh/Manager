@@ -45,7 +45,7 @@
 		<div class="" id="suplier_id_group">
 			<i class=""></i>
 			{!! Form::label('supplier_id', 'Supplier *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('supplier_id', $supplier, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_id']) !!}
+			{!! Form::select('supplier_id', $supplier, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_id', 'onchange'=>'comboBoxSupplierC("http://localhost/Manager/public/supplierComercial/"+this.value)']) !!}
 			<span class="supplier_id_span"></span>
 		</div>
 	</div>
@@ -61,7 +61,7 @@
 		<div class="" id="suplier_commercial_id_group">
 			<i class=""></i>
 			{!! Form::label('suplier_commercial_id', 'Supplier Commercial', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('supplier_commercil_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_commercial_id']) !!}
+			{!! Form::select('supplier_commercial_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_commercial_id']) !!}
 			<span class="supplier_commercial_id_span"></span>
 		</div>
 	</div>

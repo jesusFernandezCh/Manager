@@ -362,4 +362,26 @@ function dataTableExport(title, columns) {
         }
     });
  }
+ /**
+ * Funcion combo box: agrega data a combos dependientes
+ * @param {valor a comparar} val 
+ * @param {route del controlador y funcion} route 
+ * @param {slelect resecptor de data} select
+ */
+function comboBoxSupplierC(route, select) {
+    $.get(route, function (data) {
+        var n = data.length;
+        console.log(data);
+        if(data){
+            $.each(data, function(key, value){
+                $('#_supplier_commercial_id').empty().append("<option value =" + value.id + ">" + value.fullname + "</option>");
+                $('#_cus_commercial_id_id').empty().append("<option value =" + value.id + ">" + value.fullname + "</option>");
+            });
+        }
+        else{
+            $('#_supplier_commercial_id').empty().append("<option value =''>Sin Resultados</option>");
+            $('#_cus_commercial_id_id').empty().append("<option value =''>Sin Resultados</option>");
+        }
+    });
+ }
  

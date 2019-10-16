@@ -14,7 +14,7 @@ class DocStatus extends Seeder
         DB::table('doc_statuses')->insert([
             ['id' => 1, 'name' => 'Drafts Shipper Pending'],
             ['id' => 2, 'name' => 'Draft Approval Pending'],
-            ['id' => 3, 'name' => 'Originals Pending']
+            ['id' => 3, 'name' => 'Originals Pending'],
             ['id' => 4, 'name' => 'Originals Approved']
         ]);
     }
