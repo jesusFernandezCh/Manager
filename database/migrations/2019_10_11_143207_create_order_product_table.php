@@ -17,7 +17,7 @@ class CreateOrderProductTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('operation_id')->index()->nullable();
             $table->foreign('operation_id')->references('id')->on('operations')->onDelete('cascade');
-            $table->decimal('order_quantity')->nullable();
+            $table->integer('order_quantity')->nullable();
             $table->integer('product')->nullable();
             $table->string('specifications')->nullable();
             $table->string('packaging')->nullable();

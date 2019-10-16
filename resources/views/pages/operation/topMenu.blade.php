@@ -10,7 +10,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link d" id="order_details" href=" @if (isset($operation))
+                    <a class="nav-link d" id="order_details" href="@if (isset($operation))
                      {{route('order_details.show',$operation)}}
                      @else # 
                     @endif" role="tab"

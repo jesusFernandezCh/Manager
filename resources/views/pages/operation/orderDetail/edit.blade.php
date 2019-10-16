@@ -5,33 +5,35 @@
 	<a href="{{ route('operations.index') }}">{{__('Operation')}}</a> > {{$operation->account->name}} > {{$operation->code}}
 </div>
 <div class="col-12">
-	<div class="text-white">Status: {{$operation->status->name}}</div>
+	<div class="text-white">Status: @if (isset($operation->status)){{$operation->status->name}}@endif</div>
 </div>
 @endsection
 @section('top-menu')
-	@include($topMenu)
+	@include($route)
 @endsection
 @section('maincontent')
 <div class="page height-full" style="margin-top: 130px">
 	<div>
         @include('alerts.toastr')
     </div>
-	 <div class="container-fluid animatedParent animateOnce my-3">
+	 <div class="container-fluid animatedParent animateOnce my-3 mt-5">
         <div class="animated fadeInUpShort">
         	<div class="col-md-12">
 	            <div class="card" style="margin-top:0px">
 	                <div class="form-group">
 	                    <div class="card-header white">
-	                        <h6><i class=""></i> {{__('ORDER TERMS')}} </h6>
+	                        <h6><i class=""></i> {{__('Order Detail')}} </h6>
 	                    </div>
 	                </div>
 	                <div class="card-body">
-						{!! Form::model($operation,['route'=>["operations.update",$operation->id],'method'=>'PUT','class'=>'formlDinamic form','id'=>'DataUpdate']) !!}
-						@include('pages.operation.forml')
-						{{--  {!! Form::hidden('route', route('operationIndexAsoc'), ['id'=>'route']) !!}  --}}
-						<br>
+	                	{!! Form::model($operation,['route'=>["order_details.update",$operation->id],'method'=>'PUT','class'=>'formlDinamic form','id'=>'DataUpdate']) !!}
+	                	@include('pages.operation.orderDetail.formlEdit')
+	                	<br>
+	                	@include('pages.operation.orderBudget.create')
+						{!! Form::open(['route'=>'order_details.store','method'=>'POST', 'class'=>'', 'id'=>'guardarRegistro']) !!}
+						
 						<div class="col-md-12 text-right">
-							<a href="{{ route('operationIndexAsoc') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
+							<a href="{{ route('order_details.index') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
 							<button type="submit" class="btn btn-primary"><i class="icon-save mr-2"></i>{{_('Save data')}}</button>
 						</div>
 						{!! Form::close() !!}
@@ -45,7 +47,7 @@
 @section('js')
 <script>
     $(document).ready(function() {
-        $('#order_terms').addClass('active');
+        $('#order_details').addClass('active');
     });
 
     $('.datepicker').datetimepicker({
@@ -65,6 +67,8 @@
      timepicker:false,
      format:'Y-m-d'
     });
+
+    
 </script>
 @endsection
 

@@ -5,7 +5,7 @@
 	<a href="{{ route('operations.index') }}">{{__('Operation')}}</a> > {{$operation->account->name}} > {{$operation->code}}
 </div>
 <div class="col-12">
-	<div class="text-white">Status: {{$operation->status->name}}</div>  
+	<div class="text-white">Status: @if (isset($operation->status)){{$operation->status->name}}@endif</div>
 </div>
 @endsection
 @section('top-menu')

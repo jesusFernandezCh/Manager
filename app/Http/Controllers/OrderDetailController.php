@@ -29,7 +29,7 @@ class OrderDetailController extends Controller
      */
     public function __construct(DocStatus $status, ProductGen $product_gen,Currency $currency, ShelfLife $shelflife, Operation $stmt, OrderDetail $order_details)
     {
-        $this->order_details = OrderDetail::all();
+        $this->order_details = $order_details;
         $this->operation    = $stmt;    
         $this->shelflife    = $shelflife;
         $this->route    = 'pages.operation.topMenu';    
@@ -60,22 +60,8 @@ class OrderDetailController extends Controller
     public function create()
     {
         
-
-        $admin      = false;
-        $create     = true;
-        $topMenu    = 'pages.operation.topMenu';
-        $operation      = Operation::get()->pluck('code','id');
-        $shelflife      = ShelfLife::get()->pluck('name','id');
-        $currency = $this->currency->all();
-        $value = $this->value->all();
-        $product_gen = $this->product_gen->all();
-
-        foreach ($product_gen as $key => $product_gen) {
-            $product[$product_gen->id]= $product_gen->Products->line.' - ' .$product_gen->gen.' - '.$product_gen->basic_spec.' - '.$product_gen->cold_chain;
-        }
-
         
-        return view('pages.operation.orderDetail.create',compact('topMenu','admin','create','operation','shelflife','currency', 'value','product'));
+       //
     }
 
     /**
@@ -144,22 +130,34 @@ class OrderDetailController extends Controller
      */
      public function show($operation)
     {
-        $create = true;
-        $admin  = false;
-        $route  = $this->route;
-        $operation = Operation::find($operation);
-        $product_gen = $this->product_gen->all();
-        $shelflife      = ShelfLife::get()->pluck('name','id');
-        $value = $this->value->all();
-        $currency = $this->currency->all();
+        //consulta si existe registro asociados a la operación 
+        
+        $order_details = $this->order_details->where('operation_id',$operation)->first();
+        if (isset($order_details->id)) {
+            //si existe llama a la funcion edit
+            return $this->edit($order_details);
+            //caso contrario muestra el formulario para crearlo
+        }else{
+            $operation      = $this->operation->find($operation);
+            $admin          = false;
+            $create         = true; 
+            $route  = $this->route;
+            $product_gen = $this->product_gen->all();
+            $shelflife      = ShelfLife::get()->pluck('name','id');
+            $value = $this->value->all();
+            $currency = $this->currency->all();
 
-        $var = __('Selected..');
-        $currency = array('' => $var) + $currency;
 
-        foreach ($product_gen as $key => $product_gen) {
+
+            $var = __('Selected..');
+            $currency = array('' => $var) + $currency;
+
+            foreach ($product_gen as $key => $product_gen) {
             $product[$product_gen->id]= $product_gen->Products->line.' - ' .$product_gen->gen.' - '.$product_gen->basic_spec.' - '.$product_gen->cold_chain;
+            }
+
+            return view('pages.operation.orderDetail.create',compact("route","admin","create",'operation','product_gen','shelflife','value','currency','product'));
         }
-        return view('pages.operation.orderDetail.create',compact('operation','route','admin','create', 'product','shelflife','value','currency'));
         
     }
 
@@ -169,9 +167,27 @@ class OrderDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(OrderDetail $order_details)
     {
-        //
+            $create = true;
+            $admin  = false;
+            $route  = $this->route;
+            $status = $this->status;
+            $operation = Operation::find($order_details->operation_id);
+            $product_gen = $this->product_gen->all();
+            $shelflife      = ShelfLife::get()->pluck('name','id');
+            $order = OrderProduct::where('operation_id', $operation->id)->get();
+            $value = $this->value->all();
+            $currency = $this->currency->all();
+            $order_budget = OperationBudget::where('operation_id', $operation->id)->get();
+
+            
+
+            foreach ($product_gen as $key => $product_gen) {
+            $product[$product_gen->id]= $product_gen->Products->line.' - ' .$product_gen->gen.' - '.$product_gen->basic_spec.' - '.$product_gen->cold_chain;
+            }
+
+            return view('pages.operation.orderDetail.edit',compact('order_budget','currency','value','order','shelflife',"route","admin","create",'operation','status','product'));
     }
 
     /**

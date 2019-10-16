@@ -167,7 +167,7 @@ class OperationController extends Controller
         $cargoUnits = CargoUnit::get()->pluck('name','id');
         $logunits   = Logunit::get()->pluck('name','id');
         $topMenu    = 'pages.operation.topMenu';
-        $operations = $this->operation->all();
+        
 
         return view('pages.operation.edit',compact('operation','operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create'));
     }
