@@ -113,19 +113,22 @@ class PaymentsController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        $consulta = Bank_transaction::find($request->transaction);
-        $data = $request->all();
-        $data['before'] = $consulta->amount;
-        $data['after'] = $consulta->amount;
-       
-        $consulta->amount = $consulta->amount - $request->amount;
+        $consulta = Bank_transaction::find($request->transaction_id);
+        $operation = Operation::where('id', $request->operation_id)->get();
+        $place = Operation::find($request->operation_id);
+        $place->s_incoterm_place = $operation[0]->s_incoterm_place - $request->amount;
+        $place->save();
 
-        $data['after'] = $consulta->amount;
-        $consulta->save();
-        
+        $data = $request->all();
+
+        $data['amount_before'] = $operation[0]->s_incoterm_place;
+        $data['amount_after'] = $operation[0]->s_incoterm_place - $request->amount;
+        $data['before'] = $consulta->amount;
+        $data['after'] = $consulta->amount - $request->amount;
         
         $payment = Payment::create($data);
         Session::flash('message-success',' Payment creado correctamente.');
+        return back();
     }
 
     /**

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\OrderDetail;
 use App\DocStatus;
 use App\Account;
 use App\Operation;
@@ -16,7 +15,7 @@ use Session;
 
 class OrderDetailController extends Controller
 {
-    private $order_details;
+    private $order_product;
     private $operation;
     private $currency;
     private $route;
@@ -27,9 +26,9 @@ class OrderDetailController extends Controller
      *
      * @param      \App\Document  $document  The document
      */
-    public function __construct(DocStatus $status, ProductGen $product_gen,Currency $currency, ShelfLife $shelflife, Operation $stmt, OrderDetail $order_details)
+    public function __construct(DocStatus $status, ProductGen $product_gen,Currency $currency, ShelfLife $shelflife, Operation $stmt, OrderProduct $order_product)
     {
-        $this->order_details = $order_details;
+        $this->order_product = $order_product;
         $this->operation    = $stmt;    
         $this->shelflife    = $shelflife;
         $this->route    = 'pages.operation.topMenu';    
@@ -90,10 +89,7 @@ class OrderDetailController extends Controller
 
             $order_product->save();
         }
-            $order_details = new OrderDetail;
-            $order_details->operation_id = $request->operation_id;
-
-            $order_details->save();
+            
 
             $order_budget = new OperationBudget;
             $order_budget->operation_id = $request->operation_id;
@@ -129,10 +125,10 @@ class OrderDetailController extends Controller
     {
         //consulta si existe registro asociados a la operación 
         
-        $order_details = $this->order_details->where('operation_id',$operation)->first();
-        if (isset($order_details->id)) {
+        $order_product = $this->order_product->where('operation_id',$operation)->first();
+        if (isset($order_product->operation_id)) {
             //si existe llama a la funcion edit
-            return $this->edit($order_details);
+            return $this->edit($order_product);
             //caso contrario muestra el formulario para crearlo
         }else{
             $operation      = $this->operation->find($operation);
@@ -164,13 +160,13 @@ class OrderDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(OrderDetail $order_details)
+    public function edit(OrderProduct $order_product)
     {
             $create = true;
             $admin  = false;
             $route  = $this->route;
             $status = $this->status;
-            $operation = Operation::find($order_details->operation_id);
+            $operation = Operation::find($order_product->operation_id);
             $product_gen = $this->product_gen->all();
             $shelflife      = ShelfLife::get()->pluck('name','id');
             $order = OrderProduct::where('operation_id', $operation->id)->get();
@@ -191,9 +187,46 @@ class OrderDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        echo 'hola';
+    public function update(Request $request, OrderProduct $order_product)
+    {    
+        $order = OrderProduct::where('operation_id', $request->operation_id)->get()->each->delete();
+        $orderB = OperationBudget::where('operation_id', $request->operation_id)->get()->each->delete();
+        
+        for ($i = 0; $i < count($request->product); $i++) {
+            $order_product = new OrderProduct;
+            $order_product->operation_id = $request->operation_id;
+            $order_product->order_quantity = $request->order_quantity[$i];
+            $order_product->product = $request->product[$i];
+            $order_product->specifications = $request->specifications[$i];      
+            $order_product->packaging = $request->packaging[$i];
+            $order_product->brand = $request->brand[$i];
+            $order_product->plant = $request->plant[$i];
+            $order_product->shelflife_id = $request->shelf_life[$i];
+            $order_product->purchase_price = $request->purchase_price[$i];
+            $order_product->est_purchase_sale = $request->est_purchase_sale[$i];
+            $order_product->sale_price = $request->sale_price[$i];
+            $order_product->est_sale = $request->est_sale[$i];
+            $order_product->save();
+        }
+            $order_budget = new OperationBudget;
+            $order_budget->operation_id = $request->operation_id;
+            $order_budget->order_quantity_budget = $request->order_quantity_budget;
+            $order_budget->order_sale = $request->order_sale;
+            $order_budget->order_sale_currency_id = $request->order_sale_currency_id;      
+            $order_budget->order_sale_currency_change = $request->order_sale_currency_change;
+            $order_budget->order_sale_usd = $request->order_sale_usd;
+            $order_budget->order_purchase = $request->order_purchase;
+            $order_budget->order_purchase_currency_id = $request->order_purchase_currency_id;
+            $order_budget->order_purchase_change = $request->order_purchase_change;
+            $order_budget->order_purchase_usd = $request->order_purchase_usd;
+            $order_budget->total_est_charges = $request->total_est_charges;
+            $order_budget->est_charges = $request->est_charges;
+            $order_budget->comtopay = $request->comtopay;
+            $order_budget->comtoreceive = $request->comtoreceive;
+            $order_budget->usd_budget = $request->usd_budget;
+            $order_budget->save();
+            Session::flash('message-success','Order Details actualizada correctamente.');
+            return back();
     }
 
     /**

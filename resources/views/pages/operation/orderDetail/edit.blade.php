@@ -16,17 +16,18 @@
 	<div>
         @include('alerts.toastr')
     </div>
-	 <div class="container-fluid animatedParent animateOnce my-3 mt-5">
+	 <div class="container-fluid animatedParent animateOnce my-3">
         <div class="animated fadeInUpShort">
         	<div class="col-md-12">
-	            <div class="card" style="margin-top:0px">
+	            <div class="card" style="margin-top:-10px">
 	                <div class="form-group">
 	                    <div class="card-header white">
-	                        <h6><i class=""></i> {{__('Order Detail')}} </h6>
+	                        <h6><i class=""></i> {{__('Order Detail edit')}} </h6>
 	                    </div>
 	                </div>
 	                <div class="card-body">
-	                	{!! Form::model($operation,['route'=>["order_details.update",$operation->id],'method'=>'PUT','class'=>'formlDinamic form','id'=>'DataUpdate']) !!}
+	                	
+	                	{!! Form::model($operation,['route'=>["order_details.update",$operation->id],'method'=>'PUT']) !!}
 	                	@include('pages.operation.orderDetail.formlEdit')
 	                	<br>
 	                	@include('pages.operation.orderBudget.create')

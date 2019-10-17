@@ -1,5 +1,5 @@
 <!-- Modal -->
-{!! Form::open(['route'=>'payments.store','method'=>'POST', 'class'=>'formlDinamic', 'id'=>'guardarRegistro']) !!}
+{!! Form::open(['route'=>'payments.store','method'=>'POST']) !!}
 <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog modal-lg" role="bank">
 		<div class="modal-content">
@@ -19,9 +19,9 @@
 							</div>
 							<div class="form-group offset-2 col-8">
 								<i class="icon-cogs mr-2"></i>
-								{!! Form::label('transaction',__('Bank Transaction'), ['class'=>'col-form-label s-12']) !!}
-								{!! Form::select('transaction', $cod, null, ['class'=>'form-control r-0 light s-12', 'id'=>'transaction', 'onclick'=>'inputClear(this.id)']) !!}
-								<span class="transaction_span"></span>
+								{!! Form::label('transaction_id',__('Bank Transaction'), ['class'=>'col-form-label s-12']) !!}
+								{!! Form::select('transaction_id', $cod, null, ['class'=>'form-control r-0 light s-12', 'id'=>'transaction_id', 'onclick'=>'inputClear(this.id)']) !!}
+								<span class="transaction_id_span"></span>
 							</div>
 							
 						</div>

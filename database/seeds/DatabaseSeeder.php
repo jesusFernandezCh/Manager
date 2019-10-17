@@ -35,5 +35,10 @@ class DatabaseSeeder extends Seeder
         factory(Incoterm::class,20)->create();
         factory(AccountMetaType::class,20)->create();
         factory(AccountMeta::class,20)->create();
+
+        $this->call(CurrencySeeder::class);
+        $this->call(Currier::class);
+        $this->call(DocStatus::class);
+        $this->call(ShelfLife::class);
 	}
 }

@@ -36,12 +36,29 @@
                 <hr>
                 <div class="form-row">
                     <div class="col-md-12">
+                        <div class="form-row">
                             <div class="form-group offset-2 col-8">
 								<i class="icon-cogs mr-2"></i>
 								{!! Form::label('operation_id',__('Operation'), ['class'=>'col-form-label s-12']) !!}
-								{!! Form::select('operation_id', $operation, null, ['class'=>'form-control text-center r-0 light s-12', 'disabled'=>'true','id'=>'-operation_id', 'onclick'=>'inputClear(this.id)']) !!}
+								{!! Form::select('operation_id', $operation, null, ['class'=>'form-control r-0 light s-12', 'disabled'=>'true','id'=>'-operation_id', 'onclick'=>'inputClear(this.id)']) !!}
 								<span class="operation_id_span"></span>
 							</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group offset-1 col-5">
+                                <i class="icon-key4 mr-1"></i>
+                                {!! Form::label('amount_before',__('Amount of the Operation Before the Transaction'), ['class'=>'col-form-label s-12']) !!}
+                                {!! Form::text('amount_before', null, ['onkeypress'=>'return soloNum(event)', 'class'=>'form-control r-0 light s-12', 'disabled'=>'true','id'=>'-amount_before']) !!}
+                                <span class="amount_before_span"></span>
+                            </div>
+                            <div class="form-group col-5">
+                                <i class="icon-key4 mr-1"></i>
+                                {!! Form::label('amount_before',__('Amount of the Operation After the Transaction'), ['class'=>'col-form-label s-12']) !!}
+                                {!! Form::text('amount_before', null, ['onkeypress'=>'return soloNum(event)', 'class'=>'form-control r-0 light s-12', 'disabled'=>'true','id'=>'-amount_after']) !!}
+                                <span class="amount_before_span"></span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <hr>

@@ -75,6 +75,12 @@ class CreateOperationsTable extends Migration
         $table->text('comments')->nullable();
         $table->timestamps();
         });
+
+        Schema::table('payments', function (Blueprint $table) {
+            $table->unsignedBigInteger('operation_id')->index();
+            $table->foreign('operation_id')->references('id')->on('operations')->onDelete('cascade');
+        });
+        
     }
 
     /**
