@@ -78,7 +78,21 @@ class PaymentsController extends Controller
         $var = __('Selected..');
         $cod = array('' => $var) + $cod;
         $type = array('' => $var) + $type;
-        $operation = array('' => $var) + $operation;
+
+        if (isset($operation)) {
+            $operation = array('' => $var) + $operation;
+        }else {
+            $operation = array('0' => 'Debe agregar una operación');
+            $operation = array('' => $var) + $operation;
+        }
+      
+        if (empty($reference)) {   
+            $reference = array('' => 'Debe agregar una referencia');
+        }
+        if (empty($date)) {   
+            $date = array('' => '');
+        }
+        
 
         return view('pages.payments.index',compact('operation','type','cod','payment','reference','date','banks'));
     }

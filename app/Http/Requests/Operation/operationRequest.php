@@ -25,7 +25,7 @@ class operationRequest extends FormRequest
     {
         return [
             'date_order'            => 'required',
-            'operation_status_id'             => 'required',
+            'operation_status_id'   => 'required',
             'business_line_id'      => 'required', 
             'principal_id'          => 'required',
             'supplier_id'           => 'required'

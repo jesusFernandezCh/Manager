@@ -80,6 +80,7 @@ class CreateOperationsTable extends Migration
             $table->unsignedBigInteger('operation_id')->index();
             $table->foreign('operation_id')->references('id')->on('operations')->onDelete('cascade');
         });
+
         
     }
 
