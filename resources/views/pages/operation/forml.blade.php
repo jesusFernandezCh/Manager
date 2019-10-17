@@ -19,7 +19,7 @@
 		<div class="" id="status_id_group">
 			<i class=""></i>
 			{!! Form::label('status_id', 'Status *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('status_id', $status, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_status_id']) !!}
+			{!! Form::select('operation_status_id', $status, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_operation_status_id']) !!}
 			<span class="_status_id_span"></span>
 		</div>
 	</div>

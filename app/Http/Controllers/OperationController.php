@@ -114,8 +114,10 @@ class OperationController extends Controller
         $payment_terms = $this->orderPmtTerm->get()->pluck('payment_terms','id');
         $cargoUnits = CargoUnit::get()->pluck('name','id');
         $logunits   = Logunit::get()->pluck('name','id');
+        $contacts   = $this->contacts;
+        $banks      = $this->banks;
         $topMenu    = 'pages.operation.topMenu';
-        return view('pages.operation.create',compact('accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create','date'));
+        return view('pages.operation.create',compact('accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create','date', 'contacts', 'banks'));
     }
     /**
      * Store a newly created resource in storage.
