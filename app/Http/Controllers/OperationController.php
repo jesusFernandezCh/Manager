@@ -143,7 +143,7 @@ class OperationController extends Controller
         // dd($request);
         $operation = $this->operation->create($request);
         Session::flash('message-success',' Operation '. $request['code'].' creado correctamente.');
-        return $this->edit($operation);
+        return response()->json($operation);
     }
 
 
@@ -194,9 +194,7 @@ class OperationController extends Controller
         if(null == $request->input('so_signed')){
            $data = Arr::add($data,'cu_po_signed', null);
         }
-        // dd($data);
         $operation->update($data);
-        $operation->save();
         Session::flash('message-success',' Operation '. $request->name.' actualizado correctamente.');
     }
 

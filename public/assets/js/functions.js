@@ -85,12 +85,16 @@ function saveData(url, forml, method)
         success: function(result) 
         {
             $('.modal').modal('hide');// Oculta el modal del formulario create
-            // $('#tbody').load(' .tbody');//Recarga el body de la tabla
-            // toastr.success(result.message,"Exitoso");
-            if(route == null || result.operator == true){
-                location.reload();
+            //si recibe respuesta redirecciona al edit
+            // console.log(result.id);
+            if (result.id != undefined) {
+                window.location.replace(route  + "/" + result.id + "/edit");
             }else{
-                window.location.replace(route)
+                if(route == null || result.operator == true){
+                    location.reload();
+                }else{
+                    window.location.replace(route)
+                }
             }
         },
         error: function(msj) 
