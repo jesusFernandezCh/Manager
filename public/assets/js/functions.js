@@ -1,5 +1,18 @@
 /**
- * { item_description }
+ * Funciones que se ejecutan en el DOM
+ */
+$(document).ready(function(){
+    $('.combo').on('change',function(e) {
+        var id = e.target.value;
+        var route = e.target.dataset.route;
+        var r1 = e.target.dataset.r1;
+        var r2 = e.target.dataset.r2;
+        comboBox(id,route,r1,r2);
+    })
+});
+
+/**
+ * Funciones invocadas
  */
 $(".formlDinamic").on('submit', function(e) {
     e.preventDefault();
@@ -347,7 +360,7 @@ function dataTableExport(title, columns) {
  * @param {route del controlador y funcion} route 
  * @param {slelect resecptor de data} select
  */
- function comboBoxCustomer(route, select) {
+ function comboBoxCustomer(route) {
     $.get(route, function (data) {
         var n = data.length;
         if(n > 0){
@@ -362,25 +375,26 @@ function dataTableExport(title, columns) {
         }
     });
  }
- /**
- * Funcion combo box: agrega data a combos dependientes
- * @param {valor a comparar} val 
- * @param {route del controlador y funcion} route 
- * @param {slelect resecptor de data} select
+ 
+/**
+ * 
+ * @param {valor a comparar} id 
+ * @param {route del controlador} route 
+ * @param {campo receptor 1} r1 
+ * @param {campo receptor 2} r2 
  */
-function comboBoxSupplierC(route, select) {
-    $.get(route, function (data) {
-        var n = data.length;
-        console.log(data);
+function comboBox(id,route,r1,r2) {
+        $.get(route + '/' + id, function (data) {
+        // console.log(data);
         if(data){
             $.each(data, function(key, value){
-                $('#_supplier_commercial_id').empty().append("<option value =" + value.id + ">" + value.fullname + "</option>");
-                $('#_cus_commercial_id_id').empty().append("<option value =" + value.id + ">" + value.fullname + "</option>");
+                $('#' + r1).empty().append("<option value =" + key + ">" + value + "</option>");
+                $('#' + r2).empty().append("<option value =" + key + ">" + value + "</option>");
             });
         }
         else{
-            $('#_supplier_commercial_id').empty().append("<option value =''>Sin Resultados</option>");
-            $('#_cus_commercial_id_id').empty().append("<option value =''>Sin Resultados</option>");
+            $('#' + r1).empty().append("<option value =''>Sin Resultados</option>");
+            $('#' + r2).empty().append("<option value =''>Sin Resultados</option>");
         }
     });
  }

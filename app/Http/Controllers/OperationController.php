@@ -31,7 +31,8 @@ class OperationController extends Controller
     private $accounts;
     private $operators;
     private $document;
-    private $contact;
+    private $contacts;
+    private $banks;
     private $status;
     private $orderPmtTerm;
 
@@ -40,7 +41,7 @@ class OperationController extends Controller
      * @param  Operation $stmt [description]
      * @return [type]          [description]
      */
-    public function __construct(Operation $stmt, Account $account, User $operator, Document $document, Status $status, AccountContact $contact, OrderPmtTerm $orderPmtTerm)
+    public function __construct(Operation $stmt, Account $account, User $operator, Document $document, Status $status, AccountContact $contact, OrderPmtTerm $orderPmtTerm, Partner_bank $bank)
     {
         $this->operation    = $stmt;    
         $this->account      = $account;
@@ -48,7 +49,8 @@ class OperationController extends Controller
         $this->operators    = $operator->get()->pluck('fullname','id');
         $this->document     = $document;
         $this->status       = $status->get()->pluck('name', 'id');
-        $this->contact      = $contact;
+        $this->contacts     = $contact->get()->pluck('fullname','id');
+        $this->banks        = $bank->get()->pluck('bank_name','id');
         $this->orderPmtTerm = $orderPmtTerm;
     }
 
@@ -166,11 +168,12 @@ class OperationController extends Controller
         $payment_terms = $this->orderPmtTerm->get()->pluck('payment_terms','id');
         $cargoUnits = CargoUnit::get()->pluck('name','id');
         $logunits   = Logunit::get()->pluck('name','id');
+        $contacts   = $this->contacts;
+        $banks      = $this->banks;
         $topMenu    = 'pages.operation.topMenu';
         $operations = $this->operation->all();
         
-
-        return view('pages.operation.edit',compact('operation','operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create'));
+        return view('pages.operation.edit',compact('operation','operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create', 'contacts', 'banks'));
     }
 
     /**
@@ -215,7 +218,7 @@ class OperationController extends Controller
      */
     public function customer_bank($customer_id)
     {
-        $banks = Partner_bank::get()->where('company_id',$customer_id);
+        $banks = Partner_bank::get()->where('company_id',$customer_id)->pluck('bank_name','id');
         return response()->json($banks);
         
     }
@@ -227,7 +230,7 @@ class OperationController extends Controller
      */
     public function supplierComercial($supplier_id)
     {
-        $supplierCommercials = AccountContact::get()->where('account_id',$supplier_id);
+        $supplierCommercials = AccountContact::get()->where('account_id',$supplier_id)->pluck('fullname', 'id');
         return response()->json($supplierCommercials);
         
     }
