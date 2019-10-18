@@ -16,7 +16,7 @@ class CreateAccountCategoriesTable extends Migration
         Schema::create('account_categories', function (Blueprint $table) {
         $table->bigIncrements('id')->unsigned();
         $table->string('name');
-        $table->string('description');
+        $table->string('description')->nullable();
         $table->tinyInteger('active');
         $table->timestamps();
         });

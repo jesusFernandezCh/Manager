@@ -12,7 +12,7 @@ class OrderPmtTerm extends Model
     * @var array
     */
    protected $fillable = [
-       'id', 'payment_terms', 'capital_at_risk'
+       'payment_terms', 'capital_at_risk'
    ];
   
 }

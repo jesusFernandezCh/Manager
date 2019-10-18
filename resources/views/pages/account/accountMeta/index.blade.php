@@ -49,7 +49,9 @@
                                             {{$meta->accounts->name}} 
                                         </td>
                                         <td>
-                                            {{$meta->accountsMetaTypes->metatype}}
+                                            @if (isset($meta->accountsMetaTypes))
+                                                {{$meta->accountsMetaTypes->metatype}}
+                                            @endif
                                         </td>
                                         <td>
                                             {{$meta->value}}

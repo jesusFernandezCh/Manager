@@ -92,9 +92,9 @@ class AccountCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Category $accountCategory)
     {
-      $category->delete();
-      Session::flash('message-success',' Category '. $category->name.' eliminada correctamente.');
+      $accountCategory->delete();
+      Session::flash('message-success',' Category '. $accountCategory->name.' eliminada correctamente.');
     }
 }
