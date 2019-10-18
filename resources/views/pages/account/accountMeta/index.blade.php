@@ -49,7 +49,7 @@
                                             {{$meta->accounts->name}} 
                                         </td>
                                         <td>
-                                            {{$meta->accountsMetaTypes->metatype}}
+                                            {{$meta->accountsMetaTypes}}
                                         </td>
                                         <td>
                                             {{$meta->value}}
