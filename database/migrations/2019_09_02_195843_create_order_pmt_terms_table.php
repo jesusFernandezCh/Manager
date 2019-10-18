@@ -16,7 +16,7 @@ class CreateOrderPmtTermsTable extends Migration
         Schema::create('order_pmt_terms', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->string('payment_terms');
-            $table->decimal('capital_alt_risk');
+            $table->decimal('capital_at_risk');
             $table->timestamps();
         });
     }

@@ -15,4 +15,12 @@ class AccountMetaType extends Model
        'metatype', 'required', 'description', 'active'
    ];
 
+    /**
+    * Get the user that owns the Operations.
+    */
+    public function accountMeta()
+    {
+        return $this->hasMany('App\AccountMeta');
+    }
+
 }
