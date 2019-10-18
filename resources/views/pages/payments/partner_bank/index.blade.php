@@ -49,7 +49,7 @@
                                         <td> {{$par->id}} </td>
                                         <td> {{$par->account->name}} </td>
                                         <td> {{$par->bank_name}}</td>
-                                        <td> {{$par->bank_adress}}</td>
+                                        <td> {{$par->bank_addres}}</td>
                                         <td> {{$par->currency->code}} </td>
                                         <td> @if ($par->curren_account == 1) 
                                                 SI

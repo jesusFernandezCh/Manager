@@ -180,17 +180,18 @@ function obtenerDatosGet(url, url2)
             if (key=='curren_account' && value == 1) {
                 $('#'+'_'+key).prop('checked', true);
             }
-            else{
+            else if(key=='curren_account' && value != 1){
                 $('#'+'_'+key).prop('checked', false);
             }
-            if (key=='curren_account' && value == 1) {
+            else{
+                $('#'+'_'+key).val(value);
+            }
+            /*if (key=='curren_account' && value == 1) {
                 $('#'+'-'+key).prop('checked', true);
             }
             else{
                 $('#'+'-'+key).prop('checked', false);
-            }
-
-            $('#'+'_'+key).val(value);
+            }*/
         });
         var image = data.image;
         validatFile(image, 'file-2');
@@ -248,10 +249,19 @@ function showData(url)
 {
     $.get(url, function(data)
     {
+        console.log(data)
         $.each(data, function(key, value) 
         {
-            console.log(key);
             $('#'+'-'+key).val(value);
+            if (key=='curren_account' && value == 1) {
+                $('#'+'-'+key).prop('checked', true);
+            }
+            else if(key=='curren_account' && value != 1){
+                $('#'+'-'+key).prop('checked', false);
+            }
+            else{
+                $('#'+'-'+key).val(value);
+            }
         });
         var image = data.image;
         validatFile(image, 'file-3');
