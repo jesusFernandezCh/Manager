@@ -20,8 +20,9 @@
 	                    </div>
 	                </div>
 	                <div class="card-body">
-						{!! Form::open(['route'=>'operations.store','method'=>'POST', 'class'=>'', 'id'=>'guardarRegistro']) !!}
+						{!! Form::open(['route'=>'operations.store','method'=>'POST', 'class'=>'formlDinamic form', 'id'=>'guardarRegistro']) !!}
 						@include('pages.operation.forml')
+						 {!! Form::hidden('route', route('operations.store'), ['id'=>'route']) !!} 
 						<br>
 						<div class="col-md-12 text-right">
 							<a href="{{ route('operationIndexAsoc') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>

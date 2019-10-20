@@ -55,18 +55,18 @@
                 <i class="icon icon-bank s-14"></i> <span>{{ __('Bank Transaction') }}</span>
             </a>
         </li>
-        <li class="treeview"><a href="#">
+        {{--  <li class="treeview"><a href="#">
             <i class="icon icon icon-package blue-text s-18"></i>
             <span>{{ __('Workflow Rules') }}</span></a>
-        </li>
+        </li>  --}}
         <li><a href="{{ route('document.index') }}">
             <i class="icon icon-documents3 text-blue s-18"></i>
             <span>{{ __('Documents') }}</span></a>
         </li>
-        <li class="treeview"><a href="#">
+        {{--  <li class="treeview"><a href="#">
             <i class="icon icon-bar-chart2 pink-text s-18"></i>
             <span>{{ __('Reports') }}</span>
-        </a>
+        </a>  --}}
     </li>
     <li class="header light mt-3">
         <strong>{{ __('CONFIGURATION') }}</strong>
@@ -149,11 +149,6 @@
                 <li>
                     <a href="{{ route('orderPmtTerm.index') }}">
                         <i class="icon icon-cash-register amber-text s-14"></i> <span>{{__('Order Pmt Terms')}}</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('order_details.index') }}">
-                        <i class="icon icon-cash-register amber-text s-14"></i> <span>{{__('Order Details')}}</span>
                     </a>
                 </li>
             </ul>

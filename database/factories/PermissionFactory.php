@@ -17,9 +17,11 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(Permission::class, function (Faker $faker) {
+    $names = $faker->unique()->randomElement($array = array('Create', 'Update', 'View', 'Delete'));
+    $slug = strtolower($names);
     return [
-        'name' => $faker->shuffle($array = array('Create', 'Update', 'View', 'Delete')),
-        'slug' => $faker->shuffle($array = array('create', 'update', 'view', 'delete')),
-        'description'  => $faker->randomElement($array = array ('active','inactive','suspended')),
+        'name' => $names,
+        'slug' => $slug,
+        'description'  	=> $faker->text($maxNbChars = 50),
     ];
 });

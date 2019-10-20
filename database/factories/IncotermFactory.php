@@ -20,6 +20,6 @@ $factory->define(Incoterm::class, function (Faker $faker) {
     return [
         'name' 			    => $faker->company,
         'description'  	=> $faker->text($maxNbChars = 100),
-        'status'        => $faker->randomElement($array = array (0, 1)),
+        'status'        => $faker->randomElement($array = [0, 1]),
     ];
 });

@@ -37,8 +37,10 @@ class CreatePaymentsTable extends Migration
 
         Schema::create('payments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('operation');
-            $table->string('transaction');
+            $table->decimal('amount_before', 11, 2);
+            $table->decimal('amount_after', 11, 2);
+            $table->unsignedBigInteger('transaction_id')->index();
+            $table->foreign('transaction_id')->references('id')->on('bank_transactions')->onDelete('cascade');
             $table->decimal('amount', 11, 2);
             $table->string('type');
             $table->decimal('before', 11, 2);

@@ -24,7 +24,7 @@ class CreatePaymentsTable extends Migration
         Schema::create('banks_transactions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('bank_id')->index();
-            $table->foreign('bank_id')->references('id')->on('bank')->onDelete('cascade');
+            $table->foreign('bank_id')->references('id')->on('banks')->onDelete('cascade');
             $table->decimal('amount', 11, 2);
             $table->decimal('amount_init', 11, 2);
             $table->string('reference');

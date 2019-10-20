@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Payment extends Model
 {
     protected $fillable = [
-        'operation_id', 'transaction','amount','type','before','after'
+        'operation_id','amount_before','amount_after', 'transaction_id','amount','type','before','after'
     ];
 
     public function banks()
@@ -16,7 +16,7 @@ class Payment extends Model
     }
     public function Transaction()
     {
-       return $this->belongsTo('App\Bank_transaction', 'transaction');
+       return $this->belongsTo('App\Bank_transaction', 'transaction_id');
     }
     public function operation()
     {

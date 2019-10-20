@@ -18,8 +18,8 @@
 	<div class="col-md-2">
 		<div class="" id="status_id_group">
 			<i class=""></i>
-			{!! Form::label('status_id', 'Status *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('status_id', $status, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_status_id']) !!}
+			{!! Form::label('operation_status_id', 'Status *', ['class'=>'col-form-label s-12']) !!}
+			{!! Form::select('operation_status_id', $status, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_operation_status_id']) !!}
 			<span class="_status_id_span"></span>
 		</div>
 	</div>
@@ -45,7 +45,7 @@
 		<div class="" id="suplier_id_group">
 			<i class=""></i>
 			{!! Form::label('supplier_id', 'Supplier *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('supplier_id', $supplier, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_id']) !!}
+			{!! Form::select('supplier_id', $supplier, null, ['class'=>'form-control r-0 light s-12 combo', 'id'=>'_supplier_id', 'data-route'=> route('supplierComercial'), 'data-r1'=>'_supplier_commercial_id', 'data-r2'=>'_cus_commercial_id']) !!}
 			<span class="supplier_id_span"></span>
 		</div>
 	</div>
@@ -53,7 +53,7 @@
 		<div class="" id="customer_id_group">
 			<i class=""></i>
 			{!! Form::label('customer_id', 'Customer', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('customer_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_customer_id']) !!}
+			{!! Form::select('customer_id', $accounts, null, ['class'=>'form-control r-0 light s-12 combo', 'id'=>'_customer_id', 'data-route'=> route('comboCustomerBank'), 'data-r1'=>'_supplier_bank_id', 'data-r2'=>'_customer_bank_id']) !!}
 			<span class="customer_id_span"></span>
 		</div>
 	</div>
@@ -61,7 +61,7 @@
 		<div class="" id="suplier_commercial_id_group">
 			<i class=""></i>
 			{!! Form::label('suplier_commercial_id', 'Supplier Commercial', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('supplier_commercil_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_commercial_id']) !!}
+			{!! Form::select('supplier_commercial_id', $contacts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_commercial_id']) !!}
 			<span class="supplier_commercial_id_span"></span>
 		</div>
 	</div>
@@ -76,7 +76,7 @@
 		<div class="" id="custom_commercial_id_group">
 			<i class=""></i>
 			{!! Form::label('custom_commercial_id', 'Customer  Commercial', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('cus_commercial_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cus_commercial_id_id']) !!}
+			{!! Form::select('cus_commercial_id', $contacts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cus_commercial_id']) !!}
 			<span class="cus_commercial_id_span"></span>
 		</div>
 	</div>
@@ -135,8 +135,8 @@
 	</div>
 	<div class="col-md-3">
 		<div class="" id="p_broker_com_mt_group">
-			{!! Form::label('p_broker_com_mt', 'PBrokerComMT', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
-			{!! Form::text('p_broker_com_mt', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_p_broker_com_mt_id']) !!}
+			{!! Form::label('p_broker_com_mt', 'PBrokerComMT', ['class'=>'col-form-label s-12']) !!}
+			{!! Form::text('p_broker_com_mt', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_p_broker_com_mt_id', 'onclick'=>'inputClear(this.id)']) !!}
 			<span class="p_broker_com_mt_span"></span>
 		</div>
 	</div>
@@ -159,7 +159,7 @@
 		<div class="" id="supplier_bank_id">
 			<i class=""></i>
 			{!! Form::label('supplier_bank_id', 'Supplier Bank', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('supplier_bank_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_bank_id']) !!}
+			{!! Form::select('supplier_bank_id', $banks, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_bank_id']) !!}
 			<span class="supplier_bank_id_span"></span>
 		</div>
 	</div>
@@ -167,7 +167,7 @@
 		<div class="" id="customer_bank_id">
 			<i class=""></i>
 			{!! Form::label('customer_bank_id', 'Customer Bank', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('customer_bank_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_bank_id']) !!}
+			{!! Form::select('customer_bank_id', $banks, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_customer_bank_id']) !!}
 			<span class="customer_bank_id_span"></span>
 		</div>
 	</div>

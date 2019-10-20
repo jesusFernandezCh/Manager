@@ -3,7 +3,6 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 use App\User;
 use App\ProfitCenter;
-use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
 /*
@@ -22,13 +21,13 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'fullname' 			=> $faker->name,
         'email' 			=> $faker->email,
-        'email_verified_at' => now(),
         'password' 			=> bcrypt('secret'), // password
 		'status'         	=> $faker->randomElement($array = array ('active','inactive','suspended')),
 		'phone1'			=> $faker->tollFreePhoneNumber,
 		'phone2'			=> $faker->tollFreePhoneNumber,
 		'cell1'				=> $faker->phoneNumber,
 		'cell2'				=> $faker->phoneNumber,
-        'profitcenter_id' 	=> ProfitCenter::all()->random()->id,
+        'profit_center_id' 	=> ProfitCenter::all()->random()->id,
+        'email_verified_at' => now(),
     ];
 });

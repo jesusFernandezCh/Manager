@@ -8,6 +8,7 @@
 	<table id="example" class="display" style="width:100%">
         <thead>
             <tr>
+                
                 <th>{!! Form::label('order_quantity',__('Order Quantity'), ['class'=>'col-form-label s-12']) !!}</th>
                 <th>{!! Form::label('product',__('Product'), ['class'=>'col-form-label s-12']) !!}</th>
                 <th>{!! Form::label('specifications',__('Specifications'), ['class'=>'col-form-label s-12']) !!}</th>
@@ -21,20 +22,25 @@
                 <th>{!! Form::label('est_sale',__('Est Sale'), ['class'=>'col-form-label s-12']) !!}</th>
             </tr>
         </thead>
+        
         <tbody>
-            <tr>
-                <td width="110"></td>
-                <td width="280"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+
+            @foreach($order as $order)
+				<tr>
+	                
+	                <td width="110">{!! Form::number('order_quantity[]', $order->order_quantity, [ 'class'=>'form-control order_quantity r-0 light s-12', 'id'=>'order_quantity', 'onChange'=> 'calcular("order_quantity", "order_quantity_budget")']) !!}</td>
+                    <td width="270">{!! Form::select('product[]', $product, $order->product, ['class'=>'form-control r-0 light s-12', 'id'=>'product', 'onclick'=>'inputClear(this.id)']) !!}</td>
+	                <td width="110">{!! Form::text('specifications[]', $order->specifications, [ 'class'=>'form-control r-0 light s-12', 'id'=>'specifications']) !!}</td>
+	                <td width="110">{!! Form::text('packaging[]', $order->packaging, ['class'=>'form-control r-0 light s-12', 'id'=>'packaging', 'onclick'=>'inputClear(this.id)']) !!}</td>
+	                <td width="80">{!! Form::text('brand[]', $order->brand, ['class'=>'form-control r-0 light s-12', 'id'=>'brand', 'onclick'=>'inputClear(this.id)']) !!}</td>
+	                <td width="80">{!! Form::text('plant[]', $order->plant, ['class'=>'form-control r-0 light s-12', 'id'=>'brand', 'onclick'=>'inputClear(this.id)']) !!}</td>
+                    <td width="110">{!! Form::select('shelf_life[]', $shelflife, $order->shelflife_id, ['class'=>'form-control r-0 light s-12', 'id'=>'shelf_life', 'onclick'=>'inputClear(this.id)']) !!}</td>
+	                <td width="110">{!! Form::text('purchase_price[]', $order->purchase_price, ['class'=>'form-control r-0 light s-12', 'id'=>'purchase_price', 'onChange'=>'calcular("purchase_price", "order_purchase")']) !!}</td>
+	                <td width="115">{!! Form::text('est_purchase_sale[]', $order->est_purchase_sale, ['class'=>'form-control r-0 light s-12', 'id'=>'est_purchase_sale', 'onclick'=>'inputClear(this.id)']) !!}</td>
+	                <td width="110">{!! Form::text('sale_price[]', $order->sale_price, ['class'=>'form-control r-0 light s-12', 'id'=>'sale_price', 'onChange'=>'calcular("sale_price", "order_sale")']) !!}</td>
+	                <td width="110">{!! Form::text('est_sale[]', $order->est_sale, ['class'=>'form-control r-0 light s-12', 'id'=>'est_sale', 'onclick'=>'inputClear(this.id)']) !!}</td>
+            	</tr>
+            @endforeach
     	</tbody>
     </table>
     <div class="col-md-12">
@@ -63,7 +69,7 @@ $(document).ready(function() {
         ] ).draw( false );
     } );
     // Automatically add a first row of data
-    $('#addRow').click();
+    
     $('#example tbody').on( 'click', 'tr', function () {
         if ( $(this).hasClass('selected') ) {
 

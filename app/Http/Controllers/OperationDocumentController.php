@@ -26,7 +26,7 @@ class OperationDocumentController extends Controller
         $this->stmt     = $operationDocument;
         $this->route    = 'pages.operation.topMenu';
         $this->status   = $status->all()->pluck('name', 'id');
-        // $this->courriers = $currier->all()->pluck('name', 'id');
+        $this->courriers = $currier->all()->pluck('currier_name', 'id');
     }
     
     /**
@@ -57,9 +57,9 @@ class OperationDocumentController extends Controller
      */
     public function store(Request $request)
     {
-        $document = $this->stmt->create($request->all());
+        $operationDocument = $this->stmt->create($request->all());
         Session::flash('message-success',' Document  registrado correctamente.');
-        return $this->edit($document);
+        return $this->edit($operationDocument);
     }
 
     /**
@@ -77,14 +77,15 @@ class OperationDocumentController extends Controller
             return $this->edit($operationDocument);
             //caso contrario muestra el formulario para crearlo
         }else{
-            $create = true;
-            $admin  = false;
-            $topMenu  = $this->route;
-            $status = $this->status;
-            $courriers = $this->courriers;
-            $operation = Operation::find($operation_id);
-            $custMailings = $this->stmt->CustomerMailingAddres($operation->customer_id);
-            return view('pages.operation.operationDocument.create',compact('operation','topMenu','admin','create', 'status', 'courriers','custMailings'));
+        $create = true;
+        $admin  = false;
+        $route  = $this->route;
+        $status = $this->status;
+        $courriers = $this->courriers;
+        $operation = Operation::find($operation_id);
+        $custMailings = $this->stmt->CustomerMailingAddres($operation->customer_id);
+
+        return view('pages.operation.operationDocument.create',compact('operation','route','admin','create', 'status', 'courriers','custMailings'));
         }
     }
 

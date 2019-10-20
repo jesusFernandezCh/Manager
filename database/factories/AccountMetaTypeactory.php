@@ -22,8 +22,8 @@ use Faker\Generator as Faker;
 $factory->define(AccountMetaType::class, function (Faker $faker) {
     return [
         'metatype'		  	    => $faker->company,
-        'required' 	  	      => $faker->randomElement($array = [ 0 , 1 ]),
-        'description'				  =>  $faker->text($maxNbChars = 60),
+        'required' 	  	        => $faker->randomElement($array = [ 0 , 1 ]),
+        'description'			=>  $faker->text($maxNbChars = 60),
         'active' 	  	        => $faker->randomElement($array = [ 0 , 1 ]),
     ];
 });

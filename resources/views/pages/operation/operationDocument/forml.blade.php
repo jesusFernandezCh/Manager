@@ -58,7 +58,7 @@
         <div class="" id="courrier_to_principal_group">
             <i class=""></i>
             {!! Form::label('courrier_to_principal', 'CourrierPrincipal', ['class'=>'col-form-label s-12']) !!}
-            {!! Form::select('courrier_to_principal', [1 =>'Courrier Principal'], null, ['class'=>'form-control r-0 light s-12', 'id'=>'_courrier_to_principal']) !!}
+            {!! Form::select('courrier_to_principal', $courriers, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_courrier_to_principal']) !!}
             <span class="courier_to_principal_span"></span>
         </div>
     </div>
@@ -90,7 +90,7 @@
         <div class="" id="courrier_to_customer_group">
             <i class=""></i>
             {!! Form::label('courrier_to_customer', 'CourrierToCustomer', ['class'=>'col-form-label s-12']) !!}
-            {!! Form::select('courrier_to_customer', [1 => 'CourrierToCustomer'], null, ['class'=>'form-control r-0 light s-12', 'id'=>'_customer_mailing_a']) !!}
+            {!! Form::select('courrier_to_customer', $courriers, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_customer_mailing_a']) !!}
             <span class="courrier_to_customer_span"></span>
         </div>
     </div>

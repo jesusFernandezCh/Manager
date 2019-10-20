@@ -22,7 +22,7 @@
                 <div class="card">
                     <div class="form-group">
                         <div class="card-header white">
-                            <h6><i class="icon icon-pencil"></i> {{ __('EDIT OPERATION DOCUMENT') }}</h6>
+                            <h6><i class="icon icon-pencil"></i> {{ __('EDIT OPERATION DOCUMENTS') }}</h6>
                         </div>
                     </div>
                     <div class="card-body">

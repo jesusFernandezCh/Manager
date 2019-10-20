@@ -16,7 +16,7 @@ class CreateOperationShipsTable extends Migration
         Schema::create('operation_ships', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->unsignedBigInteger('operation')->index();
-            $table->foreign('operation')->references('id')->on('operationS');
+            $table->foreign('operation')->references('id')->on('operations');
             $table->integer('supplier_Admin')->nullable();
             $table->integer('supplier_ops')->nullable();
             $table->date('date_availability')->nullable();

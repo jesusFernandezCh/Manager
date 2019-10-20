@@ -22,7 +22,7 @@
 	            <div class="card" style="margin-top:0px">
 	                <div class="form-group">
 	                    <div class="card-header white">
-	                        <h6><i class=""></i> {{__('ORDER TERMS')}} </h6>
+	                        <h6><i class=""></i> {{__('EDIT ORDER TERMS')}} </h6>
 	                    </div>
 	                </div>
 	                <div class="card-body">

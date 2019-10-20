@@ -9,7 +9,7 @@
 </div>
 @endsection
 @section('top-menu')
-	@include($topMenu)
+	@include($route)
 @endsection
 @section('maincontent')
 <div class="page height-full" style="margin-top: 130px">
@@ -23,7 +23,7 @@
 	                    </div>
 	                </div>
 	                <div class="card-body">
-						{!! Form::open(['route'=>'operationDocument.store','method'=>'POST', 'class'=>'', 'id'=>'guardarRegistro']) !!}
+						{!! Form::open(['route'=>'operationDocument.store','method'=>'POST', 'class'=>'FormlDinamic', 'id'=>'guardarRegistro']) !!}
 						@include('pages.operation.operationDocument.forml')
 						<br>
 						<div class="col-md-12 text-right">
