@@ -1,12 +1,6 @@
 @extends('layouts.app')
 @section('title')
-<div class="nav-title text-white col-12"> 
-	<i class="icon-person"></i>
-	<a href="{{ route('operations.index') }}">{{__('Operation')}}</a> > {{$operation->account->name}} > {{$operation->code}}
-</div>
-<div class="col-12">
-	<div class="text-white">Status: {{$operation->status->name}}</div>
-</div>
+    @include('pages.operation.partial.title')
 @endsection
 @section('top-menu')
 	@include($topMenu)

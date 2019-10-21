@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-<h1 class="nav-title text-white"><i class="icon icon-document-text s-18"></i>Document</h1>
+    @include('pages.operation.partial.title')
 @endsection
 
 @section('maincontent')

@@ -5,9 +5,11 @@ $(document).ready(function(){
     $('.combo').on('change',function(e) {
         var id = e.target.value;
         var route = e.target.dataset.route;
+        var route2 = e.target.dataset.route2;
         var r1 = e.target.dataset.r1;
         var r2 = e.target.dataset.r2;
-        comboBox(id,route,r1,r2);
+        comboBox(id,route,r1);
+        comboBox(id,route2,r2);
     })
 });
 
@@ -384,21 +386,18 @@ function dataTableExport(title, columns) {
  * 
  * @param {valor a comparar} id 
  * @param {route del controlador} route 
- * @param {campo receptor 1} r1 
- * @param {campo receptor 2} r2 
+ * @param {campo receptor} receptor 
  */
-function comboBox(id,route,r1,r2) {
+function comboBox(id,route,receptor) {
         $.get(route + '/' + id, function (data) {
-        // console.log(data);
+        console.log(data);
         if(data){
             $.each(data, function(key, value){
-                $('#' + r1).empty().append("<option value =" + key + ">" + value + "</option>");
-                $('#' + r2).empty().append("<option value =" + key + ">" + value + "</option>");
+                $('#' + receptor).empty().append("<option value =" + key + ">" + value + "</option>");
             });
         }
         else{
-            $('#' + r1).empty().append("<option value =''>Sin Resultados</option>");
-            $('#' + r2).empty().append("<option value =''>Sin Resultados</option>");
+            $('#' + receptor).empty().append("<option value =''>Sin Resultados</option>");
         }
     });
  }

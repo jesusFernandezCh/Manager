@@ -3,7 +3,7 @@
 		@if (isset($operation))
 		<div class="" id="proforma_group">
 			{!! Form::label('code', 'Order Name *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::text('code', $operation->code, ['class'=>'form-control r-0 light s-12', 'id'=>'_code']) !!}
+			{!! Form::text('code', $operation->code, ['class'=>'form-control r-0 light s-12', 'id'=>'_code', 'readonly']) !!}
 			<span class="code_span"></span>
 		</div>
 		@endif
@@ -19,7 +19,7 @@
 		<div class="" id="status_id_group">
 			<i class=""></i>
 			{!! Form::label('operation_status_id', 'Status *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('operation_status_id', $status, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_operation_status_id']) !!}
+			{!! Form::select('operation_status_id', $status, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_operation_status_id','placeholder'=>'Seleccione']) !!}
 			<span class="_status_id_span"></span>
 		</div>
 	</div>
@@ -45,7 +45,7 @@
 		<div class="" id="suplier_id_group">
 			<i class=""></i>
 			{!! Form::label('supplier_id', 'Supplier *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('supplier_id', $supplier, null, ['class'=>'form-control r-0 light s-12 combo', 'id'=>'_supplier_id', 'data-route'=> route('supplierComercial'), 'data-r1'=>'_supplier_commercial_id', 'data-r2'=>'_cus_commercial_id']) !!}
+			{!! Form::select('supplier_id', $supplier, null, ['class'=>'form-control r-0 light s-12 combo', 'id'=>'_supplier_id', 'data-route'=> route('supplierComercial'), 'data-route2'=> route('comboCustomerBank'), 'data-r1'=>'_supplier_commercial_id', 'data-r2'=>'_customer_bank_id']) !!}
 			<span class="supplier_id_span"></span>
 		</div>
 	</div>
@@ -53,7 +53,7 @@
 		<div class="" id="customer_id_group">
 			<i class=""></i>
 			{!! Form::label('customer_id', 'Customer', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('customer_id', $accounts, null, ['class'=>'form-control r-0 light s-12 combo', 'id'=>'_customer_id', 'data-route'=> route('comboCustomerBank'), 'data-r1'=>'_supplier_bank_id', 'data-r2'=>'_customer_bank_id']) !!}
+			{!! Form::select('customer_id', $customers, null, ['class'=>'form-control r-0 light s-12 combo', 'id'=>'_customer_id', 'data-route'=> route('comboCustomerBank'), 'data-route2'=> route('supplierComercial'),'data-r1'=>'_supplier_bank_id', 'data-r2'=>'_cus_commercial_id']) !!}
 			<span class="customer_id_span"></span>
 		</div>
 	</div>
@@ -61,7 +61,7 @@
 		<div class="" id="suplier_commercial_id_group">
 			<i class=""></i>
 			{!! Form::label('suplier_commercial_id', 'Supplier Commercial', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('supplier_commercial_id', $contacts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_commercial_id']) !!}
+			{!! Form::select('supplier_commercial_id', $sumplierCom, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_commercial_id']) !!}
 			<span class="supplier_commercial_id_span"></span>
 		</div>
 	</div>
@@ -76,7 +76,7 @@
 		<div class="" id="custom_commercial_id_group">
 			<i class=""></i>
 			{!! Form::label('custom_commercial_id', 'Customer  Commercial', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('cus_commercial_id', $contacts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cus_commercial_id']) !!}
+			{!! Form::select('cus_commercial_id', $sumplierCom, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cus_commercial_id']) !!}
 			<span class="cus_commercial_id_span"></span>
 		</div>
 	</div>
@@ -227,7 +227,7 @@
 		<div class="" id="p_curr">
 			<i class=""></i>
 			{!! Form::label('p_curr', 'Pcurr', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('p_curr', $currencys, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_p_curr']) !!}
+			{!! Form::select('purchase_curr ', $currencies, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_purchase_curr']) !!}
 			<span class="p_curr_span"></span>
 		</div>
 	</div>
@@ -250,7 +250,7 @@
 		<div class="" id="s_curr">
 			<i class=""></i>
 			{!! Form::label('s_curr', 'Scurr', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('s_curr', $currencys, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_s_curr']) !!}
+			{!! Form::select('sale_curr', $currencies, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_sale_curr']) !!}
 			<span class="s_curr_span"></span>
 		</div>
 	</div>

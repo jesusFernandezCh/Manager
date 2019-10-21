@@ -22,6 +22,7 @@ use App\Http\Requests\Operation\operationRequest;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log;
 use Session;
 
 class OperationController extends Controller
@@ -31,27 +32,43 @@ class OperationController extends Controller
     private $accounts;
     private $operators;
     private $document;
-    private $contacts;
+    private $sumplierCom;
     private $banks;
     private $status;
     private $orderPmtTerm;
+    private $businessLine;
+    private $incoterms;
+    private $currencies;
+    private $ports;
+    private $countries;
+    private $cargoUnits;
+    private $logunits;
+    private $select;
 
     /**
      * [__contruct description]
      * @param  Operation $stmt [description]
      * @return [type]          [description]
      */
-    public function __construct(Operation $stmt, Account $account, User $operator, Document $document, Status $status, AccountContact $contact, OrderPmtTerm $orderPmtTerm, Partner_bank $bank)
+    public function __construct(Operation $stmt, Account $account, User $operator, Document $document, Status $status, AccountContact $contact, OrderPmtTerm $orderPmtTerm, Partner_bank $bank, BusinessLine $businessLine, Incoterm $incoterm, Currency $currency, Port $port, Country $country, CargoUnit $cargoUnit, Logunit $logunit)
     {
         $this->operation    = $stmt;    
         $this->account      = $account;
-        $this->accounts     = $account->get()->pluck('name','id');
-        $this->operators    = $operator->get()->pluck('fullname','id');
+        $this->customers    = $account->get()->pluck('name','id')->prepend('Selected...','');
+        $this->operators    = $operator->get()->pluck('fullname','id')->prepend('Selected...','');
         $this->document     = $document;
-        $this->status       = $status->get()->pluck('name', 'id');
-        $this->contacts     = $contact->get()->pluck('fullname','id');
-        $this->banks        = $bank->get()->pluck('bank_name','id');
+        $this->status       = $status->get()->pluck('name', 'id')->prepend('Selected...','');
+        $this->sumplierCom  = $contact->get()->pluck('fullname','id')->prepend('Selected...','');
+        $this->banks        = $bank->get()->pluck('bank_name','id')->prepend('Selected...','');
         $this->orderPmtTerm = $orderPmtTerm;
+        $this->businessLine = $businessLine->get()->pluck('name','id')->prepend('Selected...','');
+        $this->incoterms    = $incoterm->get()->pluck('name','id')->prepend('Selected...','');
+        $this->currencies   = $currency->get()->pluck('code','id')->prepend('Selected...','');
+        $this->ports        = $port->get()->pluck('name','id')->prepend('Selected...','');
+        $this->countries    = $country->get()->pluck('name','id')->prepend('Selected...','');
+        $this->cargoUnits   = $cargoUnit->get()->pluck('name','id')->prepend('-','');
+        $this->logunits     = $logunit->get()->pluck('name','id')->prepend('Selected...','');
+        $this->select       = 'Selected..';
     }
 
     /**
@@ -75,19 +92,6 @@ class OperationController extends Controller
     public function indexAsoc()
     {
         $admin      = false;
-        $status     = $this->status;
-        $operators  = $this->operators;
-        $accounts   = $this->accounts;
-        $parther    = $this->operation->CustomPluck('Partner');
-        $supplier   = $this->operation->CustomPluck('Supplier');
-        $incoterms  = Incoterm::get()->pluck('name','id');
-        $business   = BusinessLine::get()->pluck('name','id');
-        $currencys  = Currency::get()->pluck('code','id');
-        $ports      = Port::get()->pluck('name','id');
-        $countries  = Country::get()->pluck('name','id');
-        $payment_terms = $this->orderPmtTerm->get()->pluck('payment_terms','id');
-        $cargoUnits = CargoUnit::get()->pluck('name','id');
-        $logunits   = Logunit::get()->pluck('name','id');
         $topMenu    = 'pages.operation.topMenu';
         $operations = $this->operation->all()->where('purchase_by', Auth::user()->id);
         return view('pages.operation.index',compact('operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin'));    }
@@ -98,26 +102,26 @@ class OperationController extends Controller
      */
     public function create()
     {
-        $date = Carbon::now()->format("Y/m/d");
-        $admin      = false;
-        $create     = true;
-        $status     = $this->status;
-        $operators  = $this->operators;
-        $accounts   = $this->accounts;
-        $parther    = $this->operation->CustomPluck('Partner');
-        $supplier   = $this->operation->CustomPluck('Supplier');
-        $incoterms  = Incoterm::get()->pluck('name','id');
-        $business   = BusinessLine::get()->pluck('name','id');
-        $currencys  = Currency::get()->pluck('code','id');
-        $ports      = Port::get()->pluck('name','id');
-        $countries  = Country::get()->pluck('name','id');
-        $payment_terms = $this->orderPmtTerm->get()->pluck('payment_terms','id');
-        $cargoUnits = CargoUnit::get()->pluck('name','id');
-        $logunits   = Logunit::get()->pluck('name','id');
-        $contacts   = $this->contacts;
-        $banks      = $this->banks;
-        $topMenu    = 'pages.operation.topMenu';
-        return view('pages.operation.create',compact('accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create','date', 'contacts', 'banks'));
+        $date           = Carbon::now()->format("Y/m/d");
+        $admin          = false;
+        $create         = true;
+        $status         = $this->status;
+        $operators      = $this->operators;
+        $customers      = $this->customers;
+        $parther        = $this->operation->CustomPluck('Partner');
+        $supplier       = $this->operation->CustomPluck('Supplier');
+        $incoterms      = $this->incoterms;
+        $business       = $this->businessLine;
+        $currencies     = $this->currencies;
+        $ports          = $this->ports;
+        $countries      = $this->countries;
+        $payment_terms  = $this->orderPmtTerm->get()->pluck('payment_terms','id');
+        $cargoUnits     = $this->cargoUnits;
+        $logunits       = $this->logunits;
+        $sumplierCom    = $this->sumplierCom;
+        $banks          = $this->banks;
+        $topMenu        = 'pages.operation.topMenu';
+        return view('pages.operation.create',compact('customers','business','operators','status','parther', 'incoterms', 'currencies', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create','date', 'sumplierCom', 'banks'));
     }
     /**
      * Store a newly created resource in storage.
@@ -155,31 +159,30 @@ class OperationController extends Controller
      */
     public function edit(Operation $operation)
     {
-        $admin      = false;
-        $create     = true;
-        $status     = $this->status;
-        $operators  = $this->operators;
-        $accounts   = $this->accounts;
-        $parther    = $this->operation->CustomPluck('Partner');
-        $supplier   = $this->operation->CustomPluck('Supplier');
-        $incoterms  = Incoterm::get()->pluck('name','id');
-        $business   = BusinessLine::get()->pluck('name','id');
-        $currencys  = Currency::get()->pluck('code','id');
-        $ports      = Port::get()->pluck('name','id');
-        $countries  = Country::get()->pluck('name','id');
-        $payment_terms = $this->orderPmtTerm->get()->pluck('payment_terms','id');
-        $cargoUnits = CargoUnit::get()->pluck('name','id');
-        $logunits   = Logunit::get()->pluck('name','id');
-        $contacts   = $this->contacts;
-        $banks      = $this->banks;
-        $topMenu    = 'pages.operation.topMenu';
-        $operations = $this->operation->all();
+        $admin              = false;
+        $create             = true;
+        $status             = $this->status;
+        $operators          = $this->operators;
+        $accounts           = $this->accounts;
+        $parther            = $this->operation->CustomPluck('Partner');
+        $supplier           = $this->operation->CustomPluck('Supplier');
+        $incoterms          = $this->incotmers;
+        $business           = $this->businessLine;
+        $currencies         = $this->currencies;
+        $ports              = $this->ports;
+        $countries          = $this->countries;
+        $payment_terms      = $this->orderPmtTerm->get()->pluck('payment_terms','id');
+        $cargoUnits         = $this->cargoUnits;
+        $logunits           = $this->logunits;
+        $sumplierCom        = $this->sumplierCom;
+        $banks              = $this->banks;
+        $topMenu            = 'pages.operation.topMenu';
+        $operations         = $this->operation->all();
         
-        return view('pages.operation.edit',compact('operation','operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create', 'contacts', 'banks'));
+        return view('pages.operation.edit',compact('operation','operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create', 'sumplierCom', 'banks','currencies'));
     }
 
-    /**
-     * Update the specified resource in storage.
+    /* Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Operation  $operation
@@ -216,9 +219,9 @@ class OperationController extends Controller
      * @param [type] $customer_id
      * @return void
      */
-    public function customer_bank($customer_id)
+    public function customer_bank($id)
     {
-        $banks = Partner_bank::get()->where('company_id',$customer_id)->pluck('bank_name','id');
+        $banks = Partner_bank::get()->where('company_id',$id)->pluck('bank_name','id');
         return response()->json($banks);
         
     }

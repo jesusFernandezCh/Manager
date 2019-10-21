@@ -102,12 +102,13 @@ class Operation extends Model
      */
     public function scopeCustomPluck($query, $var)
     {
-        return DB::table('accounts')
+        $col = DB::table('accounts')
             ->join('categories_accounts', 'accounts.id', '=', 'account_id')
             ->join('account_categories', 'account_categories.id', '=', 'categories_accounts.category_id')
             ->select('accounts.id','accounts.name')
             ->where('account_categories.name',$var)
             ->pluck('name', 'id');
+        return $col->prepend(__('Selected...'), '');
     }
     /**
      * [FunctionName description]
@@ -115,12 +116,13 @@ class Operation extends Model
      */
     public function scopeSupplier($query, $value)
     {
-         return DB::table('account_contacts')
+        $col = DB::table('account_contacts')
             ->join('accounts', 'accounts.id', '=', 'account_id')
             ->join('account_categories', 'account_categories.id', '=', 'categories_accounts.category_id')
             ->select('account_contacts.id','account_contacts.fullname')
             ->where('account_categories.name',$var)
             ->pluck('fullname', 'id');
+        return $col->prepend(__('Selected...'), '');
     }
 
     public function Supplier()
