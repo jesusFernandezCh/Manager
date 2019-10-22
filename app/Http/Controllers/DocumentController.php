@@ -11,6 +11,7 @@ use App\Http\Requests\Document\updateRequest;
 use Illuminate\Http\Request;
 use Session;
 use Redirect;
+use Storage;
 
 class DocumentController extends Controller
 {
@@ -40,7 +41,11 @@ class DocumentController extends Controller
         $document = $this->document->all();
         $account = $this->account->all();
         $documentType = $this->documentType->all();
-        $operation = Operation::all();
+
+        $queryOperation = Operation::all();
+        foreach ($queryOperation as $key => $value) {
+            $operation[$value->id]= $value->code.' - '.$value->Supplier->name. ' - '.$value->s_incoterm_place.'$';
+        }
         
         return view('pages.account.document.index',compact('document','documentType','account', 'operation'));
     }
@@ -68,7 +73,7 @@ class DocumentController extends Controller
         $public_path = public_path();
         $url = $public_path.'/storage/';
 
-       \Storage::disk('local')->put($name,  \File::get($file));
+        Storage::disk('local')->put($name,  \File::get($file));
 
         $data = new Document; 
         $data->name = $request->name;
@@ -116,12 +121,14 @@ class DocumentController extends Controller
      */
     public function update(updateRequest $request, $id)
     {
-        $document = Document::find($id);
+      
+
+       /* $document = Document::find($id);
         $data = $request->all();
         $document->update($data);
         $document->save();
         $document->documentTypes()->sync($request->documentType);
-        Session::flash('message-success','El documento '. $request->name.' fue editado correctamente.');
+        Session::flash('message-success','El documento '. $request->name.' fue editado correctamente.');*/
     }
 
     /**

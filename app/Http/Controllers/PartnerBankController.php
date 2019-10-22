@@ -103,6 +103,9 @@ class PartnerBankController extends Controller
     {
         $partner = Partner_bank::find($id);
         $data = $request->all();
+        if (empty($data['curren_account'])) {
+            $data['curren_account'] = null;
+        }
         $partner->update($data);
         $partner->save();
         Session::flash('message-success',' Partner Bank actualizado correctamente.');
