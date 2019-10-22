@@ -50,7 +50,11 @@
                                                 </div>
                                             </div> 
                                         </td>
-                                        <td> {{$account->countries->name}} </td>
+                                        <td> 
+                                            @if (isset($account->countries))
+                                                {{$account->countries->name}}
+                                            @endif
+                                        </td>
                                         <td>
                                             @foreach ($account->categories as $element)
                                                 <span class="badge badge-primary r-5">{{$element->name }}</span>

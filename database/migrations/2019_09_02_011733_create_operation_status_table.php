@@ -16,7 +16,7 @@ class CreateOperationStatusTable extends Migration
         Schema::create('operation_status', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

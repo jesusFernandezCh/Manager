@@ -227,7 +227,7 @@
 		<div class="" id="p_curr">
 			<i class=""></i>
 			{!! Form::label('p_curr', 'Pcurr', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('purchase_curr ', $currencies, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_purchase_curr']) !!}
+			{!! Form::select('purchase_curr', $currencies, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_purchase_curr']) !!}
 			<span class="p_curr_span"></span>
 		</div>
 	</div>

@@ -199,6 +199,7 @@ class OperationController extends Controller
            $data = Arr::add($data,'cu_po_signed', null);
         }
         $operation->update($data);
+        dd($request->input('purchase_curr'));
         Session::flash('message-success',' Operation '. $request->name.' actualizado correctamente.');
     }
 
