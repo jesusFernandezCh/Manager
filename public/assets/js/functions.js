@@ -90,7 +90,11 @@ function saveData(url, forml, method)
             //si recibe respuesta redirecciona al edit
             // console.log(result.id);
             if (result.id != undefined) {
-                window.location.replace(route  + "/" + result.id + "/edit");
+                if(result.page == 'show'){
+                    window.location.replace(route  + "/" + result.id);    
+                }else{
+                    window.location.replace(route  + "/" + result.id + "/edit");
+                }
             }else{
                 if(route == null || result.operator == true){
                     location.reload();
@@ -359,27 +363,6 @@ function dataTableExport(title, columns) {
      if (letras.indexOf(tecla) == -1 && !tecla_especial) {
          return false;
      }
- }
-/**
- * Funcion combo box: agrega data a combos dependientes
- * @param {valor a comparar} val 
- * @param {route del controlador y funcion} route 
- * @param {slelect resecptor de data} select
- */
- function comboBoxCustomer(route) {
-    $.get(route, function (data) {
-        var n = data.length;
-        if(n > 0){
-            $.each(data, function(key, value){
-                $('#_supplier_bank_id').empty().append("<option value =" + value.id + ">" + value.bank_name + "</option>");
-                $('#_customer_bank_id').empty().append("<option value =" + value.id + ">" + value.bank_name + "</option>");
-            });
-        }
-        else{
-            $('#_supplier_bank_id').empty().append("<option value =''>Sin Resultados</option>");
-            $('#_customer_bank_id').empty().append("<option value =''>Sin Resultados</option>");
-        }
-    });
  }
  
 /**

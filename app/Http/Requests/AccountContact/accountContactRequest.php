@@ -24,7 +24,7 @@ class accountContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'fullname'   => 'required',
+            'fullname'  => 'required',
         ];
     }
 }

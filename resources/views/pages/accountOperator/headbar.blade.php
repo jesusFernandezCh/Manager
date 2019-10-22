@@ -3,39 +3,6 @@
         <div class="row justify-content-between">
             <ul class="nav nav-material nav nav-tabs nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
 
-                {{-- <li class="nav-item">
-                    <a class="nav-link" id="accounts" href="{{ route('accountOperator.index') }}" role="tab" a>
-                        <i class="icon icon-widgets s-14"></i>
-                        All Accounts
-                    </a>
-                </li> --}}
-                
-                {{-- <li>
-                    <a class="nav-link" href="{{ route('accountOperator.index') }}" role="tab" id="account">
-                        <i class="icon icon-widgets"></i> Accounts
-                    </a>
-                </li> --}}
-                {{-- <li>
-                    <a class="nav-link" id="category" href="{!! route('accountCategory.index') !!}" role="tab"
-                        aria-controls="v-pills-buyers">
-                        <i class=""></i> Accounts Categories
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link" href="{{ route('accountMeta.index') }}" role="tab" id="meta">
-                        <i class=""></i> Account meta
-                    </a>
-                </li> --}}
-                {{-- <li>
-                    <a class="nav-link" href="{!! route('country.index') !!}" role="tab" id="countries">
-                        <i class="icon-globe"></i> Country
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link" href="{{ route('document.index') }}" role="tab" id="document">
-                        <i class="icon-document-text"></i> Document
-                    </a>
-                </li> --}}
                 @if (isset($account))
                     <li class="nav-item">
                         <a class="nav-link" id="show" href="{{ route('accountOperator.show',$account) }}" role="tab" a>
@@ -49,8 +16,13 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" id="metaType" href="{!! route('docsInstruction.show', $account) !!}" role="tab" >
+                        <a class="nav-link" id="docsInstruction" href="{!! route('docsInstruction.show', $account) !!}" role="tab" >
                             <i class="icon icon icon-playlist_add"></i> {{__('DocsInstruction')}}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" id="courrier" href="{!! route('accountCourrier.show', $account) !!}" role="tab" >
+                            <i class="icon icon-truck s-14"></i> {{__('Account Courrier')}}
                         </a>
                     </li>
                 @endif

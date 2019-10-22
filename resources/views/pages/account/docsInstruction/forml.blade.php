@@ -1,20 +1,22 @@
 <div class="row">
-	<div class="col-md-12">
-		<div class="" id="cnee_group">
+	@if (isset($account))
+	<div class="col-md-6">
+		<div class="" id="account_id_group">
 			<i class=""></i>
-			{!! Form::label('account_id', 'Account', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('account_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cnee']) !!}
+			{!! Form::hidden('account_id', $account->id, ['class'=>'form-control r-0 light s-12', 'id'=>'_account_id']) !!}
+			<span class="account_id_span"></span>
+		</div>
+	</div>	
+	@else
+	<div class="col-md-12">
+		<div class="" id="account_id_group">
+			<i class=""></i>
+			{!! Form::label('account_id', 'Account *', ['class'=>'col-form-label s-12']) !!}
+			{!! Form::select('account_id', $accounts, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_account_id']) !!}
 			<span class="cnee_span"></span>
 		</div>
 	</div>
-	{{--  <div class="col-md-6">
-		<div class="" id="cnee_group">
-			<i class=""></i>
-			{!! Form::label('cnee', 'Cnee', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('cnee', [], null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cnee']) !!}
-			<span class="cnee_span"></span>
-		</div>
-	</div>  --}}
+	@endif
 	<div class="col-6">
 		<div class="" id="preshipmentinspection_group">
 			{!! Form::label('&nbsp;', '&nbsp;', ['class'=>'col-form-label s-12']) !!}
@@ -191,9 +193,9 @@
 		</div>
 	</div>
 	<div class="col-md-12">
-		<div class="" id="Cnee">
+		<div class="" id="cnee_group">
 			<i class=""></i>
-			{!! Form::label('cnee', 'Cnee', ['class'=>'col-form-label s-12']) !!}
+			{!! Form::label('cnee', 'Cnee *', ['class'=>'col-form-label s-12']) !!}
 			{!! Form::text('cnee', null, ['class'=>'form-control r-0 light s-12 datepicker', 'id'=>'_cnee']) !!}
 			<span class="cnee_span"></span>
 		</div>

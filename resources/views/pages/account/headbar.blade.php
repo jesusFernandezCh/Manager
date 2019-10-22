@@ -24,7 +24,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" id="metaType" href="{!! route('docsInstruction.index') !!}" role="tab" >
+                    <a class="nav-link" id="courrier" href="{!! route('docsInstruction.index') !!}" role="tab" >
                         <i class="icon icon icon-playlist_add"></i> {{__('DocsInstruction')}}
                     </a>
                 </li>

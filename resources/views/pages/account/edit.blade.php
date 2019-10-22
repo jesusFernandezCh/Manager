@@ -74,7 +74,7 @@
 								{!! Form::text('address', null, ['class'=>'form-control r-0 light s-12', 'id'=>'address']) !!}
 								<span class="address_span"></span>
 							</div>
-							{!! Form::hidden('route', route('account.index'), ['id'=>'route']) !!}
+							
 						</div>
 					</div>
 						</div>

@@ -13,6 +13,7 @@ class DocsInstructionController extends Controller
 {
     private $docsInstruction;
     private $accounts;
+    private $account;
 
     /**
      * Undocumented function
@@ -22,7 +23,8 @@ class DocsInstructionController extends Controller
     public function __construct(DocsInstruction $stmt, Account $account)
     {
         $this->docsInstruction = $stmt;
-        $this->accounts = $account->all()->pluck('name','id');
+        $this->accounts = $account->all()->pluck('name','id')->prepend(__('selected...'), '');
+        $this->account = $account;
     }
 
     /**
@@ -69,8 +71,22 @@ class DocsInstructionController extends Controller
     {
         $account = Account::find($account_id);
         $accounts = $this->accounts;
-        $docsInstructions = $this->docsInstruction->all();
+        $docsInstructions = $this->docsInstruction->all()->where('account_id',$account_id);
         return view('pages.account.docsInstruction.index', compact('docsInstructions','accounts','account'));
+    }
+
+    /**
+     * Show the form for editing docsinstructionAsoc the specified resource.
+     *
+     * @param  \App\DocsInstruction  $docsInstruction
+     * @return \Illuminate\Http\Response
+     */
+    public function editAsoc($id)
+    {
+        $docsInstruction = $this->docsInstruction->find($id);
+        $account  = Account::find($docsInstruction->id);
+        $accounts = $this->accounts;
+        return view('pages.account.docsInstruction.edit',compact('docsInstruction','accounts', 'account'));
     }
 
     /**
@@ -92,7 +108,7 @@ class DocsInstructionController extends Controller
      * @param  \App\DocsInstruction  $docsInstruction
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DocsInstruction $docsInstruction)
+    public function update(DocsInstructionRequest $request, DocsInstruction $docsInstruction)
     {
         
         $data = $request->all();

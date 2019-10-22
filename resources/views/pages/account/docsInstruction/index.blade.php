@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('title')
-<h1 class="nav-title text-white"><i class="icon icon-documents3 s-18"></i>{{ __('docsInstruction') }} </h1>
+@if (isset($account))
+    @include('pages.accountOperator.partials.title')
+@else
+    <h1 class="nav-title text-white"><i class="icon icon-documents3 s-18"></i>{{ __('docsInstruction') }} </h1>
+@endif
 @endsection
 @section('top-menu')
     {{-- header --}}
@@ -47,7 +51,13 @@
                                         <td>{{$docsInstruction->shipper}}</td>
                                         <td class="text-center">
                                             {!! Form::open(['route'=>['docsInstruction.destroy',$docsInstruction],'method'=>'DELETE', 'class'=>'formlDinamic','id'=>'eliminarRegistro']) !!}
-                                            <a href="{{ route('docsInstruction.edit',$docsInstruction) }}" class="btn btn-default btn-sm" title="Editar">
+                                            <a href="
+                                            @if (isset($account))
+                                                {{ route('docsIntruccionEditAsoc',$docsInstruction) }}    
+                                            @else
+                                                {{ route('docsInstruction.edit',$docsInstruction) }}    
+                                            @endif
+                                            " class="btn btn-default btn-sm" title="Editar">
                                                 <i class="icon-pencil text-info"></i>
                                             </a>
                                             <button class="btn btn-default btn-sm" onclick="confirm('¿Realmente deseas borrar el registro?')">
@@ -74,7 +84,7 @@
 @section('js')
 <script>
     $(document).ready(function() {
-        $('#order_terms').addClass('active');
+        $('#docsInstruction').addClass('active');
     });
     var title = 'Operations';
     var colunms = [0,1,2];

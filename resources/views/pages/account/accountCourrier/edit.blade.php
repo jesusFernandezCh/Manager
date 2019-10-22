@@ -20,11 +20,21 @@
 	                </div>
 	                <div class="card-body">
 						{!! Form::model($accountCourrier,['route'=>["accountCourrier.update",$accountCourrier->id],'method'=>'PUT','class'=>'formlDinamic form','id'=>'DataUpdate']) !!}
-                            @include('pages.account.accountCourrier.forml')
-                            {!! Form::hidden('route', route('accountCourrier.index'), ['id'=>'route']) !!}
+							@include('pages.account.accountCourrier.forml')
+							@if (isset($account))
+								{!! Form::hidden('route', route('accountCourrier.show',$account), ['id'=>'route']) !!}
+							@else
+                            	{!! Form::hidden('route', route('accountCourrier.index'), ['id'=>'route']) !!}
+							@endif
 						<br>
 						<div class="col-md-12 text-right">
-							<a href="{{ route('accountCourrier.index') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
+							<a href="
+							@if (isset($account))
+								{{ route('accountCourrier.show',$account) }}
+							@else
+								{{ route('accountCourrier.index') }}
+							@endif
+							" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
 							<button type="submit" class="btn btn-primary"><i class="icon-save mr-2"></i>{{_('Save data')}}</button>
 						</div>
 						{!! Form::close() !!}

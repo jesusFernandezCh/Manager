@@ -65,7 +65,7 @@ class OperationController extends Controller
         $this->incoterms    = $incoterm->get()->pluck('name','id')->prepend('Selected...','');
         $this->currencies   = $currency->get()->pluck('code','id')->prepend('Selected...','');
         $this->ports        = $port->get()->pluck('name','id')->prepend('Selected...','');
-        $this->countries    = $country->get()->pluck('name','id')->prepend('Selected...','');
+        $this->countries    = $country->get()->sortBy('name')->pluck('name','id')->prepend('Selected...','');
         $this->cargoUnits   = $cargoUnit->get()->pluck('name','id')->prepend('-','');
         $this->logunits     = $logunit->get()->pluck('name','id')->prepend('Selected...','');
         $this->select       = 'Selected..';
@@ -163,10 +163,11 @@ class OperationController extends Controller
         $create             = true;
         $status             = $this->status;
         $operators          = $this->operators;
+        $customers          = $this->customers;
         $accounts           = $this->accounts;
         $parther            = $this->operation->CustomPluck('Partner');
         $supplier           = $this->operation->CustomPluck('Supplier');
-        $incoterms          = $this->incotmers;
+        $incoterms          = $this->incoterms;
         $business           = $this->businessLine;
         $currencies         = $this->currencies;
         $ports              = $this->ports;
@@ -179,7 +180,7 @@ class OperationController extends Controller
         $topMenu            = 'pages.operation.topMenu';
         $operations         = $this->operation->all();
         
-        return view('pages.operation.edit',compact('operation','operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create', 'sumplierCom', 'banks','currencies'));
+        return view('pages.operation.edit',compact('operation','operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create', 'sumplierCom', 'banks','currencies','customers'));
     }
 
     /* Update the specified resource in storage.

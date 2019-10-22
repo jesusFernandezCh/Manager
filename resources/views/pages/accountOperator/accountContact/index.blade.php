@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-<h1 class="nav-title text-white"><i class="icon icon-contacts s-18"></i>Account Contact</h1>
+    @include('pages.accountOperator.partials.title')
 @endsection
 @section('top-menu')
     {{-- header --}}
@@ -56,7 +56,9 @@
                                         </td>
                                         <td>
                                             <div>
-                                                {{$contact->countries->name}}    
+                                                @if (isset($contact->countries))
+                                                    {{$contact->countries->name}}    
+                                                @endif  
                                                 <div>
                                                     <small>{{$contact->address}}</small>
                                                 </div>
