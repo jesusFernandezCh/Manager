@@ -5,9 +5,11 @@ $(document).ready(function(){
     $('.combo').on('change',function(e) {
         var id = e.target.value;
         var route = e.target.dataset.route;
+        var route2 = e.target.dataset.route2;
         var r1 = e.target.dataset.r1;
         var r2 = e.target.dataset.r2;
-        comboBox(id,route,r1,r2);
+        comboBox(id,route,r1);
+        comboBox(id,route2,r2);
     })
 });
 
@@ -88,7 +90,11 @@ function saveData(url, forml, method)
             //si recibe respuesta redirecciona al edit
             // console.log(result.id);
             if (result.id != undefined) {
-                window.location.replace(route  + "/" + result.id + "/edit");
+                if(result.page == 'show'){
+                    window.location.replace(route  + "/" + result.id);    
+                }else{
+                    window.location.replace(route  + "/" + result.id + "/edit");
+                }
             }else{
                 if(route == null || result.operator == true){
                     location.reload();
@@ -358,47 +364,23 @@ function dataTableExport(title, columns) {
          return false;
      }
  }
-/**
- * Funcion combo box: agrega data a combos dependientes
- * @param {valor a comparar} val 
- * @param {route del controlador y funcion} route 
- * @param {slelect resecptor de data} select
- */
- function comboBoxCustomer(route) {
-    $.get(route, function (data) {
-        var n = data.length;
-        if(n > 0){
-            $.each(data, function(key, value){
-                $('#_supplier_bank_id').empty().append("<option value =" + value.id + ">" + value.bank_name + "</option>");
-                $('#_customer_bank_id').empty().append("<option value =" + value.id + ">" + value.bank_name + "</option>");
-            });
-        }
-        else{
-            $('#_supplier_bank_id').empty().append("<option value =''>Sin Resultados</option>");
-            $('#_customer_bank_id').empty().append("<option value =''>Sin Resultados</option>");
-        }
-    });
- }
  
 /**
  * 
  * @param {valor a comparar} id 
  * @param {route del controlador} route 
- * @param {campo receptor 1} r1 
- * @param {campo receptor 2} r2 
+ * @param {campo receptor} receptor 
  */
-function comboBox(id,route,r1,r2) {
+function comboBox(id,route,receptor) {
         $.get(route + '/' + id, function (data) {
-        // console.log(data);
+        console.log(data);
         if(data){
             $.each(data, function(key, value){
-                $('#' + r1).empty().append("<option value =" + key + ">" + value + "</option>");
-                $('#' + r2).empty().append("<option value =" + key + ">" + value + "</option>");
+                $('#' + receptor).empty().append("<option value =" + key + ">" + value + "</option>");
             });
         }
         else{
-            $('#' + r1).empty().append("<option value =''>Sin Resultados</option>");
-            $('#' + r2).empty().append("<option value =''>Sin Resultados</option>");
+            $('#' + receptor).empty().append("<option value =''>Sin Resultados</option>");
         }
     });
  }

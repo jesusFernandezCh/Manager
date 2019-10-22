@@ -1,12 +1,6 @@
 @extends('layouts.app')
 @section('title')
-<div class="nav-title text-white">
-    <i class="icon-document-text s-18"></i>
-    {{__('Documents')}} >{{$operation->account->name}} >{{$operation->code}}
-</div>
-<div class="col-12">
-    <div class="text-white">Status: {{$operation->status->name}}</div>
-</div>
+    @include('pages.operation.partial.title')
 @endsection
 @section('top-menu')
     {{-- header --}}

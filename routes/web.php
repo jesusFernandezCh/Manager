@@ -67,6 +67,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('operationIndexAsoc', 'OperationController@indexAsoc')->name('operationIndexAsoc');
 	Route::get('comboCustomerBank/{customer_id?}/', 'OperationController@customer_bank')->name('comboCustomerBank');
 	Route::get('supplierComercial/{supplier_id?}/', 'OperationController@supplierComercial')->name('supplierComercial');
+	Route::get('docsIntruccionEditAsoc/{docsIntruccion_id?}/', 'DocsInstructionController@editAsoc')->name('docsIntruccionEditAsoc');
+	Route::get('AccountCourrierEditAsoc/{accountCourrier_id?}/', 'AccountCourrierController@editAsoc')->name('AccountCourrierEditAsoc');
 
 	/* Currency route */
 	Route::resource('currency', 'CurrencyController');

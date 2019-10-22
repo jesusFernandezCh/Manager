@@ -56,7 +56,9 @@
                                         </td>
                                         <td>
                                             <div>
-                                                {{$contact->countries->name}}    
+                                                @if (isset($contact->countries))
+                                                    {{$contact->countries->name}}    
+                                                @endif
                                                 <div>
                                                     <small>{{$contact->address}}</small>
                                                 </div>

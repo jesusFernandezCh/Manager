@@ -28,7 +28,12 @@
 							{!! Form::hidden('route', route('docsInstruction.show',$docsInstruction->account_id), ['id'=>'route']) !!}
 						<br>
 						<div class="col-md-12 text-right">
-							<a href="{{ route('docsInstruction.show',$docsInstruction->account_id) }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
+							<a href="
+							@if (isset($account))
+							{{ route('docsInstruction.show',$docsInstruction->account_id) }}
+							@else
+							{{ route('docsInstruction.index') }}
+							@endif " class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
 							<button type="submit" class="btn btn-primary"><i class="icon-save mr-2"></i>{{_('Save data')}}</button>
 						</div>
 						{!! Form::close() !!}

@@ -63,6 +63,7 @@
 								{!! Form::select('category_id[]', $categories, null, ['class'=>'form-control r-0 light s-12 select2', 'id'=>'category_id', 'multiple'=>'multiple']) !!}
 								<span class="category_id_span"></span>
 							</div>
+							{!! Form::hidden('route', route('accountOperator.store'), ['id'=>'route']) !!}
 						</div>
 					</div>
 				</div>

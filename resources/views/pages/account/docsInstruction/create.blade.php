@@ -9,7 +9,11 @@
 			</div>
 			<div class="modal-body">
 				@include('pages.account.docsInstruction.forml')
+				@if (isset($account))
+				{!! Form::hidden('route', route('docsInstruction.show',$account), ['id'=>'route']) !!}
+				@else
 				{!! Form::hidden('route', route('docsInstruction.index'), ['id'=>'route']) !!}
+				@endif
 			</div>
 			<br>
 			<div class="modal-footer">

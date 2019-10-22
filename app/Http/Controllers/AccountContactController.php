@@ -28,7 +28,7 @@ class AccountContactController extends Controller
         $this->contact      = $contact;
         $this->account      = $account;
         $this->accounts     = $account->get()->pluck('name', 'id');
-        $this->countries    = $country->get()->pluck('name', 'id');
+        $this->countries    = $country->get()->sortBy('name')->pluck('name','id')->prepend('Selected...','');
     }
     
     /**

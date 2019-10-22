@@ -1,9 +1,6 @@
 @extends('layouts.app')
 @section('title')
-<h1 class="nav-title text-white">
-<i class="icon-person"></i>
-<a href="{{ route('accountOperator.index') }}">Accounts</a> > {{$account->name}} 
-</h1>
+	@include('pages.accountOperator.partials.title')
 @endsection
 @section('top-menu')
 	{{-- headbar --}}
@@ -80,8 +77,6 @@
 												{!! Form::select('category_id[]', $categories, $account->categories, ['class'=>'form-control r-0 light s-12 select2', 'id'=>'category_id', 'multiple'=>'multiple']) !!}
 												<span class="category_id_span"></span>
 											</div>
-											
-											{!! Form::hidden('route', route('accountOperator.index'), ['id'=>'route']) !!}
 										</div>
 									</div>
 								</div>

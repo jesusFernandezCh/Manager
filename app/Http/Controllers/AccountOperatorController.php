@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\Account\accountRequest;
 use App\AccountCategory as Category;
 use App\Account;
@@ -11,7 +10,7 @@ use App\AccountMeta;
 use App\AccountMetaType as MetaType;
 use App\AccountContact as Contact;
 use Session;
-use Redirect;
+
 
 class AccountOperatorController extends Controller
 {
@@ -26,7 +25,7 @@ class AccountOperatorController extends Controller
     {
         $this->account      = $account;
         $this->categories   = Category::get()->pluck('name', 'id');
-        $this->countries    = Country::get()->pluck('name', 'id');
+        $this->countries    = Country::get()->sortBy('name')->pluck('name','id')->prepend('Selected...','');
         $this->meta         = $meta;
         $this->metaTypes    = $metaType->get()->where('active',1)->pluck('metatype','id');
         $this->contacts     = $contact->all();
@@ -78,7 +77,9 @@ class AccountOperatorController extends Controller
     {
         $account = $this->account->create($request->all());
         $account->categories()->attach($request->input('category_id'));
+        $account = collect($account)->prepend('show','page');
         Session::flash('message-success',' Account '. $request->name.' creado correctamente.');
+        return response()->json($account);
     }
 
     /**
@@ -135,14 +136,14 @@ class AccountOperatorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Account $account)
+    public function destroy(Account $accountOperator)
     {
-        $account->categories()->detach($account->categories);
-        $meta = $account->accountMeta()->first();
+        $accountOperator->categories()->detach($accountOperator->categories);
+        $meta = $accountOperator->accountMeta()->first();
         if (isset($meta->id)) {
                 Session::flash('message-error',' Account tiene meta '.$meta->value.' asosciada.');
         }else{
-            $account->delete();
+            $accountOperator->delete();
             Session::flash('message-success',' Account eliminado correctamente.');
         }    
     }

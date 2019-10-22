@@ -1,10 +1,14 @@
 @extends('layouts.app')
 @section('title')
-<h1 class="nav-title text-white"><i class="icon icon-truck s-18"></i>Account Courrier</h1>
+    @if (isset($account))
+        @include('pages.accountOperator.partials.title')
+    @else
+        <h1 class="nav-title text-white"><i class="icon icon-truck s-18"></i>Account Courrier</h1>
+    @endif
 @endsection
 @section('top-menu')
     {{-- header --}}
-    {{-- @include('') --}}
+    @include('pages.accountOperator.headbar')
     {{-- end header --}}
 @endsection
 @section('maincontent')
@@ -69,7 +73,13 @@
                                         </td>
                                         <td class="text-center">
                                             {!! Form::open(['route'=>['accountCourrier.destroy',$courrier],'method'=>'DELETE', 'class'=>'formlDinamic','id'=>'eliminarRegistro']) !!}
-                                            <a href="{{ route('accountCourrier.edit',$courrier) }}" class="btn btn-default btn-sm" title="Editar">
+                                            <a href="
+                                            @if (isset($account))
+                                                {{ route('AccountCourrierEditAsoc',$courrier) }}
+                                            @else
+                                            {{ route('accountCourrier.edit',$courrier) }}
+                                            @endif
+                                            " class="btn btn-default btn-sm" title="Editar">
                                                 <i class="icon-pencil text-info"></i>
                                             </a>
                                             <button class="btn btn-default btn-sm" onclick="confirm('¿Realmente deseas borrar el registro?')">

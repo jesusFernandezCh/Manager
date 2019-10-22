@@ -18,14 +18,14 @@ class CreateAccountContactsTable extends Migration
             $table->string('fullname');
             $table->unsignedBigInteger('account_id')->index();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
-            $table->string('phone_company');
-            $table->string('phone_mobile');
-            $table->string('email');
-            $table->string('departament');
-            $table->unsignedBigInteger('country_id')->index();
+            $table->string('phone_company')->nullable();
+            $table->string('phone_mobile')->nullable();
+            $table->string('email')->nullable();
+            $table->string('departament')->nullable();
+            $table->unsignedBigInteger('country_id')->nullable();
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
-            $table->string('address');
-            $table->string('comments');
+            $table->string('address')->nullable();
+            $table->string('comments')->nullable();
         });
     }
 

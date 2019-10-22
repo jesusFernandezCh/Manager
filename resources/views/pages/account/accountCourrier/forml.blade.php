@@ -1,5 +1,13 @@
 <div class="form-row">
-    <div class="col-md-3">
+    @if (isset($account))
+    <div class="col-md-12">
+        <div class="" id="account_id_group">
+            <i class=""></i>
+            {!! Form::hidden('account_id', $account->id, ['class'=>'form-control r-0 light s-12', 'id'=>'_account_id']) !!}
+        </div>
+    </div>
+    @else    
+    <div class="col-md-12">
         <div class="" id="account_id_group">
             <i class=""></i>
             {!! Form::label('account_id', 'Account *', ['class'=>'col-form-label s-12']) !!}
@@ -7,6 +15,7 @@
             <span class="account_id_span"></span>
         </div>
     </div>
+    @endif
     <div class="col-md-3">
         <div class="" id="recipient_group">
             <i class=""></i>
