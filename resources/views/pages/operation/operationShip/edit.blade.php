@@ -16,7 +16,7 @@
                 <div class="card">
                     <div class="form-group">
                         <div class="card-header white">
-                            <h6><i class="icon icon-pencil"></i> {{ __('EDIT OPERATION SHIP') }}</h6>
+                            <h6><i class="icon icon-pencil"></i> {{ __('EDIT INS-SHIP PLAN') }}</h6>
                         </div>
                     </div>
                     <div class="card-body">

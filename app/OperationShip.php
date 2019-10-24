@@ -54,8 +54,6 @@ class OperationShip extends Model
     public function scopeCnee($query, $var)
     {
          return DB::table('docs_instructions')
-            ->join('accounts', 'accounts.id', '=', 'docs_instructions.account_id')
-            ->join('operations','operations.customer_id', '=' ,'accounts.id')
             ->select('docs_instructions.id','docs_instructions.cnee')
             ->where('docs_instructions.account_id', $var)
             ->pluck('cnee', 'id');

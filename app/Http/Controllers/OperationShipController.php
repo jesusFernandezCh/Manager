@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\OperationShip;
 use App\Operation;
-use App\AccountContact;
+use App\DocsInstruction;
 use Illuminate\Http\Request;
 use App\Http\Requests\OperationShip\OperationShipRequest;
 use Illuminate\Support\Arr;
@@ -14,11 +14,13 @@ class OperationShipController extends Controller
 {
     private $operationShip;
     private $operation;
+    private $docsInstruction;
     
-    public function __construct(OperationShip $stmt, Operation $operation)
+    public function __construct(OperationShip $stmt, Operation $operation, DocsInstruction $docsInstruction)
     {
         $this->operationShip = $stmt;
         $this->operation     = $operation;
+        $this->docsInstruction = $docsInstruction;
     }
 
     /**
@@ -74,7 +76,7 @@ class OperationShipController extends Controller
             //caso contrario muestra el formulario para crearlo
         }else{
             $operation      = $this->operation->find($operation_id);
-            $cnees          = $this->operationShip->Cnee($operation->customer_id);
+            $cnees          = $this->docsInstruction->get()->where('account_id',$operation->customer_id)->pluck('cnee','id');
             $supplier       = $this->operationShip->Supplier($operation->supplier_id);
             $customer       = $this->operationShip->Supplier($operation->customer_id);
             $admin          = false;
@@ -93,7 +95,7 @@ class OperationShipController extends Controller
     public function edit(operationShip $operationShip)
     {
         $operation      = $this->operation->find($operationShip->operation);
-        $cnees          = $this->operationShip->Cnee($operation->customer_id);
+        $cnees          = $this->docsInstruction->get()->where('account_id',$operation->customer_id)->pluck('cnee','id');
         $supplier       = $this->operationShip->Supplier($operation->supplier_id);
         $customer       = $this->operationShip->Supplier($operation->customer_id);
         $admin          = false;
