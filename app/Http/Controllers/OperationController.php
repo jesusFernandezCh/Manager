@@ -58,14 +58,14 @@ class OperationController extends Controller
         $this->operators    = $operator->get()->pluck('fullname','id')->prepend('Selected...','');
         $this->document     = $document;
         $this->status       = $status->get()->pluck('name', 'id')->prepend('Selected...','');
-        $this->sumplierCom  = $contact->get()->pluck('fullname','id')->prepend('Selected...','');
+        $this->sumplierCom  = $contact;
         $this->banks        = $bank->get()->pluck('bank_name','id')->prepend('Selected...','');
         $this->orderPmtTerm = $orderPmtTerm;
         $this->businessLine = $businessLine->get()->pluck('name','id')->prepend('Selected...','');
         $this->incoterms    = $incoterm->get()->pluck('name','id')->prepend('Selected...','');
         $this->currencies   = $currency->get()->pluck('code','id')->prepend('Selected...','');
         $this->ports        = $port->get()->pluck('name','id')->prepend('Selected...','');
-        $this->countries    = $country->get()->sortBy('name')->pluck('name','id')->prepend('Selected...','');
+        $this->countries    = $country->get()->sortBy('name')->pluck('name','id')->where('active',0)->prepend('Selected...','');
         $this->cargoUnits   = $cargoUnit->get()->pluck('name','id')->prepend('-','');
         $this->logunits     = $logunit->get()->pluck('name','id')->prepend('Selected...','');
         $this->select       = 'Selected..';
@@ -118,10 +118,12 @@ class OperationController extends Controller
         $payment_terms  = $this->orderPmtTerm->get()->pluck('payment_terms','id');
         $cargoUnits     = $this->cargoUnits;
         $logunits       = $this->logunits;
-        $sumplierCom    = $this->sumplierCom;
+        $sumplierCom    = $this->sumplierCom->get()->pluck('fullname','id')->prepend('Selected...','');
+        $customerCom    = $this->sumplierCom->get()->pluck('fullname','id')->prepend('Selected...','');
         $banks          = $this->banks;
+        $default        = 1;
         $topMenu        = 'pages.operation.topMenu';
-        return view('pages.operation.create',compact('customers','business','operators','status','parther', 'incoterms', 'currencies', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create','date', 'sumplierCom', 'banks'));
+        return view('pages.operation.create',compact('customers','business','operators','status','parther', 'incoterms', 'currencies', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create','date','sumplierCom','customerCom','banks','default'));
     }
     /**
      * Store a newly created resource in storage.
@@ -175,12 +177,14 @@ class OperationController extends Controller
         $payment_terms      = $this->orderPmtTerm->get()->pluck('payment_terms','id');
         $cargoUnits         = $this->cargoUnits;
         $logunits           = $this->logunits;
-        $sumplierCom        = $this->sumplierCom;
+        $sumplierCom        = $this->sumplierCom->get()->where('account_id',$operation->supplier_id)->pluck('fullname','id');
+        $customerCom        = $this->sumplierCom->get()->where('account_id',$operation->customer_id)->pluck('fullname','id');
         $banks              = $this->banks;
         $topMenu            = 'pages.operation.topMenu';
         $operations         = $this->operation->all();
+        $default            = null;    
         
-        return view('pages.operation.edit',compact('operation','operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create', 'sumplierCom', 'banks','currencies','customers'));
+        return view('pages.operation.edit',compact('operation','operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create', 'sumplierCom','customerCom','banks','currencies','customers','default'));
     }
 
     /* Update the specified resource in storage.

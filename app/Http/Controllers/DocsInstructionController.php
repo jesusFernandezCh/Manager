@@ -84,7 +84,7 @@ class DocsInstructionController extends Controller
     public function editAsoc($id)
     {
         $docsInstruction = $this->docsInstruction->find($id);
-        $account  = Account::find($docsInstruction->id);
+        $account  = Account::find($docsInstruction->account_id);
         $accounts = $this->accounts;
         return view('pages.account.docsInstruction.edit',compact('docsInstruction','accounts', 'account'));
     }

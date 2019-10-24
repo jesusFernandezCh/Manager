@@ -24,12 +24,12 @@ class OperationShipRequest extends FormRequest
     public function rules()
     {
         return [
-            'date_availability'     => 'date',
-            'date_appointment'      => 'date',
-            'freight_rate'          => 'integer', 
-            'est_vessel'            => 'date',
-            'est_etd'               => 'date',
-            'est_eta'               => 'date'
+            // 'date_availability'     => 'date',
+            // 'date_appointment'      => 'date',
+            // 'freight_rate'          => 'integer', 
+            // 'est_vessel'            => 'date',
+            // 'est_etd'               => 'date',
+            // 'est_eta'               => 'date'
         ];
     }
 }

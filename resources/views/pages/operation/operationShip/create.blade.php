@@ -16,12 +16,13 @@
 	            <div class="card" style="margin-top:0px">
 	                <div class="form-group">
 	                    <div class="card-header white">
-	                        <h6><i class=""></i> {{__('Inst-Ship Plain')}} </h6>
+	                        <h6><i class=""></i> {{__('New Inst-Ship Plan')}} </h6>
 	                    </div>
 	                </div>
 	                <div class="card-body">
-						{!! Form::open(['route'=>'operationShip.store','method'=>'POST', 'class'=>'', 'id'=>'guardarRegistro']) !!}
+						{!! Form::open(['route'=>'operationShip.store','method'=>'POST', 'class'=>'formlDinamic', 'id'=>'guardarRegistro']) !!}
 						@include('pages.operation.operationShip.forml')
+						{!! Form::hidden('route', route('operationShip.store'), ['id'=>'route']) !!} 
 						<br>
 						<div class="col-md-12 text-right">
 							<a href="{{ route('operationIndexAsoc') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>

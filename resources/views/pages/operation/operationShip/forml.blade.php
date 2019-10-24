@@ -6,7 +6,7 @@
     <div class="col-md-3">
 		<div class="" id="supplier_Admin_group">
 			<i class=""></i>
-			{!! Form::label('supplier_Admin', 'SupplierAdmin *', ['class'=>'col-form-label s-12']) !!}
+			{!! Form::label('supplier_Admin', 'SupplierAdmin ', ['class'=>'col-form-label s-12']) !!}
 			{!! Form::select('supplier_Admin', $supplier, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_Admin']) !!}
 			<span class="supplier_Admin_span"></span>
 		</div>
@@ -22,8 +22,8 @@
 	<div class="col-md-3">
 		<div class="" id="cust_Admin_group">
 			<i class=""></i>
-			{!! Form::label('cust_admin', 'CustAdmin *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('cust_admin', $supplier, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cust_admin']) !!}
+			{!! Form::label('cust_admin', 'CustAdmin', ['class'=>'col-form-label s-12']) !!}
+			{!! Form::select('cust_admin', $customer, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cust_admin']) !!}
 			<span class="cust_Admin_span"></span>
 		</div>
 	</div>
@@ -31,7 +31,7 @@
 		<div class="" id="cust_ops_group">
 			<i class=""></i>
 			{!! Form::label('cust_ops', 'CustOps', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('cust_ops', $supplier, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cust_ops']) !!}
+			{!! Form::select('cust_ops', $customer, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cust_ops']) !!}
 			<span class="cust_ops_span"></span>
 		</div>
 	</div>
@@ -63,7 +63,7 @@
 		<div class="" id="labels_received_group">
 			{!! Form::label('&nbsp;', '&nbsp;', ['class'=>'col-form-label s-12']) !!}
 			<div class="material-switch ">
-                <input id="_labels_received" name="labels_received" type="checkbox" value="1" />
+                <input id="_labels_received" name="labels_received" type="checkbox" value="1" @if(isset($operationShip))&& @if($operationShip->labels_received == 1){{'checked'}}@endif @endif/>
                 <label for="_labels_received" class="bg-secondary"></label>
 				&nbsp; Labels Received  
             </div>
@@ -73,7 +73,7 @@
 		<div class="" id="labels_oK_group">
 			{!! Form::label('&nbsp;', '&nbsp;', ['class'=>'col-form-label s-12']) !!}
 			<div class="material-switch ">
-                <input id="_labels_oK" name="labels_oK" type="checkbox" value="1" @if(isset($operation))&& @if($operation->su_po_signed == 1){{'checked'}}@endif @endif/>
+                <input id="_labels_oK" name="labels_oK" type="checkbox" value="1" @if(isset($operationShip))&& @if($operationShip->labels_oK == 1){{'checked'}}@endif @endif/>
                 <label for="_labels_oK" class="bg-secondary"></label>
                 &nbsp; Labels OK
             </div>
@@ -91,7 +91,7 @@
 		<div class="form-group" id="licence_ok_group">
 			{!! Form::label('&nbsp;', '&nbsp;', ['class'=>'col-form-label s-12']) !!}
 			<div class="material-switch ">
-                <input id="_licence_ok" name="licence_ok" type="checkbox" value="1" @if(isset($operation))&& @if($operation->su_po_signed == 1){{'checked'}}@endif @endif/>
+                <input id="_licence_ok" name="licence_ok" type="checkbox" value="1" @if(isset($operationShip))&& @if($operationShip->licence_ok == 1){{'checked'}}@endif @endif/>
                 <label for="_licence_ok" class="bg-secondary"></label>
                	&nbsp; Licence OK
             </div>

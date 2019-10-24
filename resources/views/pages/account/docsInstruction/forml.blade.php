@@ -1,13 +1,5 @@
 <div class="row">
-	@if (isset($account))
-	<div class="col-md-6">
-		<div class="" id="account_id_group">
-			<i class=""></i>
-			{!! Form::hidden('account_id', $account->id, ['class'=>'form-control r-0 light s-12', 'id'=>'_account_id']) !!}
-			<span class="account_id_span"></span>
-		</div>
-	</div>	
-	@else
+	@if (isset($docsInstruction))
 	<div class="col-md-12">
 		<div class="" id="account_id_group">
 			<i class=""></i>
@@ -16,6 +8,14 @@
 			<span class="cnee_span"></span>
 		</div>
 	</div>
+	@else
+	<div class="col-md-6">
+		<div class="" id="account_id_group">
+			<i class=""></i>
+			{!! Form::hidden('account_id', $account->id, ['class'=>'form-control r-0 light s-12', 'id'=>'_account_id']) !!}
+			<span class="account_id_span"></span>
+		</div>
+	</div>	
 	@endif
 	<div class="col-6">
 		<div class="" id="preshipmentinspection_group">

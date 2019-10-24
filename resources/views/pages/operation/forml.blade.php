@@ -19,7 +19,7 @@
 		<div class="" id="status_id_group">
 			<i class=""></i>
 			{!! Form::label('operation_status_id', 'Status *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('operation_status_id', $status, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_operation_status_id','placeholder'=>'Seleccione']) !!}
+			{!! Form::select('operation_status_id', $status, $default, ['class'=>'form-control r-0 light s-12', 'id'=>'_operation_status_id']) !!}
 			<span class="_status_id_span"></span>
 		</div>
 	</div>
@@ -27,7 +27,7 @@
 		<div class="" id="principal_id">
 			<i class=""></i>
 			{!! Form::label('business_line_id', 'Business Line *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('business_line_id', $business, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_business_line_id_id']) !!}
+			{!! Form::select('business_line_id', $business, $default, ['class'=>'form-control r-0 light s-12', 'id'=>'_business_line_id_id']) !!}
 			<span class="business_line_id_span"></span>
 		</div>
 	</div>
@@ -60,8 +60,8 @@
 	<div class="col-md-3">
 		<div class="" id="suplier_commercial_id_group">
 			<i class=""></i>
-			{!! Form::label('suplier_commercial_id', 'Supplier Commercial', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('supplier_commercial_id', $sumplierCom, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_commercial_id']) !!}
+			{!! Form::label('suplier_commercial', 'Supplier Commercial', ['class'=>'col-form-label s-12']) !!}
+			{!! Form::select('supplier_commercial', $sumplierCom, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_supplier_commercial']) !!}
 			<span class="supplier_commercial_id_span"></span>
 		</div>
 	</div>
@@ -76,7 +76,7 @@
 		<div class="" id="custom_commercial_id_group">
 			<i class=""></i>
 			{!! Form::label('custom_commercial_id', 'Customer  Commercial', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('cus_commercial_id', $sumplierCom, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cus_commercial_id']) !!}
+			{!! Form::select('cus_commercial_id', $customerCom, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cus_commercial_id']) !!}
 			<span class="cus_commercial_id_span"></span>
 		</div>
 	</div>

@@ -52,7 +52,7 @@
                                             {{$country->code}}
                                         </td>
                                         <td>
-                                            @if ($country->active == 1)
+                                            @if ($country->active == 0)
                                               <span class="icon icon-circle s-12  mr-2 text-success"></span> Active</td>
                                             @else
                                               <span class="icon icon-circle s-12  mr-2 text-danger"></span> Inactive </td>

@@ -24,7 +24,7 @@
                     @if(isset($operation) && !isset($operationShip)){{ route('operationShip.show',$operation) }}@else # @endif"
                      role="tab"
                     aria-controls="v-pills-buyers">
-                        <i class=""></i> {{__('Inst-Ship Plain')}}
+                        <i class=""></i> {{__('Inst-Ship Plan')}}
                     </a>
                 </li>
                 <li>

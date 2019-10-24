@@ -55,7 +55,7 @@ class OperationShipController extends Controller
     {
         $operationShip = $this->operationShip->create($request->all());
         Session::flash('message-success',' Inst-Ship Plain registrado correctamente.');
-        return $this->edit($operationShip);
+        return response()->json($operationShip);
     }
 
     /**
@@ -76,10 +76,11 @@ class OperationShipController extends Controller
             $operation      = $this->operation->find($operation_id);
             $cnees          = $this->operationShip->Cnee($operation->customer_id);
             $supplier       = $this->operationShip->Supplier($operation->supplier_id);
+            $customer       = $this->operationShip->Supplier($operation->customer_id);
             $admin          = false;
             $create         = true; 
             $topMenu        = "pages.operation.topMenu";
-            return view('pages.operation.operationShip.create',compact("topMenu","admin","create",'operation','supplier','cnees'));
+            return view('pages.operation.operationShip.create',compact("topMenu","admin","create",'operation','supplier','customer','cnees'));
         }
     }
 
@@ -94,10 +95,11 @@ class OperationShipController extends Controller
         $operation      = $this->operation->find($operationShip->operation);
         $cnees          = $this->operationShip->Cnee($operation->customer_id);
         $supplier       = $this->operationShip->Supplier($operation->supplier_id);
+        $customer       = $this->operationShip->Supplier($operation->customer_id);
         $admin          = false;
         $create         = true; 
         $topMenu        = "pages.operation.topMenu";
-        return view('pages.operation.operationShip.edit',compact('operationShip','topMenu','admin','create','operation','supplier','cnees'));
+        return view('pages.operation.operationShip.edit',compact('operationShip','topMenu','admin','create','operation','supplier','customer','cnees'));
     }
     
     /**
@@ -110,9 +112,9 @@ class OperationShipController extends Controller
     public function update(Request $request, operationShip $operationShip)
     {
         $data = $request->all();
-        if(null == $request->input('labels_received')) $data = Arr::add($data,'labels_received', 0);
-        if(null == $request->input('labels_oK')) $data = Arr::add($data,'labels_oK', 0);
-        if(null == $request->input('licence_ok')) $data = Arr::add($data,'licence_ok', 0);
+        if(null == $request->input('labels_received')){$data = Arr::add($data,'labels_received', 0);}
+        if(null == $request->input('labels_oK')){$data = Arr::add($data,'labels_oK', 0);}
+        if(null == $request->input('licence_ok')){$data = Arr::add($data,'licence_ok', 0);}
         $operationShip->update($data);
         Session::flash('message-success',' Inst-Ship Plain actualizado correctamente.');
     }
