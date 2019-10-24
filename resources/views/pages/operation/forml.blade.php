@@ -19,7 +19,7 @@
 		<div class="" id="status_id_group">
 			<i class=""></i>
 			{!! Form::label('operation_status_id', 'Status *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('operation_status_id', $status, $default, ['class'=>'form-control r-0 light s-12', 'id'=>'_operation_status_id']) !!}
+			{!! Form::select('operation_status_id', $status, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_operation_status_id']) !!}
 			<span class="_status_id_span"></span>
 		</div>
 	</div>
@@ -27,7 +27,7 @@
 		<div class="" id="principal_id">
 			<i class=""></i>
 			{!! Form::label('business_line_id', 'Business Line *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('business_line_id', $business, $default, ['class'=>'form-control r-0 light s-12', 'id'=>'_business_line_id_id']) !!}
+			{!! Form::select('business_line_id', $business, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_business_line_id_id']) !!}
 			<span class="business_line_id_span"></span>
 		</div>
 	</div>
@@ -45,7 +45,7 @@
 		<div class="" id="suplier_id_group">
 			<i class=""></i>
 			{!! Form::label('supplier_id', 'Supplier *', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('supplier_id', $supplier, null, ['class'=>'form-control r-0 light s-12 combo', 'id'=>'_supplier_id', 'data-route'=> route('supplierComercial'), 'data-route2'=> route('comboCustomerBank'), 'data-r1'=>'_supplier_commercial_id', 'data-r2'=>'_customer_bank_id']) !!}
+			{!! Form::select('supplier_id', $supplier, null, ['class'=>'form-control r-0 light s-12 combo', 'id'=>'_supplier_id', 'data-route'=> route('supplierComercial'), 'data-route2'=> route('comboCustomerBank'), 'data-r1'=>'_supplier_commercial', 'data-r2'=>'_customer_bank_id']) !!}
 			<span class="supplier_id_span"></span>
 		</div>
 	</div>

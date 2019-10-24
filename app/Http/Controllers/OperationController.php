@@ -105,23 +105,22 @@ class OperationController extends Controller
         $date           = Carbon::now()->format("Y/m/d");
         $admin          = false;
         $create         = true;
-        $status         = $this->status;
+        $status         = Status::get()->where('name','1- Being scheduled')->pluck('name', 'id');
         $operators      = $this->operators;
         $customers      = $this->customers;
         $parther        = $this->operation->CustomPluck('Partner');
         $supplier       = $this->operation->CustomPluck('Supplier');
         $incoterms      = $this->incoterms;
-        $business       = $this->businessLine;
+        $business       = BusinessLine::get()->where('name','Trading')->pluck('name','id');
         $currencies     = $this->currencies;
         $ports          = $this->ports;
         $countries      = $this->countries;
         $payment_terms  = $this->orderPmtTerm->get()->pluck('payment_terms','id');
         $cargoUnits     = $this->cargoUnits;
         $logunits       = $this->logunits;
-        $sumplierCom    = $this->sumplierCom->get()->pluck('fullname','id')->prepend('Selected...','');
-        $customerCom    = $this->sumplierCom->get()->pluck('fullname','id')->prepend('Selected...','');
+        $sumplierCom    = [''=>'Selected...'];
+        $customerCom    = [''=>'Selected...'];
         $banks          = $this->banks;
-        $default        = 1;
         $topMenu        = 'pages.operation.topMenu';
         return view('pages.operation.create',compact('customers','business','operators','status','parther', 'incoterms', 'currencies', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create','date','sumplierCom','customerCom','banks','default'));
     }

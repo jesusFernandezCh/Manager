@@ -102,6 +102,7 @@ Users</h1>
 </a>
 @endsection
 @section('js')
+
 <script>
     var title = 'Users';
     var colunms = [0,1,2,3,4];
