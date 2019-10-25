@@ -76,6 +76,20 @@ class AccountOperatorController extends Controller
     public function store(accountRequest $request)
     {
         $account = $this->account->create($request->all());
+        $file = $request->file('file');
+
+        if ($file != null) {
+            // url file save
+            $path = public_path().'/img/AccountLogos/';
+            // file extension
+            $extension = $file->getClientOriginalExtension();
+            // file name
+            $fileName = $account->id. '.' . $extension;
+            // file save
+            $file->move($path, $fileName);
+            // add route avarat
+            // $data = array_add($data, 'image', $fileName);
+        }
         $account->categories()->attach($request->input('category_id'));
         $account = collect($account)->prepend('show','page');
         Session::flash('message-success',' Account '. $request->name.' creado correctamente.');
@@ -125,7 +139,20 @@ class AccountOperatorController extends Controller
     {
         $account = $this->account->find($id);
         $account->update($request->all());
-        $account->save();
+        $file = $request->file('file');
+
+        if ($file != null) {
+            // url file save
+            $path = public_path().'/img/AccountLogos/';
+            // file extension
+            $extension = $file->getClientOriginalExtension();
+            // file name
+            $fileName = $account->id. '.' . $extension;
+            // file save
+            $file->move($path, $fileName);
+            // add route avarat
+            // $data = array_add($data, 'image', $fileName);
+        }
         $account->categories()->sync($request->input('category_id'));
         Session::flash('message-success',' Account '. $request->name.' editado correctamente.');
     }

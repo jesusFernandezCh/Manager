@@ -89,7 +89,24 @@
 </div>
 @endsection
 @section('js')
+<script src={{asset('assets/plugins/bootstrap-fileinput/js/fileinput.js')}}></script>
+<script src={{asset('assets/plugins/bootstrap-fileinput/js/plugins/piexif.js')}}></script>
+<script src={{asset('assets/plugins/bootstrap-fileinput/js/plugins/sortable.js')}}></script>
+<script src={{asset('assets/plugins/bootstrap-fileinput/js/locales/es.js')}}></script>
+<script src={{asset('assets/plugins/bootstrap-fileinput/themes/gly/theme.js')}}></script>
 <script>
+
+    $(".file").fileinput({
+        // theme: 'gly',
+        // uploadUrl: '#',
+        allowedFileExtensions: ["jpg"],
+        showCaption: false,
+        showRemove: false,
+        showUpload: false,
+        showBrowse: false,
+        browseOnZoneClick: true,
+    });
+
     $(document).ready(function() {
         $('#accounts').addClass('active');
     });

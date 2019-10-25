@@ -148,10 +148,18 @@ function saveDataMultitap(url, forml, method, inputFile)
             $('.modal').modal('hide');// Oculta el modal del formulario create
             // $('#tbody').load(' .tbody');//Recarga el body de la tabla
             // toastr.success(result.message,"Exitoso");
-            if(route == null){
-                location.reload();
+            if (result.id != undefined) {
+                if(result.page == 'show'){
+                    window.location.replace(route  + "/" + result.id);    
+                }else{
+                    window.location.replace(route  + "/" + result.id + "/edit");
+                }
             }else{
-                location(route)
+                if(route == null || result.operator == true){
+                    location.reload();
+                }else{
+                    window.location.replace(route)
+                }
             }
         },
         error: function(msj) 

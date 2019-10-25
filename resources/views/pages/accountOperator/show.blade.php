@@ -25,12 +25,13 @@
 							<div class="tab-pane fade show active" id="nav-contact" role="tabpanel" aria-labelledby="nav-home-tab">
 								{!! Form::model($account,['route'=>["accountOperator.update",$account->id],'method'=>'PUT','class'=>'formlDinamic form','id'=>'DataUpdate']) !!}
 								<div class="form-row">
-									<div class="col-md-12">
+									<div class="col-md-10">
 										<div class="form-row">
 											<div class="form-group col-4 m-0" id="name_group">
 												{{-- <i class="icon icon-face mr-2"></i> --}}
 												{!! Form::label('name', 'Account Name *', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
 												{!! Form::text('name', null, ['class'=>'form-control r-0 light s-12', 'id'=>'name']) !!}
+												{!! Form::hidden('id', $account->id, ['class'=>'form-control r-0 light s-12', 'id'=>'_id']) !!}
 												<span class="name_span"></span>
 											</div>
 											<div class="form-group col-4 m-0" id="identification_group">
@@ -79,6 +80,13 @@
 											</div>
 										</div>
 									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											{!! Form::label('logo', 'Logo', ['class'=>'col-form-label s-12']) !!}
+											<input id="file-2" class="file" name="image-2" type="file">
+										</div>
+									</div>
+									<img src="" alt="" id="img-2">
 								</div>
 								<br>
 								<div class="row text-right">
@@ -139,7 +147,33 @@
 	</div>
 	@endsection
 	@section('js')
+	<script src={{asset('assets/plugins/bootstrap-fileinput/js/fileinput.js')}}></script>
+	<script src={{asset('assets/plugins/bootstrap-fileinput/js/plugins/piexif.js')}}></script>
+	<script src={{asset('assets/plugins/bootstrap-fileinput/js/plugins/sortable.js')}}></script>
+	<script src={{asset('assets/plugins/bootstrap-fileinput/js/locales/es.js')}}></script>
+	<script src={{asset('assets/plugins/bootstrap-fileinput/themes/gly/theme.js')}}></script>
 	<script>
+		var title = 'Users';
+		var colunms = [0,1,2,3,4];
+		var namefile = $('#_id').val();
+		var url = '../img/AccountLogos/' +namefile+ '.jpg';
+		
+		$(".file").fileinput({
+			initialPreview: [url],
+			initialPreviewAsData: true,
+			initialPreviewConfig: 
+				[
+					{caption: namefile},
+				],
+			showCaption: false,
+			showRemove: false,
+			showUpload: false,
+			showBrowse: false,
+			browseOnZoneClick: true,
+			overwriteInitial: true,
+          	initialCaption: namefile
+		});
+			
 	$(document).ready(function() {
 	$('#show').addClass('active');
 	});

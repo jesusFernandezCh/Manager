@@ -80,11 +80,11 @@
     </script>
     <script src={{asset('assets/js/functions.js')}}></script>
     <script src={{asset('assets/plugins/toastr/toastr.js')}}></script>
-    <script src={{asset('assets/plugins/bootstrap-fileinput/js/fileinput.js')}}></script>
+    <!-- <script src={{asset('assets/plugins/bootstrap-fileinput/js/fileinput.js')}}></script>
     <script src={{asset('assets/plugins/bootstrap-fileinput/js/plugins/piexif.js')}}></script>
     <script src={{asset('assets/plugins/bootstrap-fileinput/js/plugins/sortable.js')}}></script>
     <script src={{asset('assets/plugins/bootstrap-fileinput/js/locales/es.js')}}></script>
-    <script src={{asset('assets/plugins/bootstrap-fileinput/themes/gly/theme.js')}}></script>
+    <script src={{asset('assets/plugins/bootstrap-fileinput/themes/gly/theme.js')}}></script> -->
     {{-- dataTables export excel --}}
     <script src={{asset('assets/plugins/datatables/buttons-1.5.6/js/dataTables.buttons.min.js')}}></script>
     <script src={{asset('assets/plugins/datatables/buttons-1.5.6/js/buttons.html5.min.js')}}></script>

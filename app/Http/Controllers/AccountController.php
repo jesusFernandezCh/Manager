@@ -54,6 +54,19 @@ class AccountController extends Controller
     public function store(Request $request)
     {
         $account = $this->account->create($request->all());
+        $file = $request->file('file');
+        
+        if ($file != null) {
+            // url file save
+            $path = public_path().'/img/AccountLogos/';
+            // file extension
+            $extension = $file->getClientOriginalExtension();
+            // file name
+            $fileName = $account->id. '.' . $extension;
+            // file save
+            $file->move($path, $fileName);
+        }
+
         $account->categories()->attach($request->input('category_id'));
         Session::flash('message-success',' Account '. $request->name.' creado correctamente.');
     }
