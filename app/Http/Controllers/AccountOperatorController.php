@@ -25,7 +25,7 @@ class AccountOperatorController extends Controller
     {
         $this->account      = $account;
         $this->categories   = Category::get()->pluck('name', 'id');
-        $this->countries    = Country::get()->sortBy('name')->pluck('name','id')->prepend('Selected...','');
+        $this->countries    = Country::get()->sortBy('name')->pluck('name','id')->where('active',0)->prepend('Selected...','');
         $this->meta         = $meta;
         $this->metaTypes    = $metaType->get()->where('active',1)->pluck('metatype','id');
         $this->contacts     = $contact->all();
