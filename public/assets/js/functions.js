@@ -393,8 +393,9 @@ function comboBox(id,route,receptor) {
         $.get(route + '/' + id, function (data) {
         console.log(data);
         if(data){
+            $('#' + receptor).empty();
             $.each(data, function(key, value){
-                $('#' + receptor).empty().append("<option value =" + key + ">" + value + "</option>");
+                $('#' + receptor).append("<option value =" + key + ">" + value + "</option>");
             });
         }
         else{
