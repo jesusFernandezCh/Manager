@@ -66,7 +66,7 @@
                                                 <a href="{{ route('accountOperator.show',$account) }}" class="btn btn-default btn-sm" title="Detalles">
                                                     <i class="icon-eye text-info text-info"></i>
                                                 </a> 
-                                                <button class="btn btn-default btn-sm" onclick="confirm('¿Realmente deseas borrar el registro?')">
+                                                <button class="btn btn-default btn-sm" onclick="return confirm('¿Realmente deseas borrar el registro?')">
                                                     <i class="icon-trash-can3 text-danger"></i>
                                                 </button>
                                                 {!! Form::close() !!}

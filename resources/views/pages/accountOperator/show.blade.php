@@ -7,8 +7,10 @@
 	@include('pages.accountOperator.headbar')
 @endsection
 @section('maincontent')
+<div>
+	@include('alerts.toastr')
+</div>
 <div class="page  height-full">
-	{{-- modal create --}}
 	@include('pages.accountOperator.accountMeta.create')
 	<div class="container-fluid animatedParent animateOnce my-3">
 		<div class="animated fadeInUpShort">

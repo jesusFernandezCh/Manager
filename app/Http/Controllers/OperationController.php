@@ -147,7 +147,7 @@ class OperationController extends Controller
         $request = Arr::add($request,'purchase_by',Auth::user()->id);
         // dd($request);
         $operation = $this->operation->create($request);
-        Session::flash('message-success',' Operation '. $request['code'].' creado correctamente.');
+        Session::flash('message-success',' Operation '. $request['code'].' '.trans('messages.created'));
         return response()->json($operation);
     }
 
@@ -202,8 +202,7 @@ class OperationController extends Controller
            $data = Arr::add($data,'cu_po_signed', null);
         }
         $operation->update($data);
-        dd($request->input('purchase_curr'));
-        Session::flash('message-success',' Operation '. $request->name.' actualizado correctamente.');
+        Session::flash('message-success',' Operation '. $request->name.' '.trans('messages.updated'));
     }
 
     
@@ -216,7 +215,7 @@ class OperationController extends Controller
     public function destroy(Operation $operation)
     {
         $operation->delete();
-        Session::flash('message-success',' Operation '. $operation->name.' eliminado correctamente.');
+        Session::flash('message-success',' Operation '. $operation->name.' '.trans('messages.deleted'));
     }
     /**
      * Undocumented function

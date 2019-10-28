@@ -92,7 +92,7 @@ class AccountOperatorController extends Controller
         }
         $account->categories()->attach($request->input('category_id'));
         $account = collect($account)->prepend('show','page');
-        Session::flash('message-success',' Account '. $request->name.' creado correctamente.');
+        Session::flash('message-success',' Account '. $request->name.' '.trans('messages.created'));
         return response()->json($account);
     }
 
@@ -154,7 +154,7 @@ class AccountOperatorController extends Controller
             // $data = array_add($data, 'image', $fileName);
         }
         $account->categories()->sync($request->input('category_id'));
-        Session::flash('message-success',' Account '. $request->name.' editado correctamente.');
+        Session::flash('message-success',' Account '. $request->name.' '.trans('messages.updated'));
     }
 
     /**
@@ -171,7 +171,7 @@ class AccountOperatorController extends Controller
                 Session::flash('message-error',' Account tiene meta '.$meta->value.' asosciada.');
         }else{
             $accountOperator->delete();
-            Session::flash('message-success',' Account eliminado correctamente.');
+            Session::flash('message-success',' '.trans('messages.deleted'));
         }    
     }
 }

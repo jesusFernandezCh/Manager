@@ -49,7 +49,7 @@ class PortController extends Controller
     public function store(portRequest $request)
     {
         $this->port->create($request->all());
-        Session::flash('message-success',' Port '. $request->name.' creado correctamente.');
+        Session::flash('message-success',' Port '. $request->name.' '.trans('messages.created'));
     }
 
     /**
@@ -87,7 +87,7 @@ class PortController extends Controller
         $port = $this->port->find($id);
         $port->update($request->all());
         $port->save();
-        Session::flash('message-success',' Port '. $request->name.' editado correctamente.');
+        Session::flash('message-success',' Port '. $request->name .' '.trans('messages.updated'));
     }
 
     /**
@@ -99,6 +99,6 @@ class PortController extends Controller
     public function destroy(Port $port)
     {
       $port->delete();
-      Session::flash('message-success',' Port '. $port->name.' eliminado correctamente.');
+      Session::flash('message-success',' Port '. $port->name.' ' .trans('messages.deleted'));
     }
 }

@@ -54,7 +54,7 @@
                                         <a href="#" class="btn btn-default btn-sm" title="Detalles" data-toggle="modal" data-target="#show" onclick="showData('{{ route('product_gen.show', $pro->id) }}')">
                                             <i class="icon-eye text-info"></i>
                                         </a>
-                                        <a href="#" class="btn btn-default btn-sm" title="Editar" data-toggle="modal" data-target="#update" onclick="obtenerDatosGet('{{ route('product_gen.edit',$pro->id) }}', '{{ route('product_gen.update',$pro->id) }}')">
+                                        <a href="#" class="btn btn-default btn-sm" title="Editar" data-toggle="modal" data-target="#update" onclick="return obtenerDatosGet('{{ route('product_gen.edit',$pro->id) }}', '{{ route('product_gen.update',$pro->id) }}')">
                                             <i class="icon-pencil text-info"></i>
                                         </a>
                                         </td>

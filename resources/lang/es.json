@@ -246,5 +246,9 @@
     "Add New Document": "Agregar Nuevo Documento",
     "EDIT ACCOUNT CONTACT": "EDITAR CONTACTO DE CUENTA",
     "Account Contacts": "Contactos de cuenta",
-    "Selected..": "Seleccione.."
+    "Selected..": "Seleccione..",
+    "Success": "Exitoso",
+    "Error": "Error",
+    "Warning" : "Precausión",
+    "Info": "Atención"
 }
