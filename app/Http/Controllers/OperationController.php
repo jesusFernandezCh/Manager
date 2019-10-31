@@ -94,7 +94,7 @@ class OperationController extends Controller
         $admin      = false;
         $topMenu    = 'pages.operation.topMenu';
         $operations = $this->operation->all()->where('purchase_by', Auth::user()->id);
-        return view('pages.operation.index',compact('operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin'));    }
+        return view('pages.operation.index',compact('operations','topMenu','admin'));    }
     
     /**
      * [create description]
@@ -183,7 +183,7 @@ class OperationController extends Controller
         $operations         = $this->operation->all();
         $default            = null;    
         
-        return view('pages.operation.edit',compact('operation','operations','accounts','business','operators','status','parther', 'incoterms', 'currencys', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create', 'sumplierCom','customerCom','banks','currencies','customers','default'));
+        return view('pages.operation.edit',compact('operation','operations','accounts','business','operators','status','parther', 'incoterms', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create', 'sumplierCom','customerCom','banks','currencies','customers','default'));
     }
 
     /* Update the specified resource in storage.
