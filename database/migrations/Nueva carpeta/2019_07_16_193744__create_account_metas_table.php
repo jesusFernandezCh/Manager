@@ -17,8 +17,8 @@ class CreateAccountMetasTable extends Migration
         $table->bigIncrements('id')->unsigned();
         $table->unsignedBigInteger('account_id')->index();
         $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
-        $table->unsignedBigInteger('account_type_id')->index();
-        $table->foreign('account_type_id')->references('id')->on('account_meta_types')->onDelete('cascade');
+        $table->unsignedBigInteger('account_meta_type_id')->index();
+        $table->foreign('account_meta_type_id')->references('id')->on('account_meta_types')->onDelete('cascade');
         $table->string('value');
         $table->timestamps();
         });
