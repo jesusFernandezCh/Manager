@@ -17,7 +17,7 @@ class CreateAccountMetaTypesTable extends Migration
         $table->bigIncrements('id')->unsigned();
         $table->string('metatype');
         $table->tinyInteger('required');
-        $table->string('description');
+        $table->string('description')->nullable();
         $table->tinyInteger('active');
         $table->timestamps();
         });

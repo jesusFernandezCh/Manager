@@ -130,6 +130,12 @@ class Operation extends Model
         return $this->belongsTo('App\Account', 'supplier_id');
     }
 
-
+    /**
+    * Get the user that owns the Account.
+    */
+    public function shipDetails()
+    {
+        return $this->hasMany('App\ShipDetails');
+    }
 
 }

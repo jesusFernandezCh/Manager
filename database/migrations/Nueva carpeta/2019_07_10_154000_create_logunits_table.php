@@ -16,7 +16,7 @@ class CreateLogunitsTable extends Migration
         Schema::create('logunits', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->string('name');
-            $table->string('description');  
+            $table->string('description')->nullable();  
             $table->boolean('active');
             $table->timestamps();
         });

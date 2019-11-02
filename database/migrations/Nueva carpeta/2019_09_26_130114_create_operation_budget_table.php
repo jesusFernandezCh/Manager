@@ -15,8 +15,8 @@ class CreateOperationBudgetTable extends Migration
     {
         Schema::create('operation_budgets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('operetion_id')->index();
-            $table->foreign('operetion_id')->references('id')->on('operations')->onDelete('cascade');
+            $table->unsignedBigInteger('operation_id')->index();
+            $table->foreign('operation_id')->references('id')->on('operations')->onDelete('cascade');
             $table->decimal('order_quantity_budget')->nullable();
             $table->decimal('order_sale')->nullable();
             $table->unsignedBigInteger('order_sale_currency_id')->index()->nullable();
