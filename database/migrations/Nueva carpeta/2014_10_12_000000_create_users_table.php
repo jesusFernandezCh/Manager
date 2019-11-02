@@ -23,7 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('phone2')->nullable();
             $table->string('cell1')->nullable();
             $table->string('cell2')->nullable();
-            $table->integer('profitcenter_id');
+            $table->unsignedBigInteger('profit_center_id')->index();
+            $table->foreign('profit_center_id')->references('id')->on('profit_centers')->onDelete('cascade');
             $table->string('image')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

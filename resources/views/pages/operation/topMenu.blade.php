@@ -12,14 +12,14 @@
                 <li>
                     <a class="nav-link d" id="order_details" href="@if (isset($operation))
                      {{route('order_details.show',$operation)}}
-                     @else # 
+                     @else #
                     @endif" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class="" ></i> {{__('Order Details')}}
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link d" id="InstShipPlain" 
+                    <a class="nav-link d" id="InstShipPlain"
                     href="
                     @if(isset($operation) && !isset($operationShip)){{ route('operationShip.show',$operation) }}@else # @endif"
                      role="tab"
@@ -28,24 +28,24 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link d" id="ship_details" href="#" role="tab"
+                    <a class="nav-link d" id="ShipDetails" @if (isset($operation))href="{{ route('shipDetails.show',$operation) }}@endif" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Ship Details')}}
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link d" id="documents" 
+                    <a class="nav-link d" id="documents"
                     href="
                     @if (isset($operation))
                         {{ route('documentsAsoc',$operation) }}
-                    @else # 
+                    @else #
                     @endif"
                     role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Documents')}}
                     </a>
                 </li>
-                <li> 
+                <li>
                     <a class="nav-link d" id="payments" href="#" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Payments')}}
@@ -61,7 +61,7 @@
                     <a class="nav-link d" id="operationDocument" href="
                      @if (isset($operation))
                      {{route('operationDocument.show',$operation)}}
-                     @else # 
+                     @else #
                     @endif" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Documents')}}

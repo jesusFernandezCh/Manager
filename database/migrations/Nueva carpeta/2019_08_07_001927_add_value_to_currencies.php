@@ -14,7 +14,7 @@ class AddValueToCurrencies extends Migration
     public function up()
     {
         Schema::table('currencies', function (Blueprint $table) {
-            $table->float('value', 8, 8);
+            $table->decimal('value', 5, 4);
         });
     }
 
@@ -25,9 +25,6 @@ class AddValueToCurrencies extends Migration
      */
     public function down()
     {
-        Schema::table('currencies', function (Blueprint $table) {
-            $table->dropColumn('value');
-
-        });
+        Schema::drop('currencies');
     }
 }
