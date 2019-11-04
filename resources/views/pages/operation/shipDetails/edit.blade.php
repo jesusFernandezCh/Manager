@@ -26,7 +26,7 @@
 						{!! Form::model($shipDetail,['route'=>["shipDetails.update",$shipDetail->id],'method'=>'PUT','class'=>'formlDinamic form','id'=>'DataUpdate']) !!}
 						@include('pages.operation.shipDetails.forml')
 						<br>
-                        @include('pages.operation.operationshipTotal.index')
+                        @include('pages.operation.operationShipTotal.index')
 						{{-- {!! Form::hidden('route', route('shipDetails.store'), ['id'=>'route']) !!} --}}
 						<br>
 						<div class="col-md-12 text-right">
