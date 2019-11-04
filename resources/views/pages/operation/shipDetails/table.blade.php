@@ -26,11 +26,11 @@
 
     $('#addRow').on( 'click', function () {
         t.row.add( [
-            '{!! Form::select('invoice_forwarder', $products, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_invoice_forwarder']) !!}',
-            '{!! Form::text('order_qty', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_order_qty']) !!}',
-            '{!! Form::text('order_qty', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_order_qty']) !!}',
-            '{!! Form::text('order_qty', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_order_qty']) !!}',
-            '{!! Form::text('order_qty', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_order_qty']) !!}',
+            // '{!! Form::select('invoice_forwarder', $products, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_invoice_forwarder']) !!}',
+            // '{!! Form::text('order_qty', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_order_qty']) !!}',
+            // '{!! Form::text('order_qty', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_order_qty']) !!}',
+            // '{!! Form::text('order_qty', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_order_qty']) !!}',
+            // '{!! Form::text('order_qty', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_order_qty']) !!}',
         ] ).draw( false );
     } );
     // Automatically add a first row of data
@@ -46,12 +46,14 @@
     } );
     $('#buttonRM').click( function (event) {
         t.row('.table-primary').remove().draw( false );
-        calcular('order_quantity', 'order_quantity_budget');
-        calcular('purchase_price', 'order_purchase');
-        calcular('sale_price', 'order_sale');
-        ChangePrice("order_sale_currency_id", "order_sale", "order_sale_currency_change", "order_sale_usd");
-        ChangePrice("order_purchase_currency_id", "order_purchase", "order_purchase_change", "order_purchase_usd")
-
+    } );
+    $('button').click( function() {
+        var data = table.$('input, select').serialize();
+        alert(
+            "The following data would have been submitted to the server: \n\n"+
+            data.substr( 0, 120 )+'...'
+        );
+        return false;
     } );
 } );
 </script>

@@ -51,7 +51,7 @@
         'September','Oktober','November','Dezember',
        ],
        dayOfWeek:[
-        "So.", "Mo", "Di", "Mi", 
+        "So.", "Mo", "Di", "Mi",
         "Do", "Fr", "Sa.",
        ]
       }

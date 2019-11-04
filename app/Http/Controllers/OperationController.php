@@ -52,7 +52,7 @@ class OperationController extends Controller
      */
     public function __construct(Operation $stmt, Account $account, User $operator, Document $document, Status $status, AccountContact $contact, OrderPmtTerm $orderPmtTerm, Partner_bank $bank, BusinessLine $businessLine, Incoterm $incoterm, Currency $currency, Port $port, Country $country, CargoUnit $cargoUnit, Logunit $logunit)
     {
-        $this->operation    = $stmt;    
+        $this->operation    = $stmt;
         $this->account      = $account;
         $this->customers    = $account->get()->pluck('name','id')->prepend('Selected...','');
         $this->operators    = $operator->get()->pluck('fullname','id')->prepend('Selected...','');
@@ -95,7 +95,7 @@ class OperationController extends Controller
         $topMenu    = 'pages.operation.topMenu';
         $operations = $this->operation->all()->where('purchase_by', Auth::user()->id);
         return view('pages.operation.index',compact('operations','topMenu','admin'));    }
-    
+
     /**
      * [create description]
      * @return [type] [description]
@@ -122,7 +122,7 @@ class OperationController extends Controller
         $customerCom    = [''=>'Selected...'];
         $banks          = $this->banks;
         $topMenu        = 'pages.operation.topMenu';
-        return view('pages.operation.create',compact('customers','business','operators','status','parther', 'incoterms', 'currencies', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create','date','sumplierCom','customerCom','banks','default'));
+        return view('pages.operation.create',compact('customers','business','operators','status','parther', 'incoterms', 'currencies', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create','date','sumplierCom','customerCom','banks'));
     }
     /**
      * Store a newly created resource in storage.
@@ -156,7 +156,7 @@ class OperationController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Operation  $operation
-     * @return \Illuminate\Http\Response                                                                   
+     * @return \Illuminate\Http\Response
      */
     public function edit(Operation $operation)
     {
@@ -181,8 +181,8 @@ class OperationController extends Controller
         $banks              = $this->banks;
         $topMenu            = 'pages.operation.topMenu';
         $operations         = $this->operation->all();
-        $default            = null;    
-        
+        $default            = null;
+
         return view('pages.operation.edit',compact('operation','operations','accounts','business','operators','status','parther', 'incoterms', 'ports','countries','supplier','topMenu','payment_terms','cargoUnits','logunits','admin','create', 'sumplierCom','customerCom','banks','currencies','customers','default'));
     }
 
@@ -205,7 +205,7 @@ class OperationController extends Controller
         Session::flash('message-success',' Operation '. $request->name.' '.trans('messages.updated'));
     }
 
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -227,7 +227,7 @@ class OperationController extends Controller
     {
         $banks = Partner_bank::get()->where('company_id',$id)->pluck('bank_name','id');
         return response()->json($banks);
-        
+
     }
     /**
      * Undocumented function
@@ -239,6 +239,6 @@ class OperationController extends Controller
     {
         $supplierCommercials = AccountContact::get()->where('account_id',$supplier_id)->pluck('fullname', 'id');
         return response()->json($supplierCommercials);
-        
+
     }
 }
