@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\ShipDetails;
 use App\Operation;
+use App\OperationShipTotal;
 use Illuminate\Http\Request;
 use Session;
 
@@ -10,11 +11,13 @@ class ShipDetailsController extends Controller
 {
     private $stmt;
     private $operation;
+    private $productsAsoc;
 
-    public function __construct(ShipDetails $shipDetails, Operation $operation)
+    public function __construct(ShipDetails $shipDetails, Operation $operation, OperationShipTotal $productsAsoc)
     {
         $this->operation    = $operation;
         $this->stmt         = $shipDetails;
+        $this->productsAsoc = $productsAsoc;
     }
 
     /**
@@ -82,12 +85,13 @@ class ShipDetailsController extends Controller
      */
     public function edit(ShipDetails $shipDetail)
     {
-        $operation  = $this->operation->find($shipDetail->operation_id);
-        $products   = $this->stmt->Products();
-        $topMenu    = "pages.operation.topMenu";
-        $admin      = false;
-        $create     = true;
-        return view('pages.operation.shipDetails.edit',compact('shipDetail','operation','products','topMenu','admin','create'));
+        $operation      = $this->operation->find($shipDetail->operation_id);
+        $products       = $this->stmt->Products();
+        $productsAsoc   = $this->productsAsoc->all()->where('operation_id',$shipDetail->operation_id);
+        $topMenu        = "pages.operation.topMenu";
+        $admin          = false;
+        $create         = true;
+        return view('pages.operation.shipDetails.edit',compact('shipDetail','operation','products','topMenu','admin','create','productsAsoc'));
     }
 
     /**

@@ -23,7 +23,7 @@
 						{!! Form::open(['route'=>'shipDetails.store','method'=>'POST', 'class'=>'formlDinamic', 'id'=>'guardarRegistro']) !!}
                         @include('pages.operation.shipDetails.forml')
                         <br>
-                        @include('pages.operation.shipDetails.table')
+                        {{-- @include('pages.operation.operationShipTotal.index') --}}
 						{!! Form::hidden('route', route('shipDetails.store'), ['id'=>'route']) !!}
 						<br>
 						<div class="col-md-12 text-right">

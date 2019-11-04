@@ -39,6 +39,6 @@ class ShipDetails extends Model
         return DB::table('product_gens')
             ->join('product_lines', 'product_lines.id', '=', 'product_gens.product_line_id')
             ->select(DB::raw("CONCAT(product_lines.line,'-',product_gens.gen,'-',product_gens.basic_spec,'-',product_gens.cold_chain) AS name"),'product_gens.id')
-            ->pluck('name','id');
+            ->pluck('name','name');
     }
 }
