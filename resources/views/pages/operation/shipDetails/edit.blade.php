@@ -6,6 +6,9 @@
 	@include($topMenu)
 @endsection
 @section('maincontent')
+
+@include('pages.operation.operationShipTotal.create')
+
 <div class="page height-full" style="margin-top: 130px">
 	<div>
         @include('alerts.toastr')
@@ -23,7 +26,7 @@
 						{!! Form::model($shipDetail,['route'=>["shipDetails.update",$shipDetail->id],'method'=>'PUT','class'=>'formlDinamic form','id'=>'DataUpdate']) !!}
 						@include('pages.operation.shipDetails.forml')
 						<br>
-                        @include('pages.operation.shipDetails.table')
+                        @include('pages.operation.operationshipTotal.index')
 						{{-- {!! Form::hidden('route', route('shipDetails.store'), ['id'=>'route']) !!} --}}
 						<br>
 						<div class="col-md-12 text-right">
