@@ -32,7 +32,7 @@ $(".formlDinamic").on('submit', function(e) {
         saveDataMultitap(url, forml, method, inputFile);
     }
     if (id == 'DataUpdate') {
-        //input file 
+        //input file
         var inputFile = $('#file-2');
 
         if(inputFile[0] == undefined){
@@ -76,7 +76,7 @@ function deleteReg(url){
  * @param      {<type>}    forml   The forml
  * @param      {Function}  method  The method
  */
-function saveData(url, forml, method) 
+function saveData(url, forml, method)
 {
     var route = $('#route').val();
     $.ajax({
@@ -84,31 +84,34 @@ function saveData(url, forml, method)
         type: method,
         data: forml.serialize(),
         cache: false,
-        success: function(result) 
+        success: function(result)
         {
             $('.modal').modal('hide');// Oculta el modal del formulario create
             //si recibe respuesta redirecciona al edit
             // console.log(result.id);
             if (result.id != undefined) {
                 if(result.page == 'show'){
-                    window.location.replace(route  + "/" + result.id);    
+                    window.location.replace(route  + "/" + result.id);
                 }else{
                     window.location.replace(route  + "/" + result.id + "/edit");
                 }
             }else{
-                if(route == null || result.operator == true){
+                if(route == '' || result.operator == true){
                     location.reload();
                 }else{
                     window.location.replace(route)
                 }
             }
+            if(result.page = 'shipDetails'){
+                location.reload();
+            }
         },
-        error: function(msj) 
+        error: function(msj)
         {
             var status = msj.statusText;
             var errors = $.parseJSON(msj.responseText);
-        
-            $.each(errors.errors, function(key, value) 
+
+            $.each(errors.errors, function(key, value)
             {
                 $("#" + key).addClass("is-invalid");
                 $("#_" + key).addClass("is-invalid");
@@ -126,15 +129,15 @@ function saveData(url, forml, method)
  * @param      {<type>}    forml   The forml
  * @param      {Function}  method  The method
  */
-function saveDataMultitap(url, forml, method, inputFile) 
+function saveDataMultitap(url, forml, method, inputFile)
 {
     var route = $('#route').val();
     var formData = new FormData();
-    if (inputFile != null) 
+    if (inputFile != null)
     {
         formData.append('file', inputFile[0].files[0]);
     }
-        
+
     $.ajax({
         url: url + '?' + forml.serialize(),
         type: method,
@@ -142,15 +145,15 @@ function saveDataMultitap(url, forml, method, inputFile)
         cache: false,
         processData: false,
         contentType: false,
-    
-        success: function(result) 
+
+        success: function(result)
         {
             $('.modal').modal('hide');// Oculta el modal del formulario create
             // $('#tbody').load(' .tbody');//Recarga el body de la tabla
             // toastr.success(result.message,"Exitoso");
             if (result.id != undefined) {
                 if(result.page == 'show'){
-                    window.location.replace(route  + "/" + result.id);    
+                    window.location.replace(route  + "/" + result.id);
                 }else{
                     window.location.replace(route  + "/" + result.id + "/edit");
                 }
@@ -162,12 +165,12 @@ function saveDataMultitap(url, forml, method, inputFile)
                 }
             }
         },
-        error: function(msj) 
+        error: function(msj)
         {
             var status = msj.statusText;
             var errors = $.parseJSON(msj.responseText);
-        
-            $.each(errors.errors, function(key, value) 
+
+            $.each(errors.errors, function(key, value)
             {
                 $("#" + key + "_group").addClass("has-error");
                 $("." + key + "_span").addClass("help-block text-danger").html(value);
@@ -186,10 +189,10 @@ function saveDataMultitap(url, forml, method, inputFile)
 function obtenerDatosGet(url, url2)
 {
     var form = $('.form'); //seleciona el formulario
-    form.attr('action',url2); 
+    form.attr('action',url2);
     $.get(url, function(data)
     {
-        $.each(data, function(key, value) 
+        $.each(data, function(key, value)
         {
             if (key=='curren_account' && value == 1) {
                 $('#'+'_'+key).prop('checked', true);
@@ -220,7 +223,7 @@ function obtenerDatosGet(url, url2)
  */
 function validatFile(image, id)
 {
-    if (image != null) 
+    if (image != null)
         {
             var url = './././img/avatar/' + image;
             // destroy fileimput previous
@@ -235,13 +238,13 @@ function validatFile(image, id)
  * @param      {string}  id        The identifier
  * @param      {<type>}  namefile  The namefile
  */
-function addImage(url, id, namefile) 
+function addImage(url, id, namefile)
 {
     $("#"+id).fileinput
     ({
         initialPreview: [url],
         initialPreviewAsData: true,
-        initialPreviewConfig: 
+        initialPreviewConfig:
             [
                 {caption: namefile},
             ],
@@ -264,7 +267,7 @@ function showData(url)
     $.get(url, function(data)
     {
         console.log(data)
-        $.each(data, function(key, value) 
+        $.each(data, function(key, value)
         {
             $('#'+'-'+key).val(value);
             if (key=='curren_account' && value == 1) {
@@ -291,17 +294,17 @@ function showDataPayment(url)
     $.get(url, function(data)
     {
         // console.log(data)
-        $.each(data[0], function(key, value) 
+        $.each(data[0], function(key, value)
         {
             console.log(key);
             $('#'+'-'+key).val(value);
         });
 
         var response = ""
-        
-        $.each(data[1], function(key, value) 
+
+        $.each(data[1], function(key, value)
         {
-         var type = ""   
+         var type = ""
          if (value.type == 1) {
             type = "ABONO"
          }else{
@@ -315,10 +318,10 @@ function showDataPayment(url)
             response += "</tr>"
         });
 
-      
+
         $('#pay').html(response)
-       
-      
+
+
     });
 }
 /**
@@ -382,12 +385,12 @@ function dataTableExport(title, columns) {
          return false;
      }
  }
- 
+
 /**
- * 
- * @param {valor a comparar} id 
- * @param {route del controlador} route 
- * @param {campo receptor} receptor 
+ *
+ * @param {valor a comparar} id
+ * @param {route del controlador} route
+ * @param {campo receptor} receptor
  */
 function comboBox(id,route,receptor) {
         $.get(route + '/' + id, function (data) {
@@ -403,4 +406,88 @@ function comboBox(id,route,receptor) {
         }
     });
  }
- 
+function createDataTable() {
+    var forml   = $('#saveDataT').serialize();
+    var method  = 'POST';
+    var route = $('#saveDataT').attr("action");
+
+    saveDataTable(forml,method, route);
+    toastr.success("Save Prodduct","Success");
+}
+
+function editDataTable(route, route2) {
+
+    $('#modalEdit').modal('show');
+
+    $('#route').val(route2);
+    $.get(route, function(data)
+    {
+        $.each(data, function(key, value)
+        {
+            // console.log(key+':'+value);
+            $('#'+'_'+key).val(value);
+        });
+    });
+}
+
+function updateDatatable() {
+    var forml   = $('#updateDataT').serialize();
+    var method  = 'PUT';
+    var route = $('#route').val();
+
+    saveDataTable(forml,method,route);
+    toastr.success("Save Prodduct","Success");
+}
+
+function saveDataTable(forml, method, route) {
+    var token = $("#token").attr("content");
+    var t   = $('#example').DataTable();
+    $.ajax({
+        url: route,
+        headers: {'X-CSRF-TOKEN': token},
+        type: method,
+        data: forml,
+        cache: false,
+        success: function(result){
+            $('.modal').modal('hide');
+            t.ajax.reload();
+        },
+        error: function(msj) {
+        var message = msj.responseText;
+        var errors = $.parseJSON(msj.responseText);
+            $.each(errors.errors, function(key, value) {
+            toastr.error(value,"Error");
+            });
+        },
+        timeout: 15000
+    });
+}
+
+
+function delDataTable(route) {
+    var t = $('#example').DataTable();
+    var token = $("#token").attr("content");
+    var url = route;
+    $.ajax({
+        url: url,
+        headers: {'X-CSRF-TOKEN': token},
+        type: 'DELETE',
+        success: function(result) {
+            t.ajax.reload();
+            toastr.success("Delete Prodduct","Success");
+        },
+        error: function(msj) {
+            var message = msj.responseText;
+            var errors = $.parseJSON(msj.responseText);
+            $.each(errors.errors, function(key, value) {
+                toastr.error(value,"Error");
+            });
+        },
+        timeout: 15000
+    });
+}
+
+function showModal(idModal, idforml) {
+    $('#'+idModal).modal('show');
+    $("#"+idforml)[0].reset();
+}

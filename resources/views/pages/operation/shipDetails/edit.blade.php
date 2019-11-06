@@ -7,7 +7,8 @@
 @endsection
 @section('maincontent')
 
-@include('pages.operation.operationShipTotal.create')
+@include('pages.operation.shipTotal.edit')
+@include('pages.operation.shipTotal.create')
 
 <div class="page height-full" style="margin-top: 130px">
 	<div>
@@ -26,25 +27,86 @@
 						{!! Form::model($shipDetail,['route'=>["shipDetails.update",$shipDetail->id],'method'=>'PUT','class'=>'formlDinamic form','id'=>'DataUpdate']) !!}
 						@include('pages.operation.shipDetails.forml')
 						<br>
-                        @include('pages.operation.operationshipTotal.index')
-						{{-- {!! Form::hidden('route', route('shipDetails.store'), ['id'=>'route']) !!} --}}
-						<br>
 						<div class="col-md-12 text-right">
-							<a href="{{ route('operationIndexAsoc') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
+                            <a href="{{ route('operationIndexAsoc') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
 							<button type="submit" class="btn btn-primary"><i class="icon-save mr-2"></i>{{_('Save data')}}</button>
 						</div>
-						{!! Form::close() !!}
+                        {!! Form::close() !!}
+                        <br>
+                        @include('pages.operation.shipTotal.index')
 					</div>
 				</div>
         	</div>
 		</div>
 	</div>
 </div>
+
 @endsection
 @section('js')
 <script>
     $(document).ready(function() {
         $('#shipDetails').addClass('active');
+        var t = $('#example').DataTable({
+            "serverSide": true,
+            "ajax":"{{ url('shipTotals') }}",
+            "columns":[
+                {data: 'id'},
+                {data: 'description'},
+                {data: 'order_qty'},
+                {data: 'nb_package'},
+                {data: 'net_qty'},
+                {data: 'gross_weight'},
+                {data: 'btn'},
+            ]
+        });
+        // $('#save').on('click',function(){
+        //     var forml   = $('#saveDataT').serialize();
+        //     var url     = $('#saveDataT').attr("action");
+        //     var method  = $('#saveDataT').attr("method");
+
+        //     $.ajax({
+        //         url: url,
+        //         type: method,
+        //         data: forml,
+        //         cache: false,
+        //         success: function(result){
+        //             $('.modal').modal('hide');
+        //             t.ajax.reload();
+        //             toastr.success("Add Prodduct","Success");
+        //         },
+        //         error: function(msj) {
+        //         var message = msj.responseText;
+        //         var errors = $.parseJSON(msj.responseText);
+        //             $.each(errors.errors, function(key, value) {
+        //             toastr.error(value,"Error");
+        //             });
+        //         },
+        //         timeout: 15000
+        //     });
+        // });
+
+        // $('#btnDelete').on('click',function(){
+        //     var token = $("#token").attr("content");
+        //     var url = $('#fomrDelete').attr("action");
+
+        //     $.ajax({
+        //         url: url,
+        //         headers: {'X-CSRF-TOKEN': token},
+        //         type: 'DELETE',
+        //         success: function(result) {
+        //             t.ajax.reload();
+        //             toastr.success("Delete Prodduct","Success");
+        //         },
+        //         error: function(msj) {
+        //             var message = msj.responseText;
+        //             var errors = $.parseJSON(msj.responseText);
+        //             $.each(errors.errors, function(key, value) {
+        //                 toastr.error(value,"Error");
+        //             });
+        //         },
+        //         timeout: 15000
+        //     });
+        // });
     });
 
     $('.datepicker').datetimepicker({
@@ -64,6 +126,8 @@
      timepicker:false,
      format:'Y-m-d'
     });
+
+
 </script>
 @endsection
 

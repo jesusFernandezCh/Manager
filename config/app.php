@@ -161,6 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -234,6 +235,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         // Laravel-excel-2.1
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        //Datatables
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
 
     ],
 
