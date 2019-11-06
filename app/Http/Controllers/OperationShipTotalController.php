@@ -63,9 +63,10 @@ class OperationShipTotalController extends Controller
      * @param  \App\OperationShipTotal  $operationShipTotal
      * @return \Illuminate\Http\Response
      */
-    public function edit(OperationShipTotal $operationShipTotal)
+    public function edit($id)
     {
-        //
+        $operationShipTotal = $this->stmt->find($id);
+        return response()->json($operationShipTotal);
     }
 
     /**
@@ -75,8 +76,9 @@ class OperationShipTotalController extends Controller
      * @param  \App\OperationShipTotal  $operationShipTotal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OperationShipTotal $operationShipTotal)
+    public function update(Request $request, $id)
     {
+        $operationShipTotal = $this->stmt->find($id);
         $operationShipTotal->update($request->all());
     }
 

@@ -105,6 +105,7 @@ class ShipDetailsController extends Controller
     {
         $shipDetail->update($request->all());
         Session::flash('message-success',' ShipDetails '. $request->input('vessel').' '.trans('messages.created'));
+        return response()->json(['page'=>'shipDetails']);
     }
 
     /**

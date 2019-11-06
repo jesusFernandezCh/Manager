@@ -96,3 +96,12 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::post('verifyBalance', 'PaymentsController@verifyBalance');
 });
+
+
+Route::get('shipTotals',function(){
+    return datatables()
+    ->collection(App\OperationShipTotal::all()->where('operation_id',10))
+    ->addColumn('btn','pages.operation.shipTotal.partials.actions')
+    ->rawColumns(['btn'])
+    ->toJson();
+});

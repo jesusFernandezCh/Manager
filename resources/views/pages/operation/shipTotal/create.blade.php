@@ -1,5 +1,5 @@
 <!-- Modal -->
-{!! Form::open(['route'=>'operationShipTotals.store','method'=>'POST', 'class'=>'formlDinamic', 'id'=>'products']) !!}
+{!! Form::open(['route'=>'operationShipTotals.store', 'id'=>'saveDataT']) !!}
 <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
@@ -10,14 +10,14 @@
 			<div class="modal-body">
 				<div class="form-row">
 					<div class="col-md-12">
-                        @include('pages.operation.operationShipTotal.forml')
+                        @include('pages.operation.shipTotal.partials.forml')
 					</div>
 				</div>
 			</div>
 			<br>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary" id="save"><i class="icon-save mr-2"></i>Save data</button>
+				<button type="button" class="btn btn-primary" onclick="createDataTable()"><i class="icon-save mr-2"></i>Save data</button>
 			</div>
 		</div>
 	</div>
