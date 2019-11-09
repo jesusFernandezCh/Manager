@@ -1,5 +1,5 @@
 <!-- Modal -->
-{!! Form::open(['route'=>'document.store','method'=>'POST', 'class'=>'formlDinamic', 'id'=>'guardarRegistro']) !!}
+{!! Form::open(['route'=>'document.store','method'=>'POST', 'class'=>'formlDinamic', 'id'=>'guardarRegistroMultitap', 'files' => true]) !!}
 <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">

@@ -1,4 +1,4 @@
-<div class="nav-title text-white col-12"> 
+<div class="nav-title text-white col-12">
 	<i class= @if (isset($icon)) {{$icon}} @endif></i>
 	<a href="{{ route('operationIndexAsoc') }}">{{__('Operation')}}</a> > {{$operation->account->name}} > {{$operation->code}}
 </div>

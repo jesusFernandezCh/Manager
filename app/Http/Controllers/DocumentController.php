@@ -29,7 +29,7 @@ class DocumentController extends Controller
         $this->document = $document;
         $this->account = Account::get()->pluck('name', 'id');
         $this->documentType = Document_type::get()->pluck('name', 'id');
-        $this->operations = Operation::get()->pluck('description', 'id');
+        $this->operations = Operation::get()->pluck('code', 'id');
     }
     /**
      * Display a listing of the resource.
@@ -46,7 +46,7 @@ class DocumentController extends Controller
         foreach ($queryOperation as $key => $value) {
             $operation[$value->id]= $value->code.' - '.$value->Supplier->name. ' - '.$value->s_incoterm_place.'$';
         }
-        
+
         return view('pages.account.document.index',compact('document','documentType','account', 'operation'));
     }
 
@@ -70,19 +70,13 @@ class DocumentController extends Controller
     {
         $file = $request->file('file');
         $name = $file->getClientOriginalName();
-        $public_path = public_path();
-        $url = $public_path.'/storage/';
+        \Storage::disk('local')->put($name,  \File::get($file));
+        $request = $request->all();
+        $request['file'] = $name;
+        $document = $this->document->create($request);
+        $document->documentTypes()->sync($request['documentType']);
+        Session::flash('message-success',' Document '. $name.' '.trans('messages.created'));
 
-        Storage::disk('local')->put($name,  \File::get($file));
-
-        $data = new Document; 
-        $data->name = $request->name;
-        $data->account_id = $request->account_id;
-        $data->operation_id = $request->operation_id;
-        $data->file = $url.$name;
-        $data->save();
-        $data->documentTypes()->sync($request->documentType);
-        return response()->json(['message'=>'Documento registrado correctamente']);
     }
 
     /**
@@ -104,12 +98,11 @@ class DocumentController extends Controller
      */
     public function edit(Document $document)
     {
-       
         $account = $this->account->all();
         $documentType = $this->documentType->all();
-        $operation = $this->operations;
-        
-        return view('pages.account.document.edit-2',compact('document','documentType','account', 'operation'));
+        $operations = $this->operations;
+
+        return view('pages.account.document.edit-2',compact('document','documentType','account', 'operations'));
     }
 
     /**
@@ -121,14 +114,11 @@ class DocumentController extends Controller
      */
     public function update(updateRequest $request, $id)
     {
-      
-
-       /* $document = Document::find($id);
+        $document = Document::find($id);
         $data = $request->all();
         $document->update($data);
-        $document->save();
         $document->documentTypes()->sync($request->documentType);
-        Session::flash('message-success','El documento '. $request->name.' fue editado correctamente.');*/
+        Session::flash('message-success',' Document '. $document->name.' '.trans('messages.updated'));
     }
 
     /**
@@ -139,15 +129,16 @@ class DocumentController extends Controller
      */
     public function destroy(Document $document)
     {
+
+        Storage::delete($document->file);
         $document->delete();
-        return response()->json(['message'=>'Documento eliminado correctamente']);
+        Session::flash('message-success',' Document '. $document->name.' '.trans('messages.deleted'));
     }
 
     public function download($id)
     {
-        $document = Document::find($id);
-        $file = $document->file;
-
+        $document   = Document::find($id);
+        $file       = public_path().'/storage/'.$document->file;
         return response()->download($file);
     }
 
@@ -175,12 +166,14 @@ class DocumentController extends Controller
      */
     public function documentOperationEdit($id, $operation)
     {
-        $document = $this->document->find($id);
-        $account = $this->account->all();
-        $documentType = $this->documentType->all();
-        $operations = $this->operations;
-        $operation = $operation;
+        $admin          = false;
+        $create         = true;
+        $document       = $this->document->find($id);
+        $account        = $this->account->all();
+        $documentType   = $this->documentType->all();
+        $operations     = $this->operations;
+        $operation      = Operation::find($operation);
 
-        return view('pages.operation.documents.edit',compact('document','operation','account','documentType','operations'));
+        return view('pages.operation.documents.edit',compact('document','operation','account','documentType','operations','admin','create'));
     }
 }

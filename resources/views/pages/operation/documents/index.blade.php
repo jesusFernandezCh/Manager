@@ -33,8 +33,6 @@
                                         <th><b>ID</b></th>
                                         <th><b>NAME</b></th>
                                         <th><b>DOCUMENT TYPE</b></th>
-                                        <th><b>ACCOUNT</b></th>
-                                        <th><b>OPERATION</b></th>
                                         <th><b>OPTIONS</b></th>
                                     </tr>
                                 </thead>
@@ -42,28 +40,22 @@
                                     @foreach ($documents as $document)
                                     <tr>
                                         <td>
-                                            {{$document->id}} 
+                                            {{$document->id}}
                                         </td>
                                         <td>
                                             {{$document->name}}
                                         </td>
                                         <td>
-                                            @foreach ($document->documentTypes as $element) 
+                                            @foreach ($document->documentTypes as $element)
                                                 <span class="badge badge-primary r-5">{{$element->name }}</span>
                                             @endforeach
-                                        </td>
-                                        <td>
-                                            {{$document->accounts->name}}
-                                        </td>
-                                        <td>
-                                            {{$document->operations->name}} 
                                         </td>
                                         <td class="text-center">
                                             {!! Form::open(['route'=>['document.destroy',$document],'method'=>'DELETE', 'class'=>'formlDinamic','id'=>'eliminarRegistro']) !!}
                                             <a class="btn btn-default btn-sm" title="Editar" href="{{url('/document/download/'.$document->id.'')}}"><i class="icon-download text-info"></i></a>
                                             <a href="{{ route('documentOperationEdit',[$document,$operation]) }}" class="btn btn-default btn-sm" title="Editar document">
                                                 <i class="icon-pencil text-info"></i>
-                                            </a> 
+                                            </a>
                                             <button class="btn btn-default btn-sm" onclick="return confirm('¿Realmente deseas borrar el registro?')">
                                                 <i class="icon-trash-can3 text-danger"></i>
                                             </button>
