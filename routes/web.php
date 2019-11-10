@@ -15,6 +15,12 @@ Route::get('/', function () {
 	return view('auth.login');
 });
 
+Route::get('pdf', function () {
+    $pdf = App::make('dompdf.wrapper');
+    $pdf->loadHTML('<h1>Test</h1>');
+    return $pdf->stream();
+});
+
 Route::get('login', function () {
 	return view('auth.login');
 });
