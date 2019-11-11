@@ -17,9 +17,9 @@ Route::get('/', function () {
 
 Route::get('pdf', function () {
     $pdf = App::make('dompdf.wrapper');
-    $pdf->loadHTML('<h1>Test</h1>');
+    $pdf->loadView('pages.operation.pdf.factura');
     return $pdf->stream();
-});
+})->name('pdf');
 
 Route::get('login', function () {
 	return view('auth.login');
