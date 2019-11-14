@@ -45,7 +45,7 @@
 @section('js')
 <script>
     $(document).ready(function() {
-        $('#shipDetails').addClass('active');
+        $('#ShipDetails').addClass('active');
         var t = $('#example').DataTable({
             "serverSide": true,
             "ajax":"{{ url('shipTotals') }}",
@@ -59,54 +59,6 @@
                 {data: 'btn'},
             ]
         });
-        // $('#save').on('click',function(){
-        //     var forml   = $('#saveDataT').serialize();
-        //     var url     = $('#saveDataT').attr("action");
-        //     var method  = $('#saveDataT').attr("method");
-
-        //     $.ajax({
-        //         url: url,
-        //         type: method,
-        //         data: forml,
-        //         cache: false,
-        //         success: function(result){
-        //             $('.modal').modal('hide');
-        //             t.ajax.reload();
-        //             toastr.success("Add Prodduct","Success");
-        //         },
-        //         error: function(msj) {
-        //         var message = msj.responseText;
-        //         var errors = $.parseJSON(msj.responseText);
-        //             $.each(errors.errors, function(key, value) {
-        //             toastr.error(value,"Error");
-        //             });
-        //         },
-        //         timeout: 15000
-        //     });
-        // });
-
-        // $('#btnDelete').on('click',function(){
-        //     var token = $("#token").attr("content");
-        //     var url = $('#fomrDelete').attr("action");
-
-        //     $.ajax({
-        //         url: url,
-        //         headers: {'X-CSRF-TOKEN': token},
-        //         type: 'DELETE',
-        //         success: function(result) {
-        //             t.ajax.reload();
-        //             toastr.success("Delete Prodduct","Success");
-        //         },
-        //         error: function(msj) {
-        //             var message = msj.responseText;
-        //             var errors = $.parseJSON(msj.responseText);
-        //             $.each(errors.errors, function(key, value) {
-        //                 toastr.error(value,"Error");
-        //             });
-        //         },
-        //         timeout: 15000
-        //     });
-        // });
     });
 
     $('.datepicker').datetimepicker({
