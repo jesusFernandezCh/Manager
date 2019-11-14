@@ -15,11 +15,24 @@ Route::get('/', function () {
 	return view('auth.login');
 });
 
-Route::get('pdf', function () {
+Route::get('pdf2', function () {
     $pdf = App::make('dompdf.wrapper');
-    $pdf->loadView('pages.operation.pdf.factura');
+    $pdf->loadView('pages.operation.pdf.factura2');
     return $pdf->stream();
-})->name('pdf');
+})->name('pdf2');
+
+Route::get('pdf1', function () {
+    $pdf = App::make('dompdf.wrapper');
+    $pdf->loadView('pages.operation.pdf.factura1');
+    return $pdf->stream();
+})->name('pdf1');
+
+Route::get('factura', function () {
+	return view('pages.operation.pdf.factura2');
+});
+Route::get('factura1', function () {
+	return view('pages.operation.pdf.factura1');
+});
 
 Route::get('login', function () {
 	return view('auth.login');

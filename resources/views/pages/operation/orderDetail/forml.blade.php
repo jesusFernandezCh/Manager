@@ -39,7 +39,8 @@
     </table>
     <div class="col-md-12">
     	<a id="addRow" class="btn-fab fab-right  shadow btn-primary" title="Add Product"><i class="icon-add"></i></a>
-        <a id="buttonRM" class="btn-fab fab-right  shadow btn-primary" title="Add Product"><i class="icon-delete"></i></a>
+        <a id="buttonRM" class="btn-fab fab-right  shadow btn-primary" title="Delete Product"><i class="icon-delete"></i></a>
+        <a href="{{ route('pdf2') }}" class="btn-fab btn-danger" title="{{ __('ExportPDF') }}" target="_blank"><i class="icon icon-file-pdf"></i></a>
     </div>
 	</div>
 <script>
