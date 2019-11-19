@@ -23,12 +23,12 @@ Route::get('pdf2', function () {
 
 Route::get('pdf1', function () {
     $pdf = App::make('dompdf.wrapper');
-    $pdf->loadView('pages.operation.pdf.factura1');
+    $pdf->loadView('pages.operation.pdf.factura6');
     return $pdf->stream();
 })->name('pdf1');
 
 Route::get('factura', function () {
-	return view('pages.operation.pdf.factura2');
+	return view('pages.operation.pdf.factura6');
 });
 Route::get('factura1', function () {
 	return view('pages.operation.pdf.factura1');
