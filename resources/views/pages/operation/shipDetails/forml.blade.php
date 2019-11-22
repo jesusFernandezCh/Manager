@@ -31,7 +31,7 @@
 		<div class="" id="update_eta_on_group">
 			<i class=""></i>
 			{!! Form::label('update_eta_on', 'UpdateEtaOn', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::text('update_eta_on', null, ['class'=>'form-control r-0 light s-12 datepicker', 'id'=>'_update_eta_on']) !!}
+			{!! Form::text('update_eta_on', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_update_eta_on','readonly']) !!}
 			<span class="update_eta_on_span"></span>
 		</div>
     </div>
@@ -68,30 +68,6 @@
 		</div>
     </div>
     <div class="col-md-3">
-		<div class="" id="total_pcs_group">
-			<i class=""></i>
-			{!! Form::label('total_pcs', 'TotalPcs', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::text('total_pcs', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_total_pcs']) !!}
-			<span class="total_pcs_span"></span>
-		</div>
-    </div>
-    <div class="col-md-3">
-		<div class="" id="total_quantity_group">
-			<i class=""></i>
-			{!! Form::label('total_quantity', 'TotalQuantity', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::text('total_quantity', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_total_quantity']) !!}
-			<span class="total_quantity_span"></span>
-		</div>
-    </div>
-    <div class="col-md-3">
-		<div class="" id="total_gw_group">
-			<i class=""></i>
-			{!! Form::label('total_gw', 'TotalGW', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::text('total_gw', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_total_gw']) !!}
-			<span class="total_gw_span"></span>
-		</div>
-    </div>
-    <div class="col-md-3">
 		<div class="" id="invoice_supplier_group">
 			<i class=""></i>
 			{!! Form::label('invoice_supplier', 'InvoiceSupplier', ['class'=>'col-form-label s-12']) !!}
@@ -114,4 +90,30 @@
 			<span class="invoice_forwarder_span"></span>
 		</div>
     </div>
+</div>
+<div class="row">
+	<div class="col-md-3">
+		<div class="" id="total_pcs_group">
+			<i class=""></i>
+			{!! Form::label('total_pcs', 'TotalPcs', ['class'=>'col-form-label s-12']) !!}
+			{!! Form::text('total_pcs', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_total_pcs']) !!}
+			<span class="total_pcs_span"></span>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="" id="total_quantity_group">
+			<i class=""></i>
+			{!! Form::label('total_quantity', 'TotalQuantity', ['class'=>'col-form-label s-12']) !!}
+			{!! Form::text('total_quantity', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_total_quantity']) !!}
+			<span class="total_quantity_span"></span>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="" id="total_gw_group">
+			<i class=""></i>
+			{!! Form::label('total_gw', 'TotalGW', ['class'=>'col-form-label s-12']) !!}
+			{!! Form::text('total_gw', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_total_gw']) !!}
+			<span class="total_gw_span"></span>
+		</div>
+	</div>
 </div>

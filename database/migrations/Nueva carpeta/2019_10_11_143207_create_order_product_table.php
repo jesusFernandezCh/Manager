@@ -29,6 +29,9 @@ class CreateOrderProductTable extends Migration
             $table->decimal('est_purchase_sale')->nullable();
             $table->decimal('sale_price')->nullable();
             $table->decimal('est_sale')->nullable();
+            $table->decimal('nb_package')->nullable();
+            $table->decimal('net_qty')->nullable();
+            $table->decimal('gross_weight')->nullable();
             $table->timestamps();
         });
     }

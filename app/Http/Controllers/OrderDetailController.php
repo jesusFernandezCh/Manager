@@ -28,14 +28,14 @@ class OrderDetailController extends Controller
      */
     public function __construct(DocStatus $status, ProductGen $product_gen,Currency $currency, ShelfLife $shelflife, Operation $stmt, OrderProduct $order_product)
     {
-        $this->order_product = $order_product;
-        $this->operation    = $stmt;    
-        $this->shelflife    = $shelflife;
-        $this->route    = 'pages.operation.topMenu';    
-        $this->currency    = Currency::get()->pluck('code', 'id');
-        $this->value    = Currency::get();
-        $this->product_gen    = ProductGen::get();
-        $this->status   = $status->all()->pluck('name', 'id');
+        $this->order_product    = $order_product;
+        $this->operation        = $stmt;    
+        $this->shelflife        = $shelflife;
+        $this->route            = 'pages.operation.topMenu';    
+        $this->currency         = Currency::get()->pluck('code', 'id');
+        $this->value            = Currency::get();
+        $this->product_gen      = ProductGen::get();
+        $this->status           = $status->all()->pluck('name', 'id');
            
     }
 
@@ -134,11 +134,11 @@ class OrderDetailController extends Controller
             $operation      = $this->operation->find($operation);
             $admin          = false;
             $create         = true; 
-            $route  = $this->route;
-            $product_gen = $this->product_gen->all();
+            $route          = $this->route;
+            $product_gen    = $this->product_gen->all();
             $shelflife      = ShelfLife::get()->pluck('name','id');
-            $value = $this->value->all();
-            $currency = $this->currency->all();
+            $value          = $this->value->all();
+            $currency       = $this->currency->all();
 
 
 
@@ -162,22 +162,22 @@ class OrderDetailController extends Controller
      */
     public function edit(OrderProduct $order_product)
     {
-            $create = true;
-            $admin  = false;
-            $route  = $this->route;
-            $status = $this->status;
-            $operation = Operation::find($order_product->operation_id);
-            $product_gen = $this->product_gen->all();
-            $shelflife      = ShelfLife::get()->pluck('name','id');
-            $order = OrderProduct::where('operation_id', $operation->id)->get();
-            $value = $this->value->all();
-            $currency = $this->currency->all();
-            $order_budget = OperationBudget::where('operation_id', $operation->id)->get();
-            foreach ($product_gen as $key => $product_gen) {
-            $product[$product_gen->id]= $product_gen->Products->line.' - ' .$product_gen->gen.' - '.$product_gen->basic_spec.' - '.$product_gen->cold_chain;
-            }
+        $create         = true;
+        $admin          = false;
+        $route          = $this->route;
+        $status         = $this->status;
+        $operation      = Operation::find($order_product->operation_id);
+        $product_gen    = $this->product_gen->all();
+        $shelflife      = ShelfLife::get()->pluck('name','id');
+        $order          = OrderProduct::where('operation_id', $operation->id)->get();
+        $value          = $this->value->all();
+        $currency       = $this->currency->all();
+        $order_budget   = OperationBudget::where('operation_id', $operation->id)->get();
+        foreach ($product_gen as $key => $product_gen) {
+        $product[$product_gen->id]= $product_gen->Products->line.' - ' .$product_gen->gen.' - '.$product_gen->basic_spec.' - '.$product_gen->cold_chain;
+        }
 
-            return view('pages.operation.orderDetail.edit',compact('order_budget','currency','value','order','shelflife',"route","admin","create",'operation','status','product'));
+        return view('pages.operation.orderDetail.edit',compact('order_budget','currency','value','order','shelflife',"route","admin","create",'operation','status','product'));
     }
 
     /**

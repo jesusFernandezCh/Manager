@@ -78,6 +78,7 @@ function deleteReg(url){
  */
 function saveData(url, forml, method)
 {
+
     var route = $('#route').val();
     $.ajax({
         url: url,
