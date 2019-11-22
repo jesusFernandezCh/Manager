@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class ProductGen extends Model
 {
     protected $fillable = [
-        'product_line_id','gen','basic_spec','cold_chain'
+        'product_line_id',
+        'gen',
+        'basic_spec',
+        'cold_chain'
     ];
 
     public function Products()

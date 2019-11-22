@@ -15,11 +15,11 @@ Route::get('/', function () {
 	return view('auth.login');
 });
 
-Route::get('pdf2', function () {
+Route::get('pdf/{name}', function ($name) {
     $pdf = App::make('dompdf.wrapper');
-    $pdf->loadView('pages.operation.pdf.factura2');
+    $pdf->loadView('pages.operation.pdf.'.$name);
     return $pdf->stream();
-})->name('pdf2');
+})->name('pdf');
 
 Route::get('pdf1', function () {
     $pdf = App::make('dompdf.wrapper');
@@ -78,8 +78,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('accountCourrier', 'AccountCourrierController');
 	Route::resource('operationDocument', 'OperationDocumentController');
     Route::resource('shipDetails', 'ShipDetailsController');
-    Route::resource('operationShipTotals', 'OperationShipTotalController');
-
+    
 	Route::get("metaEdit/{meta?}/{account?}", "AccountMetaController@metaEdit")->name("metaEdit");
 	Route::get("contactAsoc/{id?}", "AccountContactController@contactAsoc")->name("contactsAsoc");
 	Route::get('contactEdit/{countact?}/{account?}', 'AccountContactController@contactAsocEdit')->name("contactEdit");
@@ -90,7 +89,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('supplierComercial/{supplier_id?}/', 'OperationController@supplierComercial')->name('supplierComercial');
 	Route::get('docsIntruccionEditAsoc/{docsIntruccion_id?}/', 'DocsInstructionController@editAsoc')->name('docsIntruccionEditAsoc');
 	Route::get('AccountCourrierEditAsoc/{accountCourrier_id?}/', 'AccountCourrierController@editAsoc')->name('AccountCourrierEditAsoc');
-
+		
 	/* Currency route */
 	Route::resource('currency', 'CurrencyController');
 	Route::resource('document', 'DocumentController');

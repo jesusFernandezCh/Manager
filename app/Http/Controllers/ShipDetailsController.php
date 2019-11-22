@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\ShipDetails;
 use App\Operation;
-use App\OperationShipTotal;
+use App\OrderProduct;
 use Illuminate\Http\Request;
 use Session;
 
@@ -13,7 +13,7 @@ class ShipDetailsController extends Controller
     private $operation;
     private $productsAsoc;
 
-    public function __construct(ShipDetails $shipDetails, Operation $operation, OperationShipTotal $productsAsoc)
+    public function __construct(ShipDetails $shipDetails, Operation $operation, OrderProduct $productsAsoc)
     {
         $this->operation    = $operation;
         $this->stmt         = $shipDetails;
@@ -87,11 +87,11 @@ class ShipDetailsController extends Controller
     {
         $operation      = $this->operation->find($shipDetail->operation_id);
         $products       = $this->stmt->Products();
-        $productsAsoc   = $this->productsAsoc->all()->where('operation_id',$shipDetail->operation_id);
+        $productsAsoc   = OrderProduct::Where('operation_id',$operation->id)->get();
         $topMenu        = "pages.operation.topMenu";
         $admin          = false;
         $create         = true;
-        return view('pages.operation.shipDetails.edit',compact('shipDetail','operation','products','topMenu','admin','create','productsAsoc'));
+        return view('pages.operation.shipDetails.edit',compact('shipDetail','operation','products','topMenu','admin','create','productsAsoc', 'Budgets'));
     }
 
     /**
@@ -103,9 +103,33 @@ class ShipDetailsController extends Controller
      */
     public function update(Request $request, ShipDetails $shipDetail)
     {
-        $shipDetail->update($request->all());
+        $data = $request->all();
+        //Si se modifica la fecha actual se guarda en update_eta_on
+        if($request->eta != $shipDetail->eta){
+            $data['update_eta_on'] = date('Y-m-d');
+        };
+        $shipDetail->update($data);
         Session::flash('message-success',' ShipDetails '. $request->input('vessel').' '.trans('messages.created'));
-        return response()->json(['page'=>'shipDetails']);
+        return $this->updateProduct($request);
+    }
+    
+    /**
+     * Guarda los datos (nb_package,net_qty,gross_weight)
+     * de los productos asociados a la operacion
+     * @param Request $request
+     * @return void
+     */
+    public function updateProduct(Request $request)
+    {
+        //recorre los datos en forma de array desde recibidos de un data table
+        for ($i = 0; $i < count($request->product_id); $i++) {
+            $product = $this->productsAsoc->find($request->product_id[$i]);
+            $product->nb_package = $request->nb_package[$i];
+            $product->net_qty = $request->net_qty[$i];
+            $product->gross_weight = $request->gross_weight[$i];
+            $product->save();   
+        }
+        return back();
     }
 
     /**

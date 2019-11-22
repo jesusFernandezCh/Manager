@@ -7,9 +7,6 @@
 @endsection
 @section('maincontent')
 
-@include('pages.operation.shipTotal.edit')
-@include('pages.operation.shipTotal.create')
-
 <div class="page height-full" style="margin-top: 130px">
 	<div>
         @include('alerts.toastr')
@@ -24,16 +21,17 @@
 	                    </div>
 	                </div>
 	                <div class="card-body">
-						{!! Form::model($shipDetail,['route'=>["shipDetails.update",$shipDetail->id],'method'=>'PUT','class'=>'formlDinamic form','id'=>'DataUpdate']) !!}
+						{!! Form::model($shipDetail,['route'=>["shipDetails.update",$shipDetail->id],'method'=>'PUT','class'=>' form','id'=>'DataUpdate']) !!}
 						@include('pages.operation.shipDetails.forml')
-						<br>
+						
+                        <hr>
+                        @include('pages.operation.shipDetails.table')
+                        <br>
 						<div class="col-md-12 text-right">
                             <a href="{{ route('operationIndexAsoc') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
-							<button type="submit" class="btn btn-primary"><i class="icon-save mr-2"></i>{{_('Save data')}}</button>
+							<button class="btn btn-primary"><i class="icon-save mr-2"></i>{{_('Save data')}}</button>
 						</div>
                         {!! Form::close() !!}
-                        <br>
-                        @include('pages.operation.shipTotal.index')
 					</div>
 				</div>
         	</div>
@@ -47,20 +45,31 @@
     $(document).ready(function() {
         $('#ShipDetails').addClass('active');
         var t = $('#example').DataTable({
-            "serverSide": true,
-            "ajax":"{{ url('shipTotals') }}",
-            "columns":[
-                {data: 'id'},
-                {data: 'description'},
-                {data: 'order_qty'},
-                {data: 'nb_package'},
-                {data: 'net_qty'},
-                {data: 'gross_weight'},
-                {data: 'btn'},
-            ]
+            // "serverSide": true,
+            // "ajax":"{{ url('shipTotals') }}",
+            // "columns":[
+            //     {data: 'id'},
+            //     {data: 'description'},
+            //     {data: 'order_qty'},
+            //     {data: 'nb_package'},
+            //     {data: 'net_qty'},
+            //     {data: 'gross_weight'},
+            //     {data: 'btn'},
+            // ]
+            // "columnDefs": [
+            //     { "visible": false, "targets": 0 }
+            // ]
         });
     });
-
+    // $('#saveDT').on('submit',function(e){
+    //     var t = $('#example').DataTable();
+    //     e.preventDefault();
+    //     var url = $(this).attr("action");
+    //     var method = $(this).attr("method");
+    //     var forml = $(this);
+    //     saveDataTable(url, forml, method);
+    //     t.ajax.reload();
+    // })
     $('.datepicker').datetimepicker({
     i18n:{
     de:{
