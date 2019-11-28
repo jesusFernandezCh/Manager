@@ -5,6 +5,8 @@ use App\ShipDetails;
 use App\Operation;
 use App\OrderProduct;
 use Illuminate\Http\Request;
+use App\Http\Requests\ShipDetails\RequestUpdate;
+// use App\Http\Requests\OperationShip\OperationShipRequest;
 use Session;
 
 class ShipDetailsController extends Controller
@@ -101,7 +103,7 @@ class ShipDetailsController extends Controller
      * @param  \App\ShipDetails  $shipDetails
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ShipDetails $shipDetail)
+    public function update(RequestUpdate $request, ShipDetails $shipDetail)
     {
         $data = $request->all();
         //Si se modifica la fecha actual se guarda en update_eta_on
@@ -122,14 +124,15 @@ class ShipDetailsController extends Controller
     public function updateProduct(Request $request)
     {
         //recorre los datos en forma de array desde recibidos de un data table
-        for ($i = 0; $i < count($request->product_id); $i++) {
+        for ($i = 0; $i < count($request->product_id); $i++) 
+        {
             $product = $this->productsAsoc->find($request->product_id[$i]);
             $product->nb_package = $request->nb_package[$i];
             $product->net_qty = $request->net_qty[$i];
             $product->gross_weight = $request->gross_weight[$i];
             $product->save();   
         }
-        return back();
+        return response()->json(['page'=>'shipDetails']);
     }
 
     /**

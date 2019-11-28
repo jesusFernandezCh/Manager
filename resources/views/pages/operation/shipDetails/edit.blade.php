@@ -21,7 +21,7 @@
 	                    </div>
 	                </div>
 	                <div class="card-body">
-						{!! Form::model($shipDetail,['route'=>["shipDetails.update",$shipDetail->id],'method'=>'PUT','class'=>' form','id'=>'DataUpdate']) !!}
+						{!! Form::model($shipDetail,['route'=>["shipDetails.update",$shipDetail->id],'method'=>'PUT','class'=>'formlDinamic form','id'=>'DataUpdate']) !!}
 						@include('pages.operation.shipDetails.forml')
 						
                         <hr>

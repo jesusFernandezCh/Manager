@@ -25,10 +25,10 @@
                             @include('pages.operation.operationDocument.forml');
                         </div>
                         <br>
-                        <div class="row">
-                            <div class="col-2">
+                        <div class="row"> 
+                            {{--  <div class="col-2">
                                 <a href="{{route('pdf2')}}" target="__blank"><button type="button" class="btn btn-primary" style="border-radius:30px">Shipping instruction</button></a>
-                            </div>
+                            </div>  --}}
                             <div class="col-md-10 text-right">
                                 <a href="{{ route('operations.index') }}" class="btn btn-default" data-dismiss="modal">Back</a>
                                 <button type="submit" class="btn btn-primary"><i class="icon-save mr-2"></i>Save data</button>
