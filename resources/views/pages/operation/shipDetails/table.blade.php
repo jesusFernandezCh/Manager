@@ -32,7 +32,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <a href="{{ route('pdf','packingList') }}" title="{{ __('Export PDF') }}" target="_blank"><button type="button" class="btn btn-primary" style="border-radius:30px !important">Packing list</button></a>
+            
         </div>
     </div>
 {{--  {!! Form::close() !!}  --}}
