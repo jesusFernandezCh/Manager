@@ -13,10 +13,18 @@
 	 <div class="container-fluid animatedParent animateOnce my-3">
         <div class="animated fadeInUpShort">
         	<div class="col-md-12">
-	            <div class="card" style="margin-top:-10px">
+	            <div class="card" style="margin-top: 0px">
 	                <div class="form-group">
 	                    <div class="card-header white">
-	                        <h6><i class=""></i> {{__('Order Detail edit')}} </h6>
+							<div class="row">
+								<div class="col-4" class="">
+									<h5><i class=""></i> {{__('Order Detail edit')}} </h5>
+								</div>
+								<div class="col-8 text-right">
+									<a href="{{ route('pdf','factura4') }}" title="{{ __('Export PDF') }}" target="_blank"><button type="button" class="btn btn-primary btn-sm" style="border-radius:30px !important">S Order</button></a>
+									<a href="{{ route('pdf','factura5') }}" title="{{ __('Export PDF') }}" target="_blank"><button type="button" class="btn btn-primary btn-sm" style="border-radius:30px !important">P Order</button></a>
+								</div>
+							</div>
 	                    </div>
 	                </div>
 	                <div class="card-body">
