@@ -111,7 +111,7 @@ function saveData(url, forml, method)
         {
             var status = msj.statusText;
             var errors = $.parseJSON(msj.responseText);
-
+            
             $.each(errors.errors, function(key, value)
             {
                 $("#" + key).addClass("is-invalid");
@@ -119,6 +119,9 @@ function saveData(url, forml, method)
                 $("." + key + "_span").addClass("invalid-feedback").html(value);
                 toastr.error(value,"Error");
             });
+            if(msj.statusText == 'Internal Server Error'){
+                toastr.error('Internal Server Error',"Error");
+            };
         },
     timeout: 15000
     });
