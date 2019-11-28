@@ -17,7 +17,15 @@
 	            <div class="card" style="margin-top:0px">
 	                <div class="form-group">
 	                    <div class="card-header white">
-	                        <h6><i class=""></i> {{__('EDIT SHIP DETAILS')}} </h6>
+                            <div class="row">
+                                <div class="col-4">
+                                    <h6><i class=""></i> {{__('EDIT SHIP DETAILS')}} </h6>
+                                </div>
+                                <div class="col-8 text-right">
+                                    <a href="{{ route('pdf','factura1') }}" title="{{ __('Export PDF') }}" target="_blank"><button type="button" class="btn btn-primary btn-sm" style="border-radius:30px !important">Invoce</button></a>
+                                    <a href="{{ route('pdf','packingList') }}" title="{{ __('Export PDF') }}" target="_blank"><button type="button" class="btn btn-primary btn-sm" style="border-radius:30px !important">Packing list</button></a>
+                                </div>
+                            </div>
 	                    </div>
 	                </div>
 	                <div class="card-body">

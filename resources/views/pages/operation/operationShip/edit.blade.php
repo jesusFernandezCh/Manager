@@ -16,7 +16,14 @@
                 <div class="card">
                     <div class="form-group">
                         <div class="card-header white">
-                            <h6><i class="icon icon-pencil"></i> {{ __('EDIT INS-SHIP PLAN') }}</h6>
+                            <div class="row">
+                                <div class="col-4">
+                                    <h6><i class="icon icon-pencil"></i> {{ __('EDIT INS-SHIP PLAN') }}</h6>
+                                </div>
+                                <div class="col-8 text-right">
+                                    <a href="{{ route('pdf','factura2') }}" title="{{ __('Export PDF') }}" target="_blank"><button type="button" class="btn btn-primary btn-sm" style="border-radius:30px !important">Instruction</button></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">
