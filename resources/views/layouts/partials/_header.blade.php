@@ -151,6 +151,16 @@
                         <i class="icon icon-cash-register amber-text s-14"></i> <span>{{__('Order Pmt Terms')}}</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('freightRates.index') }}">
+                        <i class="icon icon-cash-register amber-text s-14"></i> <span>{{__('Freight Rates')}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('freightLines.index') }}">
+                        <i class="icon icon-cash-register amber-text s-14"></i> <span>{{__('Freight Lines')}}</span>
+                    </a>
+                </li>
             </ul>
         </li>
         <li>

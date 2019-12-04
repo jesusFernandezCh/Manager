@@ -132,7 +132,7 @@
 		<div class="" id="freight_rate_group">
 			<i class=""></i>
 			{!! Form::label('freight_rate', 'Freight Rate', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::text('freight_rate', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_freight_rate']) !!}
+			{!! Form::select('freight_rate', $freightRates, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_freight_rate']) !!}
 			<span class="freight_rate_span"></span>
 		</div>
 	</div>
