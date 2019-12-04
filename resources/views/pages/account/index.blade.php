@@ -68,7 +68,11 @@
                                                 @endforeach
                                             @endif
                                         </td>
-                                        <td> {{$account->countries->name}} </td>
+                                        <td> 
+                                            @if (isset($account->countries))
+                                                {{$account->countries->name}}
+                                            @endif
+                                        </td>
                                         <td class="text-center">
                                             {!! Form::open(['route'=>['account.destroy',$account],'method'=>'DELETE', 'class'=>'formlDinamic','id'=>'eliminarRegistro']) !!}
                                             <a href="{{ route('account.edit',$account) }}" class="btn btn-default btn-sm" title="Editar">
