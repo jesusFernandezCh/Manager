@@ -33,7 +33,7 @@
                         <i class=""></i> {{__('Ship Details')}}
                     </a>
                 </li>
-                <li>
+                {{--  <li>
                     <a class="nav-link d" id="documents"
                     href="
                     @if (isset($operation))
@@ -44,7 +44,7 @@
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Documents')}}
                     </a>
-                </li>
+                </li>  --}}
                 <li>
                     <a class="nav-link d" id="payments" href="#" role="tab"
                     aria-controls="v-pills-buyers">

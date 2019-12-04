@@ -1,7 +1,7 @@
 {{--  {!! Form::open(['route'=>["updateProduct"],'id'=>'saveDT', 'method'=>'POST']) !!}  --}}
 <div class="row">
         <div class="col-md-12">
-            <table class="table table-hover table-sm display" id="example">
+            <table class="table table-hover table-sm display" id="example2">
                 <thead class="thead-light">
                     <tr>
                         <th></th>

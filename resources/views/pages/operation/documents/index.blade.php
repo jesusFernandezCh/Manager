@@ -30,10 +30,10 @@
                                 data-order='[[ 0, "desc" ]]' data-page-length='10'>
                                 <thead>
                                     <tr>
-                                        <th><b>ID</b></th>
+                                        <th width='5%'><b>ID</b></th>
                                         <th><b>NAME</b></th>
                                         <th><b>DOCUMENT TYPE</b></th>
-                                        <th><b>OPTIONS</b></th>
+                                        <th width='15%'><b>OPTIONS</b></th>
                                     </tr>
                                 </thead>
                                 <tbody>
