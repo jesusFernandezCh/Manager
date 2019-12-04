@@ -62,7 +62,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            @if (isstet($account->categories))
+                                            @if (isset($account->categories))
                                                 @foreach ($account->categories as $element)
                                                     <span class="badge badge-primary r-5">{{$element->name }}</span>
                                                 @endforeach
