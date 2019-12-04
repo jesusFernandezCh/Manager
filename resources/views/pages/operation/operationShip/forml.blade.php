@@ -156,7 +156,7 @@
 		<div class="" id="cut_off_docs_group">
 			<i class=""></i>
 			{!! Form::label('cut_off_docs', 'Cut_OffDocs', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::text('cut_off_docs', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cut_off_docs']) !!}
+			{!! Form::text('cut_off_docs', null, ['class'=>'form-control r-0 light s-12 datepicker', 'id'=>'_cut_off_docs']) !!}
 			<span class="cut_off_docs_span"></span>
 		</div>
 	</div>
@@ -164,7 +164,7 @@
 		<div class="" id="cut_off_cargo_group">
 			<i class=""></i>
 			{!! Form::label('cut_off_cargo', 'Cut_OffCargo', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::text('cut_off_cargo', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_cut_off_cargo']) !!}
+			{!! Form::text('cut_off_cargo', null, ['class'=>'form-control r-0 light s-12 datepicker', 'id'=>'_cut_off_cargo']) !!}
 			<span class="cut_off_cargo_span"></span>
 		</div>
 	</div>
