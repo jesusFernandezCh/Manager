@@ -353,7 +353,12 @@
 		<div class="" id="est_legal_u_group">
 			<i class=""></i>
 			{!! Form::label('est_legal_u', 'EstLegalU', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::text('est_legal_u', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_est_legal_u']) !!}
+			@if (isset($operation))
+				{!! Form::text('est_legal_u', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_est_legal_u']) !!}
+			@else
+				{!! Form::text('est_legal_u', 100, ['class'=>'form-control r-0 light s-12', 'id'=>'_est_legal_u','readonly']) !!}
+			@endif
+
 			<span class="est_legal_u_span"></span>
 		</div>
 	</div>

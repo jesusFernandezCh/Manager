@@ -8,6 +8,8 @@ use App\Operation;
 use App\OperationDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Document;
+use App\Document_type;
 
 class OperationDocumentController extends Controller
 {
@@ -97,14 +99,16 @@ class OperationDocumentController extends Controller
      */
     public function edit(OperationDocument $operationDocument)
     {
-        $create = true;
-        $admin  = false;
-        $topMenu  = $this->route;
-        $status = $this->status;
-        $courriers = $this->courriers;
-        $operation = Operation::find($operationDocument->operation_id);
+        $create     = true;
+        $admin      = false;
+        $topMenu    = $this->route;
+        $status     = $this->status;
+        $courriers  = $this->courriers;
+        $operation  = Operation::find($operationDocument->operation_id);
+        $documents  = Document::where('operation_id',$operationDocument->operation_id)->get();
+        $documentType = Document_type::all()->pluck('name','id');
         $custMailings = $this->stmt->CustomerMailingAddres($operation->customer_id);
-        return view('pages.operation.operationDocument.edit',compact('operationDocument','operation','topMenu','admin','create', 'status', 'courriers','custMailings'));
+        return view('pages.operation.operationDocument.edit',compact('operationDocument','operation','topMenu','admin','create', 'status', 'courriers','custMailings','documents', 'documentType'));
     }
 
     /**

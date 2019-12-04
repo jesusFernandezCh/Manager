@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\OperationShip;
 use App\Operation;
 use App\DocsInstruction;
+use App\FreightRate;
 use Illuminate\Http\Request;
 use App\Http\Requests\OperationShip\OperationShipRequest;
 use Illuminate\Support\Arr;
@@ -101,7 +102,8 @@ class OperationShipController extends Controller
         $admin          = false;
         $create         = true; 
         $topMenu        = "pages.operation.topMenu";
-        return view('pages.operation.operationShip.edit',compact('operationShip','topMenu','admin','create','operation','supplier','customer','cnees'));
+        $freightRates   = FreightRate::FreightRates();
+        return view('pages.operation.operationShip.edit',compact('operationShip','topMenu','admin','create','operation','supplier','customer','cnees', 'freightRates'));
     }
     
     /**

@@ -24,6 +24,7 @@
                                 <div class="col-8 text-right">
                                     <a href="{{ route('pdf','factura1') }}" title="{{ __('Export PDF') }}" target="_blank"><button type="button" class="btn btn-primary btn-sm" style="border-radius:30px !important">Invoce</button></a>
                                     <a href="{{ route('pdf','packingList') }}" title="{{ __('Export PDF') }}" target="_blank"><button type="button" class="btn btn-primary btn-sm" style="border-radius:30px !important">Packing list</button></a>
+                                    <a href="{{ route('pdf','factura6') }}" title="{{ __('Export PDF') }}" target="_blank"><button type="button" class="btn btn-primary btn-sm" style="border-radius:30px !important">Shipping advise</button></a>
                                 </div>
                             </div>
 	                    </div>

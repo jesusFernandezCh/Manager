@@ -50,7 +50,7 @@
                         </div>
                         <br>
                         <div class="col-md-12 text-right">
-                            <a href="{{ route('documentsAsoc',$operation) }}" class="btn btn-default" data-dismiss="modal">Back</a>
+                            <a href="{{ route('operationDocument.show',$operation) }}" class="btn btn-default" data-dismiss="modal">Back</a>
                             <button type="submit" class="btn btn-primary"><i class="icon-save mr-2"></i>Save data</button>
                         </div>
 

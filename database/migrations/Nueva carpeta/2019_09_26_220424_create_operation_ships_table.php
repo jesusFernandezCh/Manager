@@ -31,8 +31,8 @@ class CreateOperationShipsTable extends Migration
             $table->text('pickup_location')->nullable();
             $table->text('instruction_inland')->nullable();
             $table->integer('freight_rate')->nullable();
-            $table->string('cut_off_docs')->nullable();
-            $table->string('cut_off_cargo')->nullable();
+            $table->date('cut_off_docs')->nullable();
+            $table->date('cut_off_cargo')->nullable();
             $table->string('booking_ref')->nullable();
             $table->date('est_vessel')->nullable();
             $table->date('est_etd')->nullable();

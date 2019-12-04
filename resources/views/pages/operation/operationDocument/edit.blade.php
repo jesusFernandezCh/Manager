@@ -6,6 +6,9 @@
 	@include($topMenu)
 @endsection
 @section('maincontent')
+{{-- modal create --}}
+@include('pages.operation.documents.create')
+
 <div class="page  height-full">
     <div>
         @include('alerts.toastr')
@@ -32,6 +35,9 @@
                             </div>
                         </div>
                         {!! Form::close() !!}
+                        <br>
+                        <hr>
+                        @include('pages.operation.operationDocument.table')
                     </div>
                 </div>
             </div>
@@ -44,6 +50,9 @@
     $(document).ready(function() {
         $('#operationDocument').addClass('active');
     });
+    
+    var title = 'Document';
+    var colunms = [0,1,2];
 
     $('.datepicker').datetimepicker({
     i18n:{
@@ -62,5 +71,8 @@
      timepicker:false,
      format:'Y-m-d'
     });
+    
+    dataTableExport(title,colunms);
 </script>
+
 @endsection
