@@ -63,7 +63,6 @@ class OrderPmtTermController extends Controller
     {
         $request->all();
         $orderPmtTerm->update($request->all());
-        // $orderPmtTerm->save();
         Session::flash('message-success',' OrderPmtTerm '. $request['name'].' actualizado correctamente.');   
     }
 

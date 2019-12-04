@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Account extends Model
 {
@@ -57,5 +58,27 @@ class Account extends Model
     {
         return $this->hasMany('App\AccountCourrier');
     }
+     /**
+    * Get the account for the blog freightRates.
+    */
+    public function freightRates()
+    {
+        return $this->hasMany('App\FreightRate');
+    }
 
+     /**
+     * [scopePrincipals description]
+     * @param  [type] $query [description]
+     * @return [type]        [description]
+     */
+    public function scopeCustomPluck($query, $var)
+    {
+        $col = DB::table('accounts')
+            ->join('categories_accounts', 'accounts.id', '=', 'account_id')
+            ->join('account_categories', 'account_categories.id', '=', 'categories_accounts.category_id')
+            ->select('accounts.id','accounts.name')
+            ->where('account_categories.name',$var)
+            ->pluck('name', 'id');
+        return $col->prepend(__('Selected...'), '');
+    }
 }
