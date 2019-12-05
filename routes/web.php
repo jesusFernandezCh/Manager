@@ -80,6 +80,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('shipDetails', 'ShipDetailsController');
 	Route::resource('freightRates', 'FreightRateController');
 	Route::resource('freightLines', 'FreightLineController');
+	Route::resource('mvTypes', 'MvTypeController');
+	Route::resource('mvConcepts', 'MvConceptController');
     
 	Route::get("metaEdit/{meta?}/{account?}", "AccountMetaController@metaEdit")->name("metaEdit");
 	Route::get("contactAsoc/{id?}", "AccountContactController@contactAsoc")->name("contactsAsoc");
