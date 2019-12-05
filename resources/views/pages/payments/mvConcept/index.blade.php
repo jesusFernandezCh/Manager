@@ -34,7 +34,7 @@
                                 data-order='[[ 0, "desc" ]]' data-page-length='10'>
                                 <thead>
                                     <tr>
-                                        <th><b>{{__('Id')}}</b></th>
+                                        <th width='5%'><b>{{__('Id')}}</b></th>
                                         <th><b>{{__('Concept')}}</b></th>
                                         <th width='15%'><b>Options</b></th>
                                     </tr>
