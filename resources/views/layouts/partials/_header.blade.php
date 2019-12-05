@@ -198,6 +198,20 @@
                     </a>
                 </li>
             </ul>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="{{ route('mvTypes.index') }}">
+                        <i class="icon icon-bank amber-text s-14"></i> <span>{{ __('Mv Type') }}</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="{{ route('mvConcepts.index') }}">
+                        <i class="icon icon-bank amber-text s-14"></i> <span>{{ __('Mv Concept') }}</span>
+                    </a>
+                </li>
+            </ul>
         </li>
         <li>
             <a href="{{ route('payments.index') }}">
