@@ -1,4 +1,4 @@
-extends('layouts.app')
+@extends('layouts.app')
 @section('title')
 	@include('pages.operation.partial.title')
 @endsection

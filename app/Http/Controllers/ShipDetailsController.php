@@ -72,10 +72,11 @@ class ShipDetailsController extends Controller
         }else{
             $operation  = $this->operation->find($operation_id);
             $products   =  $this->stmt->Products();
+            $productsAsoc   = OrderProduct::Where('operation_id',$operation->id)->get();
             $topMenu    = "pages.operation.topMenu";
             $admin      = false;
             $create     = true;
-            return view('pages.operation.shipDetails.create',compact('operation','products','topMenu','admin','create'));
+            return view('pages.operation.shipDetails.create',compact('operation','products','topMenu','admin','create','productsAsoc'));
         }
     }
 
@@ -93,7 +94,7 @@ class ShipDetailsController extends Controller
         $topMenu        = "pages.operation.topMenu";
         $admin          = false;
         $create         = true;
-        return view('pages.operation.shipDetails.edit',compact('shipDetail','operation','products','topMenu','admin','create','productsAsoc', 'Budgets'));
+        return view('pages.operation.shipDetails.edit',compact('shipDetail','operation','products','topMenu','admin','create','productsAsoc'));
     }
 
     /**

@@ -85,9 +85,10 @@ class OperationDocumentController extends Controller
         $status = $this->status;
         $courriers = $this->courriers;
         $operation = Operation::find($operation_id);
+        $documents  = Document::where('operation_id',$operation->id)->get();
+        $documentType = Document_type::all()->pluck('name','id');
         $custMailings = $this->stmt->CustomerMailingAddres($operation->customer_id);
-
-        return view('pages.operation.operationDocument.create',compact('operation','route','admin','create', 'status', 'courriers','custMailings'));
+        return view('pages.operation.operationDocument.create',compact('operation','route','admin','create', 'status', 'courriers','custMailings','documents', 'documentType'));
         }
     }
 
