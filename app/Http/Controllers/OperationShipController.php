@@ -83,7 +83,8 @@ class OperationShipController extends Controller
             $admin          = false;
             $create         = true; 
             $topMenu        = "pages.operation.topMenu";
-            return view('pages.operation.operationShip.create',compact("topMenu","admin","create",'operation','supplier','customer','cnees'));
+            $freightRates   = FreightRate::FreightRates();
+            return view('pages.operation.operationShip.create',compact("topMenu","admin","create",'operation','supplier','customer','cnees', 'freightRates'));
         }
     }
 
