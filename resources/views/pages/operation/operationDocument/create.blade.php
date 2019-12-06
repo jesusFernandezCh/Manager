@@ -25,6 +25,9 @@
 							<button type="submit" class="btn btn-primary"><i class="icon-save mr-2"></i>{{_('Save data')}}</button>
 						</div>
 						{!! Form::close() !!}
+						<br>
+						<hr>
+                        @include('pages.operation.operationDocument.table')
 					</div>
 				</div>
         	</div>
