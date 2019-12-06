@@ -40,11 +40,17 @@
 					</tr>
 					<tr>
 						<td colspan="5">{!! Form::label('total_est_charges',__('Total Est Charges'), ['class'=>'col-form-label s-12']) !!}</td>
-						<td>{!! Form::text('total_est_charges', isset($order_budget[0]->total_est_charges) ? $order_budget[0]->total_est_charges : null, [ 'class'=>'form-control r-0 light s-12 total_usd', 'id'=>'total_est_charges', 'onChange'=>'TotalPrice()']) !!}</td>
+						<td>
+							{{--  {!! Form::text('total_est_charges', isset($order_budget[0]->total_est_charges) ? $order_budget[0]->total_est_charges : null, [ 'class'=>'form-control r-0 light s-12 total_usd', 'id'=>'total_est_charges', 'onChange'=>'TotalPrice()','readonly']) !!}  --}}
+							{!! Form::text('total_est_charges', $operation->est_freight_u * $operation->nb_log_units, [ 'class'=>'form-control r-0 light s-12 total_usd', 'id'=>'total_est_charges', 'onChange'=>'TotalPrice()','readonly','title'=>'EstFreightUnit * NbLogUnits']) !!}
+						</td>
 					</tr>
 					<tr>
 						<td colspan="5">{!! Form::label('est_charges',__('Est Charges'), ['class'=>'col-form-label s-12']) !!}</td>
-						<td>{!! Form::text('est_charges', isset($order_budget[0]->est_charges) ? $order_budget[0]->est_charges : null, [ 'class'=>'form-control r-0 light s-12 total_usd', 'id'=>'est_charges', 'onChange'=>'TotalPrice()']) !!}</td>
+						<td>
+							{{--  {!! Form::text('est_charges', isset($order_budget[0]->est_charges) ? $order_budget[0]->est_charges : null, [ 'class'=>'form-control r-0 light s-12 total_usd', 'id'=>'est_charges', 'onChange'=>'TotalPrice()','readonly']) !!}  --}}
+							{!! Form::text('est_charges', ($operation->est_inland_u + $operation->est_legal_u)+$operation->nb_log_units, [ 'class'=>'form-control r-0 light s-12 total_usd', 'id'=>'est_charges', 'onChange'=>'TotalPrice()','readonly','title'=>'(EstInlandU + EstLegalU) * NbLogUnits']) !!}
+						</td>
 					</tr>
 					<tr>
 						<td colspan="5">{!! Form::label('comtopay',__('Coms. to pay'), ['class'=>'col-form-label s-12']) !!}</td>
