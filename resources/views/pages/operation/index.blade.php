@@ -79,10 +79,10 @@
                                         </td>
                                         <td class="text-center">
                                             {!! Form::open(['route'=>['operations.destroy',$operation],'method'=>'DELETE', 'class'=>'formlDinamic','id'=>'eliminarRegistro']) !!}
-                                            <a href="{{ route('operations.edit',$operation) }}" class="btn btn-default btn-sm" title="Editar">
+                                            <a href="{{ route('operations.edit',$operation) }}" class="btn btn-default btn-sm" style="padding: .10rem .4rem;" title="Editar">
                                                 <i class="icon-pencil text-info"></i>
                                             </a>
-                                            <button class="btn btn-default btn-sm" onclick="return confirm('¿Realmente deseas borrar el registro?')">
+                                            <button class="btn btn-default btn-sm" style="padding: .10rem .4rem;" onclick="return confirm('¿Realmente deseas borrar el registro?')">
                                                 <i class="icon-trash-can3 text-danger"></i>
                                             </button>
                                             {!! Form::close() !!}
