@@ -48,7 +48,7 @@
                                         </td>
                                         <td>
                                             @if (isset($operation->principal_id))
-                                                <small>{{$operation->account->name}}</small>
+                                                {{$operation->account->name}}
                                             @endif
                                         </td>
                                         <td>
