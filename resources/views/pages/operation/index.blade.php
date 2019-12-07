@@ -15,7 +15,7 @@
     </div>
     <div class="container-fluid animatedParent animateOnce my-3">
         <div class="animated fadeInUpShort">
-            <div class="card">
+            <div class="card" style="margin-top: 80px;">
                 <div class="form-group">
                     <div class="card-header white">
                         <h6>{{ __('LIST OPERATIONS') }}</h6>
@@ -25,10 +25,11 @@
                     <div class="table-responsive">
                         <div class="form-group">
                             <table id="example2" class="table table-bordered table-hover table-sm"
-                                data-order='[[ 0, "desc" ]]' data-page-length='10'>
+                                data-order='[[ 0, "desc" ]]' data-page-length='10' style=" font-size: 11px;">
                                 <thead>
                                     <tr>
-                                        <th><b>{{__('CODE')}} / {{__('PRINCIPAL')}}</b></th>
+                                        <th><b>{{__('CODE')}}</b></th>
+                                        <th><b>{{__('PRINCIPAL')}}</b></th>
                                         <th><b>{{__('SUPPLIER')}}</b></th>
                                         <th><b>{{__('CUSTOMER')}}</b></th>
                                         <th><b>{{__('STATUS')}}</b></th>
@@ -43,12 +44,12 @@
                                         <td>
                                             <div>
                                                 {{$operation->code}}
-                                                <div>
-                                                    @if (isset($operation->principal_id))
-                                                        <small class="text-info">{{$operation->account->name}}</small>
-                                                    @endif
-                                                </div>
                                             </div>
+                                        </td>
+                                        <td>
+                                            @if (isset($operation->principal_id))
+                                                <small class="text-info">{{$operation->account->name}}</small>
+                                            @endif
                                         </td>
                                         <td>
                                             <div>
