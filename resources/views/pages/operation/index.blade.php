@@ -25,7 +25,7 @@
                     <div class="table-responsive">
                         <div class="form-group">
                             <table id="example2" class="table table-bordered table-hover table-sm"
-                                data-order='[[ 0, "desc" ]]' data-page-length='10' style=" font-size: 11px;">
+                                data-order='[[ 0, "desc" ]]' data-page-length='20' style=" font-size: 11px;">
                                 <thead>
                                     <tr>
                                         <th><b>{{__('CODE')}}</b></th>
@@ -48,7 +48,7 @@
                                         </td>
                                         <td>
                                             @if (isset($operation->principal_id))
-                                                <small class="text-info">{{$operation->account->name}}</small>
+                                                <small>{{$operation->account->name}}</small>
                                             @endif
                                         </td>
                                         <td>
