@@ -19,6 +19,7 @@ class CreateOperationsTable extends Migration
         $table->string('date_order');
         $table->unsignedBigInteger('operation_status_id')->index()->comment('status.id');
         $table->foreign('operation_status_id')->references('id')->on('operation_status')->onDelete('CASCADE');
+        $table->text('status_comments')->nullable();
         $table->unsignedBigInteger('business_line_id')->index();
         $table->foreign('business_line_id')->references('id')->on('business_lines')->onDelete('CASCADE');
         $table->unsignedBigInteger('principal_id')->index()->comment('acount.name where category = partner');

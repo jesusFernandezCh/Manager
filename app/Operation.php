@@ -17,6 +17,7 @@ class Operation extends Model
        'code',
        'date_order',
        'operation_status_id',
+       'status_commets',
        'business_line_id',
        'principal_id',
        'supplier_id',

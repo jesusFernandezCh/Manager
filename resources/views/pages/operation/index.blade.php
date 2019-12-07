@@ -24,53 +24,57 @@
                 <div class="card-body p-0">
                     <div class="table-responsive">
                         <div class="form-group">
-                            <table id="example2" class="table table-bordered table-hover"
+                            <table id="example2" class="table table-bordered table-hover table-sm"
                                 data-order='[[ 0, "desc" ]]' data-page-length='10'>
                                 <thead>
                                     <tr>
-                                        <th><b>ID</b></th>
-                                        <th><b>{{__('CODE')}} / {{__('BUSINESS LINE')}}</b></th>
-                                        <th><b>{{__('PRINCIPAL')}} / {{__('PURCHASE BY')}}</b></th>
-                                        <th><b>{{__('CREATE DATE')}}</b></th>
-                                        <th><b>{{__('AMOUNT')}}</b></th>
+                                        <th><b>{{__('CODE')}} / {{__('PRINCIPAL')}}</b></th>
+                                        <th><b>{{__('SUPPLIER')}}</b></th>
+                                        <th><b>{{__('CUSTOMER')}}</b></th>
                                         <th><b>{{__('STATUS')}}</b></th>
+                                        <th><b>{{__('STATUS COMMENTS')}}</b></th>
+                                        <th><b>{{__('CASH NTP')}}</b></th>
                                         <th><b>{{__('OPTIONS')}}</b></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($operations as $operation)
                                     <tr>
-                                        <td> {{$operation->id}} </td>
                                         <td>
                                             <div>
                                                 {{$operation->code}}
                                                 <div>
-                                                    @if (isset($operation->businessLines))
-                                                        <small class="text-info">{{$operation->businessLines->name}}</small>
+                                                    @if (isset($operation->principal_id))
+                                                        <small class="text-info">{{$operation->account->name}}</small>
                                                     @endif
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
                                             <div>
-                                                {{$operation->account()->where('id',$operation->principal_id)->first()->name}}
-                                                <div>
-                                                    @if (isset($operatio->operator))
-                                                        <small class="text-info">{{$operation->operator->fullname}}</small>
-                                                    @endif
-                                                </div>
+                                                @if(isset($operation->supplier_id))
+                                                {{$operation->Supplier->name}}
+                                                @endif
                                             </div>
                                         </td>
                                         <td>
-                                            {{$operation->date_order}}
+                                            @if (isset($operation->customer_id))
+                                                {{$operation->account->name}}
+                                            @endif
                                         </td>
-                                        <td>{{$operation->total_amount}}</td>
+                                        <td>
+                                            @if (isset($operation->operation_status_id))
+                                                {{$operation->status->name}}
+                                            @endif
+                                            {{$operation->total_amount}}
+                                        </td>
                                         <td>
                                             <span class="badge badge-primary rounded-circle r-5">
-                                                @if (isset($operation->status))
-                                                    {{$operation->status->name}}
-                                                @endif
+                                                
                                             </span>
+                                        </td>
+                                        <td>
+                                            {{--  cash NTP  --}}
                                         </td>
                                         <td class="text-center">
                                             {!! Form::open(['route'=>['operations.destroy',$operation],'method'=>'DELETE', 'class'=>'formlDinamic','id'=>'eliminarRegistro']) !!}
