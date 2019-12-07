@@ -70,9 +70,7 @@
                                             {{$operation->total_amount}}
                                         </td>
                                         <td>
-                                            <span class="badge badge-primary rounded-circle r-5">
-                                                
-                                            </span>
+                                            {{--  status commtents  --}}
                                         </td>
                                         <td>
                                             {{--  cash NTP  --}}
