@@ -8,6 +8,7 @@ $(document).ready(function(){
         var route2 = e.target.dataset.route2;
         var r1 = e.target.dataset.r1;
         var r2 = e.target.dataset.r2;
+        console.log(route+'-'+route2+'-'+r1+'-'+ r2);
         comboBox(id,route,r1);
         comboBox(id,route2,r2);
     })
@@ -399,7 +400,8 @@ function dataTableExport(title, columns) {
 function comboBox(id,route,receptor) {
         $.get(route + '/' + id, function (data) {
         console.log(data);
-        if(data){
+        
+        if(data.length == undefined){
             $('#' + receptor).empty();
             $.each(data, function(key, value){
                 $('#' + receptor).append("<option value =" + key + ">" + value + "</option>");
