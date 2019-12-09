@@ -1,6 +1,6 @@
 
 <div class="table-responsive">
-    <table id="example2" class="table table-bordered table-hover"
+    <table id="example2" class="table table-bordered table-hover table-sm"
         data-order='[[ 0, "desc" ]]' data-page-length='10'>
         <thead>
             <tr>

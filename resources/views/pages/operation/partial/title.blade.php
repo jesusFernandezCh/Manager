@@ -1,7 +1,11 @@
 <div class="nav-title text-white col-12">
 	<i class= @if (isset($icon)) {{$icon}} @endif></i>
-	<a href="{{ route('operationIndexAsoc') }}">{{__('Operation')}}</a> > {{$operation->account->name}} > {{$operation->code}}
+	<a href="{{ route('operationIndexAsoc') }}">{{__('Operation')}} > </a>
+	<small>{{$operation->code}}/{{$operation->Supplier->name}}/{{$operation->account->name}}/{{$operation->customer->name}}</small>
 </div>
 <div class="col-12">
-	<div class="text-white">Status: @if (isset($operation->status)){{$operation->status->name}}@endif</div>
+	<div class="text-white">
+		Status: @if (isset($operation->status)){{$operation->status->name}}@endif
+		/StatusComments
+	</div>	
 </div>

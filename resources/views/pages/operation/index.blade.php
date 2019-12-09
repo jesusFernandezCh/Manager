@@ -60,7 +60,7 @@
                                         </td>
                                         <td>
                                             @if (isset($operation->customer_id))
-                                                {{$operation->account->name}}
+                                                {{$operation->customer->name}}
                                             @endif
                                         </td>
                                         <td>

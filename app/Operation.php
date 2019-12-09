@@ -81,6 +81,14 @@ class Operation extends Model
     }
 
     /**
+     * Get the account for the blog account.
+     */
+    public function customer()
+    {
+        return $this->belongsTo('App\Account', 'customer_id');
+    }
+    
+    /**
      * Get the account for the blog operator.
      */
     public function operator()
