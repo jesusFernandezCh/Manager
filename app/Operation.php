@@ -20,6 +20,8 @@ class Operation extends Model
        'status_commets',
        'business_line_id',
        'principal_id',
+       'principal_bank',
+       'principal_com',
        'supplier_id',
        'supplier_commercial',
        'proforma',
@@ -87,7 +89,7 @@ class Operation extends Model
     {
         return $this->belongsTo('App\Account', 'customer_id');
     }
-    
+
     /**
      * Get the account for the blog operator.
      */
