@@ -82,7 +82,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('freightLines', 'FreightLineController');
 	Route::resource('mvTypes', 'MvTypeController');
 	Route::resource('mvConcepts', 'MvConceptController');
-    
+
 	Route::get("metaEdit/{meta?}/{account?}", "AccountMetaController@metaEdit")->name("metaEdit");
 	Route::get("contactAsoc/{id?}", "AccountContactController@contactAsoc")->name("contactsAsoc");
 	Route::get('contactEdit/{countact?}/{account?}', 'AccountContactController@contactAsocEdit')->name("contactEdit");
@@ -93,7 +93,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('supplierComercial/{supplier_id?}/', 'OperationController@supplierComercial')->name('supplierComercial');
 	Route::get('docsIntruccionEditAsoc/{docsIntruccion_id?}/', 'DocsInstructionController@editAsoc')->name('docsIntruccionEditAsoc');
 	Route::get('AccountCourrierEditAsoc/{accountCourrier_id?}/', 'AccountCourrierController@editAsoc')->name('AccountCourrierEditAsoc');
-		
+
 	/* Currency route */
 	Route::resource('currency', 'CurrencyController');
 	Route::resource('document', 'DocumentController');

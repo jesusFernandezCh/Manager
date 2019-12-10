@@ -111,7 +111,8 @@ class OperationController extends Controller
         $parther        = $this->operation->CustomPluck('Partner');
         $supplier       = $this->operation->CustomPluck('Supplier');
         $incoterms      = $this->incoterms;
-        $business       = BusinessLine::get()->where('name','Trading')->pluck('name','id');
+        // $business       = BusinessLine::get()->where('name','Trading')->pluck('name','id');
+        $business       = $this->businessLine;
         $currencies     = $this->currencies;
         $ports          = $this->ports;
         $countries      = $this->countries;
