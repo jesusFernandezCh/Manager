@@ -25,7 +25,7 @@
 						<br>
 						@include('pages.operation.orderBudget.create')
 						<div class="col-md-12 text-right">
-							<a href="{{ route('order_details.index') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
+							<a href="{{ route('operations.index') }}" class="btn btn-default" data-dismiss="modal">Back</a>
 							<button type="submit" class="btn btn-primary"><i class="icon-save mr-2"></i>{{_('Save data')}}</button>
 						</div>
 						{!! Form::close() !!}

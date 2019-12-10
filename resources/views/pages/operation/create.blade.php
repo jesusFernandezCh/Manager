@@ -23,7 +23,7 @@
 	                    </div>
 	                </div>
 	                <div class="card-body">
-						{!! Form::open(['route'=>'operations.store','method'=>'POST', 'class'=>'formlDinamic form', 'id'=>'guardarRegistro']) !!}
+						{!! Form::open(['route'=>'operations.store','method'=>'POST', 'class'=>'formlDinamic form create', 'id'=>'guardarRegistro']) !!}
 						@include('pages.operation.forml')
 						 {!! Form::hidden('route', route('operations.store'), ['id'=>'route']) !!}
 						<br>

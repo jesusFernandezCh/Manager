@@ -44,11 +44,11 @@ class CreateOperationsTable extends Migration
         $table->unsignedBigInteger('p_modality')->nullable()->comment('order_pmt_terms.id');
         $table->foreign('p_modality')->references('id')->on('order_pmt_terms')->onDelete('CASCADE');
         $table->string('p_advanced')->nullable();
-        $table->string('p_days')->nullable();
+        $table->integer('p_days')->nullable();
         $table->unsignedBigInteger('s_modality')->nullable()->comment('order_pmt_terms.id');
         $table->foreign('s_modality')->references('id')->on('order_pmt_terms')->onDelete('CASCADE');
         $table->string('s_advanced')->nullable();
-        $table->string('s_days')->nullable();
+        $table->integer('s_days')->nullable();
         $table->unsignedBigInteger('purchase_incoterm')->nullable()->comment('iconterm.id');
         $table->foreign('purchase_incoterm')->references('id')->on('incoterms')->onDelete('CASCADE');
         $table->integer('purchase_curr')->nullable();
@@ -69,9 +69,9 @@ class CreateOperationsTable extends Migration
         $table->integer('origin')->nullable()->comment('country.id');
         $table->integer('pod_id')->nullable()->comment('port.id');
         $table->integer('final_destination')->nullable()->comment('country.id');
-        $table->string('est_freight_u')->nullable();
-        $table->string('est_inland_u')->nullable();
-        $table->string('est_legal_u')->nullable();
+        $table->decimal('est_freight_u')->nullable();
+        $table->decimal('est_inland_u')->nullable();
+        $table->decimal('est_legal_u')->nullable();
         $table->string('add_instructions')->nullable();
         $table->text('comments')->nullable();
         $table->integer('principal_bank')->nullable();

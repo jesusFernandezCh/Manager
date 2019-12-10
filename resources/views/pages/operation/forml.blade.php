@@ -160,7 +160,7 @@
 		<div class="" id="sale_broker">
 			<i class=""></i>
 			{!! Form::label('sale_broker', 'Sale Broker', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('sale_broker', $parther, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_sale_broker_id']) !!}
+			{!! Form::select('sale_broker_id', $parther, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_sale_broker_id']) !!}
 			<span class="sale_by_span"></span>
 		</div>
 	</div>
@@ -191,7 +191,7 @@
 		<div class="" id="p_modality_id">
 			<i class=""></i>
 			{!! Form::label('p_modality_id', 'PModality', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('p_modality_id', $payment_terms, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_p_modality_id']) !!}
+			{!! Form::select('p_modality', $payment_terms, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_p_modality']) !!}
 			<span class="p_modality_id_span"></span>
 		</div>
 	</div>
@@ -205,7 +205,7 @@
 	<div class="col-md-2">
 		<div class="" id="p_days_group">
 			{!! Form::label('p_days', 'P Days', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
-			{!! Form::text('p_days', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_p_advanced']) !!}
+			{!! Form::text('p_days', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_p_days','placeholder'=>'0']) !!}
 			<span class="p_days_span"></span>
 		</div>
 	</div>
@@ -218,25 +218,25 @@
 		</div>
 	</div>
 	<div class="col-md-1">
-		<div class="" id="s_advanced_group">
-			{!! Form::label('s_advanced', '% avc', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
-			{!! Form::text('s_advanced', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_s_advanced']) !!}
-			<span class="s_advanced_span"></span>
+		<div class="" id="p_advanced_group">
+			{!! Form::label('p_advanced', '% avc', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
+			{!! Form::text('p_advanced', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_p_advanced']) !!}
+			<span class="p_advanced_span"></span>
 		</div>
 	</div>
 	<div class="col-md-2">
-		<div class="" id="p_days_group">
-			{!! Form::label('p_days', 'S Days', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
-			{!! Form::text('p_days', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_p_advanced']) !!}
-			<span class="p_days_span"></span>
+		<div class="" id="s_days_group">
+			{!! Form::label('s_days', 'S Days', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
+			{!! Form::text('s_days', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_s_days','placeholder'=>'0']) !!}
+			<span class="s_days_span"></span>
 		</div>
 	</div>
 	<div class="col-md-3">
-		<div class="" id="p_incoterm">
+		<div class="" id="purchase_incoterm">
 			<i class=""></i>
-			{!! Form::label('p_incoterm', 'P IcoTerm', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('p_incoterm', $incoterms, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_p_incoterm', 'placeholder'=>'0']) !!}
-			<span class="p_incoterm_span"></span>
+			{!! Form::label('p_incoterm', 'P IncoTerm', ['class'=>'col-form-label s-12']) !!}
+			{!! Form::select('purchase_incoterm', $incoterms, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_purchase_incoterm']) !!}
+			<span class="purchase_incoterm_span"></span>
 		</div>
 	</div>
 	<div class="col-md-1">
@@ -250,15 +250,15 @@
 	<div class="col-md-2">
 		<div class="" id="p_incoterm_place_group">
 			{!! Form::label('p_incoterm_place', 'PIncotermPlace', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
-			{!! Form::text('p_incoterm_place', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_p_incoterm_place']) !!}
+			{!! Form::text('p_incoterm_place', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_p_incoterm_place','placeholder'=>'0']) !!}
 			<span class="p_incoterm_place_span"></span>
 		</div>
 	</div>
 	<div class="col-md-3">
 		<div class="" id="p_incoterm">
 			<i class=""></i>
-			{!! Form::label('s_incoterm', 'S IcoTerm', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('s_incoterm', $incoterms, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_s_incoterm', 'placeholder'=>'0']) !!}
+			{!! Form::label('s_incoterm', 'S IncoTerm', ['class'=>'col-form-label s-12']) !!}
+			{!! Form::select('sale_incoterm', $incoterms, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_sale_incoterm', 'placeholder'=>'0']) !!}
 			<span class="s_incoterm_span"></span>
 		</div>
 	</div>
@@ -273,7 +273,7 @@
 	<div class="col-md-2">
 		<div class="form-group" id="s_incoterm_place_group">
 			{!! Form::label('s_incoterm_place', 'SIncotermPlace', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
-			{!! Form::text('s_incoterm_place', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_s_incoterm_place']) !!}
+			{!! Form::text('s_incoterm_place', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_s_incoterm_place','placeholder'=>'0']) !!}
 			<span class="p_incoterm_place_span"></span>
 		</div>
 	</div>
@@ -293,7 +293,7 @@
 			<span class="dead_line_ship_span"></span>
 		</div>
 	</div>
-	<div class="col-md-1">
+	<div class="col-md-2">
 		<div class="" id="s_curr_group">
 			<i class=""></i>
 			{!! Form::label('cargo_unit', 'Cargo Unit', ['class'=>'col-form-label s-12']) !!}
@@ -309,7 +309,7 @@
 			<span class="log_unit_span"></span>
 		</div>
 	</div>
-	<div class="col-md-3">
+	<div class="col-md-2">
 		<div class="" id="nb_log_units_group">
 			<i class=""></i>
 			{!! Form::label('nb_log_units', 'NbLogUnits', ['class'=>'col-form-label s-12']) !!}
@@ -353,7 +353,7 @@
 		<div class="" id="est_freight_u_group">
 			<i class=""></i>
 			{!! Form::label('est_freight_u', 'EstFreightUnit', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::text('est_freight_u', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_est_freight_u']) !!}
+			{!! Form::text('est_freight_u', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_est_freight_u', 'placeholder'=>'0.00']) !!}
 			<span class="est_freight_u_span"></span>
 		</div>
 	</div>
@@ -361,7 +361,7 @@
 		<div class="" id="est_inland_u_group">
 			<i class=""></i>
 			{!! Form::label('est_inland_u', 'EstInlandU', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::text('est_inland_u', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_est_inland_u']) !!}
+			{!! Form::text('est_inland_u', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_est_inland_u','placeholder'=>'0.00']) !!}
 			<span class="est_inland_u_span"></span>
 		</div>
 	</div>
@@ -370,7 +370,7 @@
 			<i class=""></i>
 			{!! Form::label('est_legal_u', 'EstLegalU', ['class'=>'col-form-label s-12']) !!}
 			@if (isset($operation))
-				{!! Form::text('est_legal_u', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_est_legal_u']) !!}
+				{!! Form::text('est_legal_u', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_est_legal_u','placeholder'=>'0.00']) !!}
 			@else
 				{!! Form::text('est_legal_u', 100, ['class'=>'form-control r-0 light s-12', 'id'=>'_est_legal_u','readonly']) !!}
 			@endif

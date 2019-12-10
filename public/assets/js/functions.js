@@ -115,6 +115,7 @@ function saveData(url, forml, method)
             if(result.page = 'shipDetails'){
                 location.reload();
             }
+            $(".create")[0].reset();
         },
         error: function(msj)
         {

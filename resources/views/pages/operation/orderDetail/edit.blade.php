@@ -28,15 +28,15 @@
 	                    </div>
 	                </div>
 	                <div class="card-body">
-	                	
+
 	                	{!! Form::model($operation,['route'=>["order_details.update",$operation->id],'method'=>'PUT']) !!}
 	                	@include('pages.operation.orderDetail.formlEdit')
 	                	<br>
 	                	@include('pages.operation.orderBudget.create')
 						{!! Form::open(['route'=>'order_details.store','method'=>'POST', 'class'=>'', 'id'=>'guardarRegistro']) !!}
-						
+
 						<div class="col-md-12 text-right">
-							<a href="{{ route('order_details.index') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
+							<a href="{{ route('operations.index') }}" class="btn btn-default" data-dismiss="modal">Back</a>
 							<button type="submit" class="btn btn-primary"><i class="icon-save mr-2"></i>{{_('Save data')}}</button>
 						</div>
 						{!! Form::close() !!}
@@ -62,7 +62,7 @@
         'September','Oktober','November','Dezember',
        ],
        dayOfWeek:[
-        "So.", "Mo", "Di", "Mi", 
+        "So.", "Mo", "Di", "Mi",
         "Do", "Fr", "Sa.",
        ]
       }
@@ -71,7 +71,7 @@
      format:'Y-m-d'
     });
 
-    
+
 </script>
 @endsection
 
