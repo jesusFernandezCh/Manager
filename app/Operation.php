@@ -63,7 +63,8 @@ class Operation extends Model
        'est_inland_u',
        'est_legal_u',
        'add_instructions',
-       'comments'
+       'comments',
+       'status_comments'
    ];
 
     /**
