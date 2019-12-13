@@ -24,7 +24,7 @@
 				<tbody>
 					<tr>
 						<td >{!! Form::label('order_sale',__('OrderSale'), ['class'=>'col-form-label s-12']) !!}</td>
-						<td>{!! Form::text('order_sale', isset($order_budget[0]->order_sale) ? $orderSale = $order_budget[0]->order_sale : 0, [ 'class'=>'form-control r-0 light s-12', 'id'=>'order_sale' , 'readonly'=>'true']) !!}</td>
+						<td>{!! Form::text('order_sale', isset($order_budget[0]->order_sale) ? $order_budget[0]->order_sale : 0, [ 'class'=>'form-control r-0 light s-12', 'id'=>'order_sale' , 'readonly'=>'true']) !!}</td>
 						<td width="80">{!! Form::select('order_sale_currency_id', $currency, isset($order_budget[0]->order_sale_currency_id) ? $order_budget[0]->order_sale_currency_id : null, ['class'=>'form-control r-0 light s-12', 'id'=>'order_sale_currency_id', 'onclick'=>'inputClear(this.id)', 'onChange'=>'ChangePrice("order_sale_currency_id", "order_sale", "order_sale_currency_change", "order_sale_usd")' ]) !!}</td>
 						<td width="80">{!! Form::text('order_sale_currency_change', isset($order_budget[0]->order_sale_currency_change) ? $order_budget[0]->order_sale_currency_change : null, [ 'class'=>'form-control r-0 light s-12', 'id'=>'order_sale_currency_change','readonly'=>'true']) !!}</td>
 						<td width="50"> > USD</td>
@@ -62,7 +62,7 @@
 					</tr>
 					<tr>
 						<td colspan="5">{!! Form::label('usd_budget',__('USD_Budget'), ['class'=>'col-form-label s-12']) !!}</td>
-						<td>{!! Form::text('usd_budget', ($orderSale - $orderPurchase - $totalEstCharges - $estCharges - $comsToPay) + $comsToRecive, [ 'class'=>'form-control r-0 light s-12', 'id'=>'usd_budget', 'onChange'=>'TotalPrice()', 'readonly'=>'true', 'title'=>'OrderSale - OrderPurchase - TotalEstCharges - EstCharges - ComsToPay + ComsToReceive']) !!}</td>
+						<td>{!! Form::text('usd_budget',isset($orderSale)? ($orderSale - $orderPurchase - $totalEstCharges - $estCharges - $comsToPay) + $comsToRecive : 0, [ 'class'=>'form-control r-0 light s-12', 'id'=>'usd_budget', 'onChange'=>'TotalPrice()', 'readonly'=>'true', 'title'=>'OrderSale - OrderPurchase - TotalEstCharges - EstCharges - ComsToPay + ComsToReceive']) !!}</td>
 					</tr>
 				</tbody>
 			</table>

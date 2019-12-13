@@ -160,7 +160,7 @@
 	<div class="col-md-3">
 		<div class="" id="p_broker_com_mt_group">
 			{!! Form::label('p_broker_com_mt', 'PBrokerComMT', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::text('p_broker_com_mt', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_p_broker_com_mt_id', 'onclick'=>'inputClear(this.id)', 'tabindex'=>'15']) !!}
+			{!! Form::text('p_broker_com_mt', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_p_broker_com_mt_id', 'onclick'=>'inputClear(this.id)', 'tabindex'=>'15', 'placeholder'=>'0']) !!}
 			<span class="p_broker_com_mt_span"></span>
 		</div>
 	</div>
@@ -175,7 +175,7 @@
 	<div class="col-md-3">
 		<div class="" id="s_broker_com_mt_group">
 			{!! Form::label('s_broker_com_mt', 'SBrokerComMt', ['class'=>'col-form-label s-12', 'onclick'=>'inputClear(this.id)']) !!}
-			{!! Form::text('s_broker_com_mt', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_s_broker_com_mt', 'tabindex'=>'28']) !!}
+			{!! Form::text('s_broker_com_mt', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_s_broker_com_mt', 'tabindex'=>'28', 'placeholder'=>'0']) !!}
 			<span class="s_broker_com_mt_span"></span>
 		</div>
 	</div>
