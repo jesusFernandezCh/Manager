@@ -24,12 +24,12 @@
                         <i class=""></i> {{__('Bank Account Type') }}
                     </a>
                 </li>
-                <li>
+                {{-- <li>
                     <a class="nav-link" id="partner_bank" href="{!! route('partner_bank.index') !!}" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Partner Banks') }}
                     </a>
-                </li>
+                </li> --}}
 
             </ul>
         </div>

@@ -123,7 +123,20 @@
         <li>
             <a href="{!! route('bank.index') !!}">
                 <i class="icon icon-bank amber-text s-14"></i> <span>{{ __('Banks') }}</span>
+                <i class="icon icon-angle-left s-18 pull-right"></i>
             </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="{!! route('bank.index') !!}">
+                        <i class="icon icon-bank amber-text s-14"></i> <span>{{ __('Bank') }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{!! route('partner_bank.index') !!}">
+                        <i class="icon icon-bank amber-text s-14"></i> <span>{{__('Pather Bank') }}</span>
+                    </a>
+                </li>
+            </ul>
         </li>
         <li>
             <a href="{{ route('documentsType.index') }}">

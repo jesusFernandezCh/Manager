@@ -51,7 +51,7 @@
                                         <td> {{$par->bank_name}}</td>
                                         <td> {{$par->bank_addres}}</td>
                                         <td> {{$par->currency->code}} </td>
-                                        <td> @if ($par->curren_account == 1) 
+                                        <td> @if ($par->curren_account == 1)
                                                 SI
                                              @else
                                                 NO
@@ -68,7 +68,7 @@
                                     </tr>
                                     @endforeach
                                 </tbody>
-                                    
+
                             </table>
                         </div>
                     </div>

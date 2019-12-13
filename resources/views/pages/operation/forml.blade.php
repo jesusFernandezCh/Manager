@@ -43,7 +43,7 @@
 		<div class="form-group" id="principal_bank">
 			<i class=""></i>
 			{!! Form::label('principal_bank', 'PrincipalBank', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::select('principal_bank', [], null, ['class'=>'form-control r-0 light s-12', 'id'=>'_principal_bank', 'tabindex'=>'6']) !!}
+			{!! Form::select('principal_bank', $banks, null, ['class'=>'form-control r-0 light s-12', 'id'=>'_principal_bank', 'tabindex'=>'6']) !!}
 			<span class="principal_bank_span"></span>
 		</div>
     </div>

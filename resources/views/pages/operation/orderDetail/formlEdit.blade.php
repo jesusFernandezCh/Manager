@@ -8,7 +8,7 @@
 	<table id="example" class="display" style="width:100%">
         <thead>
             <tr>
-                
+
                 <th>{!! Form::label('order_quantity',__('Order Quantity'), ['class'=>'col-form-label s-12']) !!}</th>
                 <th>{!! Form::label('product',__('Product'), ['class'=>'col-form-label s-12']) !!}</th>
                 <th>{!! Form::label('specifications',__('Specifications'), ['class'=>'col-form-label s-12']) !!}</th>
@@ -22,12 +22,12 @@
                 <th>{!! Form::label('est_sale',__('Est Sale'), ['class'=>'col-form-label s-12']) !!}</th>
             </tr>
         </thead>
-        
+
         <tbody>
 
             @foreach($order as $order)
 				<tr>
-	                
+
 	                <td width="110">{!! Form::number('order_quantity[]', $order->order_quantity, [ 'class'=>'form-control order_quantity r-0 light s-12', 'id'=>'order_quantity', 'onChange'=> 'calcular("order_quantity", "order_quantity_budget")']) !!}</td>
                     <td width="270">{!! Form::select('product[]', $product, $order->product, ['class'=>'form-control r-0 light s-12', 'id'=>'product', 'onclick'=>'inputClear(this.id)']) !!}</td>
 	                <td width="110">{!! Form::text('specifications[]', $order->specifications, [ 'class'=>'form-control r-0 light s-12', 'id'=>'specifications']) !!}</td>
@@ -45,14 +45,14 @@
     </table>
     <div class="col-md-12">
     	<a id="addRow" class="btn-fab fab-right  shadow btn-primary" title="Add Product"><i class="icon-add"></i></a>
-        <a id="buttonRM" class="btn-fab fab-right  shadow btn-primary" title="Add Delete"><i class="icon-delete"></i></a>
+        <a id="buttonRM" class="btn-fab fab-right  shadow btn-primary" title="Add Delete"><i class="icon-delete" onclick=""></i></a>
     </div>
 	</div>
 <script>
 $(document).ready(function() {
     var t = $('#example').DataTable();
     var counter = '';
- 
+
     $('#addRow').on( 'click', function () {
         t.row.add( [
             counter +'{!! Form::number('order_quantity[]', null, [ 'class'=>'form-control order_quantity r-0 light s-12', 'id'=>'order_quantity', 'onChange'=> 'calcular("order_quantity", "order_quantity_budget")']) !!}',
@@ -69,7 +69,7 @@ $(document).ready(function() {
         ] ).draw( false );
     } );
     // Automatically add a first row of data
-    
+
     $('#example tbody').on( 'click', 'tr', function () {
         if ( $(this).hasClass('selected') ) {
 
@@ -80,13 +80,17 @@ $(document).ready(function() {
         }
     } );
     $('#buttonRM').click( function (event) {
-        t.row('.selected').remove().draw( false );
-        calcular('order_quantity', 'order_quantity_budget');
-        calcular('purchase_price', 'order_purchase');
-        calcular('sale_price', 'order_sale');
-        ChangePrice("order_sale_currency_id", "order_sale", "order_sale_currency_change", "order_sale_usd");
-        ChangePrice("order_purchase_currency_id", "order_purchase", "order_purchase_change", "order_purchase_usd")
-
+        var r = confirm("Are you sure to delete the selected row?");
+        if (r == true) {
+            t.row('.selected').remove().draw( false );
+            calcular('order_quantity', 'order_quantity_budget');
+            calcular('purchase_price', 'order_purchase');
+            calcular('sale_price', 'order_sale');
+            ChangePrice("order_sale_currency_id", "order_sale", "order_sale_currency_change", "order_sale_usd");
+            ChangePrice("order_purchase_currency_id", "order_purchase", "order_purchase_change", "order_purchase_usd")
+        } else {
+            return
+        }
     } );
 } );
 
@@ -97,8 +101,8 @@ function calcular(type, input){
     $("#"+input+"").val(0);
     $( "input[id="+type+"]" ).each(function( value ) {
         var sum = parseInt($( this ).val());
-        
-        if (sum > 0) {     
+
+        if (sum > 0) {
             total = total + sum;
         }
     });
@@ -108,7 +112,7 @@ function calcular(type, input){
     ChangePrice("order_sale_currency_id", "order_sale", "order_sale_currency_change", "order_sale_usd");
     ChangePrice("order_purchase_currency_id", "order_purchase", "order_purchase_change", "order_purchase_usd")
 }
-    
+
 function ChangePrice(order, purchase, change, usd){
 
     var variable = $("#"+order).val();
@@ -130,7 +134,7 @@ function TotalPrice(){
     $(".total_usd").each(function()
     {
         var sum = parseInt($( this ).val());
-        if (sum > 0) {     
+        if (sum > 0) {
             total = total + sum;
         }
     });

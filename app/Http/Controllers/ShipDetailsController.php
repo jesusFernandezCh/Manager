@@ -50,9 +50,17 @@ class ShipDetailsController extends Controller
      */
     public function store(Request $request)
     {
-        $shipDetails = $this->stmt->create($request->all());
+        $data = $request->all();
+        //sumatoria del valores nb_package, net_qty, gross_weight, para campos total_pcs, total_quantity, total_gw
+        for ($i = 0; $i < count($request->product_id); $i++)
+        {
+            $data['total_pcs'] = $data['total_pcs'] + $request->nb_package[$i];
+            $data['total_quantity'] = $data['total_quantity'] + $request->net_qty[$i];
+            $data['total_gw'] = $data['total_gw'] + $request->gross_weight[$i];
+        }
+        $shipDetails = $this->stmt->create($data);
         Session::flash('message-success',' ShipDetails '. $request->input('vessel').' '.trans('messages.created'));
-        return response()->json($shipDetails);
+        return $this->updateProduct($request);
     }
 
     /**
@@ -111,11 +119,24 @@ class ShipDetailsController extends Controller
         if($request->eta != $shipDetail->eta){
             $data['update_eta_on'] = date('Y-m-d');
         };
+
+        //sumatoria del valores nb_package, net_qty, gross_weight, para campos total_pcs, total_quantity, total_gw
+        $data['total_pcs']      = 0.00;
+        $data['total_quantity'] = 0.00;
+        $data['total_gw']       = 0.00;
+
+         for ($i = 0; $i < count($request->product_id); $i++)
+         {
+             $data['total_pcs'] = $data['total_pcs'] + $request->nb_package[$i];
+             $data['total_quantity'] = $data['total_quantity'] + $request->net_qty[$i];
+             $data['total_gw'] = $data['total_gw'] + $request->gross_weight[$i];
+         }
+
         $shipDetail->update($data);
         Session::flash('message-success',' ShipDetails '. $request->input('vessel').' '.trans('messages.created'));
         return $this->updateProduct($request);
     }
-    
+
     /**
      * Guarda los datos (nb_package,net_qty,gross_weight)
      * de los productos asociados a la operacion
@@ -125,13 +146,13 @@ class ShipDetailsController extends Controller
     public function updateProduct(Request $request)
     {
         //recorre los datos en forma de array desde recibidos de un data table
-        for ($i = 0; $i < count($request->product_id); $i++) 
+        for ($i = 0; $i < count($request->product_id); $i++)
         {
             $product = $this->productsAsoc->find($request->product_id[$i]);
             $product->nb_package = $request->nb_package[$i];
             $product->net_qty = $request->net_qty[$i];
             $product->gross_weight = $request->gross_weight[$i];
-            $product->save();   
+            $product->save();
         }
         return response()->json(['page'=>'shipDetails']);
     }
