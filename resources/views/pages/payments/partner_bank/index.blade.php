@@ -50,7 +50,11 @@
                                         <td> {{$par->account->name}} </td>
                                         <td> {{$par->bank_name}}</td>
                                         <td> {{$par->bank_addres}}</td>
-                                        <td> {{$par->currency->code}} </td>
+                                        <td>
+                                            @if (isset( $par->currency))
+                                                {{ $par->currency->code}}
+                                            @endif
+                                        </td>
                                         <td> @if ($par->curren_account == 1)
                                                 SI
                                              @else
