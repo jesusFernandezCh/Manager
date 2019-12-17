@@ -121,4 +121,16 @@ class PartnerBankController extends Controller
     {
         //
     }
+    
+    public function indexAccount($account_id)
+    {
+        $company = $this->company->all();
+        $currency = $this->currency->all();
+        $partner_bank = $this->partner_bank->all();
+
+        $var = __('Selected..');
+        $company = array('' => $var) + $company;
+        $currency = array('' => $var) + $currency;
+        return view('pages.payments.partner_bank.index', compact('company','currency','partner_bank','account_id'));
+    }
 }

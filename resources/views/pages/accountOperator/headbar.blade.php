@@ -25,6 +25,11 @@
                             <i class="icon icon-truck s-14"></i> {{__('Account Courrier')}}
                         </a>
                     </li>
+                    <li>
+                        <a class="nav-link" id="courrier" href="{!! route('indexPatherAccount', $account) !!}" role="tab" >
+                            <i class="icon icon-bank s-14"></i> {{__('Pather Banks')}}
+                        </a>
+                    </li>
                 @endif
             </ul>
         </div>

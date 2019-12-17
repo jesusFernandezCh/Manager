@@ -70,7 +70,7 @@
                                             {{$operation->total_amount}}
                                         </td>
                                         <td>
-                                            {{--  status commtents  --}}
+                                            {{$operation->status_comments}}
                                         </td>
                                         <td>
                                             {{--  cash NTP  --}}

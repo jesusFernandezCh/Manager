@@ -100,6 +100,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('payments', 'PaymentsController');
 	Route::resource('bank', 'BanksController');
 	Route::resource('partner_bank', 'PartnerBankController');
+	// patherBankAccount
+	Route::get('partner_bank_account/{id_account?}/', 'PartnerBankController@indexAccount')->name('indexPatherAccount');
 	Route::resource('bank_transaction', 'BanksTransactionController');
 	Route::resource('bank_account_type', 'BankAccountTypeController');
 	Route::resource('product_line', 'ProductLineController');
