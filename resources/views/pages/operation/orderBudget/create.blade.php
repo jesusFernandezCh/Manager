@@ -25,7 +25,7 @@
 					<tr>
 						<td >{!! Form::label('order_sale',__('OrderSale'), ['class'=>'col-form-label s-12']) !!}</td>
 						<td>{!! Form::text('order_sale', isset($order_budget[0]->order_sale) ? $order_budget[0]->order_sale : 0, [ 'class'=>'form-control r-0 light s-12', 'id'=>'order_sale' , 'readonly'=>'true']) !!}</td>
-						<td width="80">{!! Form::select('order_sale_currency_id', $currency, isset($order_budget[0]->order_sale_currency_id) ? $order_budget[0]->order_sale_currency_id : null, ['class'=>'form-control r-0 light s-12', 'id'=>'order_sale_currency_id', 'onclick'=>'inputClear(this.id)', 'onChange'=>'ChangePrice("order_sale_currency_id", "order_sale", "order_sale_currency_change", "order_sale_usd")' ]) !!}</td>
+						<td width="80">{!! Form::select('order_sale_currency_id', $currency, isset($order_budget[0]->order_sale_currency_id) ? $order_budget[0]->order_sale_currency_id : null, ['class'=>'form-control r-0 light s-12', 'id'=>'order_sale_currency_id', 'onclick'=>'inputClear(this.id)', 'onChange'=>'ChangePrice("order_sale_currency_id", "order_sale", "order_sale_currency_change", "order_sale_usd"),calculoUsbBudget()' ]) !!}</td>
 						<td width="80">{!! Form::text('order_sale_currency_change', isset($order_budget[0]->order_sale_currency_change) ? $order_budget[0]->order_sale_currency_change : null, [ 'class'=>'form-control r-0 light s-12', 'id'=>'order_sale_currency_change','readonly'=>'true']) !!}</td>
 						<td width="50"> > USD</td>
 						<td>{!! Form::text('order_sale_usd', isset($order_budget[0]->order_sale_usd) ? $order_budget[0]->order_sale_usd : null, [ 'class'=>'form-control r-0 light s-12 total_usd', 'id'=>'order_sale_usd','readonly'=>'true']) !!}</td>
@@ -33,23 +33,23 @@
 					<tr>
 						<td>{!! Form::label('order_purchase',__('OrderPurchase'), ['class'=>'col-form-label s-12']) !!}</td>
 						<td>{!! Form::text('order_purchase', isset($order_budget[0]->order_purchase) ? $orderPurchase = $order_budget[0]->order_purchase : 0, [ 'class'=>'form-control r-0 light s-12', 'id'=>'order_purchase', 'readonly'=>'true']) !!}</td>
-						<td width="80">{!! Form::select('order_purchase_currency_id', $currency, isset($order_budget[0]->order_purchase_currency_id) ? $order_budget[0]->order_purchase_currency_id : null, ['class'=>'form-control r-0 light s-12', 'id'=>'order_purchase_currency_id', 'onclick'=>'inputClear(this.id)', 'onChange'=>'ChangePrice("order_purchase_currency_id", "order_purchase", "order_purchase_change", "order_purchase_usd")']) !!}</td>
+						<td width="80">{!! Form::select('order_purchase_currency_id', $currency, isset($order_budget[0]->order_purchase_currency_id) ? $order_budget[0]->order_purchase_currency_id : null, ['class'=>'form-control r-0 light s-12', 'id'=>'order_purchase_currency_id', 'onclick'=>'inputClear(this.id)', 'onChange'=>'ChangePrice("order_purchase_currency_id", "order_purchase", "order_purchase_change")']) !!}</td>
 						<td width="80">{!! Form::text('order_purchase_change', isset($order_budget[0]->order_purchase_change) ? $order_budget[0]->order_purchase_change : null, [ 'class'=>'form-control r-0 light s-12', 'id'=>'order_purchase_change','readonly'=>'true']) !!}</td>
 						<td width="50"> > USD</td>
-						<td>{!! Form::text('order_purchase_usd', isset($order_budget[0]->order_purchase_usd) ? $order_budget[0]->order_purchase_usd : null, [ 'class'=>'form-control r-0 light s-12 total_usd', 'id'=>'order_purchase_usd','readonly'=>'true']) !!}</td>
+						<td>{!! Form::text('order_purchase_usd', isset($order_budget[0]->order_purchase_usd) ? $order_budget[0]->order_purchase_usd : null, [ 'class'=>'form-control r-0 light s-12 total_usd', 'id'=>'order_purchase_usd','readonly'=>'true', 'onchange("calculoUsbBudget"),calculoUsbBudget()']) !!}</td>
 					</tr>
 					<tr>
 						<td colspan="5">{!! Form::label('total_est_charges',__('Total Est Charges'), ['class'=>'col-form-label s-12']) !!}</td>
 						<td>
 							{{--  {!! Form::text('total_est_charges', isset($order_budget[0]->total_est_charges) ? $order_budget[0]->total_est_charges : null, [ 'class'=>'form-control r-0 light s-12 total_usd', 'id'=>'total_est_charges', 'onChange'=>'TotalPrice()','readonly']) !!}  --}}
-							{!! Form::text('total_est_charges', $totalEstCharges = $operation->est_freight_u * $operation->nb_log_units, [ 'class'=>'form-control r-0 light s-12 total_usd', 'id'=>'total_est_charges', 'onChange'=>'TotalPrice()','readonly','title'=>'EstFreightUnit * NbLogUnits']) !!}
+							{!! Form::text('total_est_charges', $totalEstCharges = $operation->est_freight_u * $operation->nb_log_units, [ 'class'=>'form-control r-0 light s-12 total_usd', 'id'=>'total_est_charges', 'onChange'=>'TotalPrice(),calculoUsbBudget()','readonly','title'=>'EstFreightUnit * NbLogUnits']) !!}
 						</td>
 					</tr>
 					<tr>
 						<td colspan="5">{!! Form::label('est_charges',__('Est Charges'), ['class'=>'col-form-label s-12']) !!}</td>
 						<td>
 							{{--  {!! Form::text('est_charges', isset($order_budget[0]->est_charges) ? $order_budget[0]->est_charges : null, [ 'class'=>'form-control r-0 light s-12 total_usd', 'id'=>'est_charges', 'onChange'=>'TotalPrice()','readonly']) !!}  --}}
-							{!! Form::text('est_charges', $estCharges = ($operation->est_inland_u + $operation->est_legal_u)+$operation->nb_log_units, [ 'class'=>'form-control r-0 light s-12 total_usd', 'id'=>'est_charges', 'onChange'=>'TotalPrice()','readonly','title'=>'(EstInlandU + EstLegalU) * NbLogUnits']) !!}
+							{!! Form::text('est_charges', $estCharges = ($operation->est_inland_u + $operation->est_legal_u)+$operation->nb_log_units, [ 'class'=>'form-control r-0 light s-12 total_usd', 'id'=>'est_charges', 'onChange'=>'TotalPrice(), calculoUsbBudget()','readonly','title'=>'(EstInlandU + EstLegalU) * NbLogUnits']) !!}
 						</td>
 					</tr>
 					<tr>

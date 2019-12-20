@@ -37,7 +37,7 @@
                         <i class=""></i> {{__('Account') }}
                         
                     </a>
-                </li>
+                </li>          
                 @endif
             </ul>
         </div>

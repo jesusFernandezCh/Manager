@@ -36,9 +36,9 @@
 	                <td width="80">{!! Form::text('plant[]', $order->plant, ['class'=>'form-control r-0 light s-12', 'id'=>'brand', 'onclick'=>'inputClear(this.id)']) !!}</td>
                     <td width="110">{!! Form::select('shelf_life[]', $shelflife, $order->shelflife_id, ['class'=>'form-control r-0 light s-12', 'id'=>'shelf_life', 'onclick'=>'inputClear(this.id)']) !!}</td>
 	                <td width="110">{!! Form::text('purchase_price[]', $order->purchase_price, ['class'=>'form-control r-0 light s-12', 'id'=>'purchase_price', 'onChange'=>'calcular("purchase_price", "order_purchase")']) !!}</td>
-	                <td width="115">{!! Form::text('est_purchase_sale[]', $order->est_purchase_sale, ['class'=>'form-control r-0 light s-12', 'id'=>'est_purchase_sale', 'onclick'=>'inputClear(this.id)']) !!}</td>
-	                <td width="110">{!! Form::text('sale_price[]', $order->sale_price, ['class'=>'form-control r-0 light s-12', 'id'=>'sale_price', 'onChange'=>'calcular("sale_price", "order_sale")']) !!}</td>
-	                <td width="110">{!! Form::text('est_sale[]', $order->est_sale, ['class'=>'form-control r-0 light s-12', 'id'=>'est_sale', 'onclick'=>'inputClear(this.id)']) !!}</td>
+	                <td width="115">{!! Form::text('est_purchase_sale[]', $order->est_purchase_sale, ['class'=>'form-control r-0 light s-12', 'id'=>'est_purchase_sale', 'onChange'=>'calcular("est_purchase_sale", "order_purchase")']) !!}</td>
+	                <td width="110">{!! Form::text('sale_price[]', $order->sale_price, ['class'=>'form-control r-0 light s-12', 'id'=>'sale_price']) !!}</td>
+	                <td width="110">{!! Form::text('est_sale[]', $order->est_sale, ['class'=>'form-control r-0 light s-12', 'id'=>'est_sale', 'onChange'=>'calcular("est_sale", "order_sale")']) !!}</td>
             	</tr>
             @endforeach
     	</tbody>
@@ -50,6 +50,7 @@
 	</div>
 <script>
 $(document).ready(function() {
+    calculoUsbBudget();
     var t = $('#example').DataTable();
     var counter = '';
 
@@ -95,7 +96,7 @@ $(document).ready(function() {
 } );
 
 function calcular(type, input){
-
+    alert(type, input);
 
     var total = 0
     $("#"+input+"").val(0);
@@ -142,5 +143,4 @@ function TotalPrice(){
     $("#usd_budget").val(total);
 
 }
-
 </script>
