@@ -35,8 +35,9 @@
                     <a class="nav-link" id="bank_account_type" href="{!! route('accountOperator.show',$account_id) !!}" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Account') }}
+                        
                     </a>
-                </li>
+                </li>          
                 @endif
             </ul>
         </div>

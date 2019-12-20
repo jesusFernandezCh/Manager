@@ -39,6 +39,7 @@
 @section('js')
 <script>
     $(document).ready(function() {
+		calculoUsbBudget();
         $('#order_details').addClass('active');
     });
 
