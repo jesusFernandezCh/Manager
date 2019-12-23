@@ -41,10 +41,10 @@
 	                <td width="110">{!! Form::text('sale_price[]', $order->sale_price, ['class'=>'form-control r-0 light s-12', 'id'=>'sale_price'.$i,'onChange'=>'cEstPSale_EstSale('.$i.',this.value,"order_quantity","est_sale")']) !!}</td>
 	                <td width="110">{!! Form::text('est_sale[]', $order->est_sale, ['class'=>'form-control r-0 light s-12', 'id'=>'est_sale'.$i, 'onChange'=>'calcular("est_sale", "order_sale")']) !!}</td>
             	</tr>
+                @php
+                    $i++;
+                @endphp
             @endforeach
-            @php
-                $i++;
-            @endphp
     	</tbody>
     </table>
     <div class="col-md-12">
