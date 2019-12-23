@@ -24,23 +24,27 @@
         </thead>
 
         <tbody>
-
+            @php
+                $i='0';
+            @endphp
             @foreach($order as $order)
 				<tr>
-
-	                <td width="110">{!! Form::number('order_quantity[]', $order->order_quantity, [ 'class'=>'form-control order_quantity r-0 light s-12', 'id'=>'order_quantity', 'onChange'=> 'calcular("order_quantity", "order_quantity_budget")']) !!}</td>
+	                <td width="110">{!! Form::number('order_quantity[]', $order->order_quantity, [ 'class'=>'form-control order_quantity r-0 light s-12', 'id'=>'order_quantity'.$i, 'onChange'=> 'calcular("order_quantity", "order_quantity_budget"), cEstPSale_EstSale('.$i.',this.value,"purchase_price","est_purchase_sale"),cEstPSale_EstSale('.$i.',this.value,"sale_price","est_sale")']) !!}</td>
                     <td width="270">{!! Form::select('product[]', $product, $order->product, ['class'=>'form-control r-0 light s-12', 'id'=>'product', 'onclick'=>'inputClear(this.id)']) !!}</td>
 	                <td width="110">{!! Form::text('specifications[]', $order->specifications, [ 'class'=>'form-control r-0 light s-12', 'id'=>'specifications']) !!}</td>
 	                <td width="110">{!! Form::text('packaging[]', $order->packaging, ['class'=>'form-control r-0 light s-12', 'id'=>'packaging', 'onclick'=>'inputClear(this.id)']) !!}</td>
 	                <td width="80">{!! Form::text('brand[]', $order->brand, ['class'=>'form-control r-0 light s-12', 'id'=>'brand', 'onclick'=>'inputClear(this.id)']) !!}</td>
 	                <td width="80">{!! Form::text('plant[]', $order->plant, ['class'=>'form-control r-0 light s-12', 'id'=>'brand', 'onclick'=>'inputClear(this.id)']) !!}</td>
                     <td width="110">{!! Form::select('shelf_life[]', $shelflife, $order->shelflife_id, ['class'=>'form-control r-0 light s-12', 'id'=>'shelf_life', 'onclick'=>'inputClear(this.id)']) !!}</td>
-	                <td width="110">{!! Form::text('purchase_price[]', $order->purchase_price, ['class'=>'form-control r-0 light s-12', 'id'=>'purchase_price', 'onChange'=>'calcular("purchase_price", "order_purchase")']) !!}</td>
-	                <td width="115">{!! Form::text('est_purchase_sale[]', $order->est_purchase_sale, ['class'=>'form-control r-0 light s-12', 'id'=>'est_purchase_sale', 'onChange'=>'calcular("est_purchase_sale", "order_purchase")']) !!}</td>
-	                <td width="110">{!! Form::text('sale_price[]', $order->sale_price, ['class'=>'form-control r-0 light s-12', 'id'=>'sale_price']) !!}</td>
-	                <td width="110">{!! Form::text('est_sale[]', $order->est_sale, ['class'=>'form-control r-0 light s-12', 'id'=>'est_sale', 'onChange'=>'calcular("est_sale", "order_sale")']) !!}</td>
+	                <td width="110">{!! Form::text('purchase_price[]', $order->purchase_price, ['class'=>'form-control r-0 light s-12', 'id'=>'purchase_price'.$i, 'onChange'=>'cEstPSale_EstSale('.$i.',this.value,"order_quantity","est_purchase_sale"), calcular("purchase_price", "order_purchase")']) !!}</td>
+	                <td width="115">{!! Form::text('est_purchase_sale[]', $order->est_purchase_sale, ['class'=>'form-control r-0 light s-12', 'id'=>'est_purchase_sale'.$i, 'onChange'=>'calcular("est_purchase_sale", "order_purchase")']) !!}</td>
+	                <td width="110">{!! Form::text('sale_price[]', $order->sale_price, ['class'=>'form-control r-0 light s-12', 'id'=>'sale_price'.$i,'onChange'=>'cEstPSale_EstSale('.$i.',this.value,"order_quantity","est_sale")']) !!}</td>
+	                <td width="110">{!! Form::text('est_sale[]', $order->est_sale, ['class'=>'form-control r-0 light s-12', 'id'=>'est_sale'.$i, 'onChange'=>'calcular("est_sale", "order_sale")']) !!}</td>
             	</tr>
             @endforeach
+            @php
+                $i++;
+            @endphp
     	</tbody>
     </table>
     <div class="col-md-12">
@@ -50,24 +54,27 @@
 	</div>
 <script>
 $(document).ready(function() {
-    calculoUsbBudget();
+
     var t = $('#example').DataTable();
-    var counter = '';
+    var i = '50';
 
     $('#addRow').on( 'click', function () {
         t.row.add( [
-            counter +'{!! Form::number('order_quantity[]', null, [ 'class'=>'form-control order_quantity r-0 light s-12', 'id'=>'order_quantity', 'onChange'=> 'calcular("order_quantity", "order_quantity_budget")']) !!}',
-            counter +'{!! Form::select('product[]', $product, null, ['class'=>'form-control r-0 light s-12', 'id'=>'product', 'onclick'=>'inputClear(this.id)']) !!}',
-            counter +'{!! Form::text('specifications[]', null, [ 'class'=>'form-control r-0 light s-12', 'id'=>'specifications']) !!}',
-            counter +'{!! Form::text('packaging[]', null, ['class'=>'form-control r-0 light s-12', 'id'=>'packaging', 'onclick'=>'inputClear(this.id)']) !!}',
-            counter +'{!! Form::text('brand[]', null, ['class'=>'form-control r-0 light s-12', 'id'=>'brand', 'onclick'=>'inputClear(this.id)']) !!}',
-            counter +'{!! Form::text('plant[]', null, ['class'=>'form-control r-0 light s-12', 'id'=>'plant', 'onclick'=>'inputClear(this.id)']) !!}',
-            counter +'{!! Form::select('shelf_life[]', $shelflife, null, ['class'=>'form-control r-0 light s-12', 'id'=>'shelf_life', 'onclick'=>'inputClear(this.id)']) !!}',
-            counter +'{!! Form::text('purchase_price[]', null, ['class'=>'form-control r-0 light s-12', 'id'=>'purchase_price', 'onChange'=>'calcular("purchase_price", "order_purchase")']) !!}',
-            counter +'{!! Form::text('est_purchase_sale[]', null, ['class'=>'form-control r-0 light s-12', 'id'=>'est_purchase_sale', 'onclick'=>'inputClear(this.id)']) !!}',
-            counter +'{!! Form::text('sale_price[]', null, ['class'=>'form-control r-0 light s-12', 'id'=>'sale_price', 'onChange'=>'calcular("sale_price", "order_sale")']) !!}',
-            counter +'{!! Form::text('est_sale[]', null, ['class'=>'form-control r-0 light s-12', 'id'=>'est_sale', 'onclick'=>'inputClear(this.id)']) !!}',
+            "<input type='number' name='order_quantity[]' class='form-control order_quantity r-0 light s-12' id='order_quantity"+i+"' onChange='calcular(\"order_quantity\", \"order_quantity_budget\")'/>",
+            '{!! Form::select('product[]', $product, null, ['class'=>'form-control r-0 light s-12', 'id'=>'product', 'onclick'=>'inputClear(this.id)']) !!}',
+            '{!! Form::text('specifications[]', null, [ 'class'=>'form-control r-0 light s-12', 'id'=>'specifications']) !!}',
+            '{!! Form::text('packaging[]', null, ['class'=>'form-control r-0 light s-12', 'id'=>'packaging', 'onclick'=>'inputClear(this.id)']) !!}',
+            '{!! Form::text('brand[]', null, ['class'=>'form-control r-0 light s-12', 'id'=>'brand', 'onclick'=>'inputClear(this.id)']) !!}',
+            '{!! Form::text('plant[]', null, ['class'=>'form-control r-0 light s-12', 'id'=>'plant', 'onclick'=>'inputClear(this.id)']) !!}',
+            '{!! Form::select('shelf_life[]', $shelflife, null, ['class'=>'form-control r-0 light s-12', 'id'=>'shelf_life', 'onclick'=>'inputClear(this.id)']) !!}',
+            "<input type='text' name='purchase_price[]' class='form-control r-0 light s-12' id='purchase_price"+i+"' onChange='cEstPSale_EstSale("+i+",this.value,\"order_quantity\",\"est_purchase_sale\"),calcular(\"purchase_price\", \"order_purchase\")'/>",
+            "<input type='text' name='est_purchase_sale[]' class='form-control r-0 light s-12' id='est_purchase_sale"+i+"' onChange='calcular(\"sale_price\", \"order_sale\")'/>",
+            "<input type='text' name='sale_price[]' class='form-control r-0 light s-12' id='sale_price"+i+"' onChange='cEstPSale_EstSale("+i+",this.value,\"order_quantity\",\"est_sale\"),calcular(\"sale_price\", \"order_sale\")'/>",
+            // '{!! Form::text('sale_price[]', null, ['class'=>'form-control r-0 light s-12', 'id'=>'sale_price', 'onChange'=>'calcular("sale_price", "order_sale")']) !!}',
+            "<input type='text' name='est_sale[]' class='form-control r-0 light s-12' id='est_sale"+i+"' onClick ='inputClear(this.id)'/>",
+            // '{!! Form::text('est_sale[]', null, ['class'=>'form-control r-0 light s-12', 'id'=>'est_sale', 'onclick'=>'inputClear(this.id)']) !!}',
         ] ).draw( false );
+        i++;
     } );
     // Automatically add a first row of data
 
@@ -96,11 +103,9 @@ $(document).ready(function() {
 } );
 
 function calcular(type, input){
-    alert(type, input);
-
     var total = 0
     $("#"+input+"").val(0);
-    $( "input[id="+type+"]" ).each(function( value ) {
+    $( "input[name="+type+"]" ).each(function( value ) {
         var sum = parseInt($( this ).val());
 
         if (sum > 0) {
