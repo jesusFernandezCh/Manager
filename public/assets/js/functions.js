@@ -519,7 +519,18 @@ function calculoUsbBudget(){
     var comToPay            = $('#comtopay').val();
     var comToRecive         = $('#comtoreceive').val();
     var usbBudget           = 0;
-    
+
     var usbBudget = (orderSaleUsd - orderPurchaseUsd - totalEstCharges - comToPay) + comToRecive;
     $('#usd_budget').val(usbBudget);
+}
+/**
+ * @param {count} i
+ * @param {valor a multiplicar por orderQty} value
+ * @param {valor del campo a multimplicar} multiplo
+ * @param {campo recptor del resultado} recept
+ */
+function cEstPSale_EstSale(i, value, multiplo, recept) {
+    var orderQty = $('#'+multiplo+i).val();
+    var total = orderQty * value;
+    $('#'+recept+i).val(total);
 }
