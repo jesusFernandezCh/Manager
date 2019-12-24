@@ -515,7 +515,6 @@ function calculoUsbBudget(){
     var orderSaleUsd        = $('#order_sale_usd').val();
     var orderPurchaseUsd    = $('#order_purchase_usd').val();
     var totalEstCharges     = $('#total_est_charges').val();
-    var estCharges          = $('#est_charges').val();
     var comToPay            = $('#comtopay').val();
     var comToRecive         = $('#comtoreceive').val();
     var usbBudget           = 0;
