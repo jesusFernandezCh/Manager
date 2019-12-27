@@ -55,14 +55,14 @@
 			<span class="principal_com_span"></span>
 		</div>
     </div>
-    <div class="col-md-6">
+    {{-- <div class="col-md-6">
 		<div class="form-group" id="status_comments_group">
 			<i class=""></i>
 			{!! Form::label('status_comments', 'Status Comments', ['class'=>'col-form-label s-12']) !!}
 			{!! Form::text('status_comments', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_status_comments', 'tabindex'=>'8']) !!}
 			<span class="status_comments_span"></span>
 		</div>
-    </div>
+    </div> --}}
 </div>
 <div class="row">
 	<div class="col-6 alert-info text-center" style="border-radius: 50px"><b>PURCHASE</b></div>

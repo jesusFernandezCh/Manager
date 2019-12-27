@@ -27,7 +27,7 @@
                     </li>
                     <li>
                         <a class="nav-link" id="courrier" href="{!! route('indexPatherAccount', $account) !!}" role="tab" >
-                            <i class="icon icon-bank s-14"></i> {{__('Pather Banks')}}
+                            <i class="icon icon-bank s-14"></i> {{__('Banks')}}
                         </a>
                     </li>
                 @endif

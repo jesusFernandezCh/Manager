@@ -13,7 +13,7 @@ use Session;
 
 class PartnerBankController extends Controller
 {
-    
+
     private $company;
     private $partner_bank;
     private $currency;
@@ -26,7 +26,7 @@ class PartnerBankController extends Controller
     public function __construct(Account $company, Currency $currency, Partner_bank $partner_bank)
     {
         $this->company = Account::get()->pluck('name', 'id');
-        $this->partner_bank = Partner_bank::all();
+        $this->partner_bank = $partner_bank;
         $this->currency = Currency::get()->pluck('code', 'id');
     }
 
@@ -65,7 +65,7 @@ class PartnerBankController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        $data = $request->all();         
+        $data = $request->all();
         $partner = Partner_bank::create($data);
         Session::flash('message-success',' Partner Bank creada correctamente.');
     }
@@ -121,12 +121,12 @@ class PartnerBankController extends Controller
     {
         //
     }
-    
+
     public function indexAccount($account_id)
     {
         $company = $this->company->all();
         $currency = $this->currency->all();
-        $partner_bank = $this->partner_bank->all();
+        $partner_bank = $this->partner_bank->get()->where('company_id', $account_id);
 
         $var = __('Selected..');
         $company = array('' => $var) + $company;
