@@ -59,7 +59,7 @@
             </li>
             <li class="treeview">
                 <a href="{{ route('user.index') }}">
-                    <i class="icon icon-user blue-text s-24"></i>
+                    <i class="icon icon-keyboard blue-text s-24"></i>
                     {{-- {{ __('Users') }} --}}
                     <span>Administración</span>
                     <i class="icon icon-angle-left s-18 pull-right"></i>
