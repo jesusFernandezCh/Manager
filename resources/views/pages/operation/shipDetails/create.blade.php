@@ -23,14 +23,13 @@
 						{!! Form::open(['route'=>'shipDetails.store','method'=>'POST', 'class'=>'formlDinamic', 'id'=>'guardarRegistro']) !!}
                         @include('pages.operation.shipDetails.forml')
 						{!! Form::hidden('route', route('shipDetails.store'), ['id'=>'route']) !!}
-						<div class="col-md-12 text-right">
-							<a href="{{ route('operationIndexAsoc') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
-							<button type="submit" class="btn btn-primary"><i class="icon-save mr-2"></i>{{_('Save data')}}</button>
-						</div>
-						{!! Form::close() !!}
-						<br>
 						<hr>
 						@include('pages.operation.shipDetails.table')
+                        <div class="col-md-12 text-right">
+                            <a href="{{ route('operationIndexAsoc') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
+                            <button type="submit" class="btn btn-primary"><i class="icon-save mr-2"></i>{{_('Save data')}}</button>
+                        </div>
+						{!! Form::close() !!}
 					</div>
 				</div>
         	</div>

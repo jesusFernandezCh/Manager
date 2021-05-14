@@ -44,7 +44,7 @@ class BanksController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        $data = $request->all();         
+        $data = $request->all();
         $bank = Bank::create($data);
         Session::flash('message-success',' Bank '. $request->name.' creado correctamente.');
     }
@@ -97,4 +97,5 @@ class BanksController extends Controller
     {
         //
     }
+
 }

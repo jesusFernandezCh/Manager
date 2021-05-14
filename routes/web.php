@@ -82,7 +82,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('freightLines', 'FreightLineController');
 	Route::resource('mvTypes', 'MvTypeController');
 	Route::resource('mvConcepts', 'MvConceptController');
-    
+
 	Route::get("metaEdit/{meta?}/{account?}", "AccountMetaController@metaEdit")->name("metaEdit");
 	Route::get("contactAsoc/{id?}", "AccountContactController@contactAsoc")->name("contactsAsoc");
 	Route::get('contactEdit/{countact?}/{account?}', 'AccountContactController@contactAsocEdit')->name("contactEdit");
@@ -93,13 +93,15 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('supplierComercial/{supplier_id?}/', 'OperationController@supplierComercial')->name('supplierComercial');
 	Route::get('docsIntruccionEditAsoc/{docsIntruccion_id?}/', 'DocsInstructionController@editAsoc')->name('docsIntruccionEditAsoc');
 	Route::get('AccountCourrierEditAsoc/{accountCourrier_id?}/', 'AccountCourrierController@editAsoc')->name('AccountCourrierEditAsoc');
-		
+
 	/* Currency route */
 	Route::resource('currency', 'CurrencyController');
 	Route::resource('document', 'DocumentController');
 	Route::resource('payments', 'PaymentsController');
 	Route::resource('bank', 'BanksController');
 	Route::resource('partner_bank', 'PartnerBankController');
+	// patherBankAccount
+	Route::get('partner_bank_account/{id_account?}/', 'PartnerBankController@indexAccount')->name('indexPatherAccount');
 	Route::resource('bank_transaction', 'BanksTransactionController');
 	Route::resource('bank_account_type', 'BankAccountTypeController');
 	Route::resource('product_line', 'ProductLineController');

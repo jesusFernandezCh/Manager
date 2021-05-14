@@ -111,7 +111,8 @@ class OperationController extends Controller
         $parther        = $this->operation->CustomPluck('Partner');
         $supplier       = $this->operation->CustomPluck('Supplier');
         $incoterms      = $this->incoterms;
-        $business       = BusinessLine::get()->where('name','Trading')->pluck('name','id');
+        // $business       = BusinessLine::get()->where('name','Trading')->pluck('name','id');
+        $business       = $this->businessLine;
         $currencies     = $this->currencies;
         $ports          = $this->ports;
         $countries      = $this->countries;
@@ -178,7 +179,7 @@ class OperationController extends Controller
         $logunits           = $this->logunits;
         $sumplierCom        = $this->sumplierCom->get()->where('account_id',$operation->supplier_id)->pluck('fullname','id');
         $customerCom        = $this->sumplierCom->get()->where('account_id',$operation->customer_id)->pluck('fullname','id');
-        $banks              = $this->banks;
+        $banks              = Partner_bank::get()->where('company_id',$operation->principal_id)->pluck('bank_name','id');
         $topMenu            = 'pages.operation.topMenu';
         $operations         = $this->operation->all();
         $default            = null;

@@ -1,5 +1,34 @@
 <div class="row">
     <div class="col-12 alert-info text-center" style="border-radius: 50px">
+        <b>SHIP TOTALS</b>
+    </div>
+    <div class="col-md-3">
+        <div class="" id="total_pcs_group">
+            <i class=""></i>
+            {!! Form::label('total_pcs', 'TotalPcs', ['class'=>'col-form-label s-12']) !!}
+            {!! Form::text('total_pcs', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_total_pcs', 'readonly','placeholder'=>'0.00']) !!}
+            <span class="total_pcs_span"></span>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="" id="total_quantity_group">
+            <i class=""></i>
+            {!! Form::label('total_quantity', 'TotalQuantity', ['class'=>'col-form-label s-12']) !!}
+            {!! Form::text('total_quantity', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_total_quantity', 'readonly','placeholder'=>'0.00']) !!}
+            <span class="total_quantity_span"></span>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group" id="total_gw_group">
+            <i class=""></i>
+            {!! Form::label('total_gw', 'TotalGW', ['class'=>'col-form-label s-12']) !!}
+            {!! Form::text('total_gw', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_total_gw', 'readonly','placeholder'=>'0.00']) !!}
+            <span class="total_gw_span"></span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 alert-info text-center" style="border-radius: 50px">
     	<b>LOADING DETAILS</b>
     </div>
     {!! Form::hidden('operation_id', $operation->id, ['class'=>'form-control']) !!}
@@ -91,29 +120,4 @@
 		</div>
     </div>
 </div>
-<div class="row">
-	<div class="col-md-3">
-		<div class="" id="total_pcs_group">
-			<i class=""></i>
-			{!! Form::label('total_pcs', 'TotalPcs', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::text('total_pcs', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_total_pcs']) !!}
-			<span class="total_pcs_span"></span>
-		</div>
-	</div>
-	<div class="col-md-3">
-		<div class="" id="total_quantity_group">
-			<i class=""></i>
-			{!! Form::label('total_quantity', 'TotalQuantity', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::text('total_quantity', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_total_quantity']) !!}
-			<span class="total_quantity_span"></span>
-		</div>
-	</div>
-	<div class="col-md-3">
-		<div class="" id="total_gw_group">
-			<i class=""></i>
-			{!! Form::label('total_gw', 'TotalGW', ['class'=>'col-form-label s-12']) !!}
-			{!! Form::text('total_gw', null, ['class'=>'form-control r-0 light s-12', 'id'=>'_total_gw']) !!}
-			<span class="total_gw_span"></span>
-		</div>
-	</div>
-</div>
+

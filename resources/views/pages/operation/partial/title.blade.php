@@ -6,6 +6,6 @@
 <div class="col-12">
 	<div class="text-white">
 		Status: @if (isset($operation->status)){{$operation->status->name}}@endif
-		/StatusComments
-	</div>	
+		/{{ $operation->status_comments }}
+	</div>
 </div>

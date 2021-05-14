@@ -5,13 +5,21 @@ $(document).ready(function(){
     $('.combo').on('change',function(e) {
         var id = e.target.value;
         var route = e.target.dataset.route;
+        var receptor = e.target.dataset.r;
+        comboBox(id,route,receptor);
+    });
+
+    $('.comboDual').on('change',function(e) {
+        var id = e.target.value;
+        var route = e.target.dataset.route;
         var route2 = e.target.dataset.route2;
         var r1 = e.target.dataset.r1;
         var r2 = e.target.dataset.r2;
-        console.log(route+'-'+route2+'-'+r1+'-'+ r2);
         comboBox(id,route,r1);
         comboBox(id,route2,r2);
     })
+
+    $('')
 });
 
 /**
@@ -107,12 +115,13 @@ function saveData(url, forml, method)
             if(result.page = 'shipDetails'){
                 location.reload();
             }
+            $(".create")[0].reset();
         },
         error: function(msj)
         {
             var status = msj.statusText;
             var errors = $.parseJSON(msj.responseText);
-            
+
             $.each(errors.errors, function(key, value)
             {
                 $("#" + key).addClass("is-invalid");
@@ -400,7 +409,7 @@ function dataTableExport(title, columns) {
 function comboBox(id,route,receptor) {
         $.get(route + '/' + id, function (data) {
         console.log(data);
-        
+
         if(data.length == undefined){
             $('#' + receptor).empty();
             $.each(data, function(key, value){
@@ -496,4 +505,31 @@ function delDataTable(route) {
 function showModal(idModal, idforml) {
     $('#'+idModal).modal('show');
     $("#"+idforml)[0].reset();
+}
+/**
+ * [calculoUsbBudget description]
+ * calcula el monto del campo usbBudget en orderDetails
+ * @return  {[type]}  [return description]
+ */
+function calculoUsbBudget(){
+    var orderSaleUsd        = $('#order_sale_usd').val();
+    var orderPurchaseUsd    = $('#order_purchase_usd').val();
+    var totalEstCharges     = $('#total_est_charges').val();
+    var comToPay            = $('#comtopay').val();
+    var comToRecive         = $('#comtoreceive').val();
+    var usbBudget           = 0;
+
+    var usbBudget = (orderSaleUsd - orderPurchaseUsd - totalEstCharges - comToPay) + comToRecive;
+    $('#usd_budget').val(usbBudget);
+}
+/**
+ * @param {count} i
+ * @param {valor a multiplicar por orderQty} value
+ * @param {valor del campo a multimplicar} multiplo
+ * @param {campo recptor del resultado} recept
+ */
+function cEstPSale_EstSale(i, value, multiplo, recept) {
+    var orderQty = $('#'+multiplo+i).val();
+    var total = orderQty * value;
+    $('#'+recept+i).val(total);
 }

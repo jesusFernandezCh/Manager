@@ -12,8 +12,13 @@
 					<div class="col-md-12">
 						<div class="form-row">
 							<div class="form-group col-4">
-								{!! Form::label('company_id',__('Company *'), ['class'=>'col-form-label s-12']) !!}
+                                {!! Form::label('company_id',__('Company *'), ['class'=>'col-form-label s-12']) !!}
+                                @if (isset($account_id))
+                                {!! Form::select('company_id_', $company, $account_id, ['class'=>'form-control text-center r-0 light s-12', 'id'=>'company_id', 'onclick'=>'inputClear(this.id)','disabled']) !!}
+                                {!! Form::hidden('company_id',  $account_id, [ 'class'=>'form-control r-0 light s-12', 'id'=>'']) !!}
+                                @else
 								{!! Form::select('company_id', $company, null, ['class'=>'form-control text-center r-0 light s-12', 'id'=>'company_id', 'onclick'=>'inputClear(this.id)']) !!}
+                                @endif
 								<span class="company_id_span"></span>
 							</div>
 							<div class="form-group col-4">
@@ -26,7 +31,7 @@
 								{!! Form::text('bank_addres', null, [ 'class'=>'form-control r-0 light s-12', 'id'=>'bank_addres']) !!}
 								<span class="bank_addres_span"></span>
 							</div>
-							
+
 						</div>
 					</div>
 					<div class="col-md-12">

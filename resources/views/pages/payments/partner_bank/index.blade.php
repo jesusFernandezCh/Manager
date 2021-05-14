@@ -50,12 +50,19 @@
                                         <td> {{$par->account->name}} </td>
                                         <td> {{$par->bank_name}}</td>
                                         <td> {{$par->bank_addres}}</td>
-                                        <td> {{$par->currency->code}} </td>
-                                        <td> @if ($par->curren_account == 1) 
-                                                SI
-                                             @else
-                                                NO
-                                             @endif
+                                        <td>
+                                            @if (isset( $par->currency))
+                                                {{ $par->currency->code}}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if (isset($par->curren_account))
+                                                @if ($par->curren_account == 1)
+                                                    SI
+                                                @else
+                                                    NO
+                                                @endif
+                                            @endif
                                         </td>
                                         <td class="text-center">
                                         <a href="#" class="btn btn-default btn-sm" title="Detalles" data-toggle="modal" data-target="#show" onclick="showData('{{ route('partner_bank.show', $par->id) }}')">
@@ -68,7 +75,7 @@
                                     </tr>
                                     @endforeach
                                 </tbody>
-                                    
+
                             </table>
                         </div>
                     </div>

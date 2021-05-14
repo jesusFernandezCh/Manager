@@ -46,7 +46,7 @@
 $(document).ready(function() {
     var t = $('#example').DataTable();
     var counter = '';
- 
+
     $('#addRow').on( 'click', function () {
         t.row.add( [
             counter +'{!! Form::number('order_quantity[]', null, [ 'class'=>'form-control order_quantity r-0 light s-12', 'id'=>'order_quantity', 'onChange'=> 'calcular("order_quantity", "order_quantity_budget")']) !!}',
@@ -74,13 +74,17 @@ $(document).ready(function() {
         }
     } );
     $('#buttonRM').click( function (event) {
-        t.row('.selected').remove().draw( false );
-        calcular('order_quantity', 'order_quantity_budget');
-        calcular('purchase_price', 'order_purchase');
-        calcular('sale_price', 'order_sale');
-        ChangePrice("order_sale_currency_id", "order_sale", "order_sale_currency_change", "order_sale_usd");
-        ChangePrice("order_purchase_currency_id", "order_purchase", "order_purchase_change", "order_purchase_usd")
-
+        var r = confirm("Are you sure to delete the selected row?");
+        if (r == true) {
+            t.row('.selected').remove().draw( false );
+            calcular('order_quantity', 'order_quantity_budget');
+            calcular('purchase_price', 'order_purchase');
+            calcular('sale_price', 'order_sale');
+            ChangePrice("order_sale_currency_id", "order_sale", "order_sale_currency_change", "order_sale_usd");
+            ChangePrice("order_purchase_currency_id", "order_purchase", "order_purchase_change", "order_purchase_usd")
+        } else {
+            return
+        }
     } );
 } );
 
@@ -91,8 +95,8 @@ function calcular(type, input){
     $("#"+input+"").val(0);
     $( "input[id="+type+"]" ).each(function( value ) {
         var sum = parseInt($( this ).val());
-        
-        if (sum > 0) {     
+
+        if (sum > 0) {
             total = total + sum;
         }
     });
@@ -102,7 +106,7 @@ function calcular(type, input){
     ChangePrice("order_sale_currency_id", "order_sale", "order_sale_currency_change", "order_sale_usd");
     ChangePrice("order_purchase_currency_id", "order_purchase", "order_purchase_change", "order_purchase_usd")
 }
-    
+
 function ChangePrice(order, purchase, change, usd){
 
     var variable = $("#"+order).val();
@@ -124,7 +128,7 @@ function TotalPrice(){
     $(".total_usd").each(function()
     {
         var sum = parseInt($( this ).val());
-        if (sum > 0) {     
+        if (sum > 0) {
             total = total + sum;
         }
     });

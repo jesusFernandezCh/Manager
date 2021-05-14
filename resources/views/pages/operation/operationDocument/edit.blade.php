@@ -28,7 +28,7 @@
                             @include('pages.operation.operationDocument.forml');
                         </div>
                         <br>
-                        <div class="row"> 
+                        <div class="row">
                             <div class="col-md-12 text-right">
                                 <a href="{{ route('operations.index') }}" class="btn btn-default" data-dismiss="modal">Back</a>
                                 <button type="submit" class="btn btn-primary"><i class="icon-save mr-2"></i>Save data</button>
@@ -50,9 +50,6 @@
     $(document).ready(function() {
         $('#operationDocument').addClass('active');
     });
-    
-    var title = 'Document';
-    var colunms = [0,1,2];
 
     $('.datepicker').datetimepicker({
     i18n:{
@@ -63,7 +60,7 @@
         'September','Oktober','November','Dezember',
        ],
        dayOfWeek:[
-        "So.", "Mo", "Di", "Mi", 
+        "So.", "Mo", "Di", "Mi",
         "Do", "Fr", "Sa.",
        ]
       }
@@ -71,8 +68,6 @@
      timepicker:false,
      format:'Y-m-d'
     });
-    
-    dataTableExport(title,colunms);
 </script>
 
 @endsection
