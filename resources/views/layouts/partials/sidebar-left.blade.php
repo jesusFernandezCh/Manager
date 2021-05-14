@@ -11,7 +11,7 @@
             </div>
         </div>
     </div>
-    <div class="has-sidebar-left navbar navbar-expand navbar-dark justify-content-between bd-navbar blue accent-3 fixed-top">
+    <div class="has-sidebar-left navbar navbar-expand navbar-dark justify-content-between bd-navbar blue darken-4 fixed-top">
     {{-- <div class="navbar navbar-expand d-flex navbar-dark justify-content-between bd-navbar blue accent-3 shadow"> --}}
         <div class="relative">
             <div class="d-flex">

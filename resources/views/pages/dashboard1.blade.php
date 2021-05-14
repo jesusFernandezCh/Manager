@@ -1,7 +1,9 @@
 @extends('layouts.app')
 @section('title')
-<h1 class="nav-title text-white"> <i class="icon-home2"></i>
-    Dashboard</h1>
+<h1 class="nav-title text-white"> 
+    <i class="icon-dashboard"></i>
+    {{ __('Dashboard') }}
+</h1>
 @endsection
 
 @section('maincontent')

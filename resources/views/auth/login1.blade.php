@@ -3,17 +3,19 @@
 <div class="page parallel">
     <div class="d-flex row">
         <div class="col-md-4 white">
-            <div class="p-5 mt-5 col-10 offset-1">
-                <img src="assets/img/app/logo.png" alt="logo" class="logo"/>
+            <div class="p-5 mt-5">
+                <img src="assets/img/basic/logo.png" alt=""/>
             </div>
             <div class="p-5 login-form">
-                <h3>Bienvenido</h3>
-                <p>Tenemos muchas cosas nuevas esperando por ti</p>
+                <h3>Welcome Back</h3>
+                <p>Hey Soldier welcome back signin now there is lot of
+                    new stuff waiting
+                    for you</p>
                 {!! Form::open(['route'=>'login','method'=>'POST']) !!}
                     {{ csrf_field() }}
                     <div class="form-group has-icon">
                         <i class="icon-envelope-o"></i>
-                        {!! Form::email('email', null, ['class'=>'form-control form-control-lg', 'placeholder'=>'Email', 'require']) !!}
+                        {!! Form::email('email', null, ['class'=>'form-control form-control-lg', 'placeholder'=>'Email Address', 'require']) !!}
                         @error('email')
                         <span class="help-block text-danger">
                             {{ $message }}
@@ -29,9 +31,9 @@
                         @enderror 
                     </div>
                     <a href="#" onclick="mostrarForm('passwordReset')">
-                        <p class="forget-pass">¿ Olvidastes tu clave ?</p>
+                        <p class="forget-pass">¿ Have you forgot your password ?</p>
                     </a>
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Autenticar">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Log In">
                 {!! Form::close() !!}
             </div>
             <div class="p-5 form-passwordReset" style="display:none;" > 

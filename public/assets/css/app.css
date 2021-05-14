@@ -25751,7 +25751,7 @@ ul.list-group.list-group-hover li:hover {
 }
 
 .blue-text {
-    color: #2196f3!important
+    color: #266288!important
 }
 
 .blue.darken-1 {
@@ -25767,7 +25767,7 @@ ul.list-group.list-group-hover li:hover {
 }
 
 .blue.darken-4 {
-    background-color: #0d47a1!important
+    background-color: #266288!important
 }
 
 .blue.accent-1 {
@@ -25779,7 +25779,7 @@ ul.list-group.list-group-hover li:hover {
 }
 
 .blue.accent-3 {
-    background-color: #2979ff!important
+    background-color: #266288!important
 }
 
 .blue.accent-4 {
@@ -33809,14 +33809,15 @@ a.btn-fab {
 .user_avatar {
     width: 60px;
     height: 60px;
-    border: 1px solid #eee;
+    /* border: 1px solid #eee; */
     background: #fff;
-    padding: 5px;
+    /* padding: 5px; */
     border-radius: 50%
 }
 
 .user-panel {
-    padding: 40px 20px
+    padding: 40px 20px;
+    background-color: lightblue;
 }
 
 .user-panel .user_avatar {
@@ -33919,9 +33920,9 @@ a.btn-fab {
     display: block;
     padding: 10px 5px 10px 15px;
     color: #86939e;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: .4px
+    /* font-size: 12px; */
+    /* font-weight: 400; */
+    /* letter-spacing: .4px */
 }
 
 .sidebar-menu>li .label {
@@ -36897,4 +36898,13 @@ html[dir=rtl] .form-group.has-icon i::after {
 [dir=rtl] .form-group.has-icon input,
 html[dir=rtl] .form-group.has-icon input {
     padding-right: 68px
+}
+
+.logo{
+    margin: 20px;
+}
+.user-name{
+    font-weight: bold !important;
+    text-transform: capitalize;
+    color: steelblue;
 }
