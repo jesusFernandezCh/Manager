@@ -10,9 +10,9 @@ Users</h1>
 {{-- modal create --}}
 @include('pages.user.create')
 {{-- modal edit --}}
-@include('pages.user.edit')
+{{-- @include('pages.user.edit') --}}
 {{-- modal show --}}
-@include('pages.user.show')
+{{-- @include('pages.user.show') --}}
 <div class="page  height-full">
     {{-- alerts --}}
     <div>
@@ -24,7 +24,7 @@ Users</h1>
             <div class="card">
                 <div class="form-group">
                     <div class="card-header white">
-                        <h6> LIST USERS </h6>
+                        <h6> {{ __('LIST USERS')}} </h6>
                     </div>
                 </div>
                 <div class="card-body">
@@ -33,11 +33,10 @@ Users</h1>
                             <thead>
                                 <tr>
                                     <th><b>Id</b></th>
-                                    <th><b>USERNAME</b></th>
-                                    <th><b>ROLE</b></th>
-                                    <th><b>STATUS</b></th>
-                                    <th><b>PROFIT CENTER</b></th>
-                                    <th><b>OPTIONS</b></th>
+                                    <th><b>{{ __('USERNAME')}}</b></th>
+                                    <th><b>{{ __('ROLE')}}</b></th>
+                                    <th><b>{{ __('STATUS')}}</b></th>
+                                    <th><b>{{ __('OPTIONS')}}</b></th>
                                 </tr>
                             </thead>
                             <tbody id="tbody">
@@ -49,14 +48,15 @@ Users</h1>
                                     <td>
                                         <div class="avatar avatar-md mr-3 mt-1 float-left">
                                             @if ($user->image != null)
-                                            {{ Html::image('././img/avatar/'.$user->image) }}
+                                            {{-- {{ Html::image('././img/avatar/'.$user->image) }} --}}
+                                            {{ Html::image('././img/avatar/default.png') }}
                                             @else
                                             {{ Html::image('././img/avatar/default.png') }}
                                             @endif
                                         </div>
                                         <div>
                                             <div>
-                                                <b>{{ $user->fullname }}</b>
+                                                <b>{{ $user->name}}</b>
                                             </div>
                                             <small>{{ $user->email }}</small>
                                         </div>
@@ -65,18 +65,15 @@ Users</h1>
                                         @foreach ($user->roles as $element) <span class="badge badge-primary r-5">{{ $element->name }}</span>@endforeach
                                     </td>
                                     <td>
-                                        @if ($user->status == 'active')
+                                        @if ($user->estatus && $user->estatus == 'active')
                                         <span class="icon icon-circle s-12  mr-2 text-success"></span> Active</td>
                                         @endif
-                                        @if($user->status == 'inactive')
+                                        @if($user->estatus == 'inactive')
                                         <span class="icon icon-circle s-12  mr-2 text-danger"></span> Inactive </td>
                                         @endif
-                                        @if($user->status == 'suspended')
+                                        @if($user->estatus == 'suspended')
                                         <span class="icon icon-circle s-12  mr-2 text-warning"></span> Suspended </td>
                                         @endif
-                                    </td>
-                                    <td>
-                                        {{ $user->profitCenters->name }}
                                     </td>
                                     <td class="text-center">
                                         <a href="#" class="btn btn-default btn-sm" title="Detalles" data-toggle="modal" data-target="#show" onclick="showData('{{ route('user.edit',$user) }}')">

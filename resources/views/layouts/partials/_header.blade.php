@@ -19,7 +19,7 @@
             <div class="user-panel p-3 light mb-2">
                 <div>
                     <div class="float-left image">
-                        {{ Html::image('img/avatar/' . Auth::user()->image, 'a picture', ['class' => 'user_avatar', 'alt' => 'a picture']) }}
+                        {{-- {{ Html::image('img/avatar/' . Auth::user()->image, 'a picture', ['class' => 'user_avatar', 'alt' => 'a picture']) }} --}}
                     </div>
                     <div class="float-left info">
                         <p class="font-weight-light mt-0 mb-0 user-name">{{ Auth::user()->fullname }}</p>
@@ -58,12 +58,22 @@
                 </a>
             </li>
             <li class="treeview">
-                <a href="{{ route('user.index') }}">
-                    <i class="icon icon-keyboard blue-text s-24"></i>
-                    {{-- {{ __('Users') }} --}}
-                    <span>Administración</span>
+                <a href="#">
+                    <i class="icon icon-keyboard blue-text s-24"></i> <span>Administración</span>
                     <i class="icon icon-angle-left s-18 pull-right"></i>
                 </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="{{ route('user.index') }}">
+                            <i class="icon icon-user amber-text s-14"></i> <span>{{ __('Users') }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('user.index') }}">
+                            <i class="icon icon-user amber-text s-14"></i> <span>{{ __('Employers') }}</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li class="treeview">
                 <a href="{{ route('user.index') }}">

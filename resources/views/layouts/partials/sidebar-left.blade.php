@@ -144,11 +144,11 @@
                         <li>
                             <!-- inner menu: contains the actual data -->
                     <ul class="menu pl-2 pr-2">
-                    @foreach ($lang=\App\Language::all() as $row)
+                    {{-- @foreach ($lang=\App\Language::all() as $row)
                                 <li>
                                     <a href="{{ route('lang', $row->abbreviation) }}">{{ $row->language }}</a>
                                 </li>
-                    @endforeach
+                    @endforeach --}}
                 </ul>
                        
  
@@ -172,7 +172,7 @@
                 <!-- User Account-->
                 <li class="dropdown custom-dropdown user user-menu ">
                     <a href="#" class="nav-link" data-toggle="dropdown">
-                        {{ Html::image('img/avatar/'.Auth::user()->image, 'a picture', array('class'=>'user-image','alt'=>'a picture')) }}
+                        {{-- {{ Html::image('img/avatar/'.Auth::user()->image, 'a picture', array('class'=>'user-image','alt'=>'a picture')) }} --}}
                          {{-- <img src="img/avatar/{{ Auth::user()->image}}" alt="User Image" class="user-image"> --}}
                         <i class="icon-more_vert "></i>
                     </a>

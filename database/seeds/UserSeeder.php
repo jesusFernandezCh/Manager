@@ -14,11 +14,11 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-                'fullname'          => 'admin',
+                'id'                =>1,
+                'name'              => 'admin',
                 'email'             => 'admin@gmail.com',
                 'password'          => bcrypt('123456'),
-                'status'            => 'active',
-                'profit_center_id'  => ProfitCenter::all()->random()->id,
+                'estatus'            => 'active',
                 'email_verified_at' => now(),
                 'created_at'        => now(),
                 'updated_at'        => now(),

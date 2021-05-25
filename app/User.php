@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Caffeinated\Shinobi\Concerns\HasRolesAndPermissions;
+use Illuminate\Support\Facades\App;
 
 class User extends Authenticatable
 {
@@ -18,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'fullname', 'email', 'password', 'profitcenter_id', 'image', 'status', 'phone1', 'phone2', 'cell1', 'cell2'
+        'name','email','password'
     ];
 
     /**
@@ -38,21 +39,29 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
     /**
-     * Get the profitCenter for the blog user.
+     * [empleado relación 1:N]
+     * @return  [type]  [return description]
      */
-    public function profitCenters()
+    public function empleado()
     {
-        return $this->belongsTo('App\ProfitCenter', 'profitcenter_id');
+        return $this->belongsTo('App\models\Empleado','id');
     }
 
-    /**
-     * Get the user that owns the operation.
-     */
-    public function operation()
-    {
-        return $this->hasMany('App\Operation');
-    }
+    // /**
+    //  * Get the profitCenter for the blog user.
+    //  */
+    // public function profitCenters()
+    // {
+    //     return $this->belongsTo('App\ProfitCenter', 'profitcenter_id');
+    // }
+
+    // /**
+    //  * Get the user that owns the operation.
+    //  */
+    // public function operation()
+    // {
+    //     return $this->hasMany('App\Operation');
+    // }
 
 }

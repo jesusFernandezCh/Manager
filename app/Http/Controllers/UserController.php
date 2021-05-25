@@ -17,17 +17,15 @@ class UserController extends Controller
 {
     private $user;
     private $role;
-    private $profit;
 
     /**
     * { function_description }
     */
-    public function __construct(User $user, Role $role, ProfitCenter $profit)
+    public function __construct(User $user, Role $role)
     {
         $this->middleware('auth');
         $this->user     = $user;
         $this->role     = $role;
-        $this->profit   = $profit;
     }
 
     /**
@@ -38,15 +36,15 @@ class UserController extends Controller
     public function index()
     {
         $roles = $this->role->get()->pluck('name', 'slug');
-        $status = [
+        $estatus = [
             'active'    => 'Active',
             'inactive'  => 'Inactive',
             'suspended' => 'Suspended'
         ];
-        $profits = $this->profit->get()->pluck('name','id');
         $users = $this->user->all();
+        // dd($users);
 
-        return view('pages.user.index', compact('users','status','profits','roles'));  
+        return view('pages.user.index', compact('users','roles'));  
     }
 
     /**
@@ -81,7 +79,7 @@ class UserController extends Controller
             // file save
             $file->move($path, $fileName);
             // add route avarat
-            $data = array_add($data, 'image', $fileName);
+            // $data = array_add($data, 'image', $fileName);
         }
         // encrypt password
         $data['password'] = bcrypt($data['password']);
@@ -127,10 +125,10 @@ class UserController extends Controller
         $data = $request->all();
         $file = $request->file('file');
         if ($file != null) {
-            $path = public_path().'/img/avatar/';
+            // $path = public_path().'/img/avatar/';
             $extension = $file->getClientOriginalExtension();
             $fileName = $data['email']. '.' . $extension;
-            $file->move($path, $fileName);
+            // $file->move($path, $fileName);
             $data = array_add($data, 'image', $fileName);
         }
         if (isset($data['password'])) {
@@ -142,7 +140,7 @@ class UserController extends Controller
         }   
         $user->save();
         $user->syncRoles($data['rol']);
-        Session::flash('message-success',' User '. $request->fullname.' editado correctamente.');
+        Session::flash('message-success',' User '. $request->name.' editado correctamente.');
     }
 
     /**
@@ -178,6 +176,6 @@ class UserController extends Controller
         $password = bcrypt($request->input('password'));
         $user->update(['password' => $password]);
         $user->save();
-        Session::flash('message-success',' User '. $user->fullname.' actualizado correctamente.');
+        Session::flash('message-success',' User '. $user->name.' actualizado correctamente.');
     }
 }
