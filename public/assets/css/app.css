@@ -24566,6 +24566,15 @@ ul li:before {
     overflow: visible
 }
 
+.loader-title{
+    font-family: Arial, Helvetica, sans-serif ;
+    font-weight: 700;
+    color: #003260 !important;
+    font-size: 40px;
+    margin-top: 400px;
+    margin-left: 50px;
+}
+
 .loader-fade {
     display: none
 }
@@ -36067,8 +36076,8 @@ sticky:before {
 .preloader-wrapper {
     display: inline-block;
     position: relative;
-    width: 50px;
-    height: 50px
+    width: 80px;
+    height: 80px
 }
 
 .preloader-wrapper.small {
@@ -36103,12 +36112,17 @@ sticky:before {
     width: 100%;
     height: 100%;
     opacity: 0;
-    border-color: #4285f4
+    /* border-color: #4285f4 */
 }
 
 .spinner-blue,
 .spinner-blue-only {
-    border-color: #4285f4
+    border-color: #266288
+}
+
+.spinner-primary,
+.spinner-primary-only {
+    border-color: #03a9f4
 }
 
 .spinner-red,
@@ -36123,7 +36137,7 @@ sticky:before {
 
 .spinner-green,
 .spinner-green-only {
-    border-color: #0f9d58
+    border-color:#277a6f
 }
 
 .active .spinner-layer.spinner-blue {

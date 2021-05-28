@@ -44,7 +44,7 @@ class UserController extends Controller
         $users = $this->user->all();
         // dd($users);
 
-        return view('pages.user.index', compact('users','roles'));  
+        return view('pages.user.index', compact('users','roles','estatus'));  
     }
 
     /**
@@ -109,6 +109,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        // dd($user);
         return response()->json($user);
     }
 

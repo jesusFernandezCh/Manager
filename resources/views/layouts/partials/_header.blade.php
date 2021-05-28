@@ -50,7 +50,8 @@
                 </a>
             </li>
             <li class="treeview">
-                <a href="{{ route('accountOperator.index') }}">
+                {{-- <a href="{{ route('accountOperator.index') }}"> --}}
+                <a href="#">
                     <i class="icon icon-cogs blue-text s-24"></i>
                     {{-- <span>{{ __('Accounts') }}</span></a> --}}
                     <span>Configuración</span>
@@ -65,12 +66,12 @@
                 <ul class="treeview-menu">
                     <li>
                         <a href="{{ route('user.index') }}">
-                            <i class="icon icon-user amber-text s-14"></i> <span>{{ __('Users') }}</span>
+                            <i class="icon icon-circle-o text-primary s-18"></i> <span>{{ __('Users') }}</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('user.index') }}">
-                            <i class="icon icon-user amber-text s-14"></i> <span>{{ __('Employers') }}</span>
+                            <i class="icon icon-circle-o text-primary s-18"></i> <span>{{ __('Employers') }}</span>
                         </a>
                     </li>
                 </ul>

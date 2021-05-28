@@ -10,9 +10,9 @@ Users</h1>
 {{-- modal create --}}
 @include('pages.user.create')
 {{-- modal edit --}}
-{{-- @include('pages.user.edit') --}}
+@include('pages.user.edit')
 {{-- modal show --}}
-{{-- @include('pages.user.show') --}}
+@include('pages.user.show')
 <div class="page  height-full">
     {{-- alerts --}}
     <div>

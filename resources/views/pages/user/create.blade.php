@@ -13,7 +13,7 @@
 						<div class="form-group m-0 has-feedback" id="fullname_group">
 							<i class="icon-person mr-2"></i>
 							{!! Form::label('name', 'Nane', ['class'=>'col-form-label s-12']) !!}
-							{{-- {!! Form::text('name', null, ['class'=>'form-control r-0 light s-12',  'id'=>'name', 'onclick'=>'inputClear(this.id)']) !!} --}}
+							{!! Form::text('name', null, ['class'=>'form-control r-0 light s-12',  'id'=>'name', 'onclick'=>'inputClear(this.id)']) !!}
 							<span class="fullname_span"></span>
 						</div>
 						<div class="form-row">
@@ -32,12 +32,12 @@
 						<div class="form-row">
 							<div class="form-group col-6 m-0" id="rol_group">
 								{!! Form::label('role', 'Rol', ['class'=>'col-form-label s-12']) !!}
-								{{-- {!! Form::select('rol', $roles, null, ['class'=>'form-control r-0 light s-12', 'id'=>'rol', 'onclick'=>'inputClear(this.id)']) !!} --}}
+								{!! Form::select('rol', $roles, null, ['class'=>'form-control r-0 light s-12', 'id'=>'rol', 'onclick'=>'inputClear(this.id)']) !!}
 								<span class="rol_span"></span>
 							</div>
 							<div class="form-group col-6 m-0" id="status_group">
 								{!! Form::label('estatus', 'Estatus', ['class'=>'col-form-label s-12']) !!}
-								{{-- {!! Form::select('estatus', $estatus, null, ['class'=>'form-control r-0 light s-12', 'id'=>'estatus', 'onclick'=>'inputClear(this.id)']) !!} --}}
+								{!! Form::select('estatus', $estatus, null, ['class'=>'form-control r-0 light s-12', 'id'=>'estatus', 'onclick'=>'inputClear(this.id)']) !!}
 								<span class="status_span"></span>
 							</div>
 						</div>
@@ -55,34 +55,6 @@
 								{!! Form::label('email', 'Email', ['class'=>'col-form-label s-12']) !!}
 								{!! Form::email('email', null, ['class'=>'form-control r-0 light s-12 ', 'id'=>'email', 'onclick'=>'inputClear(this.id)']) !!}
 								<span class="email_span"></span>
-							</div>
-							<div class="form-group col-4 m-0">
-								<i class="icon-phone mr-2"></i>
-								{!! Form::label('phone1', 'Phone 1', ['class'=>'col-form-label s-12']) !!}
-								{{-- {!! Form::text('phone1', null, ['class'=>'form-control r-0 light s-12', 'id'=>'phone1', 'onclick'=>'inputClear(this.id)']) !!} --}}
-							</div>
-							<div class="form-group col-4 m-0">
-								<i class="icon-phone mr-2"></i>
-								{!! Form::label('phone2', 'Phone 2', ['class'=>'col-form-label s-12']) !!}
-								{{-- {!! Form::text('phone2', null, ['class'=>'form-control r-0 light s-12', 'id'=>'phone2', 'onclick'=>'inputClear(this.id)']) !!} --}}
-							</div>
-						</div>
-						<div class="form-row mt-1">
-							<div class="form-group col-4 m-0">
-								<i class="icon-mobile-phone mr-2"></i>
-								{!! Form::label('cell1', 'Cell 1', ['class'=>'col-form-label s-12']) !!}
-								{{-- {!! Form::text('cell1', null, ['class'=>'form-control r-0 light s-12', 'id'=>'cell1', 'onclick'=>'inputClear(this.id)']) !!} --}}
-							</div>
-							<div class="form-group col-4 m-0">
-								<i class="icon-mobile-phone mr-2"></i>
-								{!! Form::label('cell2', 'Cell 2', ['class'=>'col-form-label s-12']) !!}
-								{{-- {!! Form::text('cell2', null, ['class'=>'form-control r-0 light s-12', 'id'=>'cell2', 'onclick'=>'inputClear(this.id)']) !!} --}}
-							</div>
-							<div class="form-group col-4 m-0" id="pofitcenter_id_group">
-								<i class="icon icon-local_shipping"></i>
-								{!! Form::label('profit', 'Profit Center', ['class'=>'col-form-label s-12']) !!}
-								{{-- {!! Form::select('profitcenter_id', $profits, null, ['class'=>'form-control r-0 light s-12','id'=>'profitcenter_id', 'onclick'=>'inputClear(this.id)']) !!} --}}
-								<span class="profitcenter_id_span"></span>
 							</div>
 						</div>
 					</div>

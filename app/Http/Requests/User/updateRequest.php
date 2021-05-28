@@ -24,11 +24,10 @@ class updateRequest extends FormRequest
     public function rules()
     {
         return [
-            'fullname'          => 'required',
+            'name'          => 'required',
             'email'             => 'required',
             'password'          => 'confirmed',
-            'status'            => 'required',
-            'profitcenter_id'   => 'required',
+            'estatus'            => 'required',
         ];
     }
 }

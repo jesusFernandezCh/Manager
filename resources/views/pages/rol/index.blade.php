@@ -5,7 +5,9 @@
     Role
 </h1>
 @endsection
-
+@section('top-menu')
+    @include('pages.rol.topBar')
+@endsection
 @section('maincontent')
 {{-- modal create --}}
 @include('pages.rol.create')

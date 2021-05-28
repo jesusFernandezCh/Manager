@@ -41,8 +41,8 @@ class DatabaseSeeder extends Seeder
         // factory(AccountMetaType::class,20)->create();
         // factory(AccountMeta::class,20)->create();
 
-        $this->call(PersonaSeeder::class);
+        // $this->call(PersonaSeeder::class);
         
-        // $this->call(UserSeeder::class);
+        $this->call(UserSeeder::class);
 	}
 }

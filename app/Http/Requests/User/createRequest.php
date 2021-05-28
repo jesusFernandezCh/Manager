@@ -24,11 +24,10 @@ class createRequest extends FormRequest
     public function rules()
     {
         return [
-            'fullname'          => 'required',
+            'name'          => 'required',
             'email'             => 'required|unique:users',
             'password'          => 'required|string|min:6|confirmed',
-            'status'            => 'required',
-            'profitcenter_id'   => 'required',
+            'estatus'            => 'required',
         ];
     }
 }
