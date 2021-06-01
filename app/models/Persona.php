@@ -20,6 +20,15 @@ class Persona extends Model
     {
         return $this->belongsTo('App\models\Empleado','id');
     }
+
+      /**
+     * [empleado description]
+     * @return  [type]  [return description]
+     */
+    public function direccion()
+    {
+        return $this->hasOne('App\models\Direccion', 'id');
+    }
     
 }
 

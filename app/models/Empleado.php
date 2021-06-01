@@ -28,4 +28,12 @@ class Empleado extends Model
     {
         return $this->hasOne('App\User');
     }
+    /**
+     * [empleado description]
+     * @return  [type]  [return description]
+     */
+    public function correo()
+    {
+        return $this->hasMay('App\models\Correo','id');
+    }
 }
