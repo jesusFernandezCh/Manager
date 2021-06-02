@@ -12,15 +12,6 @@ class Persona extends Model
         'cedula','p_nombre','p_apellido','s_nombre','s_apellido','fecha_nacimiento','sexo','direccion','grupos_sanguineo','status'
     ];
     
-    /**
-     * [empleado description]
-     * @return  [type]  [return description]
-     */
-    public function empleado()
-    {
-        return $this->belongsTo('App\models\Empleado','id');
-    }
-
       /**
      * [empleado description]
      * @return  [type]  [return description]
@@ -28,6 +19,12 @@ class Persona extends Model
     public function direccion()
     {
         return $this->hasOne('App\models\Direccion', 'id');
+    }
+
+
+    public function fullName()
+    {
+        return $this->p_nombre.' '.$this->p_apellido; 
     }
     
 }

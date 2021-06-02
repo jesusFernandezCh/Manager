@@ -5,11 +5,11 @@ Currency</h1>
 @endsection
 @section('maincontent')
 {{-- modal create --}}
-@include('pages.currency.create')
+{{-- @include('pages.currency.create') --}}
 {{-- modal show --}}
-@include('pages.currency.show')
+{{-- @include('pages.currency.show') --}}
 {{-- modal edit --}}
-@include('pages.currency.edit')
+{{-- @include('pages.currency.edit') --}}
 <div class="page height-full">
 
     {{-- alerts --}}
@@ -33,26 +33,41 @@ Currency</h1>
                         <table id="example2" class="table table-bordered table-hover data-tables" data-order='[[ 0, "desc" ]]' data-page-length='10'>
                             <thead>
                                 <tr>
-                                    <th><b>Id</b></th>
-                                    <th><b>NAME</b></th>
-                                    <th><b>CODE</b></th>
-                                    <th><b>SYMBOL</b></th>
+                                    <th><b>ID</b></th>
+                                    <th><b>EMPLEADO</b></th>
+                                    <th><b>SEXO</b></th>
+                                    <th><b>CARGO</b></th>
                                     <th><b>STATUS</b></th>
                                     <th><b>OPTIONS</b></th>
                                 </tr>
                             </thead>
                             <tbody id="tbody">
-                                @foreach ($currencies as $currency)
+                                @foreach ($empleados as $empleado)
                                 <tr class="tbody">
-                                    <td> {{$currency->id}}</td>
-                                    <td>{{ $currency->name }}</td>
-                                    <td>{{ $currency->code }}</td>
-                                    <td>{{ $currency->symbol }}</td>
+                                    <td> {{$empleado->id}}</td>
                                     <td>
-                                        @if ($currency->active == 1)
+                                        <div class="avatar avatar-md mr-3 mt-1 float-left">
+                                            {{-- @if ($emplado->foto != null) --}}
+                                            {{-- {{ Html::image('././img/avatar/'.$user->image) }} --}}
+                                            {{ Html::image('././img/avatar/default.png') }}
+                                            {{-- @else --}}
+                                            {{-- {{ Html::image('././img/avatar/default.png') }} --}}
+                                            {{-- @endif --}}
+                                        </div>
+                                        <div>
+                                            <span class="text-primary">{{$empleado->Persona->fullName()}}</span>
+                                            <div>
+                                                <small>CI: {{$empleado->Persona->cedula}} </small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>{{$empleado->Persona->sexo}}</td>
+                                    <td>{{$empleado->cargo}}</td>
+                                    <td>
+                                        @if ($empleado->active == 1) --}}
                                         <span class="icon icon-circle s-12  mr-2 text-success"></span> Active</td>
                                         
-                                        @elseif($currency->active == 2)
+                                        @elseif($empleado->active == 2)
                                         <span class="icon icon-circle s-12  mr-2 text-danger"></span> Inactive </td>
                                         
                                         @else
@@ -60,12 +75,12 @@ Currency</h1>
                                         @endif
                                     </td>
                                     <td class="text-center">
-                                        <a href="#" class="btn btn-default btn-sm" title="Detalles" data-toggle="modal" data-target="#show" onclick="showData('{{ route('currency.show', $currency->id) }}')">
+                                        {{-- <a href="#" class="btn btn-default btn-sm" title="Detalles" data-toggle="modal" data-target="#show" onclick="showData('{{ route('currency.show', $currency->id) }}')">
                                             <i class="icon-eye text-info"></i>
                                         </a>
                                         <a href="#" class="btn btn-default btn-sm" title="Editar" data-toggle="modal" data-target="#update" onclick="obtenerDatosGet('{{ route('currency.edit',$currency->id) }}', '{{ route('currency.update',$currency->id) }}')">
                                             <i class="icon-pencil text-info"></i>
-                                        </a>
+                                        </a> --}}
                                     </td>
                                 </tr>
                                 @endforeach

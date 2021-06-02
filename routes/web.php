@@ -57,6 +57,7 @@ Route::group(['middleware' => 'auth'], function () {
 	// home
 	Route::get('/home', 'HomeController@index')->name('home');
 	// modules
+	Route::resource('empleados', 'EmpleadoController');
 	Route::resource('profitCenter', 'ProfitCenterController');
 	Route::resource('account', 'AccountController');
 	Route::resource('logunit', 'LogunitController');

@@ -70,7 +70,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('user.index') }}">
+                        <a href="{{ route('empleados.index') }}">
                             <i class="icon icon-circle-o text-primary s-18"></i> <span>{{ __('Employers') }}</span>
                         </a>
                     </li>
