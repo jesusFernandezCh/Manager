@@ -2,6 +2,11 @@
 @section('title')
 <h1 class="nav-title text-white"> <i class="icon icon-group"></i>
 Empleados</h1>
+@section('top-menu')
+    {{-- header --}}
+    @include('pages.empleado.headbar')
+    {{-- end header --}}
+@endsection
 @endsection
 @section('maincontent')
 {{-- modal create --}}
@@ -105,7 +110,7 @@ Empleados</h1>
 @section('js')
 <script>
     $(document).ready(function() {
-        $('#category').addClass('active');
+        // $('#category').addClass('active');
     });
     var title = 'Accounts Categories';
     var colunms = [1,2,3,4];
