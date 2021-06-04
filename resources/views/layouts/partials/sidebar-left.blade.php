@@ -156,13 +156,13 @@
                     </ul>
                 </li>
                 <!-- END Language-->
-                <li>
+                {{-- <li>
                     <a class="nav-link " data-toggle="collapse" data-target="#navbarToggleExternalContent"
                         aria-controls="navbarToggleExternalContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <i class=" icon-search3 "></i>
                     </a>
-                </li>
+                </li> --}}
                 <!-- Right Sidebar Toggle Button -->
                 <li>
                     <a class="nav-link ml-2" data-toggle="control-sidebar">
@@ -177,7 +177,7 @@
                         <i class="icon-more_vert "></i>
                     </a>
                     <div class="dropdown-menu p-4 dropdown-menu-right">
-                        <div class="row box justify-content-between my-4">
+                        {{-- <div class="row box justify-content-between my-4">
                             <div class="col">
                                 <a href="#">
                                     <i class="icon-apps purple lighten-2 avatar  r-5"></i>
@@ -214,10 +214,10 @@
                                     <div class="pt-1">Settings</div>
                                 </a>
                             </div>
-                        </div>
+                        </div> --}}
                         <hr>
                         <div class="row box justify-content-between my-4">
-                            <div class="col">
+                            {{-- <div class="col">
                                 <a href="#">
                                     <i class="icon-apps purple lighten-2 avatar  r-5"></i>
                                     <div class="pt-1">Apps</div>
@@ -226,11 +226,11 @@
                             <div class="col"><a href="#">
                                 <i class="icon-beach_access pink lighten-1 avatar  r-5"></i>
                                 <div class="pt-1">Profile</div>
-                            </a></div>
+                            </a></div> --}}
                             <div class="col">
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     <i class="icon-power-off red avatar  r-5"></i>
-                                    <div class="pt-1">Exit</div>
+                                    <div class="pt-1">{{ __('Salir')}}</div>
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}

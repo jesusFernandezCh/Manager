@@ -31,13 +31,13 @@
                 <div class="clearfix"></div>
                 <div class="collapse multi-collapse" id="userSettingsCollapse">
                     <div class="list-group mt-3 shadow">
-                        <a href="index.html" class="list-group-item list-group-item-action ">
-                            <i class="mr-2 icon-umbrella text-blue"></i>Profile
+                        <a href="#" class="list-group-item list-group-item-action ">
+                            <i class="mr-2 icon-umbrella text-blue"></i>Mi Perfil
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action"><i
-                                class="mr-2 icon-cogs text-yellow"></i>Settings</a>
+                        {{-- <a href="#" class="list-group-item list-group-item-action"><i
+                                class="mr-2 icon-cogs text-yellow"></i></a> --}}
                         <a href="{{ route('passwordReset') }}" class="list-group-item list-group-item-action">
-                            <i class="mr-2 icon-security text-purple"></i>Change Password
+                            <i class="mr-2 icon-security text-purple"></i>Cambiar Clave
                         </a>
                     </div>
                 </div>
