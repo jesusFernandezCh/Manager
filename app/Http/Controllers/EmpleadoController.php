@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nomenclador;
 use App\Repositories\EmpleadoRerpository;
+use App\Repositories\NomencladorRerpository;
 use Illuminate\Http\Request;
 
 class EmpleadoController extends Controller
 {
 
     private $stmt;
+    private $nomenclador;
+    private $grupo_Sanguineo;
 
-    public function __construct(EmpleadoRerpository $repository)
+    public function __construct(
+        EmpleadoRerpository $repository,
+        Nomenclador $repoNomenclador
+        )
     {
         $this->stmt = $repository;
+        $this->nomenclador = $repoNomenclador;
     }
 
     /**
@@ -22,8 +30,17 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $empleados = $this->stmt->getAll();
-        return view('pages.currency.index', compact('empleados')); 
+        $empleados      = $this->stmt->getAll();
+        $grupoSanguineo = $this->nomenclador->all()->where('tipo',3)->pluck('valor','codigo');
+        $tallaCamisa    = $this->nomenclador->all()->where('tipo',8)->pluck('valor','codigo');
+        $tallaPantalon  = $this->nomenclador->all()->where('tipo',9)->pluck('valor','codigo');
+        $tallaCalzado   = $this->nomenclador->all()->where('tipo',10)->pluck('valor','codigo');
+        $estados        = $this->nomenclador->all()->where('tipo',107)->pluck('valor','codigo');
+        $municipios     = $this->nomenclador->all()->where('tipo',108)->pluck('valor','codigo');
+        $parroquias     = $this->nomenclador->all()->where('tipo',109)->pluck('valor','codigo');
+        $cargos         = $this->nomenclador->all()->where('tipo',1)->pluck('valor','codigo');
+
+        return view('pages.empleado.index', compact('empleados','grupoSanguineo','tallaCamisa','tallaPantalon','tallaCalzado', 'estados', 'municipios','parroquias','cargos')); 
     }
 
     /**
@@ -44,7 +61,7 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**

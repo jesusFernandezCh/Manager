@@ -60,4 +60,15 @@ abstract class BaseRerpository
 	{
 		return $object->delete();
 	}
+
+	/**
+	 * [pluck description]
+	 *
+	 * @param   [type]  $object  [$object description]
+	 * @return  [type]           [return description]
+	 */
+	public function pluck()
+	{
+		return $this->getModel()->pluck();
+	}
 }

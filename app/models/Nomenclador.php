@@ -11,4 +11,13 @@ class Nomenclador extends Model
     protected $fillable = [
         'valor','tipo','codigo','status'
     ];
+
+    /**
+     * [Cargo description]
+     * @return  [type]  [return description]
+     */
+    public function Cargo()
+    {
+        return $this->belongsTo(Empleado::class);
+    }
 }

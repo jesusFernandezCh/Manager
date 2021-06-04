@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Empleado;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -43,19 +44,12 @@ class User extends Authenticatable
      * [empleado relación 1:N]
      * @return  [type]  [return description]
      */
-    public function empleado()
+    public function Empleado()
     {
-        return $this->belongsTo('App\models\Empleado','id');
+        return $this->belongsTo(Empleado::class,'empleado');
     }
 
-    // /**
-    //  * Get the profitCenter for the blog user.
-    //  */
-    // public function profitCenters()
-    // {
-    //     return $this->belongsTo('App\ProfitCenter', 'profitcenter_id');
-    // }
-
+    
     // /**
     //  * Get the user that owns the operation.
     //  */

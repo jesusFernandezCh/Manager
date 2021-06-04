@@ -360,8 +360,16 @@ function inputClear(id)
     $('#'+id).removeClass("is-invalid");
 }
 
-
-function dataTableExport(title, columns) {
+/**
+ * [dataTableExport description]
+ * @param   {[type]}  title             [title Data table]
+ * @param   {[array]}  columnsExport     [columnsExport numero de las columans a exportar Emj: [0,1,2,4]]
+ * @param   {[array]}  columnsInvisible  [columnsInvisible numero de las columnas a ocultar de la tabla Emj:[0,2]]
+ * @param   {[boolean]}  searchable      [searchable estatus de las columnas ocultas para pemitir busqueda Ejm: true o false]
+ *
+ * @return  {[type]}                    [return description]
+ */
+function dataTableExport(title, columnsExport, columnsInvisible, searchable) {
     $('#example2').DataTable( {
         lengthChange: true,
         lengthMenu:[10,25,50,100],
@@ -373,11 +381,18 @@ function dataTableExport(title, columns) {
                 text: '<img src="http://localhost/Manager/public/img/excel-ico.png" alt="" heigth= ""/> Export Excell',
                 titleAttr: 'Excel',
                 exportOptions: {
-                    columns: columns
+                    columns: columnsExport
                 }
 
             }
         ],
+        columnDefs: [
+            {
+                "targets": columnsInvisible,
+                "visible": false,
+                "searchable": searchable
+            }
+        ]
     } );
 }
 //Funcion que solo permite introducir n煤meros//

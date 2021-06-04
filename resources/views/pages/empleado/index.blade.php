@@ -5,7 +5,7 @@ Empleados</h1>
 @endsection
 @section('maincontent')
 {{-- modal create --}}
-{{-- @include('pages.currency.create') --}}
+@include('pages.empleado.create')
 {{-- modal show --}}
 {{-- @include('pages.currency.show') --}}
 {{-- modal edit --}}

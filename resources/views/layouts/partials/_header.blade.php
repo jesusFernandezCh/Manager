@@ -19,10 +19,11 @@
             <div class="user-panel p-3 light mb-2">
                 <div>
                     <div class="float-left image">
-                        {{-- {{ Html::image('img/avatar/' . Auth::user()->image, 'a picture', ['class' => 'user_avatar', 'alt' => 'a picture']) }} --}}
+                        <img src="img/avatar/{{ Auth::user()->Empleado->Persona->imagen}}" alt="User Image" class="user_avatar" alt="a picture">
+                        {{-- {{ Html::image('img/avatar/'.Auth::user()->Empleado->Persona->id;, 'a picture', ['class' => 'user_avatar', 'alt' => 'a picture']) }} --}}
                     </div>
                     <div class="float-left info">
-                        <p class="font-weight-light mt-0 mb-0 user-name">{{ Auth::user()->fullname }}</p>
+                        <p class="font-weight-light mt-0 mb-0 user-name">{{ Auth::user()->Empleado->Persona->fullname() }}</p>
                         <p class="font-weight-light mt-0 mb-0">{{ Auth::user()->email }}</p>
                         <a href="#"><i class="icon-circle text-primary blink"></i> Online</a>
                     </div>
@@ -71,7 +72,7 @@
                     </li>
                     <li>
                         <a href="{{ route('empleados.index') }}">
-                            <i class="icon icon-circle-o text-primary s-18"></i> <span>{{ __('Employers') }}</span>
+                            <i class="icon icon-circle-o text-primary s-18"></i> <span>Empleados</span>
                         </a>
                     </li>
                 </ul>

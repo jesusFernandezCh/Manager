@@ -51,7 +51,7 @@ class Empleado extends Model
      */
     public function Cargo()
     {
-        return $this->hasMay(Nomenclador::class,'cargo','tipo');
+        return $this->belongsTo(Nomenclador::class,'cargo');
     }
 
     /**

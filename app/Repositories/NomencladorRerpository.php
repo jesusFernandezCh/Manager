@@ -8,7 +8,7 @@ class NomencladorRerpository extends BaseRerpository implements IRerpository
 {
     private $stmt;
 
-    public function __constructor()
+    public function __construct()
     {
         $this->stmt = new Nomenclador();
     }
