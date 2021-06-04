@@ -38,7 +38,7 @@ class EmpleadoController extends Controller
         $estados        = $this->nomenclador->all()->where('tipo',107)->pluck('valor','codigo');
         $municipios     = $this->nomenclador->all()->where('tipo',108)->pluck('valor','codigo');
         $parroquias     = $this->nomenclador->all()->where('tipo',109)->pluck('valor','codigo');
-        $cargos         = $this->nomenclador->all()->where('tipo',1)->pluck('valor','codigo');
+        $cargos         = $this->nomenclador->all()->where('tipo',2)->pluck('valor','codigo');
 
         return view('pages.empleado.index', compact('empleados','grupoSanguineo','tallaCamisa','tallaPantalon','tallaCalzado', 'estados', 'municipios','parroquias','cargos')); 
     }
