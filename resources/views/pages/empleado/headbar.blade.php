@@ -3,6 +3,11 @@
         <div class="row justify-content-between">
             <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
                 <li>
+                    <a class="nav-link active" href="#" role="tab" id="empleados">
+                        <i class="icon icon-calendar"></i> Empleados
+                    </a>
+                </li>
+                <li>
                     <a class="nav-link" href="#" role="tab" id="account">
                         <i class="icon icon-calendar"></i> Eventos
                     </a>
@@ -10,6 +15,11 @@
                 <li>
                     <a class="nav-link" href="#" role="tab" id="account">
                         <i class="icon icon-briefcase"></i> Proyectos
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#" role="tab" id="account">
+                        <i class="icon icon-star-half-empty"></i> Evaluación
                     </a>
                 </li>
                 {{-- <li>

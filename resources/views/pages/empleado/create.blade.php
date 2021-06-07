@@ -11,33 +11,26 @@
 				<div class="form-row">
 					<div class="col-md-12">
 						<div class="form-row">
-							<div class="col-6 text-primary">
+							<div class="col-12 text-primary">
 								Datos Personales
+								{{-- <hr> --}}
 							</div>
 						</div>
 						<div class="form-row">
-							<div class="form-group col-3 m-0" id="password_group">
-								{{-- <i class="icon-file-text mr-2"></i> --}}
-								{!! Form::label('p_nombre', 'Primer Nombre', ['class'=>'col-form-label s-12']) !!}
-								{!! Form::text('p_nombre', null, ['class'=>'form-control r-0 light s-12',  'id'=>'p_nombre', 'onclick'=>'inputClear(this.id)']) !!}
+							<div class="form-group col-3" id="password_group">
+								{!! Form::text('p_nombre', null, ['class'=>'form-control r-0 light s-12',  'id'=>'p_nombre', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Primer Nombre']) !!}
 								<span class="name_span"></span>
 							</div>
-							<div class="form-group col-3 m-0">
-								{{-- <i class="icon-key4 mr-2"></i> --}}
-								{!! Form::label('p_apellido', 'Primer Apellido', ['class'=>'col-form-label s-12']) !!}
-								{!! Form::text('p_apellido', null, ['class'=>'form-control r-0 light s-12', 'id'=>'p_apellido']) !!}
+							<div class="form-group col-3">
+								{!! Form::text('p_apellido', null, ['class'=>'form-control r-0 light s-12', 'id'=>'p_apellido', 'placeholder'=>'Primer Apellido']) !!}
 								<span class="code_span"></span>
 							</div>
-							<div class="form-group col-3 m-0" id="password_group">
-								{{-- <i class="icon-file-text mr-2"></i> --}}
-								{!! Form::label('s_nombre', 'Segundo Nombre', ['class'=>'col-form-label s-12']) !!}
-								{!! Form::text('s_nombre', null, ['class'=>'form-control r-0 light s-12',  'id'=>'s_nombre', 'onclick'=>'inputClear(this.id)']) !!}
+							<div class="form-group col-3" id="password_group">
+								{!! Form::text('s_nombre', null, ['class'=>'form-control r-0 light s-12',  'id'=>'s_nombre', 'onclick'=>'inputClear(this.id)','placeholder'=>'Segundo Apellido']) !!}
 								<span class="name_span"></span>
 							</div>
-							<div class="form-group col-3 m-0">
-								{{-- <i class="icon-key4 mr-2"></i> --}}
-								{!! Form::label('s_apellido', 'Segundo Apellido', ['class'=>'col-form-label s-12']) !!}
-								{!! Form::text('s_apellido', null, ['class'=>'form-control r-0 light s-12', 'id'=>'p_apellido']) !!}
+							<div class="form-group col-3">
+								{!! Form::text('s_apellido', null, ['class'=>'form-control r-0 light s-12', 'id'=>'p_apellido', 'placeholder'=>'Segundo Nombre']) !!}
 								<span class="code_span"></span>
 							</div>
 						</div>
@@ -45,27 +38,19 @@
 					<div class="col-md-12">
 						<div class="form-row">
 							<div class="form-group col-3 m-0" id="password_group">
-								{{-- <i class="icon-text_fields mr-2"></i> --}}
-								{!! Form::label('cedula', 'Cedula', ['class'=>'col-form-label s-12']) !!}
-								{!! Form::text('cedula', null, ['class'=>'form-control r-0 light s-12',  'id'=>'cedula', 'onclick'=>'inputClear(this.id)']) !!}
+								{!! Form::text('cedula', null, ['class'=>'form-control r-0 light s-12',  'id'=>'cedula', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'N° de Cédula']) !!}
 								<span class="symbol_span"></span>
 							</div>
 							<div class="form-group col-3 m-0">
-								{{-- <i class="icon-cogs mr-2"></i> --}}
-								{!! Form::label('fecha_nacimiento', 'Fecha Nacimiento', ['class'=>'col-form-label s-12']) !!}
-								{!! Form::text('fecha_nacimiento', null, ['class'=>'form-control r-0 light s-12',  'id'=>'fecha_nacimiento', 'onclick'=>'inputClear(this.id)']) !!}
+								{!! Form::text('fecha_nacimiento', null, ['class'=>'form-control r-0 light s-12',  'id'=>'fecha_nacimiento', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Fecha Nacmiento']) !!}
 								<span class="active_span"></span>
 							</div>
 							<div class="form-group col-3 m-0" id="password_group">
-								{{-- <i class="icon-text_fields mr-2"></i> --}}
-								{!! Form::label('sexo', 'Sexo', ['class'=>'col-form-label s-12']) !!}
-								{!! Form::select('sexo', [], null, ['class'=>'form-control r-0 light s-12', 'id'=>'sexo', 'onclick'=>'inputClear(this.id)']) !!}
+								{!! Form::select('sexo', [], null, ['class'=>'form-control r-0 light s-12', 'id'=>'sexo', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Sexo']) !!}
 								<span class="symbol_span"></span>
 							</div>
 							<div class="form-group col-3 m-0">
-								{{-- <i class="icon-cogs mr-2"></i> --}}
-								{!! Form::label('grupo_sanguineo', 'Grupo Sanguineo', ['class'=>'col-form-label s-12']) !!}
-								{!! Form::select('grupo_sanguineo', $grupoSanguineo, null, ['class'=>'form-control r-0 light s-12', 'id'=>'grupo_sanguineo', 'onclick'=>'inputClear(this.id)']) !!}
+								{!! Form::select('grupo_sanguineo', $grupoSanguineo, null, ['class'=>'form-control r-0 light s-12', 'id'=>'grupo_sanguineo', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Grupo Sanguineo']) !!}
 								<span class="active_span"></span>
 							</div>
 						</div>
@@ -82,56 +67,41 @@
 							</div>
 						</div>
 						<div class="form-row">
-							<div class="form-group col-2 m-0" id="password_group">
-								{{-- <i class="icon-text_fields mr-2"></i> --}}
-								{!! Form::label('talla_camisa', 'Camisa', ['class'=>'col-form-label s-12']) !!}
-								{!! Form::select('talla_camisa', $tallaCamisa, null, ['class'=>'form-control r-0 light s-12', 'id'=>'talla_camisa', 'onclick'=>'inputClear(this.id)']) !!}
+							<div class="form-group col-2" id="password_group">
+								{!! Form::select('talla_camisa', $tallaCamisa, null, ['class'=>'form-control r-0 light s-12', 'id'=>'talla_camisa', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Camisa']) !!}
 								<span class="symbol_span"></span>
 							</div>
-							<div class="form-group col-2 m-0">
-								{{-- <i class="icon-cogs mr-2"></i> --}}
-								{!! Form::label('talla_pantalon', 'Pantalón', ['class'=>'col-form-label s-12']) !!}
-								{!! Form::select('talla_pantalon', $tallaPantalon, null, ['class'=>'form-control r-0 light s-12', 'id'=>'talla_pantalon', 'onclick'=>'inputClear(this.id)']) !!}
+							<div class="form-group col-2">
+								{!! Form::select('talla_pantalon', $tallaPantalon, null, ['class'=>'form-control r-0 light s-12', 'id'=>'talla_pantalon', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Pantalon']) !!}
 								<span class="talla_pantalon"></span>
 							</div>
-							<div class="form-group col-2 m-0" id="password_group">
-								{{-- <i class="icon-text_fields mr-2"></i> --}}
-								{!! Form::label('talla_calzado', 'Calzado', ['class'=>'col-form-label s-12']) !!}
-								{!! Form::select('talla_calzado', $tallaCalzado, null, ['class'=>'form-control r-0 light s-12', 'id'=>'talla_calsado', 'onclick'=>'inputClear(this.id)']) !!}
+							<div class="form-group col-2" id="password_group">
+								{!! Form::select('talla_calzado', $tallaCalzado, null, ['class'=>'form-control r-0 light s-12', 'id'=>'talla_calsado', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Calzado']) !!}
 								<span class="talla_calzado_span"></span>
 							</div>
-							<div class="form-group col-2 m-0" id="password_group">
-								{{-- <i class="icon-text_fields mr-2"></i> --}}
-								{!! Form::label('estado', 'Estado', ['class'=>'col-form-label s-12']) !!}
-								{!! Form::select('estado', $estados, null, ['class'=>'form-control r-0 light s-12', 'id'=>'estado', 'onclick'=>'inputClear(this.id)']) !!}
+							<div class="form-group col-2" id="password_group">
+								{!! Form::select('estado', $estados, null, ['class'=>'form-control r-0 light s-12', 'id'=>'estado', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Estado']) !!}
 								<span class="estado_span"></span>
 							</div>
-							<div class="form-group col-2 m-0">
-								{{-- <i class="icon-cogs mr-2"></i> --}}
-								{!! Form::label('municipio', 'Municipio', ['class'=>'col-form-label s-12']) !!}
-								{!! Form::select('municipio', $municipios, null, ['class'=>'form-control r-0 light s-12', 'id'=>'municipio', 'onclick'=>'inputClear(this.id)']) !!}
+							<div class="form-group col-2">
+								{!! Form::select('municipio', $municipios, null, ['class'=>'form-control r-0 light s-12', 'id'=>'municipio', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Municipio']) !!}
 								<span class="municipio_span"></span>
 							</div>
-							<div class="form-group col-2 m-0" id="password_group">
-								{{-- <i class="icon-text_fields mr-2"></i> --}}
-								{!! Form::label('parroquia', 'Parroquia', ['class'=>'col-form-label s-12']) !!}
-								{!! Form::select('parroquia', $parroquias, null, ['class'=>'form-control r-0 light s-12', 'id'=>'parroquia', 'onclick'=>'inputClear(this.id)']) !!}
+							<div class="form-group col-2" id="password_group">
+								{!! Form::select('parroquia', $parroquias, null, ['class'=>'form-control r-0 light s-12', 'id'=>'parroquia', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Parroquia']) !!}
 								<span class="parroquia_span"></span>
 							</div>
 						</div>
 						<div class="form-row">
-							<div class="form-group col-3 m-0" id="password_group">
-								{!! Form::label('telefono', 'N° Telefonico Local', ['class'=>'col-form-label s-12']) !!}
-								{!! Form::text('telefono', null, ['class'=>'form-control r-0 light s-12',  'id'=>'telefono', 'onclick'=>'inputClear(this.id)','placeholder'=>'000 000-00-00']) !!}							
+							<div class="form-group col-3" id="password_group">
+								{!! Form::text('telefono', null, ['class'=>'form-control r-0 light s-12',  'id'=>'telefono', 'onclick'=>'inputClear(this.id)','placeholder'=>'N° Telefónico']) !!}							
 								<span class="telefono_span"></span>
 							</div>
-							<div class="form-group col-3 m-0" id="password_group">
-								{!! Form::label('telefono', 'N° Telefonico Móvil', ['class'=>'col-form-label s-12']) !!}
-								{!! Form::text('telefono', null, ['class'=>'form-control r-0 light s-12',  'id'=>'telefono_movil', 'onclick'=>'inputClear(this.id)','placeholder'=>'000 000-00-00']) !!}							
+							<div class="form-group col-3" id="password_group">
+								{!! Form::text('telefono', null, ['class'=>'form-control r-0 light s-12',  'id'=>'telefono_movil', 'onclick'=>'inputClear(this.id)','placeholder'=>'N° Telefónico Alternativo']) !!}							
 								<span class="telefono_movil_span"></span>
 							</div>
-							<div class="form-group col-6 m-0" id="password_group">
-								{!! Form::label('direccion', 'Dirección', ['class'=>'col-form-label s-12']) !!}
+							<div class="form-group col-6" id="password_group">
 								{!! Form::text('direccion', null, ['class'=>'form-control r-0 light s-12',  'id'=>'direccion', 'onclick'=>'inputClear(this.id)','placeholder'=>'Calle, Edificio/Casa, Torre, Piso, Letra, N° Apartamento']) !!}
 								<span class="direccion_span"></span>
 							</div>
@@ -139,40 +109,59 @@
 					</div>
 					<div class="col-md-12">
 						<div class="form-row">
-							<div class="col-6 text-primary">
-								<br>
+							<div class="col-12 text-primary">
 								Datos de Empleado
+								{{-- <hr> --}}
 							</div>
 						</div>
 						<div class="form-row">
-							<div class="form-group col-3 m-0" id="password_group">
-								{!! Form::label('ct', 'Credenciales', ['class'=>'col-form-label s-12']) !!}
-								{!! Form::text('ct', null, ['class'=>'form-control r-0 light s-12',  'id'=>'ct', 'onclick'=>'inputClear(this.id)','placeholder'=>'CT0000']) !!}							
+							<div class="form-group col-3" id="ct_group">
+								{!! Form::text('ct', null, ['class'=>'form-control r-0 light s-12',  'id'=>'ct', 'onclick'=>'inputClear(this.id)','placeholder'=>'N° Credencial']) !!}							
 								<span class="ct_span"></span>
 							</div>
-							<div class="form-group col-3 m-0" id="password_group">
-								{!! Form::label('cargo', 'Cargo', ['class'=>'col-form-label s-12']) !!}
-								{!! Form::select('cargo', $cargos, null, ['class'=>'form-control r-0 light s-12', 'id'=>'parroquia', 'onclick'=>'inputClear(this.id)']) !!}
+							<div class="form-group col-3" id="cargo_group">
+								{!! Form::select('cargo', $cargos, null, ['class'=>'form-control r-0 light s-12', 'id'=>'parroquia', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Cargo']) !!}
 								<span class="cargo_span"></span>
 							</div>
-							<div class="form-group col-3 m-0" id="password_group">
-								{!! Form::label('correo', 'Correo', ['class'=>'col-form-label s-12']) !!}
-								{!! Form::text('correo', null, ['class'=>'form-control r-0 light s-12',  'id'=>'correo', 'onclick'=>'inputClear(this.id)','placeholder'=>'direccion@email.com']) !!}
+							<div class="form-group col-3" id="correo_group">
+								{!! Form::text('correo', null, ['class'=>'form-control r-0 light s-12',  'id'=>'correo', 'onclick'=>'inputClear(this.id)','placeholder'=>'Correo']) !!}
 								<span class="correo_span"></span>
 							</div>
-							<div class="form-group col-3 m-0" id="password_group">
-								{!! Form::label('correo2', 'Correo Alternativo', ['class'=>'col-form-label s-12']) !!}
-								{!! Form::text('correo2', null, ['class'=>'form-control r-0 light s-12',  'id'=>'correo2', 'onclick'=>'inputClear(this.id)','placeholder'=>'direccion@email.com']) !!}
+							<div class="form-group col-3" id="correo2_group">
+								{!! Form::text('correo2', null, ['class'=>'form-control r-0 light s-12',  'id'=>'correo2', 'onclick'=>'inputClear(this.id)','placeholder'=>'Correo Alternativo']) !!}
 								<span class="correo2_span"></span>
 							</div>
 						</div>
 						<div class="form-row">
-							<div class="form-group col-3 m-0" id="password_group">
-								{!! Form::label('fecha_ingreso', 'Fecha Ingreso', ['class'=>'col-form-label s-12']) !!}
-								{!! Form::text('fecha_ingreso', null, ['class'=>'form-control r-0 light s-12',  'id'=>'fecha_ingreso', 'onclick'=>'inputClear(this.id)','placeholder'=>'']) !!}
+							<div class="form-group col-3" id="fecha_ingreso_group">
+								{!! Form::text('fecha_ingreso', null, ['class'=>'form-control r-0 light s-12',  'id'=>'fecha_ingreso', 'onclick'=>'inputClear(this.id)','placeholder'=>'Feha de Ingreso']) !!}
 								<span class="fecha_ingreso_span"></span>
 							</div>
+							<div class="form-group col-3" id="fecha_ingreso_group">
+								{!! Form::text('honorarios', null, ['class'=>'form-control r-0 light s-12',  'id'=>'honorarios', 'onclick'=>'inputClear(this.id)','placeholder'=>'Honorarios']) !!}
+								<span class="honorarios_span"></span>
+							</div>
 						</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="col-12 text-primary">
+						Datos Persona Contacto
+						{{-- <hr> --}}
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-3" id="p_nombre2">
+						{!! Form::text('p_nombre2', null, ['class'=>'form-control r-0 light s-12',  'id'=>'p_nombre', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Primer Nombre']) !!}
+						<span class="name_span"></span>
+					</div>
+					<div class="form-group col-3" id="p_apellido2">
+						{!! Form::text('p_apellido2', null, ['class'=>'form-control r-0 light s-12', 'id'=>'p_apellido', 'placeholder'=>'Primer Apellido']) !!}
+						<span class="code_span"></span>
+					</div>
+					<div class="form-group col-3" id="telefono2_group">
+						{!! Form::text('telefono2', null, ['class'=>'form-control r-0 light s-12',  'id'=>'telefono2', 'onclick'=>'inputClear(this.id)','placeholder'=>'N° Telefónico']) !!}							
+						<span class="telefono_span2"></span>
 					</div>
 				</div>
 			</div>
