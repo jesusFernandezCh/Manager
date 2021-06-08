@@ -1,5 +1,5 @@
 <!-- Modal -->
-{!! Form::open(['route'=>'empleados.store','method'=>'POST', 'class'=>'formlDinamic', 'id'=>'guardarRegistro']) !!}
+{!! Form::open(['route'=>'empleados.store','method'=>'POST', 'class'=>'formlDinamics', 'id'=>'guardarRegistros']) !!}
 <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
@@ -17,41 +17,41 @@
 							</div>
 						</div>
 						<div class="form-row">
-							<div class="form-group col-3" id="password_group">
+							<div class="form-group col-3" id="p_nombre_group">
 								{!! Form::text('p_nombre', null, ['class'=>'form-control r-0 light s-12',  'id'=>'p_nombre', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Primer Nombre']) !!}
-								<span class="name_span"></span>
+								<span class="p_nombre_span"></span>
 							</div>
-							<div class="form-group col-3">
+							<div class="form-group col-3" id="p_nombre_group">
 								{!! Form::text('p_apellido', null, ['class'=>'form-control r-0 light s-12', 'id'=>'p_apellido', 'placeholder'=>'Primer Apellido']) !!}
-								<span class="code_span"></span>
+								<span class="p_nombre_span"></span>
 							</div>
-							<div class="form-group col-3" id="password_group">
+							<div class="form-group col-3" id="s_nombre_group">
 								{!! Form::text('s_nombre', null, ['class'=>'form-control r-0 light s-12',  'id'=>'s_nombre', 'onclick'=>'inputClear(this.id)','placeholder'=>'Segundo Apellido']) !!}
-								<span class="name_span"></span>
+								<span class="s_nombre_span"></span>
 							</div>
-							<div class="form-group col-3">
+							<div class="form-group col-3" id="s_apellido_group">
 								{!! Form::text('s_apellido', null, ['class'=>'form-control r-0 light s-12', 'id'=>'p_apellido', 'placeholder'=>'Segundo Nombre']) !!}
-								<span class="code_span"></span>
+								<span class="s_apellido_span"></span>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-12">
 						<div class="form-row">
-							<div class="form-group col-3 m-0" id="password_group">
+							<div class="form-group col-3 m-0" id="cedula_group">
 								{!! Form::text('cedula', null, ['class'=>'form-control r-0 light s-12',  'id'=>'cedula', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'N° de Cédula']) !!}
-								<span class="symbol_span"></span>
+								<span class="cedula_span"></span>
 							</div>
-							<div class="form-group col-3 m-0">
-								{!! Form::text('fecha_nacimiento', null, ['class'=>'form-control r-0 light s-12',  'id'=>'fecha_nacimiento', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Fecha Nacmiento']) !!}
-								<span class="active_span"></span>
+							<div class="form-group col-3 m-0" id="fecha_nacimiento_group">
+								{!! Form::text('fecha_nacimiento', null, ['class'=>'form-control r-0 light s-12 datepicker',  'id'=>'fecha_nacimiento', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Fecha Nacmiento']) !!}
+								<span class="fecha_nacimiento_span"></span>
 							</div>
-							<div class="form-group col-3 m-0" id="password_group">
+							<div class="form-group col-3 m-0" id="sexo_group">
 								{!! Form::select('sexo', [], null, ['class'=>'form-control r-0 light s-12', 'id'=>'sexo', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Sexo']) !!}
-								<span class="symbol_span"></span>
+								<span class="sexo_span"></span>
 							</div>
-							<div class="form-group col-3 m-0">
+							<div class="form-group col-3 m-0" id="grupo_sanguineo_group">
 								{!! Form::select('grupo_sanguineo', $grupoSanguineo, null, ['class'=>'form-control r-0 light s-12', 'id'=>'grupo_sanguineo', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Grupo Sanguineo']) !!}
-								<span class="active_span"></span>
+								<span class="grupo_sanguineo_span"></span>
 							</div>
 						</div>
 					</div>
@@ -67,41 +67,41 @@
 							</div>
 						</div>
 						<div class="form-row">
-							<div class="form-group col-2" id="password_group">
+							<div class="form-group col-2" id="talla_camisa_group">
 								{!! Form::select('talla_camisa', $tallaCamisa, null, ['class'=>'form-control r-0 light s-12', 'id'=>'talla_camisa', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Camisa']) !!}
-								<span class="symbol_span"></span>
+								<span class="talla_camisa_span"></span>
 							</div>
-							<div class="form-group col-2">
+							<div class="form-group col-2" id="talla_pantalon_group">
 								{!! Form::select('talla_pantalon', $tallaPantalon, null, ['class'=>'form-control r-0 light s-12', 'id'=>'talla_pantalon', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Pantalon']) !!}
-								<span class="talla_pantalon"></span>
+								<span class="talla_pantalon_span"></span>
 							</div>
-							<div class="form-group col-2" id="password_group">
+							<div class="form-group col-2" id="talla_calzado_group">
 								{!! Form::select('talla_calzado', $tallaCalzado, null, ['class'=>'form-control r-0 light s-12', 'id'=>'talla_calsado', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Calzado']) !!}
 								<span class="talla_calzado_span"></span>
 							</div>
-							<div class="form-group col-2" id="password_group">
+							<div class="form-group col-2" id="estado_group">
 								{!! Form::select('estado', $estados, null, ['class'=>'form-control r-0 light s-12', 'id'=>'estado', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Estado']) !!}
 								<span class="estado_span"></span>
 							</div>
-							<div class="form-group col-2">
+							<div class="form-group col-2" id="municipio_group">
 								{!! Form::select('municipio', $municipios, null, ['class'=>'form-control r-0 light s-12', 'id'=>'municipio', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Municipio']) !!}
 								<span class="municipio_span"></span>
 							</div>
-							<div class="form-group col-2" id="password_group">
+							<div class="form-group col-2" id="parroquia_group">
 								{!! Form::select('parroquia', $parroquias, null, ['class'=>'form-control r-0 light s-12', 'id'=>'parroquia', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Parroquia']) !!}
 								<span class="parroquia_span"></span>
 							</div>
 						</div>
 						<div class="form-row">
-							<div class="form-group col-3" id="password_group">
+							<div class="form-group col-3" id="telefono_group">
 								{!! Form::text('telefono', null, ['class'=>'form-control r-0 light s-12',  'id'=>'telefono', 'onclick'=>'inputClear(this.id)','placeholder'=>'N° Telefónico']) !!}							
 								<span class="telefono_span"></span>
 							</div>
-							<div class="form-group col-3" id="password_group">
-								{!! Form::text('telefono', null, ['class'=>'form-control r-0 light s-12',  'id'=>'telefono_movil', 'onclick'=>'inputClear(this.id)','placeholder'=>'N° Telefónico Alternativo']) !!}							
-								<span class="telefono_movil_span"></span>
+							<div class="form-group col-3" id="telefono2_group">
+								{!! Form::text('telefono2', null, ['class'=>'form-control r-0 light s-12',  'id'=>'telefono_movil', 'onclick'=>'inputClear(this.id)','placeholder'=>'N° Telefónico Alternativo']) !!}							
+								<span class="telefono2_span"></span>
 							</div>
-							<div class="form-group col-6" id="password_group">
+							<div class="form-group col-6" id="direccion_group">
 								{!! Form::text('direccion', null, ['class'=>'form-control r-0 light s-12',  'id'=>'direccion', 'onclick'=>'inputClear(this.id)','placeholder'=>'Calle, Edificio/Casa, Torre, Piso, Letra, N° Apartamento']) !!}
 								<span class="direccion_span"></span>
 							</div>
