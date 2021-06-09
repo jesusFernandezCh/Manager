@@ -80,11 +80,11 @@
 								<span class="talla_calzado_span"></span>
 							</div>
 							<div class="form-group col-2" id="estado_group">
-								{!! Form::select('estado', $estados, null, ['class'=>'form-control r-0 light s-12', 'id'=>'estado', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Estado']) !!}
+								{!! Form::select('estado', $estados, null, ['class'=>'form-control r-0 light s-12', 'id'=>'estado', 'onclick'=>'inputClear(this.id)', 'onchange'=>"cargarCombo(108,this.value,'municipio')", 'placeholder'=>'Estado']) !!}
 								<span class="estado_span"></span>
 							</div>
 							<div class="form-group col-2" id="municipio_group">
-								{!! Form::select('municipio', $municipios, null, ['class'=>'form-control r-0 light s-12', 'id'=>'municipio', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Municipio']) !!}
+								{!! Form::select('municipio', $municipios, null, ['class'=>'form-control r-0 light s-12', 'id'=>'municipio', 'onclick'=>'inputClear(this.id)', 'onchange'=>"cargarCombo(109,this.value,'parroquia')",'placeholder'=>'Municipio']) !!}
 								<span class="municipio_span"></span>
 							</div>
 							<div class="form-group col-2" id="parroquia_group">
@@ -120,7 +120,7 @@
 								<span class="ct_span"></span>
 							</div>
 							<div class="form-group col-3" id="cargo_group">
-								{!! Form::select('cargo', $cargos, null, ['class'=>'form-control r-0 light s-12', 'id'=>'parroquia', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Cargo']) !!}
+								{!! Form::select('cargo', $cargos, null, ['class'=>'form-control r-0 light s-12', 'id'=>'cargo', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Cargo']) !!}
 								<span class="cargo_span"></span>
 							</div>
 							<div class="form-group col-3" id="correo_group">
@@ -134,7 +134,7 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-3" id="fecha_ingreso_group">
-								{!! Form::text('fecha_ingreso', null, ['class'=>'form-control r-0 light s-12',  'id'=>'fecha_ingreso', 'onclick'=>'inputClear(this.id)','placeholder'=>'Feha de Ingreso']) !!}
+								{!! Form::text('fecha_ingreso', null, ['class'=>'form-control r-0 light s-12 datepicker',  'id'=>'fecha_ingreso', 'onclick'=>'inputClear(this.id)','placeholder'=>'Feha de Ingreso']) !!}
 								<span class="fecha_ingreso_span"></span>
 							</div>
 							<div class="form-group col-3" id="fecha_ingreso_group">

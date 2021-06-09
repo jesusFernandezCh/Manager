@@ -2,16 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Direccion;
 use App\Models\Nomenclador;
+use App\Repositories\CorreoRerpository;
+use App\Repositories\DireccionRerpository;
 use App\Repositories\EmpleadoRerpository;
 use App\Repositories\NomencladorRerpository;
+use App\Repositories\PersonaRerpository;
 use Illuminate\Http\Request;
+use Session;
 
 class EmpleadoController extends Controller
 {
 
     private $stmt;
     private $nomenclador;
+
     private $grupo_Sanguineo;
 
     public function __construct(
@@ -61,7 +67,10 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $data = $request->all();
+        dd($data);
+        $this->stmt->nuevoRegistro($data);
+        $request->session()->flash('message-success', $request->p_nombre.' '.$request->p_apellido.' fue registrado exitosamente');
     }
 
     /**

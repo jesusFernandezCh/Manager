@@ -21,4 +21,22 @@ class NomencladorRerpository extends BaseRerpository implements IRerpository
     {
         return $this->stmt;
     }
+    /**
+     * [comboBaox description]
+     *
+     * @param   [type]  $id    [$id description]
+     * @param   [type]  $tipo  [$tipo description]
+     *
+     * @return  [type]         [return description]
+     */
+    public function comboBox($id, $tipo)
+    {
+        $arreglo = Nomenclador::all()
+        ->where('nomenclador','=',$id)
+        ->where('tipo','=',$tipo)
+        ->pluck('valor','id');
+        foreach ($arreglo as $code => $name) {
+            echo "<option value=\"$code\">$name</option>";
+        }  
+    }
 }

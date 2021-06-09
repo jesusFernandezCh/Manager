@@ -10,7 +10,7 @@ class Empleado extends Model
     protected $table = 'empleados';
 
     protected $fillable = [
-        'foto', 'ct', 'cargo','fecha_ingreso', 'status', 'persona', 'persona_contacto', 'correo'
+        'foto', 'ct', 'cargo','fecha_ingreso', 'status', 'persona', 'persona_contacto', 'correo', 'telefono'
     ];
 
     /**
@@ -55,24 +55,12 @@ class Empleado extends Model
     }
 
     /**
-     * [getfull description]
+     * [Telefonos relación de N:N]
      * @return  [type]  [return description]
      */
-    public function getfull()
+    public function Telefonos()
     {
-        return collect([
-            'foto'          => $this->Persona->foto,
-            'p_nomber'      => $this->Persona->p_nombre,
-            'p_apellido'    => $this->Persona->p_apellido,
-            'sexo'          => $this->Persona->sexo,
-            'fecha_nac'     => $this->Persona->fecha_nacimiento,
-            'cedula'        => $this->Persona->cedula,
-            'ct'            => $this->ct,
-            'cargo'         => $this->cargo,
-            'fecha_ingreso' => $this->fecha_ingreso,
-            'status'        => $this->status,
-            'correo'        => $this->correo
-        ]);
+        return $this->belonToMany(Telefono::class,'telefono')->withPivot('telefono_id');
     }
-    
+
 }

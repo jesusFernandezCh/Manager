@@ -548,3 +548,22 @@ function cEstPSale_EstSale(i, value, multiplo, recept) {
     var total = orderQty * value;
     $('#'+recept+i).val(total);
 }
+
+/**
+ * [argarCombo]
+ * [recibe 3 parametros desde un select para activar un combo dependiente]
+ * @param  {[integer]} tipo  [tipo de nomeclador]
+ * @param  {[integer]} id    [id de nomenclador]
+ * @param  {[string]} campo  [id del campo dependiente]
+ * @return {[function]}      [data]
+ */
+ function cargarCombo(tipo, id, campo) {
+    var url = "/combosBox/" + tipo + "/" + id;
+    // alert(url);
+    $.get(url, function(data) {
+        console.log('MUNICIPOS: '+data);
+        $('#'+campo).empty();
+        $('#'+campo).append('<option value="">Seleccione</option>');
+        $('#'+campo).append(data);
+    });
+}

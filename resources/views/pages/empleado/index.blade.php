@@ -85,10 +85,10 @@ Empleados</h1>
                                         @endswitch
                                     </td>
                                     <td class="text-center">
-                                        <a href="#" class="btn btn-default btn-sm" title="Detalles" data-toggle="modal" data-target="#show" onclick="showData('{{ route('currency.show', $empleado->id) }}')">
+                                        <a href="#" class="btn btn-default btn-sm" title="Detalles" data-toggle="modal" data-target="#show" onclick="showData('{{ route('empleados.show', $empleado->id) }}')">
                                             <i class="icon-eye text-info"></i>
                                         </a>
-                                        <a href="#" class="btn btn-default btn-sm" title="Editar" data-toggle="modal" data-target="#update" onclick="obtenerDatosGet('{{ route('currency.edit',$empleado->id) }}', '{{ route('currency.update',$empleado->id) }}')">
+                                        <a href="#" class="btn btn-default btn-sm" title="Editar" data-toggle="modal" data-target="#update" onclick="obtenerDatosGet('{{ route('empleados.edit',$empleado->id) }}', '{{ route('empleados.update',$empleado->id) }}')">
                                             <i class="icon-pencil text-info"></i>
                                         </a>
                                     </td>
@@ -117,5 +117,11 @@ Empleados</h1>
     var columnsIvisibles = [1,2];
     var filtrar = true;
     dataTableExport(title,colunms, columnsIvisibles, filtrar);
+    $('.datepicker').datetimepicker({
+     timepicker:false,
+     format:'Y-m-d',
+    });
+    
 </script>
+
 @endsection

@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Model\Persona;
+use App\Models\Persona;
 
 class PersonaRerpository extends BaseRerpository implements IRerpository
 {

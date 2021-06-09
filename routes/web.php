@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/home', 'HomeController@index')->name('home');
 	// modules
 	Route::resource('empleados', 'EmpleadoController');
+	Route::get('combosBox/{id}/{tipo}','NomencladorController@getCombos');
 	Route::resource('profitCenter', 'ProfitCenterController');
 	Route::resource('account', 'AccountController');
 	Route::resource('logunit', 'LogunitController');
