@@ -70,7 +70,7 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #212529;
+    /* color: #212529; */
     text-align: left;
     background-color: #ecf0f5
 }
@@ -24030,7 +24030,7 @@ a.text-dark:hover {
 }
 
 body {
-    color: #86939e;
+    /* color: #86939e; */
     font-family: Roboto, sans-serif, serif;
     font-size: 14px;
     height: 100%;
@@ -29295,7 +29295,7 @@ a[data-goto]:hover {
 
 .fc-event,
 .fc-event:hover {
-    color: #fff;
+    color: #fff !important;
     text-decoration: none
 }
 
