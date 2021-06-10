@@ -75,6 +75,16 @@
                             <i class="icon icon-circle-o text-primary s-18"></i> <span>Empleados</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('empleados.index') }}">
+                            <i class="icon icon-circle-o text-primary s-18"></i> <span>Documentos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('empleados.index') }}">
+                            <i class="icon icon-circle-o text-primary s-18"></i> <span>Eventos</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="treeview">
@@ -83,6 +93,13 @@
                     {{-- {{ __('Users') }} --}}
                     <span>Reportes</span>
                     <i class="icon icon-angle-left s-18 pull-right"></i>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="{{ route('eventos.index') }}">
+                    <i class="icon icon-calendar blue-text s-24"></i>
+                    {{-- {{ __('Users') }} --}}
+                    <span>Eventos</span>
                 </a>
             </li>
             {{-- <li class="treeview no-b"><a href="{{ route('operationIndexAsoc') }}">

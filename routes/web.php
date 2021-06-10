@@ -59,59 +59,14 @@ Route::group(['middleware' => 'auth'], function () {
 	// modules
 	Route::resource('empleados', 'EmpleadoController');
 	Route::get('combosBox/{id}/{tipo}','NomencladorController@getCombos');
-	Route::resource('profitCenter', 'ProfitCenterController');
-	Route::resource('account', 'AccountController');
-	Route::resource('logunit', 'LogunitController');
-	Route::resource('country', 'CountryController');
-	Route::resource('port', 'PortController');
-	Route::resource('incoterm', 'IncotermController');
-	Route::resource('accountCategory', 'AccountCategoryController');
-	Route::resource('accountMetaType', 'AccountMetaTypeController');
-	Route::resource('accountMeta', 'AccountMetaController');
-	Route::resource('accountContact', 'AccountContactController');
-	Route::resource('accountOperator', 'AccountOperatorController');
-	Route::resource('operations', 'OperationController');
-	Route::resource('status', 'OperationStatusController');
-	Route::resource('business', 'BusinessLineController');
-	Route::resource('cargoUnit', 'CargoUnitController');
-	Route::resource('orderPmtTerm', 'OrderPmtTermController');
-	Route::resource('operationShip', 'OperationShipController');
-	Route::resource('docsInstruction', 'DocsInstructionController');
-	Route::resource('accountCourrier', 'AccountCourrierController');
-	Route::resource('operationDocument', 'OperationDocumentController');
-	Route::resource('shipDetails', 'ShipDetailsController');
-	Route::resource('freightRates', 'FreightRateController');
-	Route::resource('freightLines', 'FreightLineController');
-	Route::resource('mvTypes', 'MvTypeController');
-	Route::resource('mvConcepts', 'MvConceptController');
 
-	Route::get("metaEdit/{meta?}/{account?}", "AccountMetaController@metaEdit")->name("metaEdit");
-	Route::get("contactAsoc/{id?}", "AccountContactController@contactAsoc")->name("contactsAsoc");
-	Route::get('contactEdit/{countact?}/{account?}', 'AccountContactController@contactAsocEdit')->name("contactEdit");
-	Route::get('operation/documents/{operation?}', 'DocumentController@documentsOperation')->name("documentsAsoc");
+	Route::resource('eventos', 'EventosController');
+	
+	// Route::get("metaEdit/{meta?}/{account?}", "AccountMetaController@metaEdit")->name("metaEdit");
+	
 	Route::get('operation/documents/edit/{docuemnt?}/{operation?}', 'DocumentController@documentOperationEdit')->name("documentOperationEdit");
-	Route::get('operationIndexAsoc', 'OperationController@indexAsoc')->name('operationIndexAsoc');
-	Route::get('comboCustomerBank/{customer_id?}/', 'OperationController@customer_bank')->name('comboCustomerBank');
-	Route::get('supplierComercial/{supplier_id?}/', 'OperationController@supplierComercial')->name('supplierComercial');
 	Route::get('docsIntruccionEditAsoc/{docsIntruccion_id?}/', 'DocsInstructionController@editAsoc')->name('docsIntruccionEditAsoc');
-	Route::get('AccountCourrierEditAsoc/{accountCourrier_id?}/', 'AccountCourrierController@editAsoc')->name('AccountCourrierEditAsoc');
 
-	/* Currency route */
-	Route::resource('currency', 'CurrencyController');
-	Route::resource('document', 'DocumentController');
-	Route::resource('payments', 'PaymentsController');
-	Route::resource('bank', 'BanksController');
-	Route::resource('partner_bank', 'PartnerBankController');
-	// patherBankAccount
-	Route::get('partner_bank_account/{id_account?}/', 'PartnerBankController@indexAccount')->name('indexPatherAccount');
-	Route::resource('bank_transaction', 'BanksTransactionController');
-	Route::resource('bank_account_type', 'BankAccountTypeController');
-	Route::resource('product_line', 'ProductLineController');
-	Route::resource('product_gen', 'ProductGenController');
-	Route::resource('doc_status', 'DocStatusController');
-	Route::resource('shelf_life', 'ShelfLifeController');
-	Route::resource('order_details', 'OrderDetailController');
-	Route::resource('currier', 'CurrierController');
 	Route::get('/document/download/{id}', 'DocumentController@download')->middleware('auth');
 	Route::resource('documentsType', 'DocumentsTypeController');
 	/* Laguage */

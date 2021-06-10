@@ -11,6 +11,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href=  {{asset('assets/css/app.css')}}>
     <link rel="stylesheet" href=  {{asset('assets/plugins/toastr/toastr.css')}}>
+    <link rel="stylesheet" href=  {{asset('assets/plugins/fullcalendar-5.7.2/lib/main.css')}}>
    
 
     {{-- <link rel="stylesheet" href=  {{asset('assets/plugins/bootstrap-fileinput/css/fileinput.css')}}> --}}
@@ -80,6 +81,7 @@
     </script>
     <script src={{asset('assets/js/functions.js')}}></script>
     <script src={{asset('assets/plugins/toastr/toastr.js')}}></script>
+    <script src={{asset('assets/plugins/fullcalendar-5.7.2/lib/main.js')}}></script>
     {{-- <!-- <script src={{asset('assets/plugins/bootstrap-fileinput/js/fileinput.js')}}></script>
     <script src={{asset('assets/plugins/bootstrap-fileinput/js/plugins/piexif.js')}}></script>
     <script src={{asset('assets/plugins/bootstrap-fileinput/js/plugins/sortable.js')}}></script>

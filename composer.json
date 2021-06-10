@@ -12,6 +12,7 @@
         "barryvdh/laravel-dompdf": "^0.8.5",
         "caffeinated/shinobi": "^4.1",
         "fideloper/proxy": "^4.0",
+        "fullcalendar/fullcalendar": "^3.10",
         "kartik-v/bootstrap-fileinput": "dev-master",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
