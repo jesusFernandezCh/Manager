@@ -7,7 +7,7 @@
 			</div>
 			<div class="modal-body">
 				<div class="col-12 form-group">
-					{!! Form::text('name', null, ['class'=>'form-control','placeholder'=>'título']) !!}
+					{!! Form::text('name', null, ['class'=>'form-control','placeholder'=>'Título']) !!}
 				</div>
 				<div class="col-12">
 					{!! Form::textarea('name', null, ['class'=>'form-control','placeholder'=>'Descripción']) !!}
