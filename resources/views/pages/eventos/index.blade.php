@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title')
-    <h1 class="nav-title text-white"> <i class="icon icon-group"></i>
-        Empleados</h1>
+    <h1 class="nav-title text-white"> <i class="icon icon-calendar"></i>
+        Eventos</h1>
 @section('top-menu')
     {{-- header --}}
     @include('pages.eventos.headbar')
@@ -53,12 +53,67 @@
                 right: 'dayGridMonth,dayGridWeek,dayGridDay'
             },
             buttonText: {
-                    today: "Hoy",
-                    month: "Mes",
-                    week: "Semana",
-                    day: "Agenda"
+                today: "Hoy",
+                month: "Mes",
+                week: "Semana",
+                day: "Agenda"
+            },
+            navLinks: true, // can click day/week names to navigate views
+            businessHours: true, // display business hours
+            editable: true,
+            selectable: true,
+            events: [{
+                    title: 'Business Lunch',
+                    start: '2021-06-03T13:00:00',
+                    constraint: 'businessHours'
                 },
-            dateClick: function() {
+                {
+                    title: 'Meeting',
+                    start: '2021-06-13T11:00:00',
+                    constraint: 'availableForMeeting', // defined below
+                    color: '#257e4a'
+                },
+                {
+                    title: 'Conference',
+                    start: '2021-06-18',
+                    end: '2021-06-20'
+                },
+                {
+                    title: 'Party',
+                    start: '2021-06-29T20:00:00'
+                },
+
+                // areas where "Meeting" must be dropped
+                {
+                    groupId: 'availableForMeeting',
+                    start: '2021-06-11T10:00:00',
+                    end: '2021-06-11T16:00:00',
+                    display: 'background'
+                },
+                {
+                    groupId: 'availableForMeeting',
+                    start: '2021-06-13T10:00:00',
+                    end: '2021-06-13T16:00:00',
+                    display: 'background'
+                },
+
+                // red areas where no events can be dropped
+                {
+                    start: '2021-06-24',
+                    end: '2021-06-28',
+                    overlap: false,
+                    display: 'background',
+                    color: '#ff9f89'
+                },
+                {
+                    start: '2021-06-06',
+                    end: '2021-06-08',
+                    overlap: false,
+                    display: 'background',
+                    color: '#ff9f89'
+                }
+            ],
+            dateClick: function(info) {
                 $("#create").modal("show");
             }
         });

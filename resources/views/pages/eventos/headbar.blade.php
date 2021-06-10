@@ -4,6 +4,11 @@
             <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
                 <li>
                     <a class="nav-link active" href="#" role="tab" id="empleados">
+                        <i class="icon icon-calendar"></i> Eventos
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="empleados" role="tab" id="empleados">
                         <i class="icon icon-group"></i> Empleados
                     </a>
                 </li>

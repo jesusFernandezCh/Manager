@@ -2,7 +2,7 @@
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title" id="myModalLabel"><i class="icon icon-calendar"></i> Nuevo Registro</h4>
+				<h4 class="modal-title" id="myModalLabel"><i class="icon icon-calendar"></i> Nuevo Evento</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			</div>
 			<div class="modal-body">
