@@ -30,8 +30,10 @@ class EmpleadoRerpository extends BaseRerpository implements IRerpository
 
     public function nuevoRegistro($data)
     {
+        //Crea el registro de la dirección
         $direccion = $this->direccion->create($data);
         $data = Arr::add($data,'direccion',$direccion->id);
+        //Crea el registro de la persona
         $persona = $this->persona->create($data);
         $data = Arr::add($data,'persona',$persona->id);
         $correo = $this->correo->create($data);

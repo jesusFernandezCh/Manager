@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Empleado\CreateRequest;
 use App\Models\Direccion;
 use App\Models\Nomenclador;
 use App\Repositories\CorreoRerpository;
@@ -10,6 +11,7 @@ use App\Repositories\EmpleadoRerpository;
 use App\Repositories\NomencladorRerpository;
 use App\Repositories\PersonaRerpository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Session;
 
 class EmpleadoController extends Controller
@@ -38,10 +40,12 @@ class EmpleadoController extends Controller
     {
         $empleados      = $this->stmt->getAll();
         $grupoSanguineo = $this->nomenclador->all()->where('tipo',3)->pluck('valor','codigo');
+        $grupoSanguineo = Arr::add($grupoSanguineo,'Estado', -1);
         $tallaCamisa    = $this->nomenclador->all()->where('tipo',8)->pluck('valor','codigo');
         $tallaPantalon  = $this->nomenclador->all()->where('tipo',9)->pluck('valor','codigo');
         $tallaCalzado   = $this->nomenclador->all()->where('tipo',10)->pluck('valor','codigo');
-        $estados        = $this->nomenclador->all()->where('tipo',107)->pluck('valor','codigo');
+        $estados        = $this->nomenclador->all()->where(['tipo',107])->pluck('valor','codigo');
+        $estados = Arr::add($estados,'Estado', -1);
         $municipios     = $this->nomenclador->all()->where('tipo',108)->pluck('valor','codigo');
         $parroquias     = $this->nomenclador->all()->where('tipo',109)->pluck('valor','codigo');
         $cargos         = $this->nomenclador->all()->where('tipo',2)->pluck('valor','codigo');
@@ -56,7 +60,7 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-        //
+        dd('pase');
     }
 
     /**

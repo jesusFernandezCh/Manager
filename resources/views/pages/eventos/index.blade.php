@@ -34,10 +34,10 @@
     </div>
 </div>
 <!--Add New Message Fab Button-->
-<a href="#" class="btn-fab btn-fab-md fab-right fab-right-bottom-fixed shadow btn-primary" data-toggle="modal"
+{{-- <a href="#" class="btn-fab btn-fab-md fab-right fab-right-bottom-fixed shadow btn-primary" data-toggle="modal"
     data-target="#create" title="Add Currency">
     <i class="icon-add"></i>
-</a>
+</a> --}}
 @endsection
 @section('js')
 <script>

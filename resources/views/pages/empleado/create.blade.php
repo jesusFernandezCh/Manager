@@ -21,9 +21,9 @@
 								{!! Form::text('p_nombre', null, ['class'=>'form-control r-0 light s-12',  'id'=>'p_nombre', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Primer Nombre']) !!}
 								<span class="p_nombre_span"></span>
 							</div>
-							<div class="form-group col-3" id="p_nombre_group">
+							<div class="form-group col-3" id="p_apellido_group">
 								{!! Form::text('p_apellido', null, ['class'=>'form-control r-0 light s-12', 'id'=>'p_apellido', 'placeholder'=>'Primer Apellido']) !!}
-								<span class="p_nombre_span"></span>
+								<span class="p_apellido_span"></span>
 							</div>
 							<div class="form-group col-3" id="s_nombre_group">
 								{!! Form::text('s_nombre', null, ['class'=>'form-control r-0 light s-12',  'id'=>'s_nombre', 'onclick'=>'inputClear(this.id)','placeholder'=>'Segundo Apellido']) !!}
@@ -46,7 +46,7 @@
 								<span class="fecha_nacimiento_span"></span>
 							</div>
 							<div class="form-group col-3 m-0" id="sexo_group">
-								{!! Form::select('sexo', [], null, ['class'=>'form-control r-0 light s-12', 'id'=>'sexo', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Sexo']) !!}
+								{!! Form::select('sexo', ['F'=>'Femenino','M'=>'Masculino'], null, ['class'=>'form-control r-0 light s-12', 'id'=>'sexo', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Sexo']) !!}
 								<span class="sexo_span"></span>
 							</div>
 							<div class="form-group col-3 m-0" id="grupo_sanguineo_group">
@@ -80,7 +80,7 @@
 								<span class="talla_calzado_span"></span>
 							</div>
 							<div class="form-group col-2" id="estado_group">
-								{!! Form::select('estado', $estados, null, ['class'=>'form-control r-0 light s-12', 'id'=>'estado', 'onclick'=>'inputClear(this.id)', 'onchange'=>"cargarCombo(108,this.value,'municipio')", 'placeholder'=>'Estado']) !!}
+								{!! Form::select('estado', $estados, null, ['class'=>'form-control r-0 light s-12', 'id'=>'estado', 'onclick'=>'inputClear(this.id)', 'onchange'=>"cargarCombo(108,this.value,'municipio')"]) !!}
 								<span class="estado_span"></span>
 							</div>
 							<div class="form-group col-2" id="municipio_group">
@@ -101,9 +101,9 @@
 								{!! Form::text('telefono2', null, ['class'=>'form-control r-0 light s-12',  'id'=>'telefono_movil', 'onclick'=>'inputClear(this.id)','placeholder'=>'N° Telefónico Alternativo']) !!}							
 								<span class="telefono2_span"></span>
 							</div>
-							<div class="form-group col-6" id="direccion_group">
-								{!! Form::text('direccion', null, ['class'=>'form-control r-0 light s-12',  'id'=>'direccion', 'onclick'=>'inputClear(this.id)','placeholder'=>'Calle, Edificio/Casa, Torre, Piso, Letra, N° Apartamento']) !!}
-								<span class="direccion_span"></span>
+							<div class="form-group col-6" id="detalles_group">
+								{!! Form::text('detalles', null, ['class'=>'form-control r-0 light s-12',  'id'=>'detalles', 'onclick'=>'inputClear(this.id)','placeholder'=>'Calle, Edificio/Casa, Torre, Piso, Letra, N° Apartamento']) !!}
+								<span class="detalles_span"></span>
 							</div>
 						</div>
 					</div>
