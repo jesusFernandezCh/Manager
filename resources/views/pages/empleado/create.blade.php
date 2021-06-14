@@ -50,7 +50,7 @@
 								<span class="sexo_span"></span>
 							</div>
 							<div class="form-group col-3 m-0" id="grupo_sanguineo_group">
-								{!! Form::select('grupo_sanguineo', $grupoSanguineo, null, ['class'=>'form-control r-0 light s-12', 'id'=>'grupo_sanguineo', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Grupo Sanguineo']) !!}
+								{!! Form::select('grupo_sanguineo', $combos['grupoSanguineo'], null, ['class'=>'form-control r-0 light s-12', 'id'=>'grupo_sanguineo', 'onclick'=>'inputClear(this.id)']) !!}
 								<span class="grupo_sanguineo_span"></span>
 							</div>
 						</div>
@@ -68,27 +68,27 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-2" id="talla_camisa_group">
-								{!! Form::select('talla_camisa', $tallaCamisa, null, ['class'=>'form-control r-0 light s-12', 'id'=>'talla_camisa', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Camisa']) !!}
+								{!! Form::select('talla_camisa', $combos['tallaCamisa'], null, ['class'=>'form-control r-0 light s-12', 'id'=>'talla_camisa', 'onclick'=>'inputClear(this.id)'])!!}
 								<span class="talla_camisa_span"></span>
 							</div>
 							<div class="form-group col-2" id="talla_pantalon_group">
-								{!! Form::select('talla_pantalon', $tallaPantalon, null, ['class'=>'form-control r-0 light s-12', 'id'=>'talla_pantalon', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Pantalon']) !!}
+								{!! Form::select('talla_pantalon', $combos['tallaPantalon'], null, ['class'=>'form-control r-0 light s-12', 'id'=>'talla_pantalon', 'onclick'=>'inputClear(this.id)'])!!}
 								<span class="talla_pantalon_span"></span>
 							</div>
 							<div class="form-group col-2" id="talla_calzado_group">
-								{!! Form::select('talla_calzado', $tallaCalzado, null, ['class'=>'form-control r-0 light s-12', 'id'=>'talla_calsado', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Calzado']) !!}
+								{!! Form::select('talla_calzado', $combos['tallaCalzado'], null, ['class'=>'form-control r-0 light s-12', 'id'=>'talla_calsado', 'onclick'=>'inputClear(this.id)'])!!}
 								<span class="talla_calzado_span"></span>
 							</div>
 							<div class="form-group col-2" id="estado_group">
-								{!! Form::select('estado', $estados, null, ['class'=>'form-control r-0 light s-12', 'id'=>'estado', 'onclick'=>'inputClear(this.id)', 'onchange'=>"cargarCombo(108,this.value,'municipio')"]) !!}
+								{!! Form::select('estado', $combos['estados'], null, ['class'=>'form-control r-0 light s-12', 'id'=>'estado', 'onclick'=>'inputClear(this.id)', 'onchange'=>"cargarCombo(108,this.value,'municipio')"]) !!}
 								<span class="estado_span"></span>
 							</div>
 							<div class="form-group col-2" id="municipio_group">
-								{!! Form::select('municipio', $municipios, null, ['class'=>'form-control r-0 light s-12', 'id'=>'municipio', 'onclick'=>'inputClear(this.id)', 'onchange'=>"cargarCombo(109,this.value,'parroquia')",'placeholder'=>'Municipio']) !!}
+								{!! Form::select('municipio', $combos['municipios'], null, ['class'=>'form-control r-0 light s-12', 'id'=>'municipio', 'onclick'=>'inputClear(this.id)', 'onchange'=>"cargarCombo(109,this.value,'parroquia')"]) !!}
 								<span class="municipio_span"></span>
 							</div>
 							<div class="form-group col-2" id="parroquia_group">
-								{!! Form::select('parroquia', $parroquias, null, ['class'=>'form-control r-0 light s-12', 'id'=>'parroquia', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Parroquia']) !!}
+								{!! Form::select('parroquia', $combos['parroquias'], null, ['class'=>'form-control r-0 light s-12', 'id'=>'parroquia', 'onclick'=>'inputClear(this.id)']) !!}
 								<span class="parroquia_span"></span>
 							</div>
 						</div>
@@ -120,7 +120,7 @@
 								<span class="ct_span"></span>
 							</div>
 							<div class="form-group col-3" id="cargo_group">
-								{!! Form::select('cargo', $cargos, null, ['class'=>'form-control r-0 light s-12', 'id'=>'cargo', 'onclick'=>'inputClear(this.id)', 'placeholder'=>'Cargo']) !!}
+								{!! Form::select('cargo', $combos['cargos'], null, ['class'=>'form-control r-0 light s-12', 'id'=>'cargo', 'onclick'=>'inputClear(this.id)']) !!}
 								<span class="cargo_span"></span>
 							</div>
 							<div class="form-group col-3" id="correo_group">

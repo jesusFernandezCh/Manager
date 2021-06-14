@@ -11,6 +11,6 @@ $factory->define(Correo::class, function (Faker $faker) {
     return [
         'direccion' => $faker->email,
         'status'    => '1',
-        'tipo'      => Nomenclador::all()->where('tipo',7)->random()->id,
+        // 'tipo'      => Nomenclador::all()->where('tipo',7)->random()->id,
     ];
 });

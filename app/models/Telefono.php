@@ -9,7 +9,7 @@ class Telefono extends Model
     protected $table = 'telefonos';
 
     protected $fillable = [
-        'operadora','numero','tipo'
+        'numero','status'
     ];
 
 

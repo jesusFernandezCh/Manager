@@ -42,9 +42,11 @@ class DatabaseSeeder extends Seeder
         // factory(AccountMeta::class,20)->create();
         
         // $this->call(DireccionSeeder::class);
-        // $this->call(PersonaSeeder::class);
-        // $this->call(emailSeeder::class);
+        $this->call(TelefonoSeeder::class);
+        $this->call(emailSeeder::class);
+        $this->call(PersonaSeeder::class);
         $this->call(EmpleadoSeeder::class);
+        $this->call(PermissionSeeder::class);
         $this->call(UserSeeder::class);
         
 	}

@@ -17,4 +17,16 @@ class CorreoRerpository extends BaseRerpository implements IRerpository
     {
         return $this->stmt;
     }
+    /**
+     * [registrar description]
+     * @param   Array  $correos  [$correos arreglo de correo a registrar]
+     * @return  [type]           [return description]
+     */
+    public function registrar(Array $correos)
+    {
+        foreach ($correos as $correo) {
+			$this->getModel()->create($correo);
+		}
+		return $this;
+    }
 }

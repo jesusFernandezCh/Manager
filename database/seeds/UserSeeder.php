@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\ProfitCenter;
+use Illuminate\Support\Facades\DB;
 
 class UserSeeder extends Seeder
 {
