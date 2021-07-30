@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class PermissionSeeder extends Seeder
 {
@@ -11,7 +12,7 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('Permission')->insert([
+        DB::table('permission')->insert([
             [
                 'id'                =>1,
                 'name'              => 'Create',

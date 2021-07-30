@@ -28,9 +28,6 @@
                         aria-controls="v-pills-buyers"><i class="icon icon-face"></i> Roles/Profiles</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="{{ route('profitCenter.index') }}" role="tab" aria-controls="v-pills-sellers"><i class="icon  icon-local_shipping"></i> Profit Centers</a>
-                    </li>
-                    <li>
                         <a class="nav-link" href="{{ route('permission.index') }}" role="tab" aria-controls="v-pills-sellers"><i class="icon-key6"></i> Permissions</a>
                     </li>
 

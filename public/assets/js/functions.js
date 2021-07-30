@@ -87,7 +87,6 @@ function deleteReg(url){
  */
 function saveData(url, forml, method)
 {
-
     var route = $('#route').val();
     $.ajax({
         url: url,
@@ -113,6 +112,7 @@ function saveData(url, forml, method)
                 }
             }
             if(result.page = 'shipDetails'){
+                toastr.success(result.message,"Exitoso").delay(50000);
                 location.reload();
             }
             $(".create")[0].reset();

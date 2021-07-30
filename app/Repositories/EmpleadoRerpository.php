@@ -2,10 +2,8 @@
 
 namespace App\Repositories;
 use App\Models\Empleado;
-use Illuminate\Auth\Access\Response;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Telefono;
 use Illuminate\Support\Arr;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 class EmpleadoRerpository extends BaseRerpository implements IRerpository
 {
@@ -14,6 +12,7 @@ class EmpleadoRerpository extends BaseRerpository implements IRerpository
     private $direccion;
     private $correo;
     private $nomenclador;
+    private $telefono;
 
     public function __construct()
     {
@@ -22,6 +21,7 @@ class EmpleadoRerpository extends BaseRerpository implements IRerpository
         $this->persona = new PersonaRerpository();
         $this->direccion = new DireccionRerpository();
         $this->correo = new CorreoRerpository();
+        $this->telefono = new TelefonoRerpository();
     }
 
     public function getModel()
@@ -31,14 +31,14 @@ class EmpleadoRerpository extends BaseRerpository implements IRerpository
 
     public function getCombos()
     {
-        $grupoSanguineo = $this->nomenclador->getAll()->where('tipo',3)->pluck('valor','codigo')->prepend('Grupo Sanguineo',-1);
-        $tallaCamisa    = $this->nomenclador->getAll()->where('tipo',8)->pluck('valor','codigo')->prepend('Camisa',-1);
-        $tallaPantalon  = $this->nomenclador->getAll()->where('tipo',9)->pluck('valor','codigo')->prepend('Pantalon',-1);
-        $tallaCalzado   = $this->nomenclador->getAll()->where('tipo',10)->pluck('valor','codigo')->prepend('Calzado',-1);
-        $estados        = $this->nomenclador->getAll()->where('tipo',107)->pluck('valor','codigo')->prepend('Estados',-1);
-        $municipios     = $this->nomenclador->getAll()->where('tipo',108)->pluck('valor','codigo')->prepend('Municipios',-1);
-        $parroquias     = $this->nomenclador->getAll()->where('tipo',109)->pluck('valor','codigo')->prepend('Parroquias',-1);
-        $cargos         = $this->nomenclador->getAll()->where('tipo',2)->pluck('valor','codigo')->prepend('Cargos',-1);
+        $grupoSanguineo = $this->nomenclador->getAll()->where('tipo',3)->pluck('valor','id')->prepend('Grupo Sanguineo',1);
+        $tallaCamisa    = $this->nomenclador->getAll()->where('tipo',8)->pluck('valor','id')->prepend('Camisa',1);
+        $tallaPantalon  = $this->nomenclador->getAll()->where('tipo',9)->pluck('valor','id')->prepend('Pantalon',1);
+        $tallaCalzado   = $this->nomenclador->getAll()->where('tipo',10)->pluck('valor','id')->prepend('Calzado',1);
+        $estados        = $this->nomenclador->getAll()->where('tipo',107)->pluck('valor','id')->prepend('Estados',1);
+        $municipios     = $this->nomenclador->getAll()->where('tipo',108)->pluck('valor','id')->prepend('Municipios',1);
+        $parroquias     = $this->nomenclador->getAll()->where('tipo',109)->pluck('valor','id')->prepend('Parroquias',1);
+        $cargos         = $this->nomenclador->getAll()->where('tipo',2)->pluck('valor','id')->prepend('Cargos',1);
 
         return $array = [
             'grupoSanguineo'    => $grupoSanguineo,
@@ -50,7 +50,6 @@ class EmpleadoRerpository extends BaseRerpository implements IRerpository
             'parroquias'        => $parroquias,
             'cargos'            => $cargos
         ];
-
     }
 
     /**
@@ -60,34 +59,58 @@ class EmpleadoRerpository extends BaseRerpository implements IRerpository
      */
     public function nuevoRegistro($data)
     {
+        //Registro nuemro de contacto
+        $telefonoContacto = [
+            'numero' => $data['telefono_contacto']
+        ];
+        $telefono = $this->telefono->create($telefonoContacto);
+
+        //Registro de persona contacto
+        $contacto = [
+            'p_nombre'      => $data['p_nombre2'],
+            'p_apellido'    => $data['p_apellido2'],
+            'sexo'          => 'Indefinido',
+            'cedula'        => $data['cedula'].$data['ct'],
+            'talla_camisa'  => 1,
+            'talla_pantalon'=> 1,
+            'talla_calzado' => 1,
+            'telefono1'     => $telefono->id,
+            'telefono2'     => 1,
+            'correo'        => 1
+        ];
+
+        $personaContacto = $this->persona->create($contacto);
+        $data = Arr::add($data,'persona_contacto',$personaContacto->id);
+        // dd($personaContacto);
+        
+        //Registro de correo personal;
+        $correos = [
+            'direccion' => $data['correo']
+        ];
+        // foreach ($correos as $correo) {
+            $correo = $this->correo->create($correos);
+            $data['correo'] = $correo->id;
+        // }
+        // dd($data);
+
+        //registros números telefónicos
+        for ($i=1; $i <3 ; $i++) { 
+            $telf = $this->telefono->create($data);
+            $data['telefono'.$i]= $telf->id;
+        }
+        // dd($data);
+
         //Crea el registro de la dirección
         $direccion = $this->direccion->create($data);
         $data = Arr::add($data,'direccion_habitacion',$direccion->id);
-        //crea registro de persona contacto
-        $contacto = [
-            'p_nombre'      => $data->p_nombre2,
-            'p_apellido'    => $data->p_apellido2,
-            'cedula'        => $data->cedula.$data->ct
-        ];
-        $personaContacto = $this->persona->create($contacto);
-        $data = Arr::add($data,'persona_contacto',$personaContacto->id);
-        //Crea el registro de persona empleada
+        // dd($direccion);
+
+        //Registro de persona empleado
         $persona = $this->persona->create($data);
         $data = Arr::add($data,'persona',$persona->id);
-        //Crea registro de correo;
-        $correos = [
-            'correo' => $data->correo,
-            'correo' => $data->correo2
-        ];
-        $correo = $this->correo->registrar($correos);
-        $data = Arr::add($data,'correo',$correo->id);
-        //Crea registro de empleado
-        $empleado = $this->create($data);
-        $telefonos = [
-            'numero' => $data->telefono,
-            'numero' => $data->telefono2
-        ];
-                
-    }
+        // dd($persona);
 
+        //Crea registro de empleado
+        $this->create($data);
+    }
 }

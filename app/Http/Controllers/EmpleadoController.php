@@ -3,13 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Empleado\CreateRequest;
-use App\Models\Direccion;
 use App\Models\Nomenclador;
-use App\Repositories\CorreoRerpository;
-use App\Repositories\DireccionRerpository;
 use App\Repositories\EmpleadoRerpository;
-use App\Repositories\NomencladorRerpository;
-use App\Repositories\PersonaRerpository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Session;
@@ -59,11 +54,11 @@ class EmpleadoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
         $data = $request->all();
         $this->stmt->nuevoRegistro($data);
-        $request->session()->flash('message-success', $request->p_nombre.' '.$request->p_apellido.' fue registrado exitosamente');
+        Session::flash('message-success',$request->p_nombre.' '.$request->p_apellido.' fue registrado exitosamente');
     }
 
     /**

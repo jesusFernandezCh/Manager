@@ -1,5 +1,5 @@
 <!-- Modal -->
-{!! Form::open(['route'=>'empleados.store','method'=>'POST', 'class'=>'formlDinamics', 'id'=>'guardarRegistros']) !!}
+{!! Form::open(['route'=>'empleados.store','method'=>'POST', 'class'=>'formlDinamic', 'id'=>'guardarRegistro']) !!}
 <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
@@ -94,11 +94,11 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-3" id="telefono_group">
-								{!! Form::text('telefono', null, ['class'=>'form-control r-0 light s-12',  'id'=>'telefono', 'onclick'=>'inputClear(this.id)','placeholder'=>'N° Telefónico']) !!}							
-								<span class="telefono_span"></span>
+								{!! Form::text('telefono1', null, ['class'=>'form-control r-0 light s-12',  'id'=>'telefono1', 'onclick'=>'inputClear(this.id)','placeholder'=>'N° Telefónico']) !!}							
+								<span class="telefono1_span"></span>
 							</div>
 							<div class="form-group col-3" id="telefono2_group">
-								{!! Form::text('telefono2', null, ['class'=>'form-control r-0 light s-12',  'id'=>'telefono_movil', 'onclick'=>'inputClear(this.id)','placeholder'=>'N° Telefónico Alternativo']) !!}							
+								{!! Form::text('telefono2', null, ['class'=>'form-control r-0 light s-12',  'id'=>'telefono2', 'onclick'=>'inputClear(this.id)','placeholder'=>'N° Telefónico Alternativo']) !!}							
 								<span class="telefono2_span"></span>
 							</div>
 							<div class="form-group col-6" id="detalles_group">
@@ -160,8 +160,8 @@
 						<span class="code_span"></span>
 					</div>
 					<div class="form-group col-3" id="telefono2_group">
-						{!! Form::text('telefono2', null, ['class'=>'form-control r-0 light s-12',  'id'=>'telefono2', 'onclick'=>'inputClear(this.id)','placeholder'=>'N° Telefónico']) !!}							
-						<span class="telefono_span2"></span>
+						{!! Form::text('telefono_contacto', null, ['class'=>'form-control r-0 light s-12',  'id'=>'telefono_contacto', 'onclick'=>'inputClear(this.id)','placeholder'=>'N° Telefónico']) !!}							
+						<span class="telefono_contacto_span"></span>
 					</div>
 				</div>
 			</div>
