@@ -55,18 +55,18 @@
                 <i class="icon icon-bank s-14"></i> <span>{{ __('Bank Transaction') }}</span>
             </a>
         </li>
-        <li class="treeview"><a href="#">
+        {{--  <li class="treeview"><a href="#">
             <i class="icon icon icon-package blue-text s-18"></i>
             <span>{{ __('Workflow Rules') }}</span></a>
-        </li>
+        </li>  --}}
         <li><a href="{{ route('document.index') }}">
             <i class="icon icon-documents3 text-blue s-18"></i>
             <span>{{ __('Documents') }}</span></a>
         </li>
-        <li class="treeview"><a href="#">
+        {{--  <li class="treeview"><a href="#">
             <i class="icon icon-bar-chart2 pink-text s-18"></i>
             <span>{{ __('Reports') }}</span>
-        </a>
+        </a>  --}}
     </li>
     <li class="header light mt-3">
         <strong>{{ __('CONFIGURATION') }}</strong>
@@ -103,6 +103,16 @@
                         <i class="icon icon icon-playlist_add amber-text s-14"></i> <span>{{__('Account meta type')}}</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('docsInstruction.index') }}">
+                        <i class="icon icon-document amber-text s-14"></i> <span>{{__('DocsInstruction')}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('accountCourrier.index') }}">
+                        <i class="icon icon-truck amber-text s-14"></i> <span>{{__('Account Courrier')}}</span>
+                    </a>
+                </li>
             </ul>
         </li>
         <li>
@@ -113,7 +123,20 @@
         <li>
             <a href="{!! route('bank.index') !!}">
                 <i class="icon icon-bank amber-text s-14"></i> <span>{{ __('Banks') }}</span>
+                <i class="icon icon-angle-left s-18 pull-right"></i>
             </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="{!! route('bank.index') !!}">
+                        <i class="icon icon-bank amber-text s-14"></i> <span>{{ __('Bank') }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{!! route('partner_bank.index') !!}">
+                        <i class="icon icon-bank amber-text s-14"></i> <span>{{__('Pather Bank') }}</span>
+                    </a>
+                </li>
+            </ul>
         </li>
         <li>
             <a href="{{ route('documentsType.index') }}">
@@ -139,6 +162,16 @@
                 <li>
                     <a href="{{ route('orderPmtTerm.index') }}">
                         <i class="icon icon-cash-register amber-text s-14"></i> <span>{{__('Order Pmt Terms')}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('freightRates.index') }}">
+                        <i class="icon icon-cash-register amber-text s-14"></i> <span>{{__('Freight Rates')}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('freightLines.index') }}">
+                        <i class="icon icon-cash-register amber-text s-14"></i> <span>{{__('Freight Lines')}}</span>
                     </a>
                 </li>
             </ul>
@@ -178,6 +211,20 @@
                     </a>
                 </li>
             </ul>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="{{ route('mvTypes.index') }}">
+                        <i class="icon icon-bank amber-text s-14"></i> <span>{{ __('Mv Type') }}</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="{{ route('mvConcepts.index') }}">
+                        <i class="icon icon-bank amber-text s-14"></i> <span>{{ __('Mv Concept') }}</span>
+                    </a>
+                </li>
+            </ul>
         </li>
         <li>
             <a href="{{ route('payments.index') }}">
@@ -200,6 +247,11 @@
         <li>
             <a href="{!! route('currier.index') !!}">
                 <i class="icon icon-text-width amber-text s-14"></i> <span>Currier</span>
+            </a>
+        </li>
+        <li>
+            <a href="{!! route('shelf_life.index') !!}">
+                <i class="icon icon-text-width amber-text s-14"></i> <span>Shelf Life</span>
             </a>
         </li>
         <li>

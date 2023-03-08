@@ -4,55 +4,71 @@
             <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
                 @if (isset($create))
                 <li>
-                    <a class="nav-link" id="order_terms" href="#" role="tab"
+                    <a class="nav-link" id="order_terms" href="@if(isset($operation)) {{ route('operations.edit',$operation) }} @else {{ route('operations.create') }}@endif" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Order Terms')}}
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" id="order_details" href="#" role="tab"
+                    <a class="nav-link d" id="order_details" href="@if (isset($operation))
+                     {{route('order_details.show',$operation)}}
+                     @else #
+                    @endif" role="tab"
                     aria-controls="v-pills-buyers">
-                        <i class=""></i> {{__('Order Details')}}
+                        <i class="" ></i> {{__('Order Details')}}
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" id="Inst-ship_plain" href="#" role="tab"
+                    <a class="nav-link d" id="InstShipPlain"
+                    href="
+                    @if(isset($operation) && !isset($operationShip)){{ route('operationShip.show',$operation) }}@else # @endif"
+                     role="tab"
                     aria-controls="v-pills-buyers">
-                        <i class=""></i> {{__('Inst-ship Plain')}}
+                        <i class=""></i> {{__('Inst-Ship Plan')}}
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" id="ship_details" href="#" role="tab"
+                    <a class="nav-link d" id="ShipDetails" @if (isset($operation))href="{{ route('shipDetails.show',$operation) }}@endif" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Ship Details')}}
                     </a>
                 </li>
-                <li>
-                    <a class="nav-link" id="documents" href="#" role="tab"
+                {{--  <li>
+                    <a class="nav-link d" id="documents"
+                    href="
+                    @if (isset($operation))
+                        {{ route('documentsAsoc',$operation) }}
+                    @else #
+                    @endif"
+                    role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Documents')}}
                     </a>
-                </li>
+                </li>  --}}
                 <li>
-                    <a class="nav-link" id="payments" href="#" role="tab"
+                    <a class="nav-link d" id="payments" href="#" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Payments')}}
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" id="pmt_details" href="#" role="tab"
+                    <a class="nav-link d" id="pmt_details" href="#" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Pmt Details')}}
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" id="documents_2" href="#" role="tab"
+                    <a class="nav-link d" id="operationDocument" href="
+                     @if (isset($operation))
+                     {{route('operationDocument.show',$operation)}}
+                     @else #
+                    @endif" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Documents')}}
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" id="budget_ntp" href="#" role="tab"
+                    <a class="nav-link d" id="budget_ntp" href="#" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Budget NTP')}}
                     </a>

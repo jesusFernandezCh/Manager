@@ -51,10 +51,10 @@
                                     <td>
                                         @if ($bank->active == 1)
                                         <span class="icon icon-circle s-12  mr-2 text-success"></span> Active</td>
-                                        
+
                                         @elseif($bank->active == 2)
                                         <span class="icon icon-circle s-12  mr-2 text-danger"></span> Inactive </td>
-                                        
+
                                         @else
                                         <span class="icon icon-circle s-12  mr-2 text-warning"></span> Suspended </td>
                                         @endif
@@ -70,7 +70,7 @@
                                 </tr>
                                 @endforeach
                             </tbody>
-                                    
+
                             </table>
                         </div>
                     </div>

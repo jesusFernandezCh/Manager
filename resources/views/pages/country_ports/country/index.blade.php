@@ -52,7 +52,7 @@
                                             {{$country->code}}
                                         </td>
                                         <td>
-                                            @if ($country->active == 1)
+                                            @if ($country->active == 0)
                                               <span class="icon icon-circle s-12  mr-2 text-success"></span> Active</td>
                                             @else
                                               <span class="icon icon-circle s-12  mr-2 text-danger"></span> Inactive </td>
@@ -63,7 +63,7 @@
                                             <a href="{{ route('country.edit',$country) }}" class="btn btn-default btn-sm" title="Editar">
                                                 <i class="icon-pencil text-info"></i>
                                             </a>
-                                            <button class="btn btn-default btn-sm" onclick="confirm('¿Realmente deseas borrar el registro?')">
+                                            <button class="btn btn-default btn-sm" onclick="return confirm('¿Realmente deseas borrar el registro?')">
                                                 <i class="icon-trash-can3 text-danger"></i>
                                             </button>
                                             {!! Form::close() !!}

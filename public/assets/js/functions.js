@@ -1,5 +1,29 @@
 /**
- * { item_description }
+ * Funciones que se ejecutan en el DOM
+ */
+$(document).ready(function(){
+    $('.combo').on('change',function(e) {
+        var id = e.target.value;
+        var route = e.target.dataset.route;
+        var receptor = e.target.dataset.r;
+        comboBox(id,route,receptor);
+    });
+
+    $('.comboDual').on('change',function(e) {
+        var id = e.target.value;
+        var route = e.target.dataset.route;
+        var route2 = e.target.dataset.route2;
+        var r1 = e.target.dataset.r1;
+        var r2 = e.target.dataset.r2;
+        comboBox(id,route,r1);
+        comboBox(id,route2,r2);
+    })
+
+    $('')
+});
+
+/**
+ * Funciones invocadas
  */
 $(".formlDinamic").on('submit', function(e) {
     e.preventDefault();
@@ -17,7 +41,7 @@ $(".formlDinamic").on('submit', function(e) {
         saveDataMultitap(url, forml, method, inputFile);
     }
     if (id == 'DataUpdate') {
-        //input file 
+        //input file
         var inputFile = $('#file-2');
 
         if(inputFile[0] == undefined){
@@ -61,37 +85,53 @@ function deleteReg(url){
  * @param      {<type>}    forml   The forml
  * @param      {Function}  method  The method
  */
-function saveData(url, forml, method) 
+function saveData(url, forml, method)
 {
+
     var route = $('#route').val();
     $.ajax({
         url: url,
         type: method,
         data: forml.serialize(),
         cache: false,
-        success: function(result) 
+        success: function(result)
         {
             $('.modal').modal('hide');// Oculta el modal del formulario create
-            // $('#tbody').load(' .tbody');//Recarga el body de la tabla
-            // toastr.success(result.message,"Exitoso");
-            if(route == null || result.operator == true){
-                location.reload();
+            //si recibe respuesta redirecciona al edit
+            // console.log(result.id);
+            if (result.id != undefined) {
+                if(result.page == 'show'){
+                    window.location.replace(route  + "/" + result.id);
+                }else{
+                    window.location.replace(route  + "/" + result.id + "/edit");
+                }
             }else{
-                window.location.replace(route)
+                if(route == '' || result.operator == true){
+                    location.reload();
+                }else{
+                    window.location.replace(route)
+                }
             }
+            if(result.page = 'shipDetails'){
+                location.reload();
+            }
+            $(".create")[0].reset();
         },
-        error: function(msj) 
+        error: function(msj)
         {
             var status = msj.statusText;
             var errors = $.parseJSON(msj.responseText);
-        
-            $.each(errors.errors, function(key, value) 
+
+            $.each(errors.errors, function(key, value)
             {
                 $("#" + key).addClass("is-invalid");
                 $("#_" + key).addClass("is-invalid");
                 $("." + key + "_span").addClass("invalid-feedback").html(value);
                 toastr.error(value,"Error");
             });
+            if(msj.statusText == 'Internal Server Error'){
+                toastr.error('Internal Server Error',"Error");
+            };
         },
     timeout: 15000
     });
@@ -103,15 +143,15 @@ function saveData(url, forml, method)
  * @param      {<type>}    forml   The forml
  * @param      {Function}  method  The method
  */
-function saveDataMultitap(url, forml, method, inputFile) 
+function saveDataMultitap(url, forml, method, inputFile)
 {
     var route = $('#route').val();
     var formData = new FormData();
-    if (inputFile != null) 
+    if (inputFile != null)
     {
         formData.append('file', inputFile[0].files[0]);
     }
-        
+
     $.ajax({
         url: url + '?' + forml.serialize(),
         type: method,
@@ -119,24 +159,32 @@ function saveDataMultitap(url, forml, method, inputFile)
         cache: false,
         processData: false,
         contentType: false,
-    
-        success: function(result) 
+
+        success: function(result)
         {
             $('.modal').modal('hide');// Oculta el modal del formulario create
             // $('#tbody').load(' .tbody');//Recarga el body de la tabla
             // toastr.success(result.message,"Exitoso");
-            if(route == null){
-                location.reload();
+            if (result.id != undefined) {
+                if(result.page == 'show'){
+                    window.location.replace(route  + "/" + result.id);
+                }else{
+                    window.location.replace(route  + "/" + result.id + "/edit");
+                }
             }else{
-                location(route)
+                if(route == null || result.operator == true){
+                    location.reload();
+                }else{
+                    window.location.replace(route)
+                }
             }
         },
-        error: function(msj) 
+        error: function(msj)
         {
             var status = msj.statusText;
             var errors = $.parseJSON(msj.responseText);
-        
-            $.each(errors.errors, function(key, value) 
+
+            $.each(errors.errors, function(key, value)
             {
                 $("#" + key + "_group").addClass("has-error");
                 $("." + key + "_span").addClass("help-block text-danger").html(value);
@@ -155,25 +203,26 @@ function saveDataMultitap(url, forml, method, inputFile)
 function obtenerDatosGet(url, url2)
 {
     var form = $('.form'); //seleciona el formulario
-    form.attr('action',url2); 
+    form.attr('action',url2);
     $.get(url, function(data)
     {
-        $.each(data, function(key, value) 
+        $.each(data, function(key, value)
         {
             if (key=='curren_account' && value == 1) {
                 $('#'+'_'+key).prop('checked', true);
             }
-            else{
+            else if(key=='curren_account' && value != 1){
                 $('#'+'_'+key).prop('checked', false);
             }
-            if (key=='curren_account' && value == 1) {
+            else{
+                $('#'+'_'+key).val(value);
+            }
+            /*if (key=='curren_account' && value == 1) {
                 $('#'+'-'+key).prop('checked', true);
             }
             else{
                 $('#'+'-'+key).prop('checked', false);
-            }
-
-            $('#'+'_'+key).val(value);
+            }*/
         });
         var image = data.image;
         validatFile(image, 'file-2');
@@ -188,7 +237,7 @@ function obtenerDatosGet(url, url2)
  */
 function validatFile(image, id)
 {
-    if (image != null) 
+    if (image != null)
         {
             var url = './././img/avatar/' + image;
             // destroy fileimput previous
@@ -203,13 +252,13 @@ function validatFile(image, id)
  * @param      {string}  id        The identifier
  * @param      {<type>}  namefile  The namefile
  */
-function addImage(url, id, namefile) 
+function addImage(url, id, namefile)
 {
     $("#"+id).fileinput
     ({
         initialPreview: [url],
         initialPreviewAsData: true,
-        initialPreviewConfig: 
+        initialPreviewConfig:
             [
                 {caption: namefile},
             ],
@@ -231,10 +280,19 @@ function showData(url)
 {
     $.get(url, function(data)
     {
-        $.each(data, function(key, value) 
+        console.log(data)
+        $.each(data, function(key, value)
         {
-            console.log(key);
             $('#'+'-'+key).val(value);
+            if (key=='curren_account' && value == 1) {
+                $('#'+'-'+key).prop('checked', true);
+            }
+            else if(key=='curren_account' && value != 1){
+                $('#'+'-'+key).prop('checked', false);
+            }
+            else{
+                $('#'+'-'+key).val(value);
+            }
         });
         var image = data.image;
         validatFile(image, 'file-3');
@@ -250,17 +308,17 @@ function showDataPayment(url)
     $.get(url, function(data)
     {
         // console.log(data)
-        $.each(data[0], function(key, value) 
+        $.each(data[0], function(key, value)
         {
             console.log(key);
             $('#'+'-'+key).val(value);
         });
 
         var response = ""
-        
-        $.each(data[1], function(key, value) 
+
+        $.each(data[1], function(key, value)
         {
-         var type = ""   
+         var type = ""
          if (value.type == 1) {
             type = "ABONO"
          }else{
@@ -274,10 +332,10 @@ function showDataPayment(url)
             response += "</tr>"
         });
 
-      
+
         $('#pay').html(response)
-       
-      
+
+
     });
 }
 /**
@@ -312,7 +370,7 @@ function dataTableExport(title, columns) {
             {
                 extend: 'excel',
                 title: title,
-                text: 'Export Excell',
+                text: '<img src="http://localhost/Manager/public/img/excel-ico.png" alt="" heigth= ""/> Export Excell',
                 titleAttr: 'Excel',
                 exportOptions: {
                     columns: columns
@@ -341,3 +399,127 @@ function dataTableExport(title, columns) {
          return false;
      }
  }
+
+/**
+ *
+ * @param {valor a comparar} id
+ * @param {route del controlador} route
+ * @param {campo receptor} receptor
+ */
+function comboBox(id,route,receptor) {
+        $.get(route + '/' + id, function (data) {
+        console.log(data);
+
+        if(data.length == undefined){
+            $('#' + receptor).empty();
+            $.each(data, function(key, value){
+                $('#' + receptor).append("<option value =" + key + ">" + value + "</option>");
+            });
+        }
+        else{
+            $('#' + receptor).empty().append("<option value =''>Sin Resultados</option>");
+        }
+    });
+ }
+function createDataTable() {
+    var forml   = $('#saveDataT').serialize();
+    var method  = 'POST';
+    var route = $('#saveDataT').attr("action");
+
+    saveDataTable(forml,method, route);
+    toastr.success("Save Prodduct","Success");
+}
+
+function editDataTable(route, route2) {
+
+    $('#modalEdit').modal('show');
+
+    $('#route').val(route2);
+    $.get(route, function(data)
+    {
+        $.each(data, function(key, value)
+        {
+            // console.log(key+':'+value);
+            $('#'+'_'+key).val(value);
+        });
+    });
+}
+
+function updateDatatable() {
+    var forml   = $('#updateDataT').serialize();
+    var method  = 'PUT';
+    var route = $('#route').val();
+
+    saveDataTable(forml,method,route);
+    toastr.success("Save Prodduct","Success");
+}
+
+function saveDataTable(forml, method, route) {
+    var token = $("#token").attr("content");
+    var t   = $('#example').DataTable();
+    $.ajax({
+        url: route,
+        headers: {'X-CSRF-TOKEN': token},
+        type: method,
+        data: forml,
+        cache: false,
+        success: function(result){
+            $('.modal').modal('hide');
+            t.ajax.reload();
+        },
+        error: function(msj) {
+        var message = msj.responseText;
+        var errors = $.parseJSON(msj.responseText);
+            $.each(errors.errors, function(key, value) {
+            toastr.error(value,"Error");
+            });
+        },
+        timeout: 15000
+    });
+}
+
+
+function delDataTable(route) {
+    var t = $('#example').DataTable();
+    var token = $("#token").attr("content");
+    var url = route;
+    $.ajax({
+        url: url,
+        headers: {'X-CSRF-TOKEN': token},
+        type: 'DELETE',
+        success: function(result) {
+            t.ajax.reload();
+            toastr.success("Delete Prodduct","Success");
+        },
+        error: function(msj) {
+            var message = msj.responseText;
+            var errors = $.parseJSON(msj.responseText);
+            $.each(errors.errors, function(key, value) {
+                toastr.error(value,"Error");
+            });
+        },
+        timeout: 15000
+    });
+}
+
+function showModal(idModal, idforml) {
+    $('#'+idModal).modal('show');
+    $("#"+idforml)[0].reset();
+}
+/**
+ * [calculoUsbBudget description]
+ * calcula el monto del campo usbBudget en orderDetails
+ * @return  {[type]}  [return description]
+ */
+function calculoUsbBudget(){
+    var orderSaleUsd        = $('#order_sale_usd').val();
+    var orderPurchaseUsd    = $('#order_purchase_usd').val();
+    var totalEstCharges     = $('#total_est_charges').val();
+    var estCharges          = $('#est_charges').val();
+    var comToPay            = $('#comtopay').val();
+    var comToRecive         = $('#comtoreceive').val();
+    var usbBudget           = 0;
+    
+    var usbBudget = (orderSaleUsd - orderPurchaseUsd - totalEstCharges - comToPay) + comToRecive;
+    $('#usd_budget').val(usbBudget);
+}

@@ -17,9 +17,12 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(Role::class, function (Faker $faker) {
+    $name = $faker->unique()->randomElement($array = array('Admin', 'Global', 'Office', 'Financial', 'Operador'));
+    $slug = strtolower($name);
+
     return [
-        'name' 			=> $faker->shuffle($array = array('Admin', 'Global', 'Office', 'Financial', 'Operador')),
-        'slug' 			=> $faker->shuffle($array = array('admin', 'global', 'office', 'financial', 'operador')),
+        'name' 			=> $name,
+        'slug' 			=> $slug,
         'description'  	=> $faker->text($maxNbChars = 100),
     ];
 });

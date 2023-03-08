@@ -24,13 +24,21 @@
                         <i class=""></i> {{__('Bank Account Type') }}
                     </a>
                 </li>
-                <li>
+                {{-- <li>
                     <a class="nav-link" id="partner_bank" href="{!! route('partner_bank.index') !!}" role="tab"
                     aria-controls="v-pills-buyers">
                         <i class=""></i> {{__('Partner Banks') }}
                     </a>
-                </li>
-
+                </li> --}}
+                @if (isset($account_id))
+                <li>
+                    <a class="nav-link" id="bank_account_type" href="{!! route('accountOperator.show',$account_id) !!}" role="tab"
+                    aria-controls="v-pills-buyers">
+                        <i class=""></i> {{__('Account') }}
+                        
+                    </a>
+                </li>          
+                @endif
             </ul>
         </div>
     </div>

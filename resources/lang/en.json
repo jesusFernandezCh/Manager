@@ -239,6 +239,9 @@
     "Document Type": "Document Type",
     "Add New Document": "Add New Document",
     "EDIT ACCOUNT CONTACT": "EDIT ACCOUNT CONTACT",
-    "Account Contacts": "Account Contacts"
-
+    "Account Contacts": "Account Contacts",
+    "Success": "Success",
+    "Error": "Error",
+    "Warning" : "Worning",
+    "Info": "Info"
 }

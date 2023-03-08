@@ -103,6 +103,9 @@ class PartnerBankController extends Controller
     {
         $partner = Partner_bank::find($id);
         $data = $request->all();
+        if (empty($data['curren_account'])) {
+            $data['curren_account'] = null;
+        }
         $partner->update($data);
         $partner->save();
         Session::flash('message-success',' Partner Bank actualizado correctamente.');
@@ -117,5 +120,17 @@ class PartnerBankController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    public function indexAccount($account_id)
+    {
+        $company = $this->company->all();
+        $currency = $this->currency->all();
+        $partner_bank = $this->partner_bank->all();
+
+        $var = __('Selected..');
+        $company = array('' => $var) + $company;
+        $currency = array('' => $var) + $currency;
+        return view('pages.payments.partner_bank.index', compact('company','currency','partner_bank','account_id'));
     }
 }

@@ -16,9 +16,9 @@ class CreateDocumentsMetaTypesTable extends Migration
         Schema::create('documents_meta_types', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->unsignedBigInteger('document_id');
-            $table->foreign('document_id')->references('id')->on('documents');
+            $table->foreign('document_id')->references('id')->on('documents')->onDelete('cascade');
             $table->unsignedBigInteger('document_type_id');
-            $table->foreign('document_type_id')->references('id')->on('document_types');
+            $table->foreign('document_type_id')->references('id')->on('document_types')->onDelete('cascade');
             $table->timestamps();
         });
     }

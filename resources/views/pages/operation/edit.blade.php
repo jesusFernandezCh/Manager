@@ -1,31 +1,28 @@
 @extends('layouts.app')
 @section('title')
-<div class="nav-title text-white col-12"> 
-	<i class="icon-person"></i>
-	<a href="{{ route('operations.index') }}">{{__('Operation')}}</a> > {{$operation->account->name}} > {{$operation->code}}
-</div>
-<div class="col-12">
-	<div class="text-white">Status: {{$operation->status->name}}</div>
-</div>
-
+	@include('pages.operation.partial.title')
+@endsection
+@section('top-menu')
+	@include($topMenu)
 @endsection
 @section('maincontent')
-<div class="page height-full">
-	<div class="form-group" style="margin-top: 75px">
-		@include($topMenu)
-	</div>
+<div class="page height-full" style="margin-top: 130px">
+	<div>
+        @include('alerts.toastr')
+    </div>
 	 <div class="container-fluid animatedParent animateOnce my-3">
         <div class="animated fadeInUpShort">
         	<div class="col-md-12">
 	            <div class="card" style="margin-top:0px">
 	                <div class="form-group">
 	                    <div class="card-header white">
-	                        <h6><i class=""></i> {{__('ORDER TERMS')}} </h6>
+	                        <h6><i class=""></i> {{__('EDIT ORDER TERMS')}} </h6>
 	                    </div>
 	                </div>
 	                <div class="card-body">
 						{!! Form::model($operation,['route'=>["operations.update",$operation->id],'method'=>'PUT','class'=>'formlDinamic form','id'=>'DataUpdate']) !!}
 						@include('pages.operation.forml')
+						{{--  {!! Form::hidden('route', route('operationIndexAsoc'), ['id'=>'route']) !!}  --}}
 						<br>
 						<div class="col-md-12 text-right">
 							<a href="{{ route('operationIndexAsoc') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
@@ -54,7 +51,7 @@
         'September','Oktober','November','Dezember',
        ],
        dayOfWeek:[
-        "So.", "Mo", "Di", "Mi", 
+        "So.", "Mo", "Di", "Mi",
         "Do", "Fr", "Sa.",
        ]
       }

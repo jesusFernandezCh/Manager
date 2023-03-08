@@ -22,9 +22,9 @@
 								<span class="bank_name_span"></span>
 							</div>
 							<div class="form-group col-4">
-								{!! Form::label('bank_adress',__('Bank Address'), ['class'=>'col-form-label s-12']) !!}
-								{!! Form::text('bank_adress', null, [ 'class'=>'form-control r-0 light s-12', 'id'=>'bank_adress']) !!}
-								<span class="bank_adress_span"></span>
+								{!! Form::label('bank_addres',__('Bank Address'), ['class'=>'col-form-label s-12']) !!}
+								{!! Form::text('bank_addres', null, [ 'class'=>'form-control r-0 light s-12', 'id'=>'bank_addres']) !!}
+								<span class="bank_addres_span"></span>
 							</div>
 							
 						</div>

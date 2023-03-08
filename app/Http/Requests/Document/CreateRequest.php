@@ -24,11 +24,10 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'   => 'required',
-            'documentType'   => 'required',
-            'account_id' => 'required',
-            'operation_id' => 'required',
-            'file' => 'required'
+            'name'          => 'required|unique:documents',
+            'documentType'  => 'required',
+            'operation_id'  => 'required',
+            'file'          => 'required'
         ];
     }
 }

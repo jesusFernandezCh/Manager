@@ -32,7 +32,9 @@
                                 <thead>
                                     <tr>
                                         <th><b>{{__('ID') }}</b></th>
-                                        <th><b>{{__('OPERATION') }}</b></th>
+                                        <th><b>{{__('CODE OP.') }}</b></th>
+                                        <th width="200"><b>{{__('SUPPLIER OP.') }}</b></th>
+                                        <th><b>{{__('AMOUNT OP.') }}</b></th>
                                         <th><b>{{__('REFERENCE') }}</b></th>
                                         <th><b>{{__('DATE') }}</b></th>
                                         <th><b>{{__('AMOUNT') }}</b></th>
@@ -44,11 +46,13 @@
                                     @foreach ($payment as $pay)
                                     <tr>
                                         <td> {{$pay->id}} </td>
-                                        <td> {{$pay->operation_id}} </td>
+                                        <td> {{$pay->operation->code}}</td>
+                                        <td>{{ $pay->operation->Supplier->name }}</td>
+                                        <td>{{ $pay->operation->s_incoterm_place }}$</td>
                                         <td> {{$pay->Transaction->reference}}
                                         </td>
                                         <td> {{ date('Y/m/d', strtotime($pay->Transaction->date)) }} </td>
-                                        <td> {{$pay->amount}} </td>
+                                        <td> {{$pay->amount}}$ </td>
                                         <td> @if ($pay->type == 1) 
                                                 PAGO TOTAL
                                              @else
@@ -94,7 +98,7 @@
             data:{
                 '_token': '{{  csrf_token() }}',
                 'amount': $('#amount').val(),
-                'bank_trans': $('#transaction').val()
+                'bank_trans': $('#transaction_id').val()
             },
             success: function(result) {
                 $("#sub").attr("disabled", false);

@@ -56,7 +56,9 @@
                                         </td>
                                         <td>
                                             <div>
-                                                {{$contact->countries->name}}    
+                                                @if (isset($contact->countries))
+                                                    {{$contact->countries->name}}    
+                                                @endif
                                                 <div>
                                                     <small>{{$contact->address}}</small>
                                                 </div>
@@ -78,7 +80,7 @@
                                             <a href="{{ route('accountContact.edit',$contact) }}" class="btn btn-default btn-sm" title="Editar">
                                                 <i class="icon-pencil text-info"></i>
                                             </a>
-                                            <button class="btn btn-default btn-sm" onclick="confirm('¿Realmente deseas borrar el registro?')">
+                                            <button class="btn btn-default btn-sm" onclick="return confirm('¿Realmente deseas borrar el registro?')">
                                                 <i class="icon-trash-can3 text-danger"></i>
                                             </button>
                                             {!! Form::close() !!}

@@ -13,7 +13,7 @@
                             <div class="form-group offset-3 col-6">
                                 {!! Form::label('line',__('Line'), ['class'=>'col-form-label s-12']) !!}
                                 {!! Form::text('line', null, ['class'=>'form-control r-0 light s-12','disabled'=>'true', 'id'=>'-line']) !!}
-                                <span class="bank_name_span"></span>
+                                <span class="line_span"></span>
                             </div>
                         </div>
                     </div>

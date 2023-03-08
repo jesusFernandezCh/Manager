@@ -50,7 +50,11 @@
                                                 </div>
                                             </div> 
                                         </td>
-                                        <td> {{$account->countries->name}} </td>
+                                        <td> 
+                                            @if (isset($account->countries))
+                                                {{$account->countries->name}}
+                                            @endif
+                                        </td>
                                         <td>
                                             @foreach ($account->categories as $element)
                                                 <span class="badge badge-primary r-5">{{$element->name }}</span>
@@ -62,7 +66,7 @@
                                                 <a href="{{ route('accountOperator.show',$account) }}" class="btn btn-default btn-sm" title="Detalles">
                                                     <i class="icon-eye text-info text-info"></i>
                                                 </a> 
-                                                <button class="btn btn-default btn-sm" onclick="confirm('¿Realmente deseas borrar el registro?')">
+                                                <button class="btn btn-default btn-sm" onclick="return confirm('¿Realmente deseas borrar el registro?')">
                                                     <i class="icon-trash-can3 text-danger"></i>
                                                 </button>
                                                 {!! Form::close() !!}
@@ -85,7 +89,24 @@
 </div>
 @endsection
 @section('js')
+<script src={{asset('assets/plugins/bootstrap-fileinput/js/fileinput.js')}}></script>
+<script src={{asset('assets/plugins/bootstrap-fileinput/js/plugins/piexif.js')}}></script>
+<script src={{asset('assets/plugins/bootstrap-fileinput/js/plugins/sortable.js')}}></script>
+<script src={{asset('assets/plugins/bootstrap-fileinput/js/locales/es.js')}}></script>
+<script src={{asset('assets/plugins/bootstrap-fileinput/themes/gly/theme.js')}}></script>
 <script>
+
+    $(".file").fileinput({
+        // theme: 'gly',
+        // uploadUrl: '#',
+        allowedFileExtensions: ["jpg"],
+        showCaption: false,
+        showRemove: false,
+        showUpload: false,
+        showBrowse: false,
+        browseOnZoneClick: true,
+    });
+
     $(document).ready(function() {
         $('#accounts').addClass('active');
     });

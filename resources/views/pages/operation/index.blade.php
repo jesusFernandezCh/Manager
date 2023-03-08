@@ -15,7 +15,7 @@
     </div>
     <div class="container-fluid animatedParent animateOnce my-3">
         <div class="animated fadeInUpShort">
-            <div class="card">
+            <div class="card" style="margin-top: 80px;">
                 <div class="form-group">
                     <div class="card-header white">
                         <h6>{{ __('LIST OPERATIONS') }}</h6>
@@ -24,54 +24,63 @@
                 <div class="card-body p-0">
                     <div class="table-responsive">
                         <div class="form-group">
-                            <table id="example2" class="table table-bordered table-hover"
-                                data-order='[[ 0, "desc" ]]' data-page-length='10'>
+                            <table id="example2" class="table table-bordered table-hover table-sm"
+                                data-order='[[ 0, "desc" ]]' data-page-length='20' style=" font-size: 11px;">
                                 <thead>
                                     <tr>
-                                        <th><b>ID</b></th>
-                                        <th><b>{{__('CODE')}} / {{__('BUSINESS LINE')}}</b></th>
-                                        <th><b>{{__('PRINCIPAL')}} / {{__('PURCHASE BY')}}</b></th>
-                                        <th><b>{{__('CREATE DATE')}}</b></th>
-                                        <th><b>{{__('AMOUNT')}}</b></th>
+                                        <th><b>{{__('CODE')}}</b></th>
+                                        <th><b>{{__('PRINCIPAL')}}</b></th>
+                                        <th><b>{{__('SUPPLIER')}}</b></th>
+                                        <th><b>{{__('CUSTOMER')}}</b></th>
                                         <th><b>{{__('STATUS')}}</b></th>
+                                        <th><b>{{__('STATUS COMMENTS')}}</b></th>
+                                        <th><b>{{__('CASH NTP')}}</b></th>
                                         <th><b>{{__('OPTIONS')}}</b></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($operations as $operation)
                                     <tr>
-                                        <td> {{$operation->id}} </td>
                                         <td>
                                             <div>
                                                 {{$operation->code}}
-                                                <div>
-                                                    <small class="text-info">{{$operation->businessLines->name}}</small>
-                                                </div>
                                             </div>
+                                        </td>
+                                        <td>
+                                            @if (isset($operation->principal_id))
+                                                {{$operation->account->name}}
+                                            @endif
                                         </td>
                                         <td>
                                             <div>
-                                                {{$operation->account()->where('id',$operation->principal_id)->first()->name}}
-                                                <div>
-                                                    <small class="text-info">{{$operation->operator->fullname}}</small>
-                                                </div>
+                                                @if(isset($operation->supplier_id))
+                                                {{$operation->Supplier->name}}
+                                                @endif
                                             </div>
                                         </td>
                                         <td>
-                                            {{$operation->date_order}}
+                                            @if (isset($operation->customer_id))
+                                                {{$operation->customer->name}}
+                                            @endif
                                         </td>
-                                        <td>{{$operation->total_amount}}</td>
                                         <td>
-                                            <span class="badge badge-primary rounded-circle r-5">
+                                            @if (isset($operation->operation_status_id))
                                                 {{$operation->status->name}}
-                                            </span>
+                                            @endif
+                                            {{$operation->total_amount}}
+                                        </td>
+                                        <td>
+                                            {{$operation->status_comments}}
+                                        </td>
+                                        <td>
+                                            {{--  cash NTP  --}}
                                         </td>
                                         <td class="text-center">
                                             {!! Form::open(['route'=>['operations.destroy',$operation],'method'=>'DELETE', 'class'=>'formlDinamic','id'=>'eliminarRegistro']) !!}
-                                            <a href="{{ route('operations.edit',$operation) }}" class="btn btn-default btn-sm" title="Editar">
+                                            <a href="{{ route('operations.edit',$operation) }}" class="btn btn-default btn-sm" style="padding: .10rem .4rem;" title="Editar">
                                                 <i class="icon-pencil text-info"></i>
                                             </a>
-                                            <button class="btn btn-default btn-sm" onclick="confirm('¿Realmente deseas borrar el registro?')">
+                                            <button class="btn btn-default btn-sm" style="padding: .10rem .4rem;" onclick="return confirm('¿Realmente deseas borrar el registro?')">
                                                 <i class="icon-trash-can3 text-danger"></i>
                                             </button>
                                             {!! Form::close() !!}

@@ -49,7 +49,9 @@
                                             {{$meta->accounts->name}} 
                                         </td>
                                         <td>
-                                            {{$meta->accountsMetaTypes->metatype}}
+                                            @if (isset($meta->accountsMetaTypes))
+                                                {{$meta->accountsMetaTypes->metatype}}
+                                            @endif
                                         </td>
                                         <td>
                                             {{$meta->value}}
@@ -59,7 +61,7 @@
                                             <a href="{{ route('accountMeta.edit',$meta) }}" class="btn btn-default btn-sm" title="Editar">
                                                 <i class="icon-pencil text-info"></i>
                                             </a> 
-                                            <button class="btn btn-default btn-sm" onclick="confirm('¿Realmente deseas borrar el registro?')">
+                                            <button class="btn btn-default btn-sm" onclick="return confirm('¿Realmente deseas borrar el registro?')">
                                                 <i class="icon-trash-can3 text-danger"></i>
                                             </button>
                                             {!! Form::close() !!}

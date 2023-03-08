@@ -62,17 +62,23 @@
                                             </div>
                                         </td>
                                         <td>
-                                            @foreach ($account->categories as $element)
-                                                <span class="badge badge-primary r-5">{{$element->name }}</span>
-                                            @endforeach
+                                            @if (isset($account->categories))
+                                                @foreach ($account->categories as $element)
+                                                    <span class="badge badge-primary r-5">{{$element->name }}</span>
+                                                @endforeach
+                                            @endif
                                         </td>
-                                        <td> {{$account->countries->name}} </td>
+                                        <td> 
+                                            @if (isset($account->countries))
+                                                {{$account->countries->name}}
+                                            @endif
+                                        </td>
                                         <td class="text-center">
                                             {!! Form::open(['route'=>['account.destroy',$account],'method'=>'DELETE', 'class'=>'formlDinamic','id'=>'eliminarRegistro']) !!}
                                             <a href="{{ route('account.edit',$account) }}" class="btn btn-default btn-sm" title="Editar">
                                                 <i class="icon-pencil text-info"></i>
                                             </a> 
-                                            <button class="btn btn-default btn-sm" onclick="confirm('¿Realmente deseas borrar el registro?')">
+                                            <button class="btn btn-default btn-sm" onclick="return confirm('¿Realmente deseas borrar el registro?')">
                                                 <i class="icon-trash-can3 text-danger"></i>
                                             </button>
                                             {!! Form::close() !!}

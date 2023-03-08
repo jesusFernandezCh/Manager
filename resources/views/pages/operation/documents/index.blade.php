@@ -1,11 +1,6 @@
 @extends('layouts.app')
 @section('title')
-<h1 class="nav-title text-white">
-    <i class="icon-document-text s-18"></i>
-    {{__('Documents')}} >
-    {{$operation->account->name}} >
-    {{$operation->code}}
-</h1>
+    @include('pages.operation.partial.title')
 @endsection
 @section('top-menu')
     {{-- header --}}
@@ -15,10 +10,6 @@
 @section('maincontent')
 {{-- modal create --}}
 @include('pages.operation.documents.create')
-{{-- modal show --}}
-{{-- @include('pages.operation.documents.show') --}}
-{{-- modal edit --}}
-{{-- @include('pages.operation.documents.edit') --}}
 
 <div class="page  height-full">
     <div>
@@ -39,41 +30,33 @@
                                 data-order='[[ 0, "desc" ]]' data-page-length='10'>
                                 <thead>
                                     <tr>
-                                        <th><b>ID</b></th>
+                                        <th width='5%'><b>ID</b></th>
                                         <th><b>NAME</b></th>
                                         <th><b>DOCUMENT TYPE</b></th>
-                                        <th><b>ACCOUNT</b></th>
-                                        <th><b>OPERATION</b></th>
-                                        <th><b>OPTIONS</b></th>
+                                        <th width='15%'><b>OPTIONS</b></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($documents as $document)
                                     <tr>
                                         <td>
-                                            {{$document->id}} 
+                                            {{$document->id}}
                                         </td>
                                         <td>
                                             {{$document->name}}
                                         </td>
                                         <td>
-                                            @foreach ($document->documentTypes as $element) 
+                                            @foreach ($document->documentTypes as $element)
                                                 <span class="badge badge-primary r-5">{{$element->name }}</span>
                                             @endforeach
-                                        </td>
-                                        <td>
-                                            {{$document->accounts->name}}
-                                        </td>
-                                        <td>
-                                            {{$document->operations->name}} 
                                         </td>
                                         <td class="text-center">
                                             {!! Form::open(['route'=>['document.destroy',$document],'method'=>'DELETE', 'class'=>'formlDinamic','id'=>'eliminarRegistro']) !!}
                                             <a class="btn btn-default btn-sm" title="Editar" href="{{url('/document/download/'.$document->id.'')}}"><i class="icon-download text-info"></i></a>
                                             <a href="{{ route('documentOperationEdit',[$document,$operation]) }}" class="btn btn-default btn-sm" title="Editar document">
                                                 <i class="icon-pencil text-info"></i>
-                                            </a> 
-                                            <button class="btn btn-default btn-sm" onclick="confirm('¿Realmente deseas borrar el registro?')">
+                                            </a>
+                                            <button class="btn btn-default btn-sm" onclick="return confirm('¿Realmente deseas borrar el registro?')">
                                                 <i class="icon-trash-can3 text-danger"></i>
                                             </button>
                                             {!! Form::close() !!}

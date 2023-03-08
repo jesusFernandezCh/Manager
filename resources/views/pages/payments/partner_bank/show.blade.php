@@ -24,8 +24,8 @@
                             </div>
                             <div class="form-group col-4">
                                 <i class="icon-bank mr-2"></i>
-                                {!! Form::label('bank_adress',__('Bank Address'), ['class'=>'col-form-label s-12']) !!}
-                                {!! Form::text('bank_adress', null, ['class'=>'form-control r-0 light s-12','disabled'=>'true', 'id'=>'-bank_adress']) !!}
+                                {!! Form::label('bank_addres',__('Bank Address'), ['class'=>'col-form-label s-12']) !!}
+                                {!! Form::text('bank_addres', null, ['class'=>'form-control r-0 light s-12','disabled'=>'true', 'id'=>'-bank_addres']) !!}
                                 <span class="bank_adress_span"></span>
                             </div>
                         </div>
@@ -77,7 +77,7 @@
                             <div class="form-group col-4">
                                 <i class="icon-bank mr-2"></i>
                                 {!! Form::label('curren_account',__('Current Account'), ['class'=>'col-form-label s-12']) !!}
-                                {!! Form::checkbox('curren_account', 1, true, array('id'=>'-curren_account'), ['class'=>'r-0 light', 'disabled'=>'true','id'=>'-curren_account']) !!}
+                                {!! Form::checkbox('curren_account', null, true, array('id'=>'-curren_account'), ['class'=>'r-0 light', 'disabled'=>'true']) !!}
                                 <span class="curren_account_span"></span>
                             </div>
                         </div>

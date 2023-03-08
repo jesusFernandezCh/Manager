@@ -1,16 +1,18 @@
 @extends('layouts.app')
 @section('title')
-<div class="nav-title text-white col-12"> 
+<div class="nav-title text-white col-12">
 	<i class="icon-person"></i>
 	<a href="{{ route('operations.index') }}">{{__('Operation')}}</a>
 </div>
-
+@endsection
+@section('top-menu')
+	@include($topMenu)
 @endsection
 @section('maincontent')
-<div class="page height-full">
-	<div class="form-group" style="margin-top: 75px">
-		@include($topMenu)
-	</div>
+<div class="page height-full" style="margin-top: 130px">
+    <div>
+        @include('alerts.toastr')
+    </div>
 	 <div class="container-fluid animatedParent animateOnce my-3">
         <div class="animated fadeInUpShort">
         	<div class="col-md-12">
@@ -21,11 +23,12 @@
 	                    </div>
 	                </div>
 	                <div class="card-body">
-						{!! Form::open(['route'=>'operations.store','method'=>'POST', 'class'=>'formlDinamic', 'id'=>'guardarRegistro']) !!}
+						{!! Form::open(['route'=>'operations.store','method'=>'POST', 'class'=>'formlDinamic form create', 'id'=>'guardarRegistro']) !!}
 						@include('pages.operation.forml')
+						 {!! Form::hidden('route', route('operations.store'), ['id'=>'route']) !!}
 						<br>
 						<div class="col-md-12 text-right">
-							<a href="{{ route('operations.index') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
+							<a href="{{ route('operationIndexAsoc') }}" class="btn btn-default" data-dismiss="modal">{{__('Back')}}</a>
 							<button type="submit" class="btn btn-primary"><i class="icon-save mr-2"></i>{{_('Save data')}}</button>
 						</div>
 						{!! Form::close() !!}
@@ -40,6 +43,7 @@
 <script>
     $(document).ready(function() {
         $('#order_terms').addClass('active');
+        $('.d').addClass('disabled');
     });
 
     $('.datepicker').datetimepicker({
@@ -51,7 +55,7 @@
         'September','Oktober','November','Dezember',
        ],
        dayOfWeek:[
-        "So.", "Mo", "Di", "Mi", 
+        "So.", "Mo", "Di", "Mi",
         "Do", "Fr", "Sa.",
        ]
       }

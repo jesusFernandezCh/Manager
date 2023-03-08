@@ -10,17 +10,22 @@
                 <li>
                     <a class="nav-link" id="category" href="{!! route('accountCategory.index') !!}" role="tab"
                     aria-controls="v-pills-buyers">
-                        <i class="icon icon-format_list_bulleted"></i> Accounts Categories
+                        <i class="icon icon-format_list_bulleted"></i> {{__('Accounts Categories')}}
                     </a>
                 </li>
                 <li>
                     <a class="nav-link" href="{{ route('accountMeta.index') }}" role="tab" id="meta">
-                        <i class="icon icon-plus-circle"></i> Account meta
+                        <i class="icon icon-plus-circle"></i> {{__('Account meta')}}
                     </a>
                 </li>
                 <li>
                     <a class="nav-link" id="metaType" href="{!! route('accountMetaType.index') !!}" role="tab" >
-                        <i class="icon icon icon-playlist_add"></i> Account meta type
+                        <i class="icon icon icon-playlist_add"></i> {{__('Account meta type')}}
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" id="courrier" href="{!! route('docsInstruction.index') !!}" role="tab" >
+                        <i class="icon icon icon-playlist_add"></i> {{__('DocsInstruction')}}
                     </a>
                 </li>
             </ul>
